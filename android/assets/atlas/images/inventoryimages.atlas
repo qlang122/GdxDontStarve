@@ -1,0 +1,3085 @@
+
+inventoryimages.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+chester_eyebone_closed_shadow
+  rotate: false
+  xy: 1280, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+chester_eyebone_closed
+  rotate: false
+  xy: 1216, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+treasurechest
+  rotate: false
+  xy: 1600, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+teleportato_crank_adv
+  rotate: false
+  xy: 448, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+sunken_boat_trinket_1
+  rotate: false
+  xy: 1536, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+fishingrod
+  rotate: false
+  xy: 1088, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+slurper
+  rotate: false
+  xy: 320, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+beefalohat
+  rotate: false
+  xy: 192, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+torch
+  rotate: false
+  xy: 1280, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+fish
+  rotate: false
+  xy: 1024, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+sunken_boat_trinket_3
+  rotate: false
+  xy: 1664, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+icestaff
+  rotate: false
+  xy: 640, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+tentaclespots
+  rotate: false
+  xy: 960, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+walrushat
+  rotate: false
+  xy: 512, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+bearger_fur
+  rotate: false
+  xy: 1920, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+turf_forest
+  rotate: false
+  xy: 1088, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+eggplant
+  rotate: false
+  xy: 1984, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+frogglebunwich
+  rotate: false
+  xy: 1664, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+wall_stone_item
+  rotate: false
+  xy: 384, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+goldnugget
+  rotate: false
+  xy: 448, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+goatmilk
+  rotate: false
+  xy: 192, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+lighter
+  rotate: false
+  xy: 1152, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+smallmeat_dried
+  rotate: false
+  xy: 704, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+yellowamulet
+  rotate: false
+  xy: 1344, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+trinket_2
+  rotate: false
+  xy: 1920, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+orangestaff
+  rotate: false
+  xy: 1408, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+honeynuggets
+  rotate: false
+  xy: 0, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+twigs
+  rotate: false
+  xy: 0, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+foliage
+  rotate: false
+  xy: 1536, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+truffle
+  rotate: false
+  xy: 384, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+batbat
+  rotate: false
+  xy: 1536, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+cookedmeat
+  rotate: false
+  xy: 1856, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+hambat
+  rotate: false
+  xy: 1152, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+turf_underrock
+  rotate: false
+  xy: 1792, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+armorsnurtleshell
+  rotate: false
+  xy: 832, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+cactus_meat_cooked
+  rotate: false
+  xy: 512, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+heat_rock4
+  rotate: false
+  xy: 1664, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+skull_webber
+  rotate: false
+  xy: 1472, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+bucket
+  rotate: false
+  xy: 1984, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+heat_rock1
+  rotate: false
+  xy: 1472, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+rope
+  rotate: false
+  xy: 640, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+purplegem
+  rotate: false
+  xy: 1088, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+honeyham
+  rotate: false
+  xy: 1984, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+dragonfruit
+  rotate: false
+  xy: 768, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+scarecrow
+  rotate: false
+  xy: 896, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+crow
+  rotate: false
+  xy: 320, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+teleportato_box_adv
+  rotate: false
+  xy: 320, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+nightlight
+  rotate: false
+  xy: 704, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+skull_winnie
+  rotate: false
+  xy: 1984, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+silk
+  rotate: false
+  xy: 1280, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+umbrella
+  rotate: false
+  xy: 64, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+onemanband
+  rotate: false
+  xy: 1216, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+baconeggs
+  rotate: false
+  xy: 1216, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+turf_deciduous
+  rotate: false
+  xy: 960, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+beemine
+  rotate: false
+  xy: 384, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+turf_carpetfloor
+  rotate: false
+  xy: 768, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+cookedmonstermeat
+  rotate: false
+  xy: 1920, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+siestahut
+  rotate: false
+  xy: 1216, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+ruins_bat
+  rotate: false
+  xy: 832, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+dug_cactus
+  rotate: false
+  xy: 1344, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+molehat
+  rotate: false
+  xy: 256, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+green_cap
+  rotate: false
+  xy: 832, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+greenstaff
+  rotate: false
+  xy: 768, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+honeycomb
+  rotate: false
+  xy: 1920, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+eyebrellahat
+  rotate: false
+  xy: 192, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+turf_cave
+  rotate: false
+  xy: 832, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+blue_cap_cooked
+  rotate: false
+  xy: 1344, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+seeds_cooked
+  rotate: false
+  xy: 1024, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+boneshard
+  rotate: false
+  xy: 1472, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+eel
+  rotate: false
+  xy: 1856, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+diviningrod
+  rotate: false
+  xy: 640, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+heat_rock5
+  rotate: false
+  xy: 1728, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+slurtle_shellpieces
+  rotate: false
+  xy: 576, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+dug_grass
+  rotate: false
+  xy: 1408, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+froglegs
+  rotate: false
+  xy: 1728, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+reflectivevest
+  rotate: false
+  xy: 0, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+teleportato_ring_adv
+  rotate: false
+  xy: 704, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+heat_rock2
+  rotate: false
+  xy: 1536, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+petals_evil
+  rotate: false
+  xy: 1728, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+trinket_7
+  rotate: false
+  xy: 192, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+blowdart_sleep
+  rotate: false
+  xy: 1024, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+rainometer
+  rotate: false
+  xy: 1472, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+researchlab4
+  rotate: false
+  xy: 256, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+winterometer
+  rotate: false
+  xy: 1216, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+plantmeat
+  rotate: false
+  xy: 192, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+chester_eyebone_closed_snow
+  rotate: false
+  xy: 1344, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+wathgrithrhat
+  rotate: false
+  xy: 960, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+ruinshat
+  rotate: false
+  xy: 768, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+book_sleep
+  rotate: false
+  xy: 1792, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+trap
+  rotate: false
+  xy: 1472, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+meatballs
+  rotate: false
+  xy: 1920, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+wall_ruins_item
+  rotate: false
+  xy: 320, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+trinket_11
+  rotate: false
+  xy: 1792, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+bird_egg_cooked
+  rotate: false
+  xy: 832, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+turf_checkerfloor
+  rotate: false
+  xy: 896, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+tallbirdegg
+  rotate: false
+  xy: 1984, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+watermelonhat
+  rotate: false
+  xy: 704, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+red_cap
+  rotate: false
+  xy: 1920, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+icegem
+  rotate: false
+  xy: 448, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+phonograph
+  rotate: false
+  xy: 1792, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+turf_road
+  rotate: false
+  xy: 1536, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+homesign
+  rotate: false
+  xy: 1792, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+nightstick
+  rotate: false
+  xy: 1024, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+turf_fungus
+  rotate: false
+  xy: 1152, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+nightmare_timepiece_warn
+  rotate: false
+  xy: 960, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+compass
+  rotate: false
+  xy: 1728, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+raincoat
+  rotate: false
+  xy: 1344, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+rocks
+  rotate: false
+  xy: 512, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+cane
+  rotate: false
+  xy: 640, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+rabbithouse
+  rotate: false
+  xy: 1216, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+sewing_kit
+  rotate: false
+  xy: 1088, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+turf_desertdirt
+  rotate: false
+  xy: 1024, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+fishtacos
+  rotate: false
+  xy: 1216, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+lantern
+  rotate: false
+  xy: 960, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+rabbit_winter
+  rotate: false
+  xy: 1280, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+cookpot
+  rotate: false
+  xy: 0, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+abigail_flower
+  rotate: false
+  xy: 0, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+pumpkin_lantern
+  rotate: false
+  xy: 896, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+abigail_flower_haunted
+  rotate: false
+  xy: 128, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+heat_rock3
+  rotate: false
+  xy: 1600, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+slow_farmplot
+  rotate: false
+  xy: 256, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+piggyback
+  rotate: false
+  xy: 1920, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+dragonflychest
+  rotate: false
+  xy: 704, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+stuffedeggplant
+  rotate: false
+  xy: 1472, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+spear_wathgrithr
+  rotate: false
+  xy: 896, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+berries
+  rotate: false
+  xy: 512, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+bugnet
+  rotate: false
+  xy: 0, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+watermelon_seeds
+  rotate: false
+  xy: 896, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+butterfly
+  rotate: false
+  xy: 192, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+trinket_1
+  rotate: false
+  xy: 1664, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+heatrock
+  rotate: false
+  xy: 1408, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+cutreeds
+  rotate: false
+  xy: 448, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+teleportato_ring
+  rotate: false
+  xy: 640, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+spidereggsack
+  rotate: false
+  xy: 960, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+eggplant_cooked
+  rotate: false
+  xy: 0, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+researchlab
+  rotate: false
+  xy: 64, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+glommerfuel
+  rotate: false
+  xy: 64, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+boards
+  rotate: false
+  xy: 1408, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+turf_webbing
+  rotate: false
+  xy: 1856, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+firestaff
+  rotate: false
+  xy: 896, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+shovel
+  rotate: false
+  xy: 1152, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+pomegranate_seeds
+  rotate: false
+  xy: 448, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+razor
+  rotate: false
+  xy: 1600, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+featherhat
+  rotate: false
+  xy: 448, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+campfire
+  rotate: false
+  xy: 576, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+jammypreserves
+  rotate: false
+  xy: 704, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+trinket_12
+  rotate: false
+  xy: 1856, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+hammer
+  rotate: false
+  xy: 1216, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+mosquito
+  rotate: false
+  xy: 512, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+tent
+  rotate: false
+  xy: 832, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+dug_marsh_bush
+  rotate: false
+  xy: 1472, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+trunkvest_winter
+  rotate: false
+  xy: 512, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+turf_marsh
+  rotate: false
+  xy: 1408, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+pumpkin_seeds
+  rotate: false
+  xy: 960, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+turf_fungus_red
+  rotate: false
+  xy: 1280, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+lightninggoathorn
+  rotate: false
+  xy: 1216, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+nightsword
+  rotate: false
+  xy: 1088, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+sunken_boat_trinket_2
+  rotate: false
+  xy: 1600, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+goose_feather
+  rotate: false
+  xy: 512, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+turf_rocky
+  rotate: false
+  xy: 1600, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+meat_dried
+  rotate: false
+  xy: 0, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+accomplishment_shrine
+  rotate: false
+  xy: 192, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+cutgrass
+  rotate: false
+  xy: 384, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+bluegem
+  rotate: false
+  xy: 1152, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+teleportato_potato_adv
+  rotate: false
+  xy: 576, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+eyebrella
+  rotate: false
+  xy: 128, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+mole
+  rotate: false
+  xy: 192, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+hotchili
+  rotate: false
+  xy: 128, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+log
+  rotate: false
+  xy: 1408, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+panflute
+  rotate: false
+  xy: 1472, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+dug_sapling
+  rotate: false
+  xy: 1536, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+cookedsmallmeat
+  rotate: false
+  xy: 1984, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+multitool_axe_pickaxe
+  rotate: false
+  xy: 640, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+corn_seeds
+  rotate: false
+  xy: 256, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+bonestew
+  rotate: false
+  xy: 1536, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+houndstooth
+  rotate: false
+  xy: 192, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+trinket_6
+  rotate: false
+  xy: 128, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+durian_cooked
+  rotate: false
+  xy: 1664, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+armorruins
+  rotate: false
+  xy: 704, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+slurtleslime
+  rotate: false
+  xy: 512, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+butterflywings
+  rotate: false
+  xy: 320, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+kabobs
+  rotate: false
+  xy: 768, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+bushhat
+  rotate: false
+  xy: 64, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+glommerwings
+  rotate: false
+  xy: 128, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+eyeturret_item
+  rotate: false
+  xy: 256, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+butterflymuffin
+  rotate: false
+  xy: 256, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+corn_cooked
+  rotate: false
+  xy: 192, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+mandrake
+  rotate: false
+  xy: 1600, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+featherfan
+  rotate: false
+  xy: 384, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+trap_teeth
+  rotate: false
+  xy: 1536, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+wall_wood_item
+  rotate: false
+  xy: 448, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+icehat
+  rotate: false
+  xy: 512, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+fruitmedley
+  rotate: false
+  xy: 1856, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+wormlight
+  rotate: false
+  xy: 1280, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+cactus_flower
+  rotate: false
+  xy: 384, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+orangeamulet
+  rotate: false
+  xy: 1280, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+skull_wes
+  rotate: false
+  xy: 1600, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+wall_hay_item
+  rotate: false
+  xy: 256, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+bat
+  rotate: false
+  xy: 1472, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+ratatouille
+  rotate: false
+  xy: 1536, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+resurrectionstatue
+  rotate: false
+  xy: 320, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+batwing
+  rotate: false
+  xy: 1600, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+cactus_meat
+  rotate: false
+  xy: 448, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+record_01
+  rotate: false
+  xy: 1664, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+marble
+  rotate: false
+  xy: 1792, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+turf_grass
+  rotate: false
+  xy: 1344, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+amulet
+  rotate: false
+  xy: 448, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+orangegem
+  rotate: false
+  xy: 1344, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+dug_berrybush
+  rotate: false
+  xy: 1216, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+skull_wortox
+  rotate: false
+  xy: 128, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+robin_winter
+  rotate: false
+  xy: 448, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+purpleamulet
+  rotate: false
+  xy: 1024, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+slurtlehat
+  rotate: false
+  xy: 448, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+skull_willow
+  rotate: false
+  xy: 1792, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+armormarble
+  rotate: false
+  xy: 640, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+guacamole
+  rotate: false
+  xy: 960, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+monsterlasagna
+  rotate: false
+  xy: 320, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+greengem
+  rotate: false
+  xy: 704, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+skull_wolfgang
+  rotate: false
+  xy: 0, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+taffy
+  rotate: false
+  xy: 1920, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+pickaxe
+  rotate: false
+  xy: 1856, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+meat
+  rotate: false
+  xy: 1856, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+beard_monster
+  rotate: false
+  xy: 1792, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+batwing_cooked
+  rotate: false
+  xy: 1664, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+eggplant_seeds
+  rotate: false
+  xy: 64, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+beargervest
+  rotate: false
+  xy: 1856, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+trunk_cooked
+  rotate: false
+  xy: 576, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+turf_mud
+  rotate: false
+  xy: 1472, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+minerhat
+  rotate: false
+  xy: 64, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+chester_eyebone_snow
+  rotate: false
+  xy: 1472, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+cookedmandrake
+  rotate: false
+  xy: 1792, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+petals
+  rotate: false
+  xy: 1664, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+honey
+  rotate: false
+  xy: 1856, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+carrot
+  rotate: false
+  xy: 704, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+thorns_marsh
+  rotate: false
+  xy: 1024, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+nitre
+  rotate: false
+  xy: 1152, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+slurper_pelt
+  rotate: false
+  xy: 384, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+skull_wilbur
+  rotate: false
+  xy: 1728, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+pinecone
+  rotate: false
+  xy: 64, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+turf_sinkhole
+  rotate: false
+  xy: 1728, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+papyrus
+  rotate: false
+  xy: 1536, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+monstermeat
+  rotate: false
+  xy: 384, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+lightning_rod
+  rotate: false
+  xy: 1280, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+perogies
+  rotate: false
+  xy: 1600, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+pumpkincookie
+  rotate: false
+  xy: 768, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+bedroll_straw
+  rotate: false
+  xy: 0, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+trinket_3
+  rotate: false
+  xy: 1984, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+feather_robin
+  rotate: false
+  xy: 576, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+record_03
+  rotate: false
+  xy: 1792, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+snowball
+  rotate: false
+  xy: 768, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+eel_cooked
+  rotate: false
+  xy: 1920, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+birdcage
+  rotate: false
+  xy: 640, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+bell
+  rotate: false
+  xy: 448, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+spear
+  rotate: false
+  xy: 832, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+tentaclespike
+  rotate: false
+  xy: 896, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+bee
+  rotate: false
+  xy: 64, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+pomegranate
+  rotate: false
+  xy: 320, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+earmuffshat
+  rotate: false
+  xy: 1792, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+smallmeat
+  rotate: false
+  xy: 640, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+record_02
+  rotate: false
+  xy: 1728, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+beehat
+  rotate: false
+  xy: 320, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+yellowgem
+  rotate: false
+  xy: 1408, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+thulecite_pieces
+  rotate: false
+  xy: 1152, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+book_tentacles
+  rotate: false
+  xy: 1856, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+pighouse
+  rotate: false
+  xy: 1984, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+nightmarefuel
+  rotate: false
+  xy: 768, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+carrot_cooked
+  rotate: false
+  xy: 768, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+turkeydinner
+  rotate: false
+  xy: 1984, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+pigskin
+  rotate: false
+  xy: 0, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+coontail
+  rotate: false
+  xy: 64, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+teleportato_box
+  rotate: false
+  xy: 256, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+dug_berrybush2
+  rotate: false
+  xy: 1280, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+blue_cap
+  rotate: false
+  xy: 1280, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+beardhair
+  rotate: false
+  xy: 1728, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+gears
+  rotate: false
+  xy: 1920, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+staff_tornado
+  rotate: false
+  xy: 1216, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+flowersalad
+  rotate: false
+  xy: 1472, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+robin
+  rotate: false
+  xy: 384, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+redgem
+  rotate: false
+  xy: 1856, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+firesuppressor
+  rotate: false
+  xy: 960, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+balloons_empty
+  rotate: false
+  xy: 1344, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+hawaiianshirt
+  rotate: false
+  xy: 1280, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+bedroll_furry
+  rotate: false
+  xy: 1984, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+meatrack
+  rotate: false
+  xy: 1984, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+pumpkin
+  rotate: false
+  xy: 704, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+icebox
+  rotate: false
+  xy: 320, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+strawhat
+  rotate: false
+  xy: 1408, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+turf_fungus_green
+  rotate: false
+  xy: 1216, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+armorgrass
+  rotate: false
+  xy: 576, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+lantern_lit
+  rotate: false
+  xy: 1024, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+book_birds
+  rotate: false
+  xy: 1600, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+deerclops_eyeball
+  rotate: false
+  xy: 576, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+trinket_10
+  rotate: false
+  xy: 1728, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+telebase
+  rotate: false
+  xy: 128, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+skull_waverly
+  rotate: false
+  xy: 1408, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+rainhat
+  rotate: false
+  xy: 1408, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+dragonpie
+  rotate: false
+  xy: 960, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+tallbirdegg_cooked
+  rotate: false
+  xy: 0, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+green_cap_cooked
+  rotate: false
+  xy: 896, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+icecream
+  rotate: false
+  xy: 384, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+red_cap_cooked
+  rotate: false
+  xy: 1984, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+tophat
+  rotate: false
+  xy: 1216, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+blowdart_pipe
+  rotate: false
+  xy: 960, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+sunken_boat_trinket_5
+  rotate: false
+  xy: 1792, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+blueprint
+  rotate: false
+  xy: 1216, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+rockwall
+  rotate: false
+  xy: 576, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+poop
+  rotate: false
+  xy: 512, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+lureplantbulb
+  rotate: false
+  xy: 1536, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+firepit
+  rotate: false
+  xy: 832, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+skull_woodie
+  rotate: false
+  xy: 64, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+catcoonhat
+  rotate: false
+  xy: 896, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+spiderhat
+  rotate: false
+  xy: 1088, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+seeds
+  rotate: false
+  xy: 960, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+glommerflower_dead
+  rotate: false
+  xy: 0, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+corn
+  rotate: false
+  xy: 128, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+trinket_8
+  rotate: false
+  xy: 256, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+book_brimstone
+  rotate: false
+  xy: 1664, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+wetgoop
+  rotate: false
+  xy: 1088, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+nightmare_timepiece
+  rotate: false
+  xy: 832, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+trunk_winter
+  rotate: false
+  xy: 704, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+watermelon
+  rotate: false
+  xy: 640, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+drumstick_cooked
+  rotate: false
+  xy: 1152, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+trunkvest_summer
+  rotate: false
+  xy: 448, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+bandage
+  rotate: false
+  xy: 1408, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+skull_wickerbottom
+  rotate: false
+  xy: 1664, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+guano
+  rotate: false
+  xy: 1024, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+winterhat
+  rotate: false
+  xy: 1152, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+armordragonfly
+  rotate: false
+  xy: 512, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+acorn
+  rotate: false
+  xy: 256, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+drumstick
+  rotate: false
+  xy: 1088, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+blowdart_fire
+  rotate: false
+  xy: 896, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+flowerhat
+  rotate: false
+  xy: 1408, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+feather_crow
+  rotate: false
+  xy: 512, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+chester_eyebone_shadow
+  rotate: false
+  xy: 1408, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+transistor
+  rotate: false
+  xy: 1408, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+skull_wilson
+  rotate: false
+  xy: 1856, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+chester_eyebone
+  rotate: false
+  xy: 1152, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+fast_farmplot
+  rotate: false
+  xy: 320, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+flint
+  rotate: false
+  xy: 1344, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+yellowstaff
+  rotate: false
+  xy: 1472, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+pottedfern
+  rotate: false
+  xy: 576, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+beebox
+  rotate: false
+  xy: 128, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+gunpowder
+  rotate: false
+  xy: 1088, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+grass_umbrella
+  rotate: false
+  xy: 576, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+cave_banana
+  rotate: false
+  xy: 960, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+turf_woodfloor
+  rotate: false
+  xy: 1920, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+pumpkin_cooked
+  rotate: false
+  xy: 832, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+watermelonicle
+  rotate: false
+  xy: 768, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+mosquitosack
+  rotate: false
+  xy: 576, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+minotaurhorn
+  rotate: false
+  xy: 128, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+rottenegg
+  rotate: false
+  xy: 704, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+monstermeat_dried
+  rotate: false
+  xy: 448, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+trailmix
+  rotate: false
+  xy: 1344, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+killerbee
+  rotate: false
+  xy: 832, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+trinket_4
+  rotate: false
+  xy: 0, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+teleportato_potato
+  rotate: false
+  xy: 512, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+mandrakesoup
+  rotate: false
+  xy: 1664, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+skull_wx78
+  rotate: false
+  xy: 192, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+footballhat
+  rotate: false
+  xy: 1600, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+trinket_9
+  rotate: false
+  xy: 320, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+acorn_cooked
+  rotate: false
+  xy: 320, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+coldfire
+  rotate: false
+  xy: 1600, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+stopwatch
+  rotate: false
+  xy: 1344, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+berries_cooked
+  rotate: false
+  xy: 576, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+book_gardening
+  rotate: false
+  xy: 1728, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+researchlab3
+  rotate: false
+  xy: 192, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+pitchfork
+  rotate: false
+  xy: 128, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+skull_wallace
+  rotate: false
+  xy: 1344, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+icepack
+  rotate: false
+  xy: 576, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+rabbit
+  rotate: false
+  xy: 1152, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+spoiled_food
+  rotate: false
+  xy: 1152, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+turf_savanna
+  rotate: false
+  xy: 1664, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+armorwood
+  rotate: false
+  xy: 896, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+durian
+  rotate: false
+  xy: 1600, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+dragon_scales
+  rotate: false
+  xy: 1024, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+skull_wilton
+  rotate: false
+  xy: 1920, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+fishsticks
+  rotate: false
+  xy: 1152, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+algae
+  rotate: false
+  xy: 384, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+fireflies
+  rotate: false
+  xy: 768, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+lightbulb
+  rotate: false
+  xy: 1088, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+ash
+  rotate: false
+  xy: 1024, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+armor_sanity
+  rotate: false
+  xy: 960, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+walrus_tusk
+  rotate: false
+  xy: 576, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+ice
+  rotate: false
+  xy: 256, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+thulecite
+  rotate: false
+  xy: 1088, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+plantmeat_cooked
+  rotate: false
+  xy: 256, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+birdtrap
+  rotate: false
+  xy: 704, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+livinglog
+  rotate: false
+  xy: 1344, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+blueamulet
+  rotate: false
+  xy: 1088, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+bird_egg
+  rotate: false
+  xy: 768, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+sweatervest
+  rotate: false
+  xy: 1856, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+dragonfruit_seeds
+  rotate: false
+  xy: 896, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+froglegs_cooked
+  rotate: false
+  xy: 1792, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+unagi
+  rotate: false
+  xy: 128, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+waffles
+  rotate: false
+  xy: 192, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+dragonfruit_cooked
+  rotate: false
+  xy: 832, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+spidergland
+  rotate: false
+  xy: 1024, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+bag
+  rotate: false
+  xy: 1280, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+greenamulet
+  rotate: false
+  xy: 640, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+axe
+  rotate: false
+  xy: 1088, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+goldenpickaxe
+  rotate: false
+  xy: 320, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+tallbirdegg_cracked
+  rotate: false
+  xy: 64, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+lucy
+  rotate: false
+  xy: 1472, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+butter
+  rotate: false
+  xy: 128, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+beefalowool
+  rotate: false
+  xy: 256, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+skull_wendy
+  rotate: false
+  xy: 1536, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+cutstone
+  rotate: false
+  xy: 512, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+abigail_flower2
+  rotate: false
+  xy: 64, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+powcake
+  rotate: false
+  xy: 640, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+nightmare_timepiece_nightmare
+  rotate: false
+  xy: 896, 512
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+teleportato_base
+  rotate: false
+  xy: 192, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+trinket_5
+  rotate: false
+  xy: 64, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+armorslurper
+  rotate: false
+  xy: 768, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+cave_banana_cooked
+  rotate: false
+  xy: 1024, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+coldfirepit
+  rotate: false
+  xy: 1664, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+healingsalve
+  rotate: false
+  xy: 1344, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+teleportato_crank
+  rotate: false
+  xy: 384, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+carrot_seeds
+  rotate: false
+  xy: 832, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+fish_cooked
+  rotate: false
+  xy: 1280, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+fertilizer
+  rotate: false
+  xy: 704, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+backpack
+  rotate: false
+  xy: 1152, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+charcoal
+  rotate: false
+  xy: 1088, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+goldenaxe
+  rotate: false
+  xy: 256, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+feather_robin_winter
+  rotate: false
+  xy: 640, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+manrabbit_tail
+  rotate: false
+  xy: 1728, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+researchlab2
+  rotate: false
+  xy: 128, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+waxwelljournal
+  rotate: false
+  xy: 1024, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+glommerflower
+  rotate: false
+  xy: 1984, 704
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+stinger
+  rotate: false
+  xy: 1280, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+goldenshovel
+  rotate: false
+  xy: 384, 640
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+telestaff
+  rotate: false
+  xy: 768, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+boomerang
+  rotate: false
+  xy: 1920, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+krampus_sack
+  rotate: false
+  xy: 896, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+pomegranate_cooked
+  rotate: false
+  xy: 384, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+durian_seeds
+  rotate: false
+  xy: 1728, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+trunk_summer
+  rotate: false
+  xy: 640, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+watermelon_cooked
+  rotate: false
+  xy: 832, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+sunken_boat_trinket_4
+  rotate: false
+  xy: 1728, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+clothes
+  rotate: false
+  xy: 1536, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+horn
+  rotate: false
+  xy: 64, 576
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1

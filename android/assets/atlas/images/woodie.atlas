@@ -1,0 +1,12 @@
+
+woodie.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+beaver_vision_OL
+  rotate: false
+  xy: 0, 304
+  size: 1279, 719
+  orig: 1279, 719
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,229 @@
+
+selectscreen_portraits.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+winnie_silho
+  rotate: false
+  xy: 564, 1196
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1
+frame
+  rotate: false
+  xy: 0, 1764
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1
+wilton_silho
+  rotate: false
+  xy: 188, 1196
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1
+winnie
+  rotate: false
+  xy: 376, 1196
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1
+wickerbottom_silho
+  rotate: false
+  xy: 940, 1480
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1
+wortox_silho
+  rotate: false
+  xy: 1692, 1196
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1
+wilton
+  rotate: false
+  xy: 0, 1196
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1
+wathgrithr
+  rotate: false
+  xy: 752, 1764
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1
+waxwell_silho
+  rotate: false
+  xy: 1316, 1764
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1
+willow
+  rotate: false
+  xy: 1128, 1480
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1
+webber_silho
+  rotate: false
+  xy: 1692, 1764
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1
+wickerbottom
+  rotate: false
+  xy: 752, 1480
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1
+wolfgang_silho
+  rotate: false
+  xy: 940, 1196
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1
+woodie_silho
+  rotate: false
+  xy: 1316, 1196
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1
+wolfgang
+  rotate: false
+  xy: 752, 1196
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1
+waxwell
+  rotate: false
+  xy: 1128, 1764
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1
+woodie
+  rotate: false
+  xy: 1128, 1196
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1
+wathgrithr_silho
+  rotate: false
+  xy: 940, 1764
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1
+wortox
+  rotate: false
+  xy: 1504, 1196
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1
+hidden
+  rotate: false
+  xy: 376, 1764
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1
+webber
+  rotate: false
+  xy: 1504, 1764
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1
+wes_silho
+  rotate: false
+  xy: 564, 1480
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1
+willow_silho
+  rotate: false
+  xy: 1316, 1480
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1
+frame_mouse_over
+  rotate: false
+  xy: 188, 1764
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1
+wendy_silho
+  rotate: false
+  xy: 188, 1480
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1
+wilson
+  rotate: false
+  xy: 1504, 1480
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1
+wendy
+  rotate: false
+  xy: 0, 1480
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1
+wx78_silho
+  rotate: false
+  xy: 188, 912
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1
+wilson_silho
+  rotate: false
+  xy: 1692, 1480
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1
+lockedSW_silho
+  rotate: false
+  xy: 564, 1764
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1
+wes
+  rotate: false
+  xy: 376, 1480
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1
+wx78
+  rotate: false
+  xy: 0, 912
+  size: 187, 283
+  orig: 187, 283
+  offset: 0, 0
+  index: -1

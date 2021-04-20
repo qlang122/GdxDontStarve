@@ -123,6 +123,7 @@ project(":core") {
 
         api 'com.github.qlang122:spriter:1.0.2'
 
+//        api "com.github.qlang122:gdx-animation:1.0.5"
         api project(":gdx-animation")
     }
 }

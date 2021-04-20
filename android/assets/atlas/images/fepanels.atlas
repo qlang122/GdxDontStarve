@@ -1,0 +1,96 @@
+
+fepanels.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+panel_topmods
+  rotate: false
+  xy: 984, 660
+  size: 323, 671
+  orig: 323, 671
+  offset: 0, 0
+  index: -1
+DS_Scary_button
+  rotate: false
+  xy: 1084, 328
+  size: 457, 299
+  orig: 457, 299
+  offset: 0, 0
+  index: -1
+panel_mod2
+  rotate: false
+  xy: 496, 856
+  size: 487, 475
+  orig: 487, 475
+  offset: 0, 0
+  index: -1
+kickstarter_menu_mouseover
+  rotate: false
+  xy: 1784, 328
+  size: 239, 299
+  orig: 239, 299
+  offset: 0, 0
+  index: -1
+panel_mod1
+  rotate: false
+  xy: 1412, 628
+  size: 495, 731
+  orig: 495, 731
+  offset: 0, 0
+  index: -1
+panel_shield
+  rotate: false
+  xy: 1412, 1360
+  size: 607, 687
+  orig: 607, 687
+  offset: 0, 0
+  index: -1
+kickstarter_menu_button
+  rotate: false
+  xy: 1544, 328
+  size: 239, 299
+  orig: 239, 299
+  offset: 0, 0
+  index: -1
+panel_controls
+  rotate: false
+  xy: 712, 1332
+  size: 699, 715
+  orig: 699, 715
+  offset: 0, 0
+  index: -1
+biobox
+  rotate: false
+  xy: 496, 340
+  size: 587, 319
+  orig: 587, 319
+  offset: 0, 0
+  index: -1
+panel_saveslots
+  rotate: false
+  xy: 0, 640
+  size: 495, 695
+  orig: 495, 695
+  offset: 0, 0
+  index: -1
+DS_Scary_button-rollover
+  rotate: false
+  xy: 0, 340
+  size: 457, 299
+  orig: 457, 299
+  offset: 0, 0
+  index: -1
+panel_obituaries
+  rotate: false
+  xy: 0, 1336
+  size: 711, 711
+  orig: 711, 711
+  offset: 0, 0
+  index: -1
+panel_obituaries_highlight
+  rotate: false
+  xy: 0, 272
+  size: 711, 67
+  orig: 711, 67
+  offset: 0, 0
+  index: -1

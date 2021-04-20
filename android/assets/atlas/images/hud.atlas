@@ -1,0 +1,411 @@
+
+hud.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+inventory_filler
+  rotate: false
+  xy: 920, 1072
+  size: 63, 255
+  orig: 63, 255
+  offset: 0, 0
+  index: -1
+death_BG
+  rotate: false
+  xy: 0, 752
+  size: 855, 575
+  orig: 855, 575
+  offset: 0, 0
+  index: -1
+craft_slot_place
+  rotate: false
+  xy: 984, 768
+  size: 98, 63
+  orig: 98, 63
+  offset: 0, 0
+  index: -1
+tab_arcane
+  rotate: false
+  xy: 1240, 1120
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+craftingsubmenu_fullvertical
+  rotate: false
+  xy: 1532, 1152
+  size: 355, 463
+  orig: 355, 463
+  offset: 0, 0
+  index: -1
+tab_dress
+  rotate: false
+  xy: 1496, 1024
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+cursor01
+  rotate: false
+  xy: 1916, 1616
+  size: 31, 31
+  orig: 31, 31
+  offset: 0, 0
+  index: -1
+craft_slot_locked
+  rotate: false
+  xy: 1204, 800
+  size: 98, 63
+  orig: 98, 63
+  offset: 0, 0
+  index: -1
+craft_sep_h
+  rotate: false
+  xy: 1996, 688
+  size: 15, 127
+  orig: 15, 127
+  offset: 0, 0
+  index: -1
+inventory_bg
+  rotate: false
+  xy: 0, 170
+  size: 1351, 249
+  orig: 1351, 249
+  offset: 0, 0
+  index: -1
+tab_science
+  rotate: false
+  xy: 1752, 896
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+tab_place
+  rotate: false
+  xy: 1112, 944
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+clock_NIGHT
+  rotate: false
+  xy: 1096, 836
+  size: 107, 107
+  orig: 107, 107
+  offset: 0, 0
+  index: -1
+craftingsubmenu_fullhorizontal
+  rotate: false
+  xy: 1532, 1616
+  size: 383, 431
+  orig: 383, 431
+  offset: 0, 0
+  index: -1
+tab_book
+  rotate: false
+  xy: 1368, 1120
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+turnarrow_icon
+  rotate: false
+  xy: 920, 752
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+equip_slot_head
+  rotate: false
+  xy: 1672, 764
+  size: 67, 67
+  orig: 67, 67
+  offset: 0, 0
+  index: -1
+tab_farm
+  rotate: false
+  xy: 1624, 1024
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+craft_end_normal_disabled
+  rotate: false
+  xy: 1916, 1792
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+tab_light
+  rotate: false
+  xy: 856, 944
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+inventory_bg_cover
+  rotate: false
+  xy: 0, 422
+  size: 1351, 329
+  orig: 1351, 329
+  offset: 0, 0
+  index: -1
+tab_fight
+  rotate: false
+  xy: 1752, 1024
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+craft_bg
+  rotate: false
+  xy: 1888, 816
+  size: 147, 799
+  orig: 147, 799
+  offset: 0, 0
+  index: -1
+tab_researchable
+  rotate: false
+  xy: 1624, 896
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+equip_slot_body
+  rotate: false
+  xy: 1604, 764
+  size: 67, 67
+  orig: 67, 67
+  offset: 0, 0
+  index: -1
+craft_slot_locked_nextlevel
+  rotate: false
+  xy: 1096, 772
+  size: 98, 63
+  orig: 98, 63
+  offset: 0, 0
+  index: -1
+craft_end_normal
+  rotate: false
+  xy: 1916, 1920
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+tab_build
+  rotate: false
+  xy: 984, 1072
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+craft_end_normal_mouseover
+  rotate: false
+  xy: 1916, 1664
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+map
+  rotate: false
+  xy: 0, 1328
+  size: 1279, 719
+  orig: 1279, 719
+  offset: 0, 0
+  index: -1
+clock_rim
+  rotate: false
+  xy: 1496, 788
+  size: 107, 107
+  orig: 107, 107
+  offset: 0, 0
+  index: -1
+map_button
+  rotate: false
+  xy: 984, 1200
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+resource_needed
+  rotate: false
+  xy: 1352, 728
+  size: 67, 67
+  orig: 67, 67
+  offset: 0, 0
+  index: -1
+tab_crafting_table
+  rotate: false
+  xy: 1112, 1072
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+inv_slot
+  rotate: false
+  xy: 1860, 748
+  size: 67, 67
+  orig: 67, 67
+  offset: 0, 0
+  index: -1
+craft_slot
+  rotate: false
+  xy: 1604, 832
+  size: 98, 63
+  orig: 98, 63
+  offset: 0, 0
+  index: -1
+inventory_corner
+  rotate: false
+  xy: 856, 1072
+  size: 63, 255
+  orig: 63, 255
+  offset: 0, 0
+  index: -1
+cursor02
+  rotate: false
+  xy: 1948, 1616
+  size: 31, 31
+  orig: 31, 31
+  offset: 0, 0
+  index: -1
+magnifying_glass_off
+  rotate: false
+  xy: 1740, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+equip_slot
+  rotate: false
+  xy: 1404, 796
+  size: 67, 67
+  orig: 67, 67
+  offset: 0, 0
+  index: -1
+inv_slot_spoiled
+  rotate: false
+  xy: 1928, 748
+  size: 67, 67
+  orig: 67, 67
+  offset: 0, 0
+  index: -1
+tab_selected
+  rotate: false
+  xy: 1240, 864
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+tab_trap
+  rotate: false
+  xy: 856, 816
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+tab_normal
+  rotate: false
+  xy: 984, 944
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+tab_highlight
+  rotate: false
+  xy: 1368, 992
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+clock_wedge
+  rotate: false
+  xy: 1804, 788
+  size: 55, 107
+  orig: 55, 107
+  offset: 0, 0
+  index: -1
+craft_slot_locked_highlight
+  rotate: false
+  xy: 1304, 800
+  size: 98, 63
+  orig: 98, 63
+  offset: 0, 0
+  index: -1
+tab_gemology
+  rotate: false
+  xy: 1240, 992
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+turnarrow_icon_over
+  rotate: false
+  xy: 1488, 724
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+craft_slotbg
+  rotate: false
+  xy: 1704, 832
+  size: 98, 63
+  orig: 98, 63
+  offset: 0, 0
+  index: -1
+tab_tool
+  rotate: false
+  xy: 1368, 864
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+tab_refine
+  rotate: false
+  xy: 1496, 896
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+craft_bg_cover
+  rotate: false
+  xy: 1280, 1248
+  size: 249, 799
+  orig: 249, 799
+  offset: 0, 0
+  index: -1
+magnifying_glass_on
+  rotate: false
+  xy: 856, 752
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+clock_hand
+  rotate: false
+  xy: 984, 832
+  size: 111, 111
+  orig: 111, 111
+  offset: 0, 0
+  index: -1
+craft_sep
+  rotate: false
+  xy: 1916, 1648
+  size: 127, 15
+  orig: 127, 15
+  offset: 0, 0
+  index: -1
+slot_select
+  rotate: false
+  xy: 1420, 728
+  size: 67, 67
+  orig: 67, 67
+  offset: 0, 0
+  index: -1
+pause
+  rotate: false
+  xy: 1112, 1200
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1

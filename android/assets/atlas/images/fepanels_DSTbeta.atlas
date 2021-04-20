@@ -1,0 +1,33 @@
+
+fepanels_DSTbeta.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+chester_menu_button_360
+  rotate: false
+  xy: 0, 392
+  size: 239, 299
+  orig: 239, 299
+  offset: 0, 0
+  index: -1
+chester_menu_mouseover_360
+  rotate: false
+  xy: 240, 392
+  size: 239, 299
+  orig: 239, 299
+  offset: 0, 0
+  index: -1
+DST_closedBeta_button
+  rotate: false
+  xy: 0, 694
+  size: 457, 329
+  orig: 457, 329
+  offset: 0, 0
+  index: -1
+DST_closedBeta_button_over
+  rotate: false
+  xy: 460, 694
+  size: 457, 329
+  orig: 457, 329
+  offset: 0, 0
+  index: -1
