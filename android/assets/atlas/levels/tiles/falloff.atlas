@@ -1,0 +1,47 @@
+
+falloff.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+falloff
+  rotate: false
+  xy: 4, 380
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 1
+falloff
+  rotate: false
+  xy: 140, 380
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 2
+falloff
+  rotate: false
+  xy: 276, 380
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 3
+falloff
+  rotate: false
+  xy: 4, 244
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 4
+falloff
+  rotate: false
+  xy: 140, 244
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 5
+falloff
+  rotate: false
+  xy: 276, 244
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 6
