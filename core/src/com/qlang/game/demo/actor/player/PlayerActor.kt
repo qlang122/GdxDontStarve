@@ -1,13 +1,14 @@
-package com.qlang.game.demo.actor
+package com.qlang.game.demo.actor.player
 
+import com.qlang.game.demo.actor.BaseAnimActor
 import com.qlang.game.demo.res.GameAssetManager
 
 abstract class PlayerActor(textureAtlasName: String) : BaseAnimActor(textureAtlasName) {
-    protected val manager = GameAssetManager.instance?.manager
+    protected val manager = GameAssetManager.instance?.playManager
 
     protected var entityName = "wilson"
 
-    object Anim {
+    protected object Anim {
         object Idle {
             const val down = "idle_down"
             const val inaction_down = "idle_inaction_down"

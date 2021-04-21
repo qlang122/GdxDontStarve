@@ -5,7 +5,6 @@ import com.badlogic.gdx.assets.AssetManager
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver
 import com.badlogic.gdx.graphics.g2d.Batch
 import com.badlogic.gdx.scenes.scene2d.Actor
-import com.qlang.game.demo.utils.Log
 import me.winter.gdx.animation.Animation
 import me.winter.gdx.animation.Entity
 import me.winter.gdx.animation.scml.SCMLLoader

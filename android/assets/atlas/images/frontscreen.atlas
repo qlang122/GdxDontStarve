@@ -1,0 +1,124 @@
+
+frontscreen.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+specialsnow4
+  rotate: false
+  xy: 1980, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+play_highlight
+  rotate: false
+  xy: 1472, 651
+  size: 377, 116
+  orig: 377, 116
+  offset: 0, 0
+  index: -1
+kleipresents
+  rotate: false
+  xy: 1264, 558
+  size: 385, 89
+  orig: 385, 89
+  offset: 0, 0
+  index: -1
+wintersnow1
+  rotate: false
+  xy: 1980, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+snow
+  rotate: false
+  xy: 1856, 876
+  size: 15, 15
+  orig: 15, 15
+  offset: 0, 0
+  index: -1
+specialsnow3
+  rotate: false
+  xy: 1916, 896
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+specialsnow1
+  rotate: false
+  xy: 1916, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+specialsnow5
+  rotate: false
+  xy: 1916, 832
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+legalese
+  rotate: false
+  xy: 872, 892
+  size: 1041, 131
+  orig: 1041, 131
+  offset: 0, 0
+  index: -1
+title
+  rotate: false
+  xy: 0, 244
+  size: 869, 779
+  orig: 869, 779
+  offset: 0, 0
+  index: -1
+highlight_hover
+  rotate: false
+  xy: 872, 624
+  size: 389, 91
+  orig: 389, 91
+  offset: 0, 0
+  index: -1
+wintersnow2
+  rotate: false
+  xy: 1856, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+highlight
+  rotate: false
+  xy: 872, 717
+  size: 599, 174
+  orig: 599, 174
+  offset: 0, 0
+  index: -1
+specialsnow2
+  rotate: false
+  xy: 1980, 960
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+wintersnow4
+  rotate: false
+  xy: 1984, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+play_highlight_hover
+  rotate: false
+  xy: 1472, 771
+  size: 381, 120
+  orig: 381, 120
+  offset: 0, 0
+  index: -1
+wintersnow3
+  rotate: false
+  xy: 1920, 768
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1

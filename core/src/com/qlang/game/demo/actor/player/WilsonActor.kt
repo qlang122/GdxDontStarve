@@ -1,14 +1,14 @@
-package com.qlang.game.demo.actor
+package com.qlang.game.demo.actor.player
 
 import com.badlogic.gdx.Gdx
 import com.qlang.game.demo.res.R
 
-class WilsonActor : PlayerActor(R.anim.Wilson.atlas) {
+class WilsonActor : PlayerActor(R.anim.wilson.atlas) {
 
     init {
         manager?.let {
-            loadScml(it, R.anim.Wilson.scml_basic)
-            loadScml(it, R.anim.Wilson.scml_idle)
+            loadScml(it, R.anim.player_basic)
+            loadScml(it, R.anim.player_idle)
             loadEntity(entityName)
             loadAnimation(Anim.Idle.loop_down)
         }

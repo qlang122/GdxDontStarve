@@ -4,16 +4,18 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.ScreenAdapter
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.scenes.scene2d.Stage
-import com.qlang.game.demo.actor.WilsonActor
-import com.qlang.game.demo.utils.Log
+import com.qlang.game.demo.actor.player.WilsonActor
+import com.qlang.game.demo.stage.HomeBgStage
 
 class HomeScreen : ScreenAdapter() {
     private var stage: Stage? = null
+    private var bgStage: Stage? = null
 
     init {
         stage = Stage()
+        bgStage = HomeBgStage()
 
-        stage?.addActor(WilsonActor())
+//        stage?.addActor(WilsonActor())
     }
 
     override fun render(delta: Float) {
@@ -21,10 +23,13 @@ class HomeScreen : ScreenAdapter() {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         stage?.apply { act();draw() }
+        bgStage?.apply { act();draw() }
     }
 
     override fun dispose() {
         stage?.dispose()
+        bgStage?.dispose()
         stage = null
+        bgStage = null
     }
 }
