@@ -27,10 +27,7 @@ class GameAssetManager private constructor() : ApplicationAdapter() {
 
     private fun AssetManager.loadAssets() {
         load(R.font.font_cn, BitmapFont::class.java)
-        R.image.atlas().forEach {
-            Log.e("QL", it)
-            load(it, TextureAtlas::class.java)
-        }
+        R.image.atlas().forEach { load(it, TextureAtlas::class.java) }
     }
 
     val mainAssetsLoadProgress: Float get() = mainManager.progress
@@ -54,7 +51,7 @@ class GameAssetManager private constructor() : ApplicationAdapter() {
 }
 
 object R {
-    @JvmSuppressWildcards
+
     object anim {
         const val player_idle = "anim/player-idles.scml"
         const val player_basic = "anim/player-basic.scml"
@@ -64,7 +61,6 @@ object R {
         }
     }
 
-    @JvmSuppressWildcards
     object image {
         const val bg_redux_bottom = "atlas/images/bg_redux_dark_bottom.atlas"
         const val bg_redux_bottom_solid = "atlas/images/bg_redux_dark_bottom_solid.atlas"
@@ -93,7 +89,10 @@ object R {
                 val list = ArrayList<String>()
                 for (it in this.javaClass.fields) {
                     val name = it?.name
-                    if (name != null) list.add(name)
+                    if (name != null && name != "INSTANCE") {
+                        it.isAccessible = true
+                        it.get(this)?.toString()?.let { if (it.endsWith(".atlas")) list.add(it) }
+                    }
                 }
                 return list
             }
@@ -124,7 +123,10 @@ object R {
                 val list = ArrayList<String>()
                 for (it in this.javaClass.fields) {
                     val name = it?.name
-                    if (name != null) list.add(name)
+                    if (name != null && name != "INSTANCE") {
+                        it.isAccessible = true
+                        it.get(this)?.toString()?.let { if (it.endsWith(".atlas")) list.add(it) }
+                    }
                 }
                 return list
             }
@@ -134,7 +136,10 @@ object R {
             val list = ArrayList<String>()
             for (it in this.javaClass.fields) {
                 val name = it?.name
-                if (name != null) list.add(name)
+                if (name != null && name != "INSTANCE") {
+                    it.isAccessible = true
+                    it.get(this)?.toString()?.let { if (it.endsWith(".atlas")) list.add(it) }
+                }
             }
             return list
         }
