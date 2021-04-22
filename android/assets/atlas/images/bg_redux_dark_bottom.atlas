@@ -5,7 +5,7 @@ filter: Nearest,Nearest
 repeat: none
 dark_bottom
   rotate: false
-  xy: 0, 424
+  xy: 0, 0
   size: 1919, 599
   orig: 1919, 599
   offset: 0, 0

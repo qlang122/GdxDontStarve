@@ -11,10 +11,9 @@ import me.winter.gdx.animation.scml.SCMLLoader
 import me.winter.gdx.animation.scml.SCMLProject
 
 abstract class BaseAnimActor : Actor {
-    protected var status: Int = PlayerStatus.IDLE
-
     protected val entitys: ArrayList<Entity> = ArrayList()
-    protected var animation: Animation? = null
+    var animation: Animation? = null
+        protected set
 
     private val projects: ArrayList<SCMLProject> = ArrayList()
     private lateinit var parameters: SCMLLoader.Parameters

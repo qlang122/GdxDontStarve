@@ -5,12 +5,20 @@ import com.badlogic.gdx.assets.AssetManager
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.qlang.game.demo.utils.Log
+import kotlin.random.Random
 
 class GameAssetManager private constructor() : ApplicationAdapter() {
     lateinit var mainManager: AssetManager
         private set
     lateinit var playManager: AssetManager
         private set
+
+    var homeMenuBgIndex = 0
+        private set
+
+    init {
+        homeMenuBgIndex = Random.nextInt(3)
+    }
 
     companion object {
         var instance: GameAssetManager? = GameAssetManager()
@@ -28,13 +36,22 @@ class GameAssetManager private constructor() : ApplicationAdapter() {
     private fun AssetManager.loadAssets() {
         load(R.font.font_cn, BitmapFont::class.java)
         R.image.atlas().forEach { load(it, TextureAtlas::class.java) }
+        load(when (homeMenuBgIndex) {
+            1 -> R.anim.menu.feast_atlas
+            2 -> R.anim.menu.halloween_atlas
+            3 -> R.anim.menu.lunacy_atlas
+            else -> R.anim.menu.base_atlas
+        }, TextureAtlas::class.java)
+        if (homeMenuBgIndex == 1) {
+            load(R.anim.menu.feast_bg_atlas, TextureAtlas::class.java)
+        }
     }
 
     val mainAssetsLoadProgress: Float get() = mainManager.progress
     val isMainAssetsLoaded: Boolean get() = mainManager.isFinished
 
     fun AssetManager.loadPlayAssets() {
-        load(R.anim.wilson.atlas, TextureAtlas::class.java)
+        load(R.anim.player.wilson.atlas, TextureAtlas::class.java)
         R.image.fxs.atlas().forEach { load(it, TextureAtlas::class.java) }
         R.image.tile.atlas().forEach { load(it, TextureAtlas::class.java) }
     }
@@ -53,11 +70,26 @@ class GameAssetManager private constructor() : ApplicationAdapter() {
 object R {
 
     object anim {
-        const val player_idle = "anim/player-idles.scml"
-        const val player_basic = "anim/player-basic.scml"
+        object player {
+            const val idle = "anim/player-idles.scml"
+            const val basic = "anim/player-basic.scml"
 
-        object wilson {
-            const val atlas = "anim/wilson/wilson.atlas"
+            object wilson {
+                const val atlas = "anim/wilson/wilson.atlas"
+            }
+        }
+
+        object menu {
+            const val base = "anim/menu/dst_menu.scml"
+            const val base_atlas = "anim/menu/dst_menu.atlas"
+            const val feast = "anim/menu/dst_menu_feast.scml"
+            const val feast_atlas = "anim/menu/dst_menu_feast.atlas"
+            const val feast_bg = "anim/menu/dst_menu_feast_bg.scml"
+            const val feast_bg_atlas = "anim/menu/dst_menu_feast_bg.atlas"
+            const val halloween = "anim/menu/dst_menu_halloween.scml"
+            const val halloween_atlas = "anim/menu/dst_menu_halloween.atlas"
+            const val lunacy = "anim/menu/dst_menu_lunacy.scml"
+            const val lunacy_atlas = "anim/menu/dst_menu_lunacy.atlas"
         }
     }
 

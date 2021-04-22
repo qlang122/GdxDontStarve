@@ -22,8 +22,8 @@ class HomeScreen : ScreenAdapter() {
         Gdx.gl.glClearColor(1f, 1f, 1f, 1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        stage?.apply { act();draw() }
         bgStage?.apply { act();draw() }
+        stage?.apply { act();draw() }
     }
 
     override fun dispose() {

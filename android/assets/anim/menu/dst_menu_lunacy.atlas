@@ -1,0 +1,157 @@
+
+dst_menu_lunacy.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+moon-0
+  rotate: false
+  xy: 1, 649
+  size: 1356, 1376
+  orig: 1356, 1376
+  offset: 0, 0
+  index: -1
+bg-0
+  rotate: false
+  xy: 1, 95
+  size: 1932, 552
+  orig: 1932, 552
+  offset: 0, 0
+  index: -1
+flicker-0
+  rotate: false
+  xy: 1359, 1577
+  size: 448, 448
+  orig: 448, 448
+  offset: 0, 0
+  index: -1
+wil5-0
+  rotate: false
+  xy: 1359, 1187
+  size: 328, 388
+  orig: 328, 388
+  offset: 0, 0
+  index: -1
+water_ripple_down-8
+  rotate: false
+  xy: 1, 1
+  size: 524, 92
+  orig: 524, 92
+  offset: 0, 0
+  index: -1
+water_ripple_down-6
+  rotate: false
+  xy: 527, 5
+  size: 520, 88
+  orig: 520, 88
+  offset: 0, 0
+  index: -1
+water_ripple_down-4
+  rotate: false
+  xy: 1049, 5
+  size: 516, 88
+  orig: 516, 88
+  offset: 0, 0
+  index: -1
+wil6-0
+  rotate: false
+  xy: 1809, 1745
+  size: 236, 280
+  orig: 236, 280
+  offset: 0, 0
+  index: -1
+water_ripple_down-12
+  rotate: false
+  xy: 1567, 13
+  size: 476, 80
+  orig: 476, 80
+  offset: 0, 0
+  index: -1
+water_ripple_down-10
+  rotate: false
+  xy: 1359, 1093
+  size: 500, 92
+  orig: 500, 92
+  offset: 0, 0
+  index: -1
+water_ripple_down-0
+  rotate: false
+  xy: 1359, 1003
+  size: 504, 88
+  orig: 504, 88
+  offset: 0, 0
+  index: -1
+water_ripple_down-2
+  rotate: false
+  xy: 1359, 913
+  size: 508, 88
+  orig: 508, 88
+  offset: 0, 0
+  index: -1
+water_ripple_down-16
+  rotate: false
+  xy: 1359, 827
+  size: 492, 84
+  orig: 492, 84
+  offset: 0, 0
+  index: -1
+water_ripple_down-14
+  rotate: false
+  xy: 1359, 745
+  size: 484, 80
+  orig: 484, 80
+  offset: 0, 0
+  index: -1
+wil8-0
+  rotate: false
+  xy: 1809, 1611
+  size: 192, 132
+  orig: 192, 132
+  offset: 0, 0
+  index: -1
+wil2-0
+  rotate: false
+  xy: 1689, 1431
+  size: 128, 144
+  orig: 128, 144
+  offset: 0, 0
+  index: -1
+wil4-0
+  rotate: false
+  xy: 1689, 1289
+  size: 144, 140
+  orig: 144, 140
+  offset: 0, 0
+  index: -1
+wil3-0
+  rotate: false
+  xy: 1359, 683
+  size: 152, 60
+  orig: 152, 60
+  offset: 0, 0
+  index: -1
+wil1-0
+  rotate: false
+  xy: 1819, 1449
+  size: 76, 160
+  orig: 76, 160
+  offset: 0, 0
+  index: -1
+wil7-0
+  rotate: false
+  xy: 1689, 1195
+  size: 84, 92
+  orig: 84, 92
+  offset: 0, 0
+  index: -1
+
+dst_menu_lunacy2.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+fade-0
+  rotate: false
+  xy: 1, 1
+  size: 1356, 684
+  orig: 1356, 684
+  offset: 0, 0
+  index: -1

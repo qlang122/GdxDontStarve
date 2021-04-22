@@ -35,6 +35,7 @@ class LaunchScreen : ScreenAdapter() {
         bgImgTexture = TextureAtlas(Gdx.files.internal(NAEM_BG_IMG))
 
         bitmapFont = BitmapFont(Gdx.files.internal(NAME_FONT))
+        bitmapFont?.data?.setScale(1.5f)
 
         screenStage = Stage()
 
