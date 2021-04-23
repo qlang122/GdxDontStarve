@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx
 import com.qlang.game.demo.actor.BaseAnimActor
 import com.qlang.game.demo.res.GameAssetManager
 import com.qlang.game.demo.res.R
+import com.qlang.game.demo.utils.Log
 
 class MenuBgAnimActor {
 
@@ -21,14 +22,20 @@ class MenuBgAnimActor {
         private val manager = GameAssetManager.instance?.mainManager
 
         init {
+            //背景大小1944*716
+
+            val width = Gdx.graphics.width
+            val height = Gdx.graphics.height
+
             manager?.let {
                 loadScml(it, R.anim.menu.base)
                 loadEntity("dst_menu")
                 loadAnimation("loop")
 
                 animation?.root?.apply {
-                    position.set(Gdx.graphics.width.minus(480f), Gdx.graphics.height.minus(150f))
-//                    setScale(1f)
+                    val scale = width.div(1934f)//1944-10图片有白边
+                    position.set(10f, height.minus(356f.div(scale).plus(100f)))//356=716/2
+                    setScale(scale)
                 }
             }
         }
@@ -38,14 +45,20 @@ class MenuBgAnimActor {
         private val manager = GameAssetManager.instance?.mainManager
 
         init {
+            //背景大小1944*684
+
+            val width = Gdx.graphics.width
+            val height = Gdx.graphics.height
+
             manager?.let {
                 loadScml(it, R.anim.menu.feast)
                 loadEntity("dst_menu")
                 loadAnimation("loop")
 
                 animation?.root?.apply {
-                    position.set(Gdx.graphics.width.div(2f).minus(10f), Gdx.graphics.height.minus(280f))
-                    setScale(1.08f)
+                    val scale = width.div(1904f)
+                    position.set(width.div(2f), height.minus(342f.div(scale).minus(20f)))//684/2图片高的一半
+                    setScale(scale)
                 }
             }
         }
@@ -55,14 +68,20 @@ class MenuBgAnimActor {
         private val manager = GameAssetManager.instance?.mainManager
 
         init {
+            //背景大小1944*684
+
+            val width = Gdx.graphics.width
+            val height = Gdx.graphics.height
+
             manager?.let {
                 loadScml(it, R.anim.menu.feast_bg)
                 loadEntity("dst_menu")
                 loadAnimation("loop")
 
                 animation?.root?.apply {
-                    position.set(Gdx.graphics.width.div(2f).minus(10f), Gdx.graphics.height.minus(280f))
-                    setScale(1.08f)
+                    val scale = width.div(1904f)
+                    position.set(width.div(2f), height.minus(342f.div(scale).minus(20f)))//684/2图片高的一半
+                    setScale(scale)
                 }
             }
         }
@@ -72,14 +91,20 @@ class MenuBgAnimActor {
         private val manager = GameAssetManager.instance?.mainManager
 
         init {
+            //背景大小1932*564
+
+            val width = Gdx.graphics.width
+            val height = Gdx.graphics.height
+
             manager?.let {
                 loadScml(it, R.anim.menu.halloween)
                 loadEntity("dst_menu")
                 loadAnimation("loop")
 
                 animation?.root?.apply {
-                    position.set(Gdx.graphics.width.div(2f).plus(300f), Gdx.graphics.height.minus(150f))
-                    setScale(1.1f)
+                    val scale = width.div(1912f)
+                    position.set(-10f, height.div(2).minus(20f))//564/2图片高的一半
+                    setScale(scale)
                 }
             }
         }
@@ -89,14 +114,20 @@ class MenuBgAnimActor {
         private val manager = GameAssetManager.instance?.mainManager
 
         init {
+            //背景大小1933*552
+
+            val width = Gdx.graphics.width
+            val height = Gdx.graphics.height
+
             manager?.let {
                 loadScml(it, R.anim.menu.lunacy)
                 loadEntity("dst_menu")
                 loadAnimation("loop")
 
                 animation?.root?.apply {
-                    position.set(Gdx.graphics.width.div(2f), Gdx.graphics.height.minus(240f))
-                    setScale(1.1f)
+                    val scale = width.div(1914f)
+                    position.set(width.div(2f).plus(5f), height.minus(276f.div(scale)))//552/2图片高的一半
+                    setScale(scale)
                 }
             }
         }

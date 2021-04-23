@@ -13,12 +13,8 @@ class GameAssetManager private constructor() : ApplicationAdapter() {
     lateinit var playManager: AssetManager
         private set
 
-    var homeMenuBgIndex = 0
+    var homeMenuBgIndex = Random.nextInt(3)
         private set
-
-    init {
-        homeMenuBgIndex = Random.nextInt(3)
-    }
 
     companion object {
         var instance: GameAssetManager? = GameAssetManager()
