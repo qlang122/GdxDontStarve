@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.Image
-import com.qlang.game.demo.res.GameAssetManager
+import com.qlang.game.demo.GameManager
 import com.qlang.game.demo.route.Navigator
 
 
@@ -60,7 +60,7 @@ class LaunchScreen : ScreenAdapter() {
 
         delay += delta
 
-        if (delay >= 5f && GameAssetManager.instance?.isMainAssetsLoaded == true) {
+        if (delay >= 5f && GameManager.instance?.isMainAssetsLoaded == true) {
             Navigator.push(HomeScreen())
             Navigator.pop(this)
             return

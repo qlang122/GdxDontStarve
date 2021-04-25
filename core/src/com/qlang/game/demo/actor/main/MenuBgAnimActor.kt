@@ -2,14 +2,13 @@ package com.qlang.game.demo.actor.main
 
 import com.badlogic.gdx.Gdx
 import com.qlang.game.demo.actor.BaseAnimActor
-import com.qlang.game.demo.res.GameAssetManager
+import com.qlang.game.demo.GameManager
 import com.qlang.game.demo.res.R
-import com.qlang.game.demo.utils.Log
 
 class MenuBgAnimActor {
 
     fun createActor(): Array<BaseAnimActor> {
-        val index = GameAssetManager.instance?.homeMenuBgIndex ?: 0
+        val index = GameManager.instance?.homeMenuBgIndex ?: 0
         return when (index) {
             1 -> arrayOf(MenuFeastBgActor(), MenuFeastActor())
             2 -> arrayOf(MenuHalloweenActor())
@@ -19,7 +18,7 @@ class MenuBgAnimActor {
     }
 
     private class MenuBaseActor : BaseAnimActor(R.anim.menu.base_atlas) {
-        private val manager = GameAssetManager.instance?.mainManager
+        private val manager = GameManager.instance?.mainManager
 
         init {
             //背景大小1944*716
@@ -42,7 +41,7 @@ class MenuBgAnimActor {
     }
 
     private class MenuFeastActor : BaseAnimActor(R.anim.menu.feast_atlas) {
-        private val manager = GameAssetManager.instance?.mainManager
+        private val manager = GameManager.instance?.mainManager
 
         init {
             //背景大小1944*684
@@ -65,7 +64,7 @@ class MenuBgAnimActor {
     }
 
     private class MenuFeastBgActor : BaseAnimActor(R.anim.menu.feast_bg_atlas) {
-        private val manager = GameAssetManager.instance?.mainManager
+        private val manager = GameManager.instance?.mainManager
 
         init {
             //背景大小1944*684
@@ -88,7 +87,7 @@ class MenuBgAnimActor {
     }
 
     private class MenuHalloweenActor : BaseAnimActor(R.anim.menu.halloween_atlas) {
-        private val manager = GameAssetManager.instance?.mainManager
+        private val manager = GameManager.instance?.mainManager
 
         init {
             //背景大小1932*564
@@ -111,7 +110,7 @@ class MenuBgAnimActor {
     }
 
     private class MenuLunacyActor : BaseAnimActor(R.anim.menu.lunacy_atlas) {
-        private val manager = GameAssetManager.instance?.mainManager
+        private val manager = GameManager.instance?.mainManager
 
         init {
             //背景大小1933*552

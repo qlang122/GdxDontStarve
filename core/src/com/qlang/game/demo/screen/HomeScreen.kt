@@ -4,12 +4,14 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.ScreenAdapter
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.scenes.scene2d.Stage
+import com.qlang.game.demo.stage.ExitAppStage
 import com.qlang.game.demo.stage.HomeBgStage
 import com.qlang.game.demo.stage.HomeMenuStage
 
 class HomeScreen : ScreenAdapter() {
     private var bgStage: Stage? = null
     private var menuStage: Stage? = null
+    private var exitStage: Stage? = null
 
     init {
         bgStage = HomeBgStage()
@@ -31,6 +33,9 @@ class HomeScreen : ScreenAdapter() {
             4 -> {
             }
             5 -> {
+                exitStage = ExitAppStage().apply {
+                    setOnClickListener({ Gdx.app.exit() }, { exitStage?.dispose();exitStage = null })
+                }
             }
         }
     }
@@ -41,12 +46,15 @@ class HomeScreen : ScreenAdapter() {
 
         bgStage?.apply { act();draw() }
         menuStage?.apply { act();draw() }
+        exitStage?.apply { act();draw() }
     }
 
     override fun dispose() {
         bgStage?.dispose()
         menuStage?.dispose()
+        exitStage?.dispose()
         bgStage = null
         menuStage = null
+        exitStage = null
     }
 }

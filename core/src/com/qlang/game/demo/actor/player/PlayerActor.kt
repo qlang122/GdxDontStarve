@@ -2,10 +2,10 @@ package com.qlang.game.demo.actor.player
 
 import com.qlang.game.demo.actor.BaseAnimActor
 import com.qlang.game.demo.actor.PlayerStatus
-import com.qlang.game.demo.res.GameAssetManager
+import com.qlang.game.demo.GameManager
 
 abstract class PlayerActor(textureAtlasName: String) : BaseAnimActor(textureAtlasName) {
-    protected val manager = GameAssetManager.instance?.playManager
+    protected val manager = GameManager.instance?.playManager
     protected var status: Int = PlayerStatus.IDLE
 
     protected var entityName = "wilson"

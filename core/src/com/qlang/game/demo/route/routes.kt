@@ -8,7 +8,8 @@ import com.badlogic.gdx.utils.Array
 import com.qlang.game.demo.utils.Log
 
 class Navigator : ApplicationAdapter() {
-    private lateinit var game: Game
+    lateinit var game: Game
+        private set
 
     companion object {
         var instance: Navigator? = Navigator()
@@ -70,8 +71,6 @@ class Navigator : ApplicationAdapter() {
     fun <T : Game> init(game: T) {
         this.game = game
     }
-
-    fun getGame(): Game = this.game
 
     override fun dispose() {
         for (it in screens) it.dispose()

@@ -10,12 +10,11 @@ import com.badlogic.gdx.utils.Align
 import com.badlogic.gdx.utils.Scaling
 import com.qlang.game.demo.actor.main.MenuBgAnimActor
 import com.qlang.game.demo.config.trycatch
-import com.qlang.game.demo.res.GameAssetManager
+import com.qlang.game.demo.GameManager
 import com.qlang.game.demo.res.R
-import com.qlang.game.demo.utils.Log
 
 class HomeBgStage : Stage() {
-    private val manager: AssetManager? = GameAssetManager.instance?.mainManager
+    private val manager: AssetManager? = GameManager.instance?.mainManager
 
     init {
         val screenWidth: Float = Gdx.graphics.width.plus(0f)
