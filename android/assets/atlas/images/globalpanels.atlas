@@ -1,0 +1,61 @@
+
+globalpanels.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+panel_long
+  rotate: false
+  xy: 0, 720
+  size: 1139, 623
+  orig: 1139, 623
+  offset: 0, 0
+  index: -1
+panel_upsell_small
+  rotate: false
+  xy: 1280, 712
+  size: 691, 403
+  orig: 691, 403
+  offset: 0, 0
+  index: -1
+panel_customization
+  rotate: false
+  xy: 1280, 0
+  size: 711, 711
+  orig: 711, 711
+  offset: 0, 0
+  index: -1
+panel_upsell
+  rotate: false
+  xy: 0, 0
+  size: 1279, 719
+  orig: 1279, 719
+  offset: 0, 0
+  index: -1
+panel_skinny
+  rotate: false
+  xy: 0, 1344
+  size: 403, 619
+  orig: 403, 619
+  offset: 0, 0
+  index: -1
+presetbox
+  rotate: false
+  xy: 404, 1344
+  size: 455, 399
+  orig: 455, 399
+  offset: 0, 0
+  index: -1
+panel
+  rotate: false
+  xy: 1140, 1116
+  size: 511, 511
+  orig: 511, 511
+  offset: 0, 0
+  index: -1
+small_dialog
+  rotate: false
+  xy: 860, 1628
+  size: 559, 291
+  orig: 559, 291
+  offset: 0, 0
+  index: -1

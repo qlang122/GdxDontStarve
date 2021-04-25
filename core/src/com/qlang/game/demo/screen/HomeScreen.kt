@@ -13,7 +13,26 @@ class HomeScreen : ScreenAdapter() {
 
     init {
         bgStage = HomeBgStage()
-        menuStage = HomeMenuStage()
+        menuStage = HomeMenuStage().apply {
+            setOnItemClickListener { navigation2Menu(it) }
+        }
+    }
+
+    private fun navigation2Menu(index: Int) {
+        when (index) {
+            0 -> {
+            }
+            1 -> {
+            }
+            2 -> {
+            }
+            3 -> {
+            }
+            4 -> {
+            }
+            5 -> {
+            }
+        }
     }
 
     override fun render(delta: Float) {

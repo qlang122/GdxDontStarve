@@ -2,6 +2,7 @@ package com.qlang.game.demo.route
 
 import com.badlogic.gdx.ApplicationAdapter
 import com.badlogic.gdx.Game
+import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Screen
 import com.badlogic.gdx.utils.Array
 import com.qlang.game.demo.utils.Log
@@ -59,6 +60,10 @@ class Navigator : ApplicationAdapter() {
             }
             cls?.dispose()
             screens.removeValue(cls, false)
+
+            if (screens.size == 0) {
+                Gdx.app.exit()
+            }
         }
     }
 

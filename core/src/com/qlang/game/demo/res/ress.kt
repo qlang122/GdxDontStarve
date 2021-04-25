@@ -105,6 +105,7 @@ object R {
         const val selectscreen_port = "atlas/images/selectscreen_portraits.atlas"
         const val ui = "atlas/images/ui.atlas"
         const val woodie = "atlas/images/woodie.atlas"
+        const val globalpanels = "atlas/images/globalpanels.atlas"
 
         object fxs {
             const val frostbreath = "atlas/fx/frostbreath.atlas"

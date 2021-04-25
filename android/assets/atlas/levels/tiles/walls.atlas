@@ -5,105 +5,105 @@ filter: Nearest,Nearest
 repeat: none
 walls
   rotate: false
-  xy: 256, 512
+  xy: 256, 256
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: 10
 walls
   rotate: false
-  xy: 512, 512
+  xy: 512, 256
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: 11
 walls
   rotate: false
-  xy: 1280, 512
+  xy: 1280, 256
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: 14
 walls
   rotate: false
-  xy: 1536, 512
+  xy: 1536, 256
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: 15
 walls
   rotate: false
-  xy: 768, 512
+  xy: 768, 256
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: 12
 walls
   rotate: false
-  xy: 0, 512
+  xy: 0, 256
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: 9
 walls
   rotate: false
-  xy: 1792, 768
+  xy: 1792, 0
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: 8
 walls
   rotate: false
-  xy: 1536, 768
+  xy: 1536, 0
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: 7
 walls
   rotate: false
-  xy: 1280, 768
+  xy: 1280, 0
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: 6
 walls
   rotate: false
-  xy: 1024, 768
+  xy: 1024, 0
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: 5
 walls
   rotate: false
-  xy: 768, 768
+  xy: 768, 0
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: 4
 walls
   rotate: false
-  xy: 512, 768
+  xy: 512, 0
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: 3
 walls
   rotate: false
-  xy: 256, 768
+  xy: 256, 0
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: 2
 walls
   rotate: false
-  xy: 0, 768
+  xy: 0, 0
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: 1
 walls
   rotate: false
-  xy: 1024, 512
+  xy: 1024, 256
   size: 256, 256
   orig: 256, 256
   offset: 0, 0

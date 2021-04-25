@@ -5,119 +5,119 @@ filter: Nearest,Nearest
 repeat: none
 specialsnow4
   rotate: false
-  xy: 1980, 896
+  xy: 1980, 64
   size: 63, 63
   orig: 63, 63
   offset: 0, 0
   index: -1
 play_highlight
   rotate: false
-  xy: 1472, 651
+  xy: 1472, 256
   size: 377, 116
   orig: 377, 116
   offset: 0, 0
   index: -1
 kleipresents
   rotate: false
-  xy: 1264, 558
+  xy: 1264, 376
   size: 385, 89
   orig: 385, 89
   offset: 0, 0
   index: -1
 wintersnow1
   rotate: false
-  xy: 1980, 832
+  xy: 1980, 128
   size: 63, 63
   orig: 63, 63
   offset: 0, 0
   index: -1
 snow
   rotate: false
-  xy: 1856, 876
+  xy: 1856, 132
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 specialsnow3
   rotate: false
-  xy: 1916, 896
+  xy: 1916, 64
   size: 63, 63
   orig: 63, 63
   offset: 0, 0
   index: -1
 specialsnow1
   rotate: false
-  xy: 1916, 960
+  xy: 1916, 0
   size: 63, 63
   orig: 63, 63
   offset: 0, 0
   index: -1
 specialsnow5
   rotate: false
-  xy: 1916, 832
+  xy: 1916, 128
   size: 63, 63
   orig: 63, 63
   offset: 0, 0
   index: -1
 legalese
   rotate: false
-  xy: 872, 892
+  xy: 872, 0
   size: 1041, 131
   orig: 1041, 131
   offset: 0, 0
   index: -1
 title
   rotate: false
-  xy: 0, 244
+  xy: 0, 0
   size: 869, 779
   orig: 869, 779
   offset: 0, 0
   index: -1
 highlight_hover
   rotate: false
-  xy: 872, 624
+  xy: 872, 308
   size: 389, 91
   orig: 389, 91
   offset: 0, 0
   index: -1
 wintersnow2
   rotate: false
-  xy: 1856, 768
+  xy: 1856, 192
   size: 63, 63
   orig: 63, 63
   offset: 0, 0
   index: -1
 highlight
   rotate: false
-  xy: 872, 717
+  xy: 872, 132
   size: 599, 174
   orig: 599, 174
   offset: 0, 0
   index: -1
 specialsnow2
   rotate: false
-  xy: 1980, 960
+  xy: 1980, 0
   size: 63, 63
   orig: 63, 63
   offset: 0, 0
   index: -1
 wintersnow4
   rotate: false
-  xy: 1984, 768
+  xy: 1984, 192
   size: 63, 63
   orig: 63, 63
   offset: 0, 0
   index: -1
 play_highlight_hover
   rotate: false
-  xy: 1472, 771
+  xy: 1472, 132
   size: 381, 120
   orig: 381, 120
   offset: 0, 0
   index: -1
 wintersnow3
   rotate: false
-  xy: 1920, 768
+  xy: 1920, 192
   size: 63, 63
   orig: 63, 63
   offset: 0, 0

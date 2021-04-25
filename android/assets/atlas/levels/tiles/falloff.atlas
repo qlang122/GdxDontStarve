@@ -5,42 +5,42 @@ filter: Nearest,Nearest
 repeat: none
 falloff
   rotate: false
-  xy: 4, 380
+  xy: 4, 4
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 1
 falloff
   rotate: false
-  xy: 140, 380
+  xy: 140, 4
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 2
 falloff
   rotate: false
-  xy: 276, 380
+  xy: 276, 4
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 3
 falloff
   rotate: false
-  xy: 4, 244
+  xy: 4, 140
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 4
 falloff
   rotate: false
-  xy: 140, 244
+  xy: 140, 140
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 5
 falloff
   rotate: false
-  xy: 276, 244
+  xy: 276, 140
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
