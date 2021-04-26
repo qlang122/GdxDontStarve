@@ -2,6 +2,7 @@ package com.qlang.game.demo
 
 import com.badlogic.gdx.ApplicationAdapter
 import com.badlogic.gdx.Game
+import com.badlogic.gdx.InputProcessor
 import com.badlogic.gdx.assets.AssetManager
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
@@ -15,6 +16,8 @@ class GameManager private constructor() : ApplicationAdapter() {
         private set
     lateinit var game: Game
         private set
+
+    private val processors = ArrayList<InputProcessor>()
 
     var homeMenuBgIndex = Random.nextInt(3)
         private set
@@ -60,6 +63,14 @@ class GameManager private constructor() : ApplicationAdapter() {
 
     fun <T : Game> init(game: T) {
         this.game = game
+    }
+
+    fun addInputProcessor(processor: InputProcessor) {
+        processors.add(processor)
+    }
+
+    fun removeInputProcessor(processor: InputProcessor) {
+        processors.remove(processor)
     }
 
     override fun dispose() {
