@@ -2,6 +2,7 @@ package com.qlang.game.demo
 
 import com.badlogic.gdx.ApplicationAdapter
 import com.badlogic.gdx.Game
+import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.InputProcessor
 import com.badlogic.gdx.assets.AssetManager
 import com.badlogic.gdx.graphics.g2d.BitmapFont
@@ -33,6 +34,8 @@ class GameManager private constructor() : ApplicationAdapter() {
 
         mainManager.loadAssets()
         mainManager.finishLoading()
+
+        Gdx.input.inputProcessor = MyInputProcessor()
     }
 
     private fun AssetManager.loadAssets() {
@@ -78,5 +81,48 @@ class GameManager private constructor() : ApplicationAdapter() {
         playManager.dispose()
 
         instance = null
+    }
+
+    private inner class MyInputProcessor : InputProcessor {
+        override fun touchUp(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean {
+            processors.forEach { it.touchUp(screenX, screenY, pointer, button) }
+            return true
+        }
+
+        override fun mouseMoved(screenX: Int, screenY: Int): Boolean {
+            processors.forEach { it.mouseMoved(screenX, screenY) }
+            return true
+        }
+
+        override fun keyTyped(character: Char): Boolean {
+            processors.forEach { it.keyTyped(character) }
+            return true
+        }
+
+        override fun scrolled(amountX: Float, amountY: Float): Boolean {
+            processors.forEach { it.scrolled(amountX, amountY) }
+            return true
+        }
+
+        override fun keyUp(keycode: Int): Boolean {
+            processors.forEach { it.keyUp(keycode) }
+            return true
+        }
+
+        override fun touchDragged(screenX: Int, screenY: Int, pointer: Int): Boolean {
+            processors.forEach { it.touchDragged(screenX, screenY, pointer) }
+            return true
+        }
+
+        override fun keyDown(keycode: Int): Boolean {
+            processors.forEach { it.keyDown(keycode) }
+            return true
+        }
+
+        override fun touchDown(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean {
+            processors.forEach { it.touchDown(screenX, screenY, pointer, button) }
+            return true
+        }
+
     }
 }

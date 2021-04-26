@@ -1,5 +1,5 @@
 sourceCompatibility = 1.8
-sourceSets.main.java.srcDirs = [ "src/" ]
+sourceSets.main.java.srcDirs = ["src/"]
 sourceSets.main.resources.srcDirs = ["../android/assets"]
 
 project.ext.mainClassName = "com.qlang.game.demo.desktop.DesktopLauncher"
@@ -33,6 +33,9 @@ task dist(type: Jar) {
     with jar
 }
 
+dependencies {
+    api files("libs/sqlite-jdbc-3.7.2.jar")
+}
 
 dist.dependsOn classes
 

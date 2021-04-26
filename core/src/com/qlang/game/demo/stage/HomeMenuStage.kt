@@ -1,6 +1,5 @@
 package com.qlang.game.demo.stage
 
-import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.assets.AssetManager
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
@@ -40,10 +39,15 @@ class HomeMenuStage : Stage() {
                 setPosition(100f, 100f)
                 addListener(MyClickListener())
             }
-            Gdx.input.inputProcessor = this
             addActor(list)
-        }
 
+            GameManager.instance?.addInputProcessor(this)
+        }
+    }
+
+    override fun dispose() {
+        GameManager.instance?.removeInputProcessor(this)
+        super.dispose()
     }
 
     fun setOnItemClickListener(lis: (position: Int) -> Unit) {
