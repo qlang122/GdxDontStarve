@@ -1,10 +1,12 @@
 package com.badlogic.gdx.sqlite.android;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.database.sqlite.SQLiteStatement;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.android.AndroidApplication;
@@ -12,6 +14,8 @@ import com.badlogic.gdx.sql.Database;
 import com.badlogic.gdx.sql.DatabaseCursor;
 import com.badlogic.gdx.sql.DatabaseManager;
 import com.badlogic.gdx.sql.SQLiteGdxException;
+
+import java.util.Map;
 
 /**
  * @author M Rafay Aleem
@@ -65,6 +69,62 @@ public class AndroidDatabaseManager implements DatabaseManager {
         public void execSQL(String sql) throws SQLiteGdxException {
             try {
                 database.execSQL(sql);
+            } catch (SQLException e) {
+                throw new SQLiteGdxException(e);
+            }
+        }
+
+        @Override
+        public long executeInsert(String sql, Map<Integer, Object> values) throws SQLiteGdxException {
+            try {
+                SQLiteStatement statement = database.compileStatement(sql);
+                if (values != null) {
+                    for (Map.Entry<Integer, Object> entry : values.entrySet()) {
+                        Object value = entry.getValue();
+                        if (value == null) {
+                            statement.bindNull(entry.getKey());
+                        } else if (value instanceof String) {
+                            statement.bindString(entry.getKey(), (String) value);
+                        } else if (value instanceof Long) {
+                            statement.bindLong(entry.getKey(), (Long) value);
+                        } else if (value instanceof Double) {
+                            statement.bindDouble(entry.getKey(), (Double) value);
+                        } else if (value instanceof byte[]) {
+                            statement.bindBlob(entry.getKey(), (byte[]) value);
+                        } else {
+                            statement.bindString(entry.getKey(), String.valueOf(value));
+                        }
+                    }
+                }
+                return statement.executeInsert();
+            } catch (SQLException e) {
+                throw new SQLiteGdxException(e);
+            }
+        }
+
+        @Override
+        public int executeUpdateDelete(String sql, Map<Integer, Object> values) throws SQLiteGdxException {
+            try {
+                SQLiteStatement statement = database.compileStatement(sql);
+                if (values != null) {
+                    for (Map.Entry<Integer, Object> entry : values.entrySet()) {
+                        Object value = entry.getValue();
+                        if (value == null) {
+                            statement.bindNull(entry.getKey());
+                        } else if (value instanceof String) {
+                            statement.bindString(entry.getKey(), (String) value);
+                        } else if (value instanceof Long) {
+                            statement.bindLong(entry.getKey(), (Long) value);
+                        } else if (value instanceof Double) {
+                            statement.bindDouble(entry.getKey(), (Double) value);
+                        } else if (value instanceof byte[]) {
+                            statement.bindBlob(entry.getKey(), (byte[]) value);
+                        } else {
+                            statement.bindString(entry.getKey(), String.valueOf(value));
+                        }
+                    }
+                }
+                return statement.executeUpdateDelete();
             } catch (SQLException e) {
                 throw new SQLiteGdxException(e);
             }

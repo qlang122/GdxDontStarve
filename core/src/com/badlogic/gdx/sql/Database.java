@@ -1,5 +1,7 @@
 package com.badlogic.gdx.sql;
 
+import java.util.Map;
+
 /**
  * This public interface contains the necessary methods to setup and execute queries on a database. The factory method
  * {@link DatabaseFactory#getNewDatabase(String, int, String, String)} will return a database object that implements this
@@ -45,6 +47,22 @@ public interface Database {
      * @throws SQLiteGdxException
      */
     void execSQL(String sql) throws SQLiteGdxException;
+
+    /**
+     * Execute a single SQL statement that is NOT a SELECT or any other SQL statement that returns data.
+     *
+     * @param sql the SQL statement to be executed. Multiple statements separated by semicolons are not supported.
+     * @throws SQLiteGdxException
+     */
+    long executeInsert(String sql, Map<Integer, Object> values) throws SQLiteGdxException;
+
+    /**
+     * Execute a single SQL statement that is NOT a SELECT or any other SQL statement that returns data.
+     *
+     * @param sql the SQL statement to be executed. Multiple statements separated by semicolons are not supported.
+     * @throws SQLiteGdxException
+     */
+    int executeUpdateDelete(String sql, Map<Integer, Object> values) throws SQLiteGdxException;
 
     /**
      * Runs the provided SQL and returns a {@link DatabaseCursor} over the result set.

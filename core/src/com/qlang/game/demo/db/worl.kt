@@ -27,16 +27,17 @@ interface WorlDao {
 
 class WorlDaoImpl(val db: Database?) : WorlDao {
     override fun addWorls(worls: List<WorlInfo>): LongArray {
-        val rtn = LongArray(0)
-        worls.forEach {
-            val sql = "INSERT OR REPLACE INTO `worl`(`id`,`role`,`name`,`days`,`time`,`createTime`) " +
-                    "VALUES (nullif(${it.id},0),'${it.role}','${it.name}',${it.days},${it.time},${it.createTime})"
+        val rtn = LongArray(worls.size)
+        worls.forEachIndexed { index, info ->
+            val sql = "INSERT OR REPLACE INTO `worl`(`id`,`role`,`name`,`days`,`time`,`createTime`) VALUES (nullif(?,0),?,?,?,?,?);"
+            val values = HashMap<Int, Any?>().apply {
+                put(0, info.id);put(1, info.role);put(2, info.name);put(3, info.days)
+                put(4, info.time);put(5, info.createTime)
+            }
             try {
-                val query = db?.execSQL(sql)
+                db?.executeInsert(sql, values)?.let { rtn[index] = it }
             } catch (e: Throwable) {
                 e.printStackTrace()
-            } finally {
-
             }
         }
         return rtn
@@ -47,26 +48,28 @@ class WorlDaoImpl(val db: Database?) : WorlDao {
 
         } catch (e: Throwable) {
             e.printStackTrace()
-        } finally {
-
         }
         return 0
     }
 
     override fun delete(id: Int): Int {
         try {
-
+            val sql = "delete from `worl` where `id` = ?;"
+            try {
+                return db?.executeUpdateDelete(sql, hashMapOf<Int, Any?>(Pair(0, id))) ?: 0
+            } catch (e: Throwable) {
+                e.printStackTrace()
+            }
         } catch (e: Throwable) {
             e.printStackTrace()
-        } finally {
-
         }
         return 0
     }
 
     override fun deleteAll(): Int {
         try {
-
+            val sql = "delete from `worl`;"
+            return db?.executeUpdateDelete(sql, null) ?: 0
         } catch (e: Throwable) {
             e.printStackTrace()
         } finally {
