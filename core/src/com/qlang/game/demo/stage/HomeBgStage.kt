@@ -9,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image
 import com.badlogic.gdx.utils.Align
 import com.badlogic.gdx.utils.Scaling
 import com.qlang.game.demo.actor.main.MenuBgAnimActor
-import com.qlang.game.demo.config.trycatch
+import com.qlang.game.demo.ktx.trycatch
 import com.qlang.game.demo.GameManager
 import com.qlang.game.demo.res.R
 

@@ -15,6 +15,8 @@ import com.badlogic.gdx.sql.Database;
 import com.badlogic.gdx.sql.DatabaseCursor;
 import com.badlogic.gdx.sql.SQLiteGdxException;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * @author truongps
  */
@@ -74,7 +76,7 @@ public class RobovmDatabase implements Database {
     }
 
     @Override
-    public void execSQL(String sql) throws SQLiteGdxException {
+    public void execSQL(@NotNull String sql) throws SQLiteGdxException {
         try {
             statement.executeUpdate(sql);
         } catch (SQLException e) {
@@ -83,12 +85,12 @@ public class RobovmDatabase implements Database {
     }
 
     @Override
-    public long executeInsert(String sql, Map<Integer, Object> values) throws SQLiteGdxException {
+    public long executeInsert(@NotNull String sql, Map<Integer, Object> values) throws SQLiteGdxException {
         return executeUpdateDelete(sql, values);
     }
 
     @Override
-    public int executeUpdateDelete(String sql, Map<Integer, Object> values) throws SQLiteGdxException {
+    public int executeUpdateDelete(@NotNull String sql, Map<Integer, Object> values) throws SQLiteGdxException {
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             if (values != null) {
@@ -120,18 +122,33 @@ public class RobovmDatabase implements Database {
     }
 
     @Override
-    public DatabaseCursor rawQuery(String sql) throws SQLiteGdxException {
+    public DatabaseCursor rawQuery(@NotNull String sql) throws SQLiteGdxException {
         try {
             ResultSet resultSet = statement.executeQuery(sql);
-            RobovmCursor databaseCursor = new RobovmCursor(resultSet);
-            return databaseCursor;
+            return new RobovmCursor(resultSet);
         } catch (SQLException e) {
             throw new SQLiteGdxException(e);
         }
     }
 
     @Override
-    public DatabaseCursor rawQuery(DatabaseCursor cursor, String sql)
+    public DatabaseCursor rawQuery(@NotNull String sql, String[] selectionArgs) throws SQLiteGdxException {
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            if (selectionArgs != null) {
+                for (int i = 0; i < selectionArgs.length; i++) {
+                    statement.setString(i + 1, selectionArgs[i]);
+                }
+            }
+            ResultSet resultSet = statement.executeQuery();
+            return new RobovmCursor(resultSet);
+        } catch (SQLException e) {
+            throw new SQLiteGdxException(e);
+        }
+    }
+
+    @Override
+    public DatabaseCursor rawQuery(@NotNull DatabaseCursor cursor, @NotNull String sql)
             throws SQLiteGdxException {
         try {
             ResultSet resultSet = statement.executeQuery(sql);

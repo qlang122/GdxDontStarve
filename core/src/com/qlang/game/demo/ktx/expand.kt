@@ -1,4 +1,4 @@
-package com.qlang.game.demo.config
+package com.qlang.game.demo.ktx
 
 inline fun <T, R> T.trycatch(block: T.() -> R?): R? {
     return try {

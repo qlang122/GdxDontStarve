@@ -2,7 +2,7 @@ package com.qlang.game.demo.db
 
 import com.badlogic.gdx.sql.Database
 import com.badlogic.gdx.sql.DatabaseFactory
-import com.qlang.game.demo.config.trycatch
+import com.qlang.game.demo.ktx.trycatch
 
 class DatabaseManager private constructor() {
     @Volatile

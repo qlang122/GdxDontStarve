@@ -15,6 +15,8 @@ import com.badlogic.gdx.sql.DatabaseCursor;
 import com.badlogic.gdx.sql.DatabaseManager;
 import com.badlogic.gdx.sql.SQLiteGdxException;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Map;
 
 /**
@@ -66,7 +68,7 @@ public class AndroidDatabaseManager implements DatabaseManager {
         }
 
         @Override
-        public void execSQL(String sql) throws SQLiteGdxException {
+        public void execSQL(@NotNull String sql) throws SQLiteGdxException {
             try {
                 database.execSQL(sql);
             } catch (SQLException e) {
@@ -75,7 +77,7 @@ public class AndroidDatabaseManager implements DatabaseManager {
         }
 
         @Override
-        public long executeInsert(String sql, Map<Integer, Object> values) throws SQLiteGdxException {
+        public long executeInsert(@NotNull String sql, Map<Integer, Object> values) throws SQLiteGdxException {
             try {
                 SQLiteStatement statement = database.compileStatement(sql);
                 if (values != null) {
@@ -103,7 +105,7 @@ public class AndroidDatabaseManager implements DatabaseManager {
         }
 
         @Override
-        public int executeUpdateDelete(String sql, Map<Integer, Object> values) throws SQLiteGdxException {
+        public int executeUpdateDelete(@NotNull String sql, Map<Integer, Object> values) throws SQLiteGdxException {
             try {
                 SQLiteStatement statement = database.compileStatement(sql);
                 if (values != null) {
@@ -131,7 +133,7 @@ public class AndroidDatabaseManager implements DatabaseManager {
         }
 
         @Override
-        public DatabaseCursor rawQuery(String sql) throws SQLiteGdxException {
+        public DatabaseCursor rawQuery(@NotNull String sql) throws SQLiteGdxException {
             AndroidCursor aCursor = new AndroidCursor();
             try {
                 Cursor tmp = database.rawQuery(sql, null);
@@ -143,7 +145,19 @@ public class AndroidDatabaseManager implements DatabaseManager {
         }
 
         @Override
-        public DatabaseCursor rawQuery(DatabaseCursor cursor, String sql) throws SQLiteGdxException {
+        public DatabaseCursor rawQuery(@NotNull String sql, String[] selectionArgs) throws SQLiteGdxException {
+            AndroidCursor aCursor = new AndroidCursor();
+            try {
+                Cursor tmp = database.rawQuery(sql, selectionArgs);
+                aCursor.setNativeCursor(tmp);
+                return aCursor;
+            } catch (SQLiteException e) {
+                throw new SQLiteGdxException(e);
+            }
+        }
+
+        @Override
+        public DatabaseCursor rawQuery(@NotNull DatabaseCursor cursor, @NotNull String sql) throws SQLiteGdxException {
             AndroidCursor aCursor = (AndroidCursor) cursor;
             try {
                 Cursor tmp = database.rawQuery(sql, null);

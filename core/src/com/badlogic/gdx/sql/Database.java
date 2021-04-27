@@ -1,5 +1,7 @@
 package com.badlogic.gdx.sql;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Map;
 
 /**
@@ -46,23 +48,31 @@ public interface Database {
      * @param sql the SQL statement to be executed. Multiple statements separated by semicolons are not supported.
      * @throws SQLiteGdxException
      */
-    void execSQL(String sql) throws SQLiteGdxException;
+    void execSQL(@NotNull String sql) throws SQLiteGdxException;
 
     /**
-     * Execute a single SQL statement that is NOT a SELECT or any other SQL statement that returns data.
+     * Executes the SQL statement and return the ID of the row inserted due to this call.
+     * in android only <code>INSERT</code>, in others, such as <code>INSERT</code>, <code>UPDATE</code> or
+     * <code>DELETE</code>; or an SQL statement that returns nothing,
      *
-     * @param sql the SQL statement to be executed. Multiple statements separated by semicolons are not supported.
+     * @param sql    the SQL statement to be executed. Multiple statements separated by semicolons are not supported.
+     * @param values A list of which columns include ?s in selection, which will be replaced by the values, key should be index.
+     * @return the row ID of the last row inserted, if this insert is successful. -1 otherwise.
      * @throws SQLiteGdxException
      */
-    long executeInsert(String sql, Map<Integer, Object> values) throws SQLiteGdxException;
+    long executeInsert(@NotNull String sql, Map<Integer, Object> values) throws SQLiteGdxException;
 
     /**
-     * Execute a single SQL statement that is NOT a SELECT or any other SQL statement that returns data.
+     * Executes the SQL statement in this <code>PreparedStatement</code> object,
+     * which must be an SQL Data Manipulation Language (DML) statement, such as <code>INSERT</code>, <code>UPDATE</code> or
+     * <code>DELETE</code>; or an SQL statement that returns nothing,
      *
-     * @param sql the SQL statement to be executed. Multiple statements separated by semicolons are not supported.
+     * @param sql    the SQL statement to be executed. Multiple statements separated by semicolons are not supported.
+     * @param values A list of which columns include ?s in selection, which will be replaced by the values, key should be index.
+     * @return the number of rows affected by this SQL statement execution.
      * @throws SQLiteGdxException
      */
-    int executeUpdateDelete(String sql, Map<Integer, Object> values) throws SQLiteGdxException;
+    int executeUpdateDelete(@NotNull String sql, Map<Integer, Object> values) throws SQLiteGdxException;
 
     /**
      * Runs the provided SQL and returns a {@link DatabaseCursor} over the result set.
@@ -71,7 +81,16 @@ public interface Database {
      * @return {@link DatabaseCursor}
      * @throws SQLiteGdxException
      */
-    DatabaseCursor rawQuery(String sql) throws SQLiteGdxException;
+    DatabaseCursor rawQuery(@NotNull String sql) throws SQLiteGdxException;
+
+    /**
+     * Runs the provided SQL and returns a {@link DatabaseCursor} over the result set.
+     *
+     * @param sql the SQL query. The SQL string must not be ; terminated
+     * @return {@link DatabaseCursor}
+     * @throws SQLiteGdxException
+     */
+    DatabaseCursor rawQuery(@NotNull String sql, String[] selectionArgs) throws SQLiteGdxException;
 
     /**
      * Runs the provided SQL and returns the same {@link DatabaseCursor} that was passed to this method. Use this method when you
@@ -84,6 +103,6 @@ public interface Database {
      * @return the passed {@link DatabaseCursor}.
      * @throws SQLiteGdxException
      */
-    DatabaseCursor rawQuery(DatabaseCursor cursor, String sql) throws SQLiteGdxException;
+    DatabaseCursor rawQuery(@NotNull DatabaseCursor cursor, @NotNull String sql) throws SQLiteGdxException;
 
 }

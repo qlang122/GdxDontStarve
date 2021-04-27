@@ -17,6 +17,8 @@ import com.badlogic.gdx.sql.DatabaseManager;
 import com.badlogic.gdx.sql.SQLiteGdxException;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * @author M Rafay Aleem
  */
@@ -76,7 +78,7 @@ public class DesktopDatabaseManager implements DatabaseManager {
         }
 
         @Override
-        public void execSQL(String sql) throws SQLiteGdxException {
+        public void execSQL(@NotNull String sql) throws SQLiteGdxException {
             try {
                 stmt.executeUpdate(sql);
             } catch (SQLException e) {
@@ -85,12 +87,12 @@ public class DesktopDatabaseManager implements DatabaseManager {
         }
 
         @Override
-        public long executeInsert(String sql, Map<Integer, Object> values) throws SQLiteGdxException {
+        public long executeInsert(@NotNull String sql, Map<Integer, Object> values) throws SQLiteGdxException {
             return executeUpdateDelete(sql, values);
         }
 
         @Override
-        public int executeUpdateDelete(String sql, Map<Integer, Object> values) throws SQLiteGdxException {
+        public int executeUpdateDelete(@NotNull String sql, Map<Integer, Object> values) throws SQLiteGdxException {
             try {
                 PreparedStatement statement = connection.prepareStatement(sql);
                 if (values != null) {
@@ -122,19 +124,33 @@ public class DesktopDatabaseManager implements DatabaseManager {
         }
 
         @Override
-        public DatabaseCursor rawQuery(String sql) throws SQLiteGdxException {
-            DesktopCursor lCursor = new DesktopCursor();
+        public DatabaseCursor rawQuery(@NotNull String sql) throws SQLiteGdxException {
             try {
                 ResultSet resultSetRef = stmt.executeQuery(sql);
-                lCursor.setNativeCursor(resultSetRef);
-                return lCursor;
+                return new DesktopCursor(resultSetRef);
             } catch (SQLException e) {
                 throw new SQLiteGdxException(e);
             }
         }
 
         @Override
-        public DatabaseCursor rawQuery(DatabaseCursor cursor, String sql) throws SQLiteGdxException {
+        public DatabaseCursor rawQuery(@NotNull String sql, String[] selectionArgs) throws SQLiteGdxException {
+            try {
+                PreparedStatement statement = connection.prepareStatement(sql);
+                if (selectionArgs != null) {
+                    for (int i = 0; i < selectionArgs.length; i++) {
+                        statement.setString(i + 1, selectionArgs[i]);
+                    }
+                }
+                ResultSet resultSet = statement.executeQuery();
+                return new DesktopCursor(resultSet);
+            } catch (SQLException e) {
+                throw new SQLiteGdxException(e);
+            }
+        }
+
+        @Override
+        public DatabaseCursor rawQuery(@NotNull DatabaseCursor cursor, @NotNull String sql) throws SQLiteGdxException {
             DesktopCursor lCursor = (DesktopCursor) cursor;
             try {
                 ResultSet resultSetRef = stmt.executeQuery(sql);
@@ -148,7 +164,7 @@ public class DesktopDatabaseManager implements DatabaseManager {
     }
 
     @Override
-    public Database getNewDatabase(String dbName, int dbVersion, String dbOnCreateQuery, String dbOnUpgradeQuery) {
+    public Database getNewDatabase(@NotNull String dbName, int dbVersion, String dbOnCreateQuery, String dbOnUpgradeQuery) {
         return new DesktopDatabase(dbName, dbVersion, dbOnCreateQuery, dbOnUpgradeQuery);
     }
 

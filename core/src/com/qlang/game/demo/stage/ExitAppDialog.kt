@@ -12,10 +12,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton
 import com.badlogic.gdx.scenes.scene2d.ui.Window
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable
-import com.qlang.game.demo.config.trycatch
+import com.qlang.game.demo.ktx.trycatch
 import com.qlang.game.demo.GameManager
 import com.qlang.game.demo.res.R
-import com.qlang.game.demo.utils.Log
 
 class ExitAppDialog {
     private val manager: AssetManager? = GameManager.instance?.mainManager

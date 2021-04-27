@@ -1,4 +1,6 @@
+include ':gdx-lifecycle'
 include ':gdx-animation'
 include 'desktop', 'android', 'ios', 'core'
 
 project(':gdx-animation').projectDir = new File(rootProject.projectDir, "../../gdx/gdx-animation")
+project(':gdx-lifecycle').projectDir = new File(rootProject.projectDir, "../../gdx/gdx-lifecycle")
