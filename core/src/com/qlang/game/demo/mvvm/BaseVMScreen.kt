@@ -1,8 +1,13 @@
 package com.qlang.game.demo.mvvm
 
-abstract class BaseVMScreen<VM : ViewModel>() : LifecycleScreenAdapter() {
+abstract class BaseVMScreen<VM : ViewModel> : LifecycleScreenAdapter {
 
-    protected val viewModel: VM by lazy { observe();bindVM() }
+    protected lateinit var viewModel: VM
+
+    constructor() : super() {
+        viewModel = bindVM()
+        observe()
+    }
 
     abstract fun bindVM(): VM
     abstract fun observe()

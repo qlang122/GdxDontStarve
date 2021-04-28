@@ -2,6 +2,7 @@ package com.qlang.game.demo.model
 
 import com.qlang.game.demo.entity.UiState
 import com.qlang.game.demo.mvvm.ViewModel
+import com.qlang.game.demo.utils.Log
 import com.qlang.gdxkt.lifecycle.LiveData
 import com.qlang.gdxkt.lifecycle.MutableLiveData
 import com.qlang.gdxkt.lifecycle.Transformations
@@ -12,6 +13,7 @@ class WorlListViewModel : ViewModel() {
 
     private val recordsParams = MutableLiveData<String>()
     val recordsUiState: LiveData<UiState<Any>> = Transformations.switchMap(recordsParams) {
+        Log.e("QL", "-------$it")
         liveData {
             delay(2000)
             emit(UiState<Any>(true))

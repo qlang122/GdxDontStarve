@@ -8,7 +8,7 @@ import com.qlang.game.demo.utils.Log
 import com.qlang.game.demo.widget.MyList
 import com.qlang.gdxkt.lifecycle.Observer
 
-class WorlListScreen : BaseVMScreen<WorlListViewModel>() {
+class WorlListScreen : BaseVMScreen<WorlListViewModel> {
     private val manager: AssetManager? = GameManager.instance?.mainManager
     private lateinit var list: MyList<String>
 
@@ -19,13 +19,19 @@ class WorlListScreen : BaseVMScreen<WorlListViewModel>() {
         }
     }
 
+    constructor() : super() {
+        viewModel.getRecords()
+    }
+
     override fun bindVM(): WorlListViewModel {
         return WorlListViewModel()
     }
 
     override fun observe() {
-        viewModel.recordsUiState.observe(this, Observer {
-            Log.e("QL", "-------------$it")
-        })
+        if (!viewModel.recordsUiState.hasObservers()) {
+            viewModel.recordsUiState.observe(this, Observer {
+                Log.e("QL", "-------------$it")
+            })
+        }
     }
 }
