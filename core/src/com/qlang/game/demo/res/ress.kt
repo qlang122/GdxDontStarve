@@ -43,6 +43,7 @@ object R {
         const val ui = "atlas/images/ui.atlas"
         const val woodie = "atlas/images/woodie.atlas"
         const val globalpanels = "atlas/images/globalpanels.atlas"
+        const val saveslot_portraits = "atlas/images/saveslot_portraits.atlas"
 
         object fxs {
             const val frostbreath = "atlas/fx/frostbreath.atlas"

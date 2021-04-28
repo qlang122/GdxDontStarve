@@ -19,7 +19,7 @@ class WorlListViewModel : ViewModel() {
         liveData {
             val list = dbExecute { db ->
                 db.worlDao().getWorls()
-            }?.let { records.addAll(it) }
+            }?.let { records.clear();records.addAll(it) }
             emit(UiState<Any>(list != null))
         }
     }

@@ -7,8 +7,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.scenes.scene2d.Actor
 import com.badlogic.gdx.scenes.scene2d.Stage
-import com.badlogic.gdx.scenes.scene2d.ui.Label
-import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane
+import com.badlogic.gdx.scenes.scene2d.ui.*
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable
 import com.qlang.game.demo.GameManager
 import com.qlang.game.demo.entity.WorlInfo
@@ -23,11 +22,13 @@ class WorlListSatge : Stage() {
 
     private var itemClickListener: ((pos: Int) -> Unit)? = null
 
+    private var bitmapFont: BitmapFont? = null
+    private var bitmapFont12: BitmapFont? = null
+    private var bitmapFont14: BitmapFont? = null
+
     init {
         manager?.let { mgr ->
-            var bitmapFont12: BitmapFont? = null
-            var bitmapFont14: BitmapFont? = null
-            val bitmapFont = mgr.trycatch {
+            bitmapFont = mgr.trycatch {
                 get(R.font.font_cn, BitmapFont::class.java)
             }?.let {
                 bitmapFont12 = BitmapFont(BitmapFont.BitmapFontData(it.data.fontFile, false),
@@ -62,20 +63,59 @@ class WorlListSatge : Stage() {
         }
     }
 
-    private fun <T : Actor> newListItem(info: WorlInfo): T {
+    private fun <T : Actor> newListItem(info: WorlInfo, textureAtlas: TextureAtlas?): T? {
+        textureAtlas ?: return null
+        bitmapFont ?: return null
+        bitmapFont12 ?: return null
 
-        return Actor() as T
+        val bgImage = TextureRegionDrawable(textureAtlas.findRegion("background"))
+        val roleHead = getRoleHead(info.role, textureAtlas) ?: return null
+
+        return Table().apply {
+            add(Container(Image(roleHead)).apply {
+                setSize(120f, 120f)
+                setBackground(bgImage)
+            })
+            add(Table().apply {
+                add(Label("${info.name}", Label.LabelStyle(bitmapFont12, null)))
+                row()
+                add(Label("${info.days} 天", Label.LabelStyle(bitmapFont, null))).padTop(10f)
+            }).padLeft(20f)
+        } as T
     }
 
     fun updateRecords(list: List<WorlInfo>) {
-        val items = list.mapTo(ArrayList<Actor>()) {
-            newListItem(it)
+        val texture = manager?.get(R.image.saveslot_portraits, TextureAtlas::class.java)
+        val items = list.mapNotNullTo(ArrayList<Actor>()) {
+            newListItem(it, texture)
         }
         val actors = items.toArray() as kotlin.Array<out Actor>?
-        recordList?.content?.setItems(*actors!!)
+        actors?.let { recordList?.content?.setItems(*actors) }
     }
 
     fun setOnItemClickListener(lis: (position: Int) -> Unit) {
         itemClickListener = lis
+    }
+
+    private fun getRoleHead(role: String?, textureAtlas: TextureAtlas): TextureRegionDrawable? {
+        return trycatch {
+            when (role) {
+                "waxwell" -> TextureRegionDrawable(textureAtlas.findRegion("waxwell"))
+                "wilson" -> TextureRegionDrawable(textureAtlas.findRegion("wilson"))
+                "wilton" -> TextureRegionDrawable(textureAtlas.findRegion("wilton"))
+                "woodie" -> TextureRegionDrawable(textureAtlas.findRegion("woodie"))
+                "wolfgang" -> TextureRegionDrawable(textureAtlas.findRegion("wolfgang"))
+                "wx78" -> TextureRegionDrawable(textureAtlas.findRegion("wx78"))
+                "wathgrithr" -> TextureRegionDrawable(textureAtlas.findRegion("wathgrithr"))
+                "wortox" -> TextureRegionDrawable(textureAtlas.findRegion("wortox"))
+                "wendy" -> TextureRegionDrawable(textureAtlas.findRegion("wendy"))
+                "willow" -> TextureRegionDrawable(textureAtlas.findRegion("willow"))
+                "wes" -> TextureRegionDrawable(textureAtlas.findRegion("wes"))
+                "webber" -> TextureRegionDrawable(textureAtlas.findRegion("webber"))
+                "winnie" -> TextureRegionDrawable(textureAtlas.findRegion("winnie"))
+                "wickerbottom" -> TextureRegionDrawable(textureAtlas.findRegion("wickerbottom"))
+                else -> TextureRegionDrawable(textureAtlas.findRegion("random"))
+            }
+        }
     }
 }
