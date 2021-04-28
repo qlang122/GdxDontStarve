@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.ScreenAdapter
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.scenes.scene2d.Stage
+import com.qlang.game.demo.GameManager
 import com.qlang.game.demo.route.Navigator
 import com.qlang.game.demo.stage.ExitAppDialog
 import com.qlang.game.demo.stage.HomeBgStage
@@ -44,11 +45,21 @@ class HomeScreen : ScreenAdapter() {
         }
     }
 
+    override fun show() {
+        super.show()
+        menuStage?.let { GameManager.instance?.addInputProcessor(it) }
+    }
+
+    override fun hide() {
+        super.hide()
+        menuStage?.let { GameManager.instance?.removeInputProcessor(it) }
+    }
+
     override fun render(delta: Float) {
-        Gdx.gl.glClearColor(1f, 1f, 1f, 1f);
+        Gdx.gl.glClearColor(0.4f, 1f, 1f, 1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        bgStage?.apply { act();draw() }
+//        bgStage?.apply { act();draw() }
         menuStage?.apply { act();draw() }
     }
 

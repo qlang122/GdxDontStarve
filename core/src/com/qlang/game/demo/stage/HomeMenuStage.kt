@@ -40,14 +40,7 @@ class HomeMenuStage : Stage() {
                 addListener(MyClickListener())
             }
             addActor(list)
-
-            GameManager.instance?.addInputProcessor(this)
         }
-    }
-
-    override fun dispose() {
-        GameManager.instance?.removeInputProcessor(this)
-        super.dispose()
     }
 
     fun setOnItemClickListener(lis: (position: Int) -> Unit) {

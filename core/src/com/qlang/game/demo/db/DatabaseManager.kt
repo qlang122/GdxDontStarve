@@ -8,8 +8,7 @@ class DatabaseManager private constructor() {
     @Volatile
     private var _worlDao: WorlDao? = null
 
-    var database: Database? = null
-        private set
+    private var database: Database? = null
 
     private val SQL_CREATE_WORL = """CREATE TABLE IF NOT EXISTS `worl` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 
 `role` TEXT, `name` TEXT, `days` INTEGER, `time` TEXT, `createTime` TEXT)

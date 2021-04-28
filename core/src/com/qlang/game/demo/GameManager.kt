@@ -68,11 +68,11 @@ class GameManager private constructor() : ApplicationAdapter() {
         this.game = game
     }
 
-    fun addInputProcessor(processor: InputProcessor) {
+    fun <T : InputProcessor> addInputProcessor(processor: T) {
         processors.add(processor)
     }
 
-    fun removeInputProcessor(processor: InputProcessor) {
+    fun <T : InputProcessor> removeInputProcessor(processor: T) {
         processors.remove(processor)
     }
 
