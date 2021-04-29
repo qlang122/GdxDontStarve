@@ -9,8 +9,6 @@ import com.badlogic.gdx.scenes.scene2d.Actor
 import com.badlogic.gdx.scenes.scene2d.InputEvent
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.*
-import com.badlogic.gdx.scenes.scene2d.ui.List
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable
 import com.badlogic.gdx.utils.Array
@@ -54,7 +52,7 @@ class WorlListSatge : Stage() {
             }).apply {
                 setSize(400f, Gdx.graphics.height - 340f)
                 setPosition(80f, 180f)
-                setScrollingDisabled(false, true)
+                setScrollingDisabled(true, false)
                 setSmoothScrolling(true)
             }
 
@@ -64,25 +62,8 @@ class WorlListSatge : Stage() {
             addActor(Label("服务器设定", Label.LabelStyle(bitmapFont11, Color.valueOf("#f2f2f2ff"))).apply {
                 setPosition(100f, Gdx.graphics.height - 140f)
             })
-            addActor(recordList)
 
-            val list = List<String>(List.ListStyle().apply {
-                font = bitmapFont
-                selection = TextureRegionDrawable(uiTexture.findRegion("button"))
-            })
-            list.setItems("1111", "2222", "3333", "4444", "5555", "6666", "7777", "8888", "9999", "0000", "98987")
-            list.pack()
-            addActor(ScrollPane(list).apply {
-                addListener(object : ChangeListener() {
-                    override fun changed(event: ChangeEvent?, actor: Actor?) {
-                        Log.e("QL", "------->>------${list.selectedIndex}")
-                    }
-                })
-                setSize(400f, 340f)
-                setPosition(500f, 180f)
-                setScrollingDisabled(false, true)
-                setSmoothScrolling(true)
-            })
+            addActor(recordList)
         }
     }
 
