@@ -5,11 +5,13 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Widget;
+import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ArraySelection;
 import com.badlogic.gdx.scenes.scene2d.utils.Cullable;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
@@ -37,6 +39,7 @@ public class WidgetList<T extends Actor> extends ScrollPane {
     public WidgetList(ScrollPaneStyle style, WidgetListStyle listStyle) {
         super(null, style);
         list = new InnerList<T>(listStyle, this);
+        list.setFillParent(true);
         setActor(list);
     }
 
@@ -47,16 +50,19 @@ public class WidgetList<T extends Actor> extends ScrollPane {
 
     static public class InnerList<T extends Actor> extends Widget implements Cullable {
         WidgetListStyle style;
-        final Array<T> items = new Array();
-        ArraySelection<T> selection = new ArraySelection(items);
+        final Array<T> items = new Array<T>();
+        ArraySelection<T> selection = new ArraySelection<T>(items);
         private Rectangle cullingArea;
         private float prefWidth, prefHeight;
         private int alignment = Align.left;
         int pressedIndex = -1, overIndex = -1;
-        private InputListener keyListener;
+        private final InputListener keyListener;
         boolean typeToSelect;
 
-        private ScrollPane parent;
+        private boolean pressed;
+        private int pressedPointer = -1;
+
+        private final ScrollPane parent;
 
         public InnerList(WidgetListStyle style, ScrollPane parent) {
             this.parent = parent;
@@ -121,14 +127,19 @@ public class WidgetList<T extends Actor> extends ScrollPane {
                 }
             });
 
-            addListener(new InputListener() {
+            addCaptureListener(new InputListener() {
                 public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                    if (pointer != 0 || button != 0) return true;
-                    if (selection.isDisabled()) return true;
+                    if (pressed) return false;
+                    if (pointer != 0 || button != 0) return false;
+                    if (selection.isDisabled()) return false;
                     if (getStage() != null) getStage().setKeyboardFocus(InnerList.this);
-                    if (items.size == 0) return true;
+                    if (items.size == 0) return false;
                     int index = getItemIndexAt(y);
-                    if (index == -1) return true;
+                    if (index == -1) return false;
+
+                    pressed = true;
+                    pressedPointer = pointer;
+
                     selection.choose(items.get(index));
                     pressedIndex = index;
                     return true;
@@ -137,6 +148,10 @@ public class WidgetList<T extends Actor> extends ScrollPane {
                 public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
                     if (pointer != 0 || button != 0) return;
                     pressedIndex = -1;
+                    if (pointer == pressedPointer) {
+                        pressed = false;
+                        pressedPointer = -1;
+                    }
                 }
 
                 public void touchDragged(InputEvent event, float x, float y, int pointer) {
@@ -152,7 +167,14 @@ public class WidgetList<T extends Actor> extends ScrollPane {
                     if (pointer == 0) pressedIndex = -1;
                     if (pointer == -1) overIndex = -1;
                 }
+
+                @Override
+                public boolean handle(Event e) {
+                    if (pressed) return false;
+                    return super.handle(e);
+                }
             });
+
         }
 
         public void setStyle(WidgetListStyle style) {
@@ -172,22 +194,23 @@ public class WidgetList<T extends Actor> extends ScrollPane {
         public void layout() {
             Drawable selectedDrawable = style.selection;
 
-            float paddingHeight = selectedDrawable.getTopHeight() + selectedDrawable.getBottomHeight();
-
             prefWidth = 0;
+            prefHeight = 0;
             for (int i = 0; i < items.size; i++) {
                 T item = items.get(i);
                 prefWidth = Math.max(item.getWidth(), prefWidth);
                 prefHeight += item.getHeight();
             }
             prefWidth += selectedDrawable.getLeftWidth() + selectedDrawable.getRightWidth();
-            prefHeight += paddingHeight;
+            prefHeight += selectedDrawable.getTopHeight() + selectedDrawable.getBottomHeight();
 
             Drawable background = style.background;
             if (background != null) {
                 prefWidth = Math.max(prefWidth + background.getLeftWidth() + background.getRightWidth(), background.getMinWidth());
                 prefHeight = Math.max(prefHeight + background.getTopHeight() + background.getBottomHeight(), background.getMinHeight());
             }
+            prefWidth = Math.min(prefWidth, parent.getPrefWidth());
+//            System.out.println("--3-->" + prefWidth + " " + prefHeight);
         }
 
         public void draw(Batch batch, float parentAlpha) {
@@ -211,8 +234,12 @@ public class WidgetList<T extends Actor> extends ScrollPane {
                 width -= leftWidth + background.getRightWidth();
             }
 
-            float offsetX = selectedDrawable.getLeftWidth();
-            float offsetY = selectedDrawable.getTopHeight();
+            float padLeft = selectedDrawable.getLeftWidth();
+//            float padRight = selectedDrawable.getRightWidth();
+            float padTop = selectedDrawable.getTopHeight();
+            float padBottom = selectedDrawable.getBottomHeight();
+            itemY -= padTop + padBottom;
+//            System.out.println("---0--->" + x + " " + y + " " + itemY + " " + width + " " + padLeft + " " + padTop);
 
             for (int i = 0; i < items.size; i++) {
                 T item = items.get(i);
@@ -224,15 +251,15 @@ public class WidgetList<T extends Actor> extends ScrollPane {
                         drawable = style.down;
                     else if (selected) {
                         drawable = selectedDrawable;
-                    } else if (overIndex == i && style.over != null) //
+                    } else if (overIndex == i && style.over != null)
                         drawable = style.over;
                     if (drawable != null)
-                        drawable.draw(batch, x, y + itemY - itemHeight, width, itemHeight);
-                    drawItem(batch, item, x + offsetX, y + itemY - offsetY, parentAlpha);
+                        drawable.draw(batch, x, y + itemY - itemHeight, width, itemHeight + padTop + padBottom);
+                    drawItem(batch, item, x + padLeft, y + itemY - padTop - padBottom, parentAlpha);
                 } else if (itemY < cullingArea.y) {
                     break;
                 }
-                itemY -= itemHeight;
+                itemY -= itemHeight + padTop + padBottom;
             }
         }
 
@@ -337,14 +364,21 @@ public class WidgetList<T extends Actor> extends ScrollPane {
             if (background != null) {
                 y -= background.getBottomHeight();
             }
+            Drawable selectedDrawable = style.selection;
+            float padTop = selectedDrawable.getTopHeight();
+            float padBottom = selectedDrawable.getBottomHeight();
+
+            y = parent.getHeight() - y;
 
             float offset = parent.getScrollY();
             float curr = 0f;
+//            System.out.println("--0-->" + y + " " + offset);
             for (int i = 0; i < items.size; i++) {
                 T item = items.get(i);
-                if (y >= curr - offset && y <= curr + item.getHeight() - offset)
-                    return i;
-                curr += item.getHeight();
+                float iH = item.getHeight() + padTop + padBottom;
+//                System.out.println("---->" + curr + " " + iH + " " + i);
+                if (y >= curr - offset && y <= curr + iH - offset) return i;
+                curr += iH;
             }
             return -1;
         }

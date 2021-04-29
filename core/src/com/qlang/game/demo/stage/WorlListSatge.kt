@@ -6,13 +6,19 @@ import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.scenes.scene2d.Actor
+import com.badlogic.gdx.scenes.scene2d.InputEvent
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.*
+import com.badlogic.gdx.scenes.scene2d.ui.List
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable
+import com.badlogic.gdx.utils.Array
 import com.qlang.game.demo.GameManager
 import com.qlang.game.demo.entity.WorlInfo
 import com.qlang.game.demo.ktx.trycatch
 import com.qlang.game.demo.res.R
+import com.qlang.game.demo.utils.Log
 import com.qlang.game.demo.widget.WidgetList
 
 class WorlListSatge : Stage() {
@@ -23,74 +29,97 @@ class WorlListSatge : Stage() {
     private var itemClickListener: ((pos: Int) -> Unit)? = null
 
     private var bitmapFont: BitmapFont? = null
-    private var bitmapFont12: BitmapFont? = null
-    private var bitmapFont14: BitmapFont? = null
+    private var bitmapFont11: BitmapFont? = null
+    private var bitmapFont13: BitmapFont? = null
 
     init {
         manager?.let { mgr ->
             bitmapFont = mgr.trycatch {
                 get(R.font.font_cn, BitmapFont::class.java)
             }?.let {
-                bitmapFont12 = BitmapFont(BitmapFont.BitmapFontData(it.data.fontFile, false),
-                        it.regions, true).apply { data?.setScale(1.2f) }
-                bitmapFont14 = BitmapFont(BitmapFont.BitmapFontData(it.data.fontFile, false),
-                        it.regions, true).apply { data?.setScale(1.4f) }
+                bitmapFont11 = BitmapFont(BitmapFont.BitmapFontData(it.data.fontFile, false),
+                        it.regions, true).apply { data?.setScale(1.1f) }
+                bitmapFont13 = BitmapFont(BitmapFont.BitmapFontData(it.data.fontFile, false),
+                        it.regions, true).apply { data?.setScale(1.3f) }
                 it
             }
             val uiTexture = mgr.get(R.image.ui, TextureAtlas::class.java)
 
             recordList = WidgetList<Actor>(ScrollPane.ScrollPaneStyle(), WidgetList.WidgetListStyle().apply {
                 selection = TextureRegionDrawable(uiTexture.findRegion("button_long_over")).apply {
-                    leftWidth += 50f
-                    rightWidth += 50f
+                    leftWidth += 10f
                     topHeight += 18f
                     bottomHeight += 18f
                 }
             }).apply {
-                setSize(400f, Gdx.graphics.height - 350f)
-                setPosition(100f, Gdx.graphics.height - 140f)
+                setSize(400f, Gdx.graphics.height - 340f)
+                setPosition(80f, 180f)
                 setScrollingDisabled(false, true)
                 setSmoothScrolling(true)
             }
 
-            addActor(Label("游戏", Label.LabelStyle(bitmapFont12, null)).apply {
-                setPosition(100f, Gdx.graphics.height - 60f)
+            addActor(Label("游戏", Label.LabelStyle(bitmapFont11, null)).apply {
+                setPosition(100f, Gdx.graphics.height - 80f)
             })
-            addActor(Label("服务器设定", Label.LabelStyle(bitmapFont14, Color.valueOf("#d0d0d0ff"))).apply {
-                setPosition(100f, Gdx.graphics.height - 100f)
+            addActor(Label("服务器设定", Label.LabelStyle(bitmapFont11, Color.valueOf("#f2f2f2ff"))).apply {
+                setPosition(100f, Gdx.graphics.height - 140f)
             })
             addActor(recordList)
+
+            val list = List<String>(List.ListStyle().apply {
+                font = bitmapFont
+                selection = TextureRegionDrawable(uiTexture.findRegion("button"))
+            })
+            list.setItems("1111", "2222", "3333", "4444", "5555", "6666", "7777", "8888", "9999", "0000", "98987")
+            list.pack()
+            addActor(ScrollPane(list).apply {
+                addListener(object : ChangeListener() {
+                    override fun changed(event: ChangeEvent?, actor: Actor?) {
+                        Log.e("QL", "------->>------${list.selectedIndex}")
+                    }
+                })
+                setSize(400f, 340f)
+                setPosition(500f, 180f)
+                setScrollingDisabled(false, true)
+                setSmoothScrolling(true)
+            })
         }
     }
 
     private fun <T : Actor> newListItem(info: WorlInfo, textureAtlas: TextureAtlas?): T? {
         textureAtlas ?: return null
         bitmapFont ?: return null
-        bitmapFont12 ?: return null
+        bitmapFont11 ?: return null
 
         val bgImage = TextureRegionDrawable(textureAtlas.findRegion("background"))
         val roleHead = getRoleHead(info.role, textureAtlas) ?: return null
 
         return Table().apply {
-            add(Container(Image(roleHead)).apply {
-                setSize(120f, 120f)
-                setBackground(bgImage)
+            add(Container(Image(roleHead).apply { setSize(110f, 120f) }).apply {
+                background = bgImage;setSize(prefWidth, prefHeight)
             })
             add(Table().apply {
-                add(Label("${info.name}", Label.LabelStyle(bitmapFont12, null)))
+                add(Label("${info.name}", Label.LabelStyle(bitmapFont11, null)))
                 row()
                 add(Label("${info.days} 天", Label.LabelStyle(bitmapFont, null))).padTop(10f)
+                setSize(prefWidth, prefHeight)
+                left()
             }).padLeft(20f)
+            setFillParent(true)
+            setSize(prefWidth, prefHeight)
         } as T
     }
 
-    fun updateRecords(list: List<WorlInfo>) {
+    fun updateRecords(list: kotlin.collections.List<WorlInfo>) {
         val texture = manager?.get(R.image.saveslot_portraits, TextureAtlas::class.java)
-        val items = list.mapNotNullTo(ArrayList<Actor>()) {
-            newListItem(it, texture)
-        }
-        val actors = items.toArray() as kotlin.Array<out Actor>?
-        actors?.let { recordList?.content?.setItems(*actors) }
+        val items = Array<Actor>()
+        list.forEach { newListItem<Actor>(it, texture)?.let { act -> items.add(act) } }
+        recordList?.content?.setItems(items)
+        recordList?.content?.addListener(object : ClickListener() {
+            override fun clicked(event: InputEvent?, x: Float, y: Float) {
+                itemClickListener?.invoke(recordList?.content?.selectedIndex ?: -1)
+            }
+        })
     }
 
     fun setOnItemClickListener(lis: (position: Int) -> Unit) {
