@@ -6,6 +6,7 @@ import com.qlang.game.demo.GameManager
 import com.qlang.game.demo.entity.WorlInfo
 import com.qlang.game.demo.model.WorlListViewModel
 import com.qlang.game.demo.mvvm.BaseVMScreen
+import com.qlang.game.demo.route.Navigator
 import com.qlang.game.demo.stage.WorlListSatge
 import com.qlang.game.demo.utils.Log
 import com.qlang.gdxkt.lifecycle.Observer
@@ -14,11 +15,12 @@ class WorlListScreen : BaseVMScreen<WorlListViewModel> {
     private var recordsStage: WorlListSatge? = null
 
     init {
-        recordsStage = WorlListSatge().apply {
-            setOnItemClickListener {
-                Log.e("QL", "------->>$it")
-            }
+        recordsStage = WorlListSatge()
+
+        recordsStage?.setOnItemClickListener {
+            Log.e("QL", "------->>$it")
         }
+        recordsStage?.setBackClickListener { Navigator.pop(this) }
 
     }
 
@@ -63,20 +65,6 @@ class WorlListScreen : BaseVMScreen<WorlListViewModel> {
                 viewModel.records.add(WorlInfo(6, "webber", "as人1？a", 12, 0, 0))
                 viewModel.records.add(WorlInfo(7, "wes", "as人1？a", 12, 0, 0))
                 viewModel.records.add(WorlInfo(8, "wickerbottom", "as人1？a", 12, 0, 0))
-                viewModel.records.add(WorlInfo(9, "wathgrithr", "as人1？a", 12, 0, 0))
-                viewModel.records.add(WorlInfo(9, "wathgrithr", "as人1？a", 12, 0, 0))
-                viewModel.records.add(WorlInfo(9, "wathgrithr", "as人1？a", 12, 0, 0))
-                viewModel.records.add(WorlInfo(9, "wathgrithr", "as人1？a", 12, 0, 0))
-                viewModel.records.add(WorlInfo(9, "wathgrithr", "as人1？a", 12, 0, 0))
-                viewModel.records.add(WorlInfo(9, "wathgrithr", "as人1？a", 12, 0, 0))
-                viewModel.records.add(WorlInfo(9, "wathgrithr", "as人1？a", 12, 0, 0))
-                viewModel.records.add(WorlInfo(9, "wathgrithr", "as人1？a", 12, 0, 0))
-                viewModel.records.add(WorlInfo(9, "wathgrithr", "as人1？a", 12, 0, 0))
-                viewModel.records.add(WorlInfo(9, "wathgrithr", "as人1？a", 12, 0, 0))
-                viewModel.records.add(WorlInfo(9, "wathgrithr", "as人1？a", 12, 0, 0))
-                viewModel.records.add(WorlInfo(9, "wathgrithr", "as人1？a", 12, 0, 0))
-                viewModel.records.add(WorlInfo(9, "wathgrithr", "as人1？a", 12, 0, 0))
-                viewModel.records.add(WorlInfo(9, "wathgrithr", "as人1？a", 12, 0, 0))
                 if (it.success) {
                     recordsStage?.updateRecords(viewModel.records)
                 }

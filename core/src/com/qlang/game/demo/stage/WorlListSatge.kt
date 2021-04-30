@@ -11,20 +11,22 @@ import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.*
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable
+import com.badlogic.gdx.utils.Align
 import com.badlogic.gdx.utils.Array
+import com.badlogic.gdx.utils.Scaling
 import com.qlang.game.demo.GameManager
 import com.qlang.game.demo.entity.WorlInfo
 import com.qlang.game.demo.ktx.trycatch
 import com.qlang.game.demo.res.R
-import com.qlang.game.demo.utils.Log
-import com.qlang.game.demo.widget.WidgetList
+import com.qlang.game.demo.widget.VerticalWidgetList
 
 class WorlListSatge : Stage() {
     private val manager: AssetManager? = GameManager.instance?.mainManager
 
-    private var recordList: WidgetList<Actor>? = null
+    private var recordList: VerticalWidgetList<Actor>? = null
 
     private var itemClickListener: ((pos: Int) -> Unit)? = null
+    private var backClickListener: (() -> Unit)? = null
 
     private var bitmapFont: BitmapFont? = null
     private var bitmapFont11: BitmapFont? = null
@@ -43,7 +45,7 @@ class WorlListSatge : Stage() {
             }
             val uiTexture = mgr.get(R.image.ui, TextureAtlas::class.java)
 
-            recordList = WidgetList<Actor>(ScrollPane.ScrollPaneStyle(), WidgetList.WidgetListStyle().apply {
+            recordList = VerticalWidgetList<Actor>(ScrollPane.ScrollPaneStyle(), VerticalWidgetList.WidgetListStyle().apply {
                 selection = TextureRegionDrawable(uiTexture.findRegion("button_long_over")).apply {
                     leftWidth += 10f
                     topHeight += 18f
@@ -52,8 +54,6 @@ class WorlListSatge : Stage() {
             }).apply {
                 setSize(400f, Gdx.graphics.height - 340f)
                 setPosition(80f, 180f)
-                setScrollingDisabled(true, false)
-                setSmoothScrolling(true)
             }
 
             addActor(Label("游戏", Label.LabelStyle(bitmapFont11, null)).apply {
@@ -64,6 +64,21 @@ class WorlListSatge : Stage() {
             })
 
             addActor(recordList)
+
+            addActor(ImageTextButton("返回", ImageTextButton.ImageTextButtonStyle().apply {
+                font = bitmapFont13
+                up = TextureRegionDrawable(uiTexture.findRegion("arrow_left"))
+                down = TextureRegionDrawable(uiTexture.findRegion("arrow_left_over"))
+            }).apply {
+                addListener(object : ClickListener() {
+                    override fun clicked(event: InputEvent?, x: Float, y: Float) {
+                        backClickListener?.invoke()
+                    }
+                })
+                clearChildren()
+                add(image);add(label).padLeft(170f)
+                setPosition(100f, 30f)
+            })
         }
     }
 
@@ -80,13 +95,12 @@ class WorlListSatge : Stage() {
                 background = bgImage;setSize(prefWidth, prefHeight)
             })
             add(Table().apply {
+                left()
                 add(Label("${info.name}", Label.LabelStyle(bitmapFont11, null)))
                 row()
                 add(Label("${info.days} 天", Label.LabelStyle(bitmapFont, null))).padTop(10f)
                 setSize(prefWidth, prefHeight)
-                left()
             }).padLeft(20f)
-            setFillParent(true)
             setSize(prefWidth, prefHeight)
         } as T
     }
@@ -105,6 +119,10 @@ class WorlListSatge : Stage() {
 
     fun setOnItemClickListener(lis: (position: Int) -> Unit) {
         itemClickListener = lis
+    }
+
+    fun setBackClickListener(lis: () -> Unit) {
+        backClickListener = lis
     }
 
     private fun getRoleHead(role: String?, textureAtlas: TextureAtlas): TextureRegionDrawable? {
