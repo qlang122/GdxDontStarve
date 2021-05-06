@@ -1,0 +1,1776 @@
+
+minimap_atlas.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+pandoraschest
+  rotate: false
+  xy: 192, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+toadstool_hole
+  rotate: false
+  xy: 1344, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+scarecrow
+  rotate: false
+  xy: 1280, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+toadstool_cap
+  rotate: false
+  xy: 1216, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+rainometer
+  rotate: false
+  xy: 1984, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+twiggy_stump
+  rotate: false
+  xy: 0, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+wormhole_sick
+  rotate: false
+  xy: 1536, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+relic
+  rotate: false
+  xy: 128, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+warly
+  rotate: false
+  xy: 192, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+teleportato
+  rotate: false
+  xy: 1024, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+oasis
+  rotate: false
+  xy: 1984, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+wes
+  rotate: false
+  xy: 576, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+wardrobe
+  rotate: false
+  xy: 64, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+tallbirdnest
+  rotate: false
+  xy: 896, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+sacred_chest
+  rotate: false
+  xy: 1088, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+saltlick
+  rotate: false
+  xy: 1152, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+iceboulder
+  rotate: false
+  xy: 832, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+researchlab2
+  rotate: false
+  xy: 256, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+grass
+  rotate: false
+  xy: 320, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+cookpot
+  rotate: false
+  xy: 1024, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+sculpture_rookbody_fixed
+  rotate: false
+  xy: 1664, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+icebox
+  rotate: false
+  xy: 896, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+mushroom_tree_small
+  rotate: false
+  xy: 1600, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+krampus_sack
+  rotate: false
+  xy: 1152, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+wolfgang
+  rotate: false
+  xy: 1344, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+moondial
+  rotate: false
+  xy: 1216, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+marshtree
+  rotate: false
+  xy: 64, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+ruins_closed
+  rotate: false
+  xy: 1024, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+tab_crafting_table
+  rotate: false
+  xy: 832, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+slurtle_den
+  rotate: false
+  xy: 128, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+portal_dst
+  rotate: false
+  xy: 1216, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+sinkhole
+  rotate: false
+  xy: 64, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+livingtree_burnt
+  rotate: false
+  xy: 1536, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+tree_leaf_burnt
+  rotate: false
+  xy: 1792, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+penguin
+  rotate: false
+  xy: 256, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+coldfirepit
+  rotate: false
+  xy: 960, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+cave_hole
+  rotate: false
+  xy: 192, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+researchlab4
+  rotate: false
+  xy: 384, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+rock_gold
+  rotate: false
+  xy: 768, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+rock_moon
+  rotate: false
+  xy: 832, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+monkeybarrel
+  rotate: false
+  xy: 448, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+moon_altar
+  rotate: false
+  xy: 512, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+sculpting_station
+  rotate: false
+  xy: 1344, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+mushroom_tree
+  rotate: false
+  xy: 1472, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+marblepillar
+  rotate: false
+  xy: 1792, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+madscience_lab
+  rotate: false
+  xy: 1728, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+rock_moonglass
+  rotate: false
+  xy: 960, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+beequeenhivegrown
+  rotate: false
+  xy: 1088, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+evergreen_stump
+  rotate: false
+  xy: 1600, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+glommer
+  rotate: false
+  xy: 256, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+atrium_light
+  rotate: false
+  xy: 320, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+cavein_boulder
+  rotate: false
+  xy: 512, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+rock
+  rotate: false
+  xy: 576, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+farm2
+  rotate: false
+  xy: 1856, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+tree_leaf_stump
+  rotate: false
+  xy: 1856, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+wilson
+  rotate: false
+  xy: 832, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+farm1
+  rotate: false
+  xy: 1792, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+birdtrap
+  rotate: false
+  xy: 1408, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+wasphive
+  rotate: false
+  xy: 256, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+cave_banana_tree_stump
+  rotate: false
+  xy: 64, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+atrium_gate_active
+  rotate: false
+  xy: 192, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+trap_bramble
+  rotate: false
+  xy: 1536, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+moonrockseed
+  rotate: false
+  xy: 1280, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+wx78
+  rotate: false
+  xy: 1728, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+telebase
+  rotate: false
+  xy: 960, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+cave_no_access
+  rotate: false
+  xy: 256, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+moon_altar_seed_piece
+  rotate: false
+  xy: 832, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+atrium_overgrowth
+  rotate: false
+  xy: 384, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+winona
+  rotate: false
+  xy: 896, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+resurrect
+  rotate: false
+  xy: 448, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+igloo
+  rotate: false
+  xy: 1024, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+quagmire_sugarwoodtree_tapped
+  rotate: false
+  xy: 1792, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+tentacle_pillar
+  rotate: false
+  xy: 1152, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+lichen
+  rotate: false
+  xy: 1280, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+redmooneye
+  rotate: false
+  xy: 0, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+beehive
+  rotate: false
+  xy: 896, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+flare2
+  rotate: false
+  xy: 128, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+statue
+  rotate: false
+  xy: 576, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+chester
+  rotate: false
+  xy: 768, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+meatrack
+  rotate: false
+  xy: 256, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+moon_altar_idol_piece
+  rotate: false
+  xy: 704, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+pighouse
+  rotate: false
+  xy: 512, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+pond_mos
+  rotate: false
+  xy: 896, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+evergreen_burnt
+  rotate: false
+  xy: 1472, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+perdshrine
+  rotate: false
+  xy: 320, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+boat
+  rotate: false
+  xy: 1536, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+batcave
+  rotate: false
+  xy: 768, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+mushroom_tree_webbed
+  rotate: false
+  xy: 1728, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+marbletree
+  rotate: false
+  xy: 0, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+bullkelp_plant
+  rotate: false
+  xy: 1664, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+mushroom_tree_stump
+  rotate: false
+  xy: 1664, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+woodie
+  rotate: false
+  xy: 1408, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+beequeenhive
+  rotate: false
+  xy: 1024, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+dragonflychest
+  rotate: false
+  xy: 1280, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+quagmire_mushroomstump
+  rotate: false
+  xy: 1408, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+spidermoonden
+  rotate: false
+  xy: 320, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+researchlab3
+  rotate: false
+  xy: 320, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+pond
+  rotate: false
+  xy: 768, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+mutated_penguin
+  rotate: false
+  xy: 1792, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+farm3
+  rotate: false
+  xy: 1920, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+spiderden
+  rotate: false
+  xy: 256, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+cave_banana_tree
+  rotate: false
+  xy: 1984, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+treasurechest
+  rotate: false
+  xy: 1664, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+atrium_statue
+  rotate: false
+  xy: 512, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+hotspring
+  rotate: false
+  xy: 512, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+mushroom_light
+  rotate: false
+  xy: 1408, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+marshtree_burnt
+  rotate: false
+  xy: 128, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+livingtree
+  rotate: false
+  xy: 1472, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+seastack
+  rotate: false
+  xy: 1856, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+quagmire_spotspice_shrub
+  rotate: false
+  xy: 1600, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+dragonfly_furnace
+  rotate: false
+  xy: 1216, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+yellowmooneye
+  rotate: false
+  xy: 1792, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+flare3
+  rotate: false
+  xy: 192, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+portal
+  rotate: false
+  xy: 1152, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+chessjunk
+  rotate: false
+  xy: 704, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+beemine
+  rotate: false
+  xy: 960, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+rock_moon_shell
+  rotate: false
+  xy: 896, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+plant_normal_ground
+  rotate: false
+  xy: 704, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+sign
+  rotate: false
+  xy: 0, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+gravestones
+  rotate: false
+  xy: 384, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+winona_battery_low
+  rotate: false
+  xy: 1024, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+wormhole
+  rotate: false
+  xy: 1472, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+moon_tree
+  rotate: false
+  xy: 960, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+mushroom_tree_med
+  rotate: false
+  xy: 1536, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+lava_pond
+  rotate: false
+  xy: 1216, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+cave_closed
+  rotate: false
+  xy: 128, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+trap_teeth
+  rotate: false
+  xy: 1600, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+sculpture_rookbody_full
+  rotate: false
+  xy: 1728, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+bulb_plant
+  rotate: false
+  xy: 1600, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+townportalactive
+  rotate: false
+  xy: 1472, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+seafaring_prototyper
+  rotate: false
+  xy: 1792, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+sculpture_knightbody_fixed
+  rotate: false
+  xy: 1536, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+portablespicer
+  rotate: false
+  xy: 1088, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+waxwell
+  rotate: false
+  xy: 384, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+berrybush2
+  rotate: false
+  xy: 1216, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+chestersnow
+  rotate: false
+  xy: 896, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+eyeball_turret
+  rotate: false
+  xy: 1664, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+rock_flintless
+  rotate: false
+  xy: 704, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+atrium_key
+  rotate: false
+  xy: 256, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+berrybush
+  rotate: false
+  xy: 1152, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+sculpture_knightbody_full
+  rotate: false
+  xy: 1600, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+cavespider_den
+  rotate: false
+  xy: 640, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+petrified_tree
+  rotate: false
+  xy: 384, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+winona_battery_high
+  rotate: false
+  xy: 960, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+minotaurchest
+  rotate: false
+  xy: 384, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+cavein_formation
+  rotate: false
+  xy: 576, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+rabbit_house
+  rotate: false
+  xy: 1856, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+statueglommer
+  rotate: false
+  xy: 768, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+marbleshrub3
+  rotate: false
+  xy: 1984, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+pond_cave
+  rotate: false
+  xy: 832, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+greenmooneye
+  rotate: false
+  xy: 448, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+evergreen_lumpy
+  rotate: false
+  xy: 1536, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+winterometer
+  rotate: false
+  xy: 1280, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+evergreen
+  rotate: false
+  xy: 1408, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+nightmarelight
+  rotate: false
+  xy: 1920, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+basalt
+  rotate: false
+  xy: 704, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+wickerbottom
+  rotate: false
+  xy: 704, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+wargshrine
+  rotate: false
+  xy: 128, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+cave_overcapacity
+  rotate: false
+  xy: 448, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+quagmire_safe
+  rotate: false
+  xy: 1472, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+pigking
+  rotate: false
+  xy: 576, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+atrium_gate
+  rotate: false
+  xy: 128, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+piggyback
+  rotate: false
+  xy: 448, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+tent
+  rotate: false
+  xy: 1088, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+marbleshrub1
+  rotate: false
+  xy: 1856, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+moonbase
+  rotate: false
+  xy: 1152, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+klaus_sack
+  rotate: false
+  xy: 1088, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+hound_mound
+  rotate: false
+  xy: 576, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+atrium_rubble
+  rotate: false
+  xy: 448, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+flare
+  rotate: false
+  xy: 64, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+sculpture_bishopbody_full
+  rotate: false
+  xy: 1472, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+sculpture_bishopbody_fixed
+  rotate: false
+  xy: 1408, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+nightlight
+  rotate: false
+  xy: 1856, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+hutch
+  rotate: false
+  xy: 640, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+icepack
+  rotate: false
+  xy: 960, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+rock_avocado
+  rotate: false
+  xy: 640, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+bluemooneye
+  rotate: false
+  xy: 1472, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+quagmire_sugarwoodtree
+  rotate: false
+  xy: 1664, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+chestershadow
+  rotate: false
+  xy: 832, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+toadstool_cap_dark
+  rotate: false
+  xy: 1280, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+spicepack
+  rotate: false
+  xy: 192, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+eyeplant
+  rotate: false
+  xy: 1728, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+portablecookpot
+  rotate: false
+  xy: 1024, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+mushroom_farm
+  rotate: false
+  xy: 1344, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+driftwood_small1
+  rotate: false
+  xy: 1344, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+lighter
+  rotate: false
+  xy: 1344, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+hutch_pufferfish
+  rotate: false
+  xy: 768, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+stalagmite_tall
+  rotate: false
+  xy: 448, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+webber
+  rotate: false
+  xy: 448, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+townportal
+  rotate: false
+  xy: 1408, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+tree_leaf
+  rotate: false
+  xy: 1728, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+purplemooneye
+  rotate: false
+  xy: 1280, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+firesuppressor
+  rotate: false
+  xy: 0, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+moon_tree_burnt
+  rotate: false
+  xy: 1024, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+wathgrithr
+  rotate: false
+  xy: 320, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+moon_tree_stump
+  rotate: false
+  xy: 1088, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+marbleshrub2
+  rotate: false
+  xy: 1920, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+statue_small
+  rotate: false
+  xy: 704, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+winona_catapult
+  rotate: false
+  xy: 1088, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+obelisk
+  rotate: false
+  xy: 64, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+antlion
+  rotate: false
+  xy: 64, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+buzzard
+  rotate: false
+  xy: 1728, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+portableblender
+  rotate: false
+  xy: 960, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+rabbittrap
+  rotate: false
+  xy: 1920, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+backpack
+  rotate: false
+  xy: 576, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+moon_altar_idol_rock
+  rotate: false
+  xy: 768, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+quagmire_salt_rack
+  rotate: false
+  xy: 1536, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+cave_open2
+  rotate: false
+  xy: 384, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+sentryward
+  rotate: false
+  xy: 1920, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+moon_altar_seed_rock
+  rotate: false
+  xy: 896, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+star_trap
+  rotate: false
+  xy: 512, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+statue_ruins
+  rotate: false
+  xy: 640, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+abigail_flower
+  rotate: false
+  xy: 0, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+resurrection_stone
+  rotate: false
+  xy: 512, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+berrybush_juicy
+  rotate: false
+  xy: 1280, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+hutch_musicbox
+  rotate: false
+  xy: 704, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+moon_altar_glass_piece
+  rotate: false
+  xy: 576, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+winter_tree
+  rotate: false
+  xy: 1216, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+birdcage
+  rotate: false
+  xy: 1344, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+lightningrod
+  rotate: false
+  xy: 1408, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+whitespider_den
+  rotate: false
+  xy: 640, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+beebox
+  rotate: false
+  xy: 832, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+stalagmite
+  rotate: false
+  xy: 384, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+firepit
+  rotate: false
+  xy: 1984, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+willow
+  rotate: false
+  xy: 768, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+pigshrine
+  rotate: false
+  xy: 640, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+reeds
+  rotate: false
+  xy: 64, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+cactus
+  rotate: false
+  xy: 1792, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+balloons_empty
+  rotate: false
+  xy: 640, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+marshtree_stump
+  rotate: false
+  xy: 192, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+oasis_cactus
+  rotate: false
+  xy: 0, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+livingtree_stump
+  rotate: false
+  xy: 1600, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+critterlab
+  rotate: false
+  xy: 1088, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+wendy
+  rotate: false
+  xy: 512, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+orangemooneye
+  rotate: false
+  xy: 128, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+wormwood
+  rotate: false
+  xy: 1600, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+quagmire_sugarwoodtree_stump
+  rotate: false
+  xy: 1728, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+catcoonden
+  rotate: false
+  xy: 1920, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+twiggy_burnt
+  rotate: false
+  xy: 1984, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+wortox
+  rotate: false
+  xy: 1664, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+quagmire_mealingstone
+  rotate: false
+  xy: 1344, 256
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+cave_banana_tree_burnt
+  rotate: false
+  xy: 0, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+moon_altar_glass_rock
+  rotate: false
+  xy: 640, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+winona_spotlight
+  rotate: false
+  xy: 1152, 448
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+sapling
+  rotate: false
+  xy: 1216, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+siestahut
+  rotate: false
+  xy: 1984, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+lucy_axe
+  rotate: false
+  xy: 1664, 128
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+researchlab
+  rotate: false
+  xy: 192, 320
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+mermhouse
+  rotate: false
+  xy: 320, 192
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+twiggy
+  rotate: false
+  xy: 1920, 384
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+diviningrod
+  rotate: false
+  xy: 1152, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+cave_open
+  rotate: false
+  xy: 320, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+cartographydesk
+  rotate: false
+  xy: 1856, 0
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1

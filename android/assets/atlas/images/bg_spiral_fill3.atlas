@@ -3,7 +3,7 @@ bg_spiral_fill3.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-bg_image3
+bg_image
   rotate: false
   xy: 0, 0
   size: 1819, 1023

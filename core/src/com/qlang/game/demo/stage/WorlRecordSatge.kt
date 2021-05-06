@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.scenes.scene2d.Actor
+import com.badlogic.gdx.scenes.scene2d.Group
 import com.badlogic.gdx.scenes.scene2d.InputEvent
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.*
@@ -18,9 +19,10 @@ import com.qlang.game.demo.GameManager
 import com.qlang.game.demo.entity.WorlInfo
 import com.qlang.game.demo.ktx.trycatch
 import com.qlang.game.demo.res.R
+import com.qlang.game.demo.widget.HorizontalList
 import com.qlang.game.demo.widget.VerticalWidgetList
 
-class WorlListSatge : Stage() {
+class WorlRecordSatge : Stage() {
     private val manager: AssetManager? = GameManager.instance?.mainManager
 
     private var recordList: VerticalWidgetList<Actor>? = null
@@ -31,6 +33,8 @@ class WorlListSatge : Stage() {
     private var bitmapFont: BitmapFont? = null
     private var bitmapFont11: BitmapFont? = null
     private var bitmapFont13: BitmapFont? = null
+
+    private val paramsTitles = arrayOf("设置", "森林", "洞穴", "模组", "回滚")
 
     init {
         manager?.let { mgr ->
@@ -52,8 +56,8 @@ class WorlListSatge : Stage() {
                     bottomHeight += 18f
                 }
             }).apply {
-                setSize(400f, Gdx.graphics.height - 340f)
-                setPosition(80f, 180f)
+                setSize(400f, Gdx.graphics.height - 320f)
+                setPosition(80f, 150f)
             }
 
             addActor(Label("游戏", Label.LabelStyle(bitmapFont11, null)).apply {
@@ -78,6 +82,54 @@ class WorlListSatge : Stage() {
                 clearChildren()
                 add(image);add(label).padLeft(170f)
                 setPosition(100f, 30f)
+            })
+
+            addActor(Table().apply {
+                val groupWidth = Gdx.graphics.width - 640f//left 480+30+20, right 80+30
+                paramsTitles.forEach {
+                    add(TextButton(it, TextButton.TextButtonStyle().apply {
+                        font = bitmapFont11
+                        up = TextureRegionDrawable(uiTexture.findRegion("button"))
+                        down = TextureRegionDrawable(uiTexture.findRegion("button_over"))
+                    })).padLeft(-5f).minWidth(groupWidth / 5f)
+                }
+                background = TextureRegionDrawable(uiTexture.findRegion("textbox_long"))
+                setSize(groupWidth, 80f)
+                setPosition(480f + 30f + 20f, Gdx.graphics.height - 160f, Align.left)//margin top 80, height 60
+            })
+            addActor(HorizontalList<Label>(HorizontalList.ListStyle().apply {
+                selection = TextureRegionDrawable(uiTexture.findRegion("button_over"))
+                background = TextureRegionDrawable(uiTexture.findRegion("textbox_long"))
+            }).apply {
+                val groupWidth = Gdx.graphics.width - 640f//left 480+30+20, right 80+30
+                setPosition(480f + 30f + 20f, Gdx.graphics.height - 260f, Align.left)
+                val items = Array<Label>()
+                paramsTitles.forEach {
+                    items.add(Label(it, Label.LabelStyle(bitmapFont11, null)).apply {
+                        setAlignment(Align.center);setSize(groupWidth / 5f, 60f)
+                    })
+                }
+                setItems(items)
+                setSize(prefWidth, prefHeight)
+            })
+
+            addActor(Group().apply {
+                addActor(TextButton("删除服务器", TextButton.TextButtonStyle().apply {
+                    font = bitmapFont
+                    up = TextureRegionDrawable(uiTexture.findRegion("button"))
+                    down = TextureRegionDrawable(uiTexture.findRegion("button_over"))
+                }).apply { setSize(280f, 80f) })
+//                addActor(Image(TextureRegionDrawable(uiTexture.findRegion("delete"))))
+                setPosition(480f + 30f + 20f, 40f)//margin left 30, margin list 20
+            })
+
+            addActor(TextButton("回到世界", TextButton.TextButtonStyle().apply {
+                font = bitmapFont
+                up = TextureRegionDrawable(uiTexture.findRegion("button"))
+                down = TextureRegionDrawable(uiTexture.findRegion("button_over"))
+            }).apply {
+                setSize(280f, 80f)
+                setPosition(Gdx.graphics.width - 80f - 280f - 30f, 40f)//margin right 80, width 280, margin right 30.
             })
         }
     }

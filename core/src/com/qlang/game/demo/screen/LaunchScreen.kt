@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.Image
 import com.qlang.game.demo.GameManager
 import com.qlang.game.demo.route.Navigator
+import kotlin.random.Random
 
 
 class LaunchScreen : ScreenAdapter() {
@@ -24,7 +25,7 @@ class LaunchScreen : ScreenAdapter() {
 
     private val NAEM_BG = "atlas/images/bg_spiral_anim.atlas"
     private val NAEM_BG_OVERLAY = "atlas/images/bg_spiral_anim_overlay.atlas"
-    private val NAEM_BG_IMG = "atlas/images/bg_spiral_fill5.atlas"
+    private val NAEM_BG_IMG = "atlas/images/bg_spiral_fill${Random.nextInt(1, 6)}.atlas"
     private val NAME_FONT = "fonts/font_load.fnt"
 
     private val TXT_LOAD = "正在加载."
@@ -45,7 +46,7 @@ class LaunchScreen : ScreenAdapter() {
         screenStage?.addActor(Image(bgOverlayTexture?.findRegion("spiral_ol")).apply {
             setFillParent(true)
         })
-        screenStage?.addActor(Image(bgImgTexture?.findRegion("bg_image5")).apply {
+        screenStage?.addActor(Image(bgImgTexture?.findRegion("bg_image")).apply {
             setFillParent(true)
         })
     }

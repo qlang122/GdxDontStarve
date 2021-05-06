@@ -1,0 +1,19 @@
+
+globalpanels2.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+globalpanels2
+  rotate: false
+  xy: 1, 601
+  size: 1212, 743
+  orig: 1212, 743
+  offset: 0, 0
+  index: 1
+globalpanels2
+  rotate: false
+  xy: 1, 1
+  size: 1127, 598
+  orig: 1127, 598
+  offset: 0, 0
+  index: 2
