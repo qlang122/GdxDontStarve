@@ -111,6 +111,19 @@ class WorlRecordStage : Stage() {
                 setPosition(100f, 30f)
             })
 
+            addActor(Group().apply {
+                val panelWidth = Gdx.graphics.width - 480f - 80f + 10f
+                val panelHeight = Gdx.graphics.height - 40f - 80f + 60f
+                addActor(Image(TextureRegionDrawable(hudTexture.findRegion("panel_bg_c")))).apply {
+                    setPosition(panelWidth / 2f - panelWidth / 2f, 10f)
+                }
+                addActor(Image(NinePatchDrawable(NinePatch(hudTexture.findRegion("panel_bg"), 70, 70, 60, 60))).apply {
+                    setSize(panelWidth - 20, panelHeight - 120f)
+                })
+                setSize(panelWidth, panelHeight)
+                setPosition(480f, 40f + 80f - 20f)
+            })
+
             addActor(tabList ?: HorizontalList<Label>(HorizontalList.ListStyle().apply {
                 selection = TextureRegionDrawable(hudTexture.findRegion("tab_sl")).apply {
                     leftWidth -= 5f;rightWidth -= 5f
@@ -123,8 +136,8 @@ class WorlRecordStage : Stage() {
                 }
             }).apply {
                 tabList = this
-                val groupWidth = Gdx.graphics.width - 660f//left 480+20+40, right 80+40
-                setPosition(480f + 20f + 40f, Gdx.graphics.height - 160f, Align.left)
+                val groupWidth = Gdx.graphics.width - 680f//left 480+20+60, right 80+40
+                setPosition(480f + 20f + 60f, Gdx.graphics.height - 120f, Align.left)
                 val items = Array<Label>()
                 paramsTitles.forEach {
                     items.add(Label(it, Label.LabelStyle(bitmapFont11, null)).apply {
@@ -137,33 +150,23 @@ class WorlRecordStage : Stage() {
             })
 
             addActor(Group().apply {
-                val panelWidth = Gdx.graphics.width - 480f - 80f + 10f
-                val panelHeight = Gdx.graphics.height - 40f - 80f + 20f
-                addActor(Image(TextureRegionDrawable(hudTexture.findRegion("panel_bg_c")))).apply {
-                    setPosition(panelWidth / 2f - panelWidth / 2f, 10f)
-                }
-                addActor(Image(NinePatchDrawable(NinePatch(hudTexture.findRegion("panel_bg"), 70, 70, 60, 60))).apply {
-                    setSize(panelWidth - 20, panelHeight - 120f)
-                })
-                setSize(panelWidth, panelHeight)
-                setPosition(480f, 40f + 80f - 20f)
-            })
-
-            addActor(Group().apply {
                 addActor(TextButton("删除服务器", TextButton.TextButtonStyle().apply {
                     font = bitmapFont
                     up = TextureRegionDrawable(uiTexture.findRegion("button"))
                     down = TextureRegionDrawable(uiTexture.findRegion("button_over"))
                 }).apply {
-                    setSize(280f, 80f)
+                    setSize(380f, 90f)
                     addListener(object : ClickListener() {
                         override fun clicked(event: InputEvent?, x: Float, y: Float) {
                             itemDeleteListener?.invoke(recordList?.content?.selectedIndex ?: -1)
                         }
                     })
                 })
-                addActor(Image(TextureRegionDrawable(hudTexture.findRegion("delete"))))
-                setPosition(480f + 30f + 20f, 40f)//margin left 30, margin list 20
+                addActor(Image(TextureRegionDrawable(hudTexture.findRegion("delete"))).apply {
+                    setPosition(parent?.x ?: 0 + 20f, parent?.y ?: 0 + prefHeight / 2)
+                    setSize(40f, 40f)
+                })
+                setPosition(480f + 60f + 20f, 40f)//margin left 30, margin list 20
             })
 
             addActor(TextButton("回到世界", TextButton.TextButtonStyle().apply {
@@ -171,8 +174,8 @@ class WorlRecordStage : Stage() {
                 up = TextureRegionDrawable(uiTexture.findRegion("button"))
                 down = TextureRegionDrawable(uiTexture.findRegion("button_over"))
             }).apply {
-                setSize(280f, 80f)
-                setPosition(Gdx.graphics.width - 80f - 280f - 30f, 40f)//margin right 80, width 280, margin right 30.
+                setSize(380f, 90f)
+                setPosition(Gdx.graphics.width - 80f - 380f - 60f, 40f)//margin right 80, width 280, margin right 30.
                 addListener(object : ClickListener() {
                     override fun clicked(event: InputEvent?, x: Float, y: Float) {
                         itemPlayListener?.invoke(recordList?.content?.selectedIndex ?: -1)
@@ -198,7 +201,7 @@ class WorlRecordStage : Stage() {
                 background = bgImage;setSize(prefWidth, prefHeight)
             })
             add(Table().apply {
-                left()
+                align(Align.left)
                 add(Label("${info.name}", Label.LabelStyle(bitmapFont11, null)))
                 row()
                 add(Label("${info.days} 天", Label.LabelStyle(bitmapFont, null))).padTop(10f)
@@ -273,116 +276,115 @@ class WorlRecordStage : Stage() {
                 val hudTexture = mgr.get(R.image.option_hud, TextureAtlas::class.java)
 
                 addActor(Table().apply {
+                    add(Label("游戏风格： ", Label.LabelStyle(bitmapFont, Color.valueOf("#ceab8dff"))))
+                    add(TextButton("XXX", TextButton.TextButtonStyle().apply {
+                        font = bitmapFont
+                        up = TextureRegionDrawable(hudTexture.findRegion("button_n"))
+                        disabled = TextureRegionDrawable(hudTexture.findRegion("button_dis"))
+                        over = TextureRegionDrawable(hudTexture.findRegion("button_over"))
+                    })).width(400f)
+                    row()
+                    add(Label("名称： ", Label.LabelStyle(bitmapFont, Color.valueOf("#ceab8dff"))))
+                    add(etName ?: TextField("", TextField.TextFieldStyle().apply {
+                        font = bitmapFont
+                        fontColor = Color.BLACK
+                        background = TextureRegionDrawable(hudTexture.findRegion("edit_bg_n"))
+                        focusedBackground = TextureRegionDrawable(hudTexture.findRegion("edit_bg_over"))
+                    }).also { etName = it }).width(700f).padTop(25f)
+                    row()
+                    add(Label("描述： ", Label.LabelStyle(bitmapFont, Color.valueOf("#ceab8dff"))))
+                    add(etDesc ?: TextField("", TextField.TextFieldStyle().apply {
+                        font = bitmapFont
+                        fontColor = Color.BLACK
+                        background = TextureRegionDrawable(hudTexture.findRegion("edit_bg_n"))
+                        focusedBackground = TextureRegionDrawable(hudTexture.findRegion("edit_bg_over"))
+                    }).also { etDesc = it }).width(700f).padTop(25f)
+                    row()
+                    add(Label("游戏模式： ", Label.LabelStyle(bitmapFont, Color.valueOf("#ceab8dff"))))
                     add(HorizontalGroup().apply {
-                        addActor(Label("游戏风格： ", Label.LabelStyle(bitmapFont, Color.valueOf("#ceab8dff"))))
-                        addActor(TextButton("XXX", TextButton.TextButtonStyle().apply {
-                            font = bitmapFont
-                            up = TextureRegionDrawable(hudTexture.findRegion("button_n"))
-                            disabled = TextureRegionDrawable(hudTexture.findRegion("button_dis"))
-                            over = TextureRegionDrawable(hudTexture.findRegion("button_over"))
-                        }).apply { setSize(300f, 60f) })
-                    });row()
-                    add(HorizontalGroup().apply {
-                        addActor(Label("名称： ", Label.LabelStyle(bitmapFont, Color.valueOf("#ceab8dff"))))
-                        addActor(etName ?: TextField("", TextField.TextFieldStyle().apply {
-                            font = bitmapFont
-                            fontColor = Color.BLACK
-                            background = TextureRegionDrawable(hudTexture.findRegion("edit_bg_n"))
-                            focusedBackground = TextureRegionDrawable(hudTexture.findRegion("edit_bg_over"))
-                        }).apply { setSize(500f, 60f) }.also { etName = it })
-                    });row()
-                    add(HorizontalGroup().apply {
-                        addActor(Label("描述： ", Label.LabelStyle(bitmapFont, Color.valueOf("#ceab8dff"))))
-                        addActor(etDesc ?: TextField("", TextField.TextFieldStyle().apply {
-                            font = bitmapFont
-                            fontColor = Color.BLACK
-                            background = TextureRegionDrawable(hudTexture.findRegion("edit_bg_n"))
-                            focusedBackground = TextureRegionDrawable(hudTexture.findRegion("edit_bg_over"))
-                        }).apply { setSize(500f, 60f) }.also { etDesc = it })
-                    });row()
-                    add(HorizontalGroup().apply {
-                        addActor(Label("游戏模式： ", Label.LabelStyle(bitmapFont, Color.valueOf("#ceab8dff"))))
                         addActor(ImageButton(ImageButton.ImageButtonStyle().apply {
                             up = TextureRegionDrawable(hudTexture.findRegion("arrow_l"))
                             down = TextureRegionDrawable(hudTexture.findRegion("arrow_l"))
                             disabled = TextureRegionDrawable(hudTexture.findRegion("arrow_l_dis"))
-                        }).apply { setSize(60f, 80f) })
+                        }).apply { clearChildren();add(image).size(60f, 60f).padLeft(0f) })
                         addActor(TextButton("XXX", TextButton.TextButtonStyle().apply {
                             font = bitmapFont
                             disabledFontColor = Color.DARK_GRAY
                             fontColor = Color.valueOf("#ceab8dff")
-                        }).apply { setSize(80f, 80f);padLeft(40f);padRight(40f) })
+                        }).apply { clearChildren();add(label).padLeft(80f).padRight(80f).size(80f, 60f) })
                         addActor(ImageButton(ImageButton.ImageButtonStyle().apply {
                             up = TextureRegionDrawable(hudTexture.findRegion("arrow_r"))
                             down = TextureRegionDrawable(hudTexture.findRegion("arrow_r"))
                             disabled = TextureRegionDrawable(hudTexture.findRegion("arrow_r_dis"))
-                        }).apply { setSize(60f, 80f) })
-                    });row()
+                        }).apply { clearChildren();add(image).size(60f, 60f) })
+                    }).padTop(25f)
+                    row()
+                    add(Label("玩家对战： ", Label.LabelStyle(bitmapFont, Color.valueOf("#ceab8dff"))))
                     add(HorizontalGroup().apply {
-                        addActor(Label("游戏对战： ", Label.LabelStyle(bitmapFont, Color.valueOf("#ceab8dff"))))
                         addActor(ImageButton(ImageButton.ImageButtonStyle().apply {
                             up = TextureRegionDrawable(hudTexture.findRegion("arrow_l"))
                             down = TextureRegionDrawable(hudTexture.findRegion("arrow_l"))
                             disabled = TextureRegionDrawable(hudTexture.findRegion("arrow_l_dis"))
-                        }).apply { setSize(60f, 80f) })
+                        }).apply { clearChildren();add(image).size(60f, 60f).padLeft(0f) })
                         addActor(TextButton("XXX", TextButton.TextButtonStyle().apply {
                             font = bitmapFont
                             disabledFontColor = Color.DARK_GRAY
                             fontColor = Color.valueOf("#ceab8dff")
-                        }).apply { setSize(80f, 80f);padLeft(40f);padRight(40f) })
+                        }).apply { clearChildren();add(label).pad(0f, 80f, 0f, 80f).size(80f, 60f) })
                         addActor(ImageButton(ImageButton.ImageButtonStyle().apply {
                             up = TextureRegionDrawable(hudTexture.findRegion("arrow_r"))
                             down = TextureRegionDrawable(hudTexture.findRegion("arrow_r"))
                             disabled = TextureRegionDrawable(hudTexture.findRegion("arrow_r_dis"))
-                        }).apply { setSize(60f, 80f) })
-                    });row()
+                        }).apply { clearChildren();add(image).size(60f, 60f) })
+                    }).padTop(25f)
+                    row()
+                    add(Label("玩家： ", Label.LabelStyle(bitmapFont, Color.valueOf("#ceab8dff"))))
                     add(HorizontalGroup().apply {
-                        addActor(Label("玩家： ", Label.LabelStyle(bitmapFont, Color.valueOf("#ceab8dff"))))
                         addActor(ImageButton(ImageButton.ImageButtonStyle().apply {
                             up = TextureRegionDrawable(hudTexture.findRegion("arrow_l"))
                             down = TextureRegionDrawable(hudTexture.findRegion("arrow_l"))
                             disabled = TextureRegionDrawable(hudTexture.findRegion("arrow_l_dis"))
-                        }).apply { setSize(60f, 80f) })
+                        }).apply { clearChildren();add(image).size(60f, 60f).padLeft(0f) })
                         addActor(TextButton("XXX", TextButton.TextButtonStyle().apply {
                             font = bitmapFont
                             disabledFontColor = Color.DARK_GRAY
                             fontColor = Color.valueOf("#ceab8dff")
-                        }).apply { setSize(80f, 80f);padLeft(40f);padRight(40f) })
+                        }).apply { clearChildren();add(label).pad(0f, 80f, 0f, 80f).size(80f, 60f) })
                         addActor(ImageButton(ImageButton.ImageButtonStyle().apply {
                             up = TextureRegionDrawable(hudTexture.findRegion("arrow_r"))
                             down = TextureRegionDrawable(hudTexture.findRegion("arrow_r"))
                             disabled = TextureRegionDrawable(hudTexture.findRegion("arrow_r_dis"))
-                        }).apply { setSize(60f, 80f) })
-                    });row()
+                        }).apply { clearChildren();add(image).size(60f, 60f) })
+                    }).padTop(25f)
+                    row()
+                    add(Label("密码： ", Label.LabelStyle(bitmapFont, Color.valueOf("#ceab8dff"))))
+                    add(etPwd ?: TextField("", TextField.TextFieldStyle().apply {
+                        font = bitmapFont
+                        fontColor = Color.BLACK
+                        background = TextureRegionDrawable(hudTexture.findRegion("edit_bg_n"))
+                        focusedBackground = TextureRegionDrawable(hudTexture.findRegion("edit_bg_over"))
+                    }).also { etPwd = it }).padTop(25f).width(700f)
+                    row()
+                    add(Label("服务器模式： ", Label.LabelStyle(bitmapFont, Color.valueOf("#ceab8dff"))))
                     add(HorizontalGroup().apply {
-                        addActor(Label("密码： ", Label.LabelStyle(bitmapFont, Color.valueOf("#ceab8dff"))))
-                        addActor(etPwd ?: TextField("", TextField.TextFieldStyle().apply {
-                            font = bitmapFont
-                            fontColor = Color.BLACK
-                            background = TextureRegionDrawable(hudTexture.findRegion("edit_bg_n"))
-                            focusedBackground = TextureRegionDrawable(hudTexture.findRegion("edit_bg_over"))
-                        }).apply { setSize(500f, 60f) }.also { etPwd = it })
-                    });row()
-                    add(HorizontalGroup().apply {
-                        addActor(Label("服务器模式： ", Label.LabelStyle(bitmapFont, Color.valueOf("#ceab8dff"))))
                         addActor(ImageButton(ImageButton.ImageButtonStyle().apply {
                             up = TextureRegionDrawable(hudTexture.findRegion("arrow_l"))
                             down = TextureRegionDrawable(hudTexture.findRegion("arrow_l"))
                             disabled = TextureRegionDrawable(hudTexture.findRegion("arrow_l_dis"))
-                        }).apply { setSize(60f, 80f) })
+                        }).apply { clearChildren();add(image).size(60f, 60f).padLeft(0f) })
                         addActor(TextButton("XXX", TextButton.TextButtonStyle().apply {
                             font = bitmapFont
                             disabledFontColor = Color.DARK_GRAY
                             fontColor = Color.valueOf("#ceab8dff")
-                        }).apply { setSize(80f, 80f);padLeft(40f);padRight(40f) })
+                        }).apply { clearChildren();add(label).pad(0f, 80f, 0f, 80f).size(80f, 60f) })
                         addActor(ImageButton(ImageButton.ImageButtonStyle().apply {
                             up = TextureRegionDrawable(hudTexture.findRegion("arrow_r"))
                             down = TextureRegionDrawable(hudTexture.findRegion("arrow_r"))
                             disabled = TextureRegionDrawable(hudTexture.findRegion("arrow_r_dis"))
-                        }).apply { setSize(60f, 80f) })
-                    })
-
-                    setSize(Gdx.graphics.width - 480f - 20f - 80f, Gdx.graphics.height - 40f - 80f - 160f + 20f)
+                        }).apply { clearChildren();add(image).size(60f, 60f) })
+                    }).padTop(25f)
+                    top()
+                    setSize(Gdx.graphics.width - 480f - 20f - 80f, Gdx.graphics.height - 40f - 80f - 160f + 30f)
                     setPosition(480f + 20f, 40f + 80f - 20f)
                 })
             }

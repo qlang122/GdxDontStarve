@@ -214,12 +214,12 @@ public class HorizontalList<T extends Actor> extends Widget implements Cullable 
                 else if (selected) {
                     drawable = selectedDrawable;
                 }
-                if (overIndex == i && style.over != null) //
-                    style.over.draw(batch, x, y, itemWidth + padLeft + padRight, prefHeight);
                 if (style.up != null)
                     style.up.draw(batch, x, y, itemWidth + padLeft + padRight, prefHeight);
                 if (drawable != null)
                     drawable.draw(batch, x, y, itemWidth + padLeft + padRight, prefHeight);
+                if (overIndex == i && style.over != null) //
+                    style.over.draw(batch, x, y, itemWidth + padLeft + padRight, prefHeight);
                 drawItem(batch, item, x + padLeft, y + prefHeight / 2f, parentAlpha);
             } else if (x < cullingArea.x) {
                 break;

@@ -156,6 +156,7 @@ public class VerticalWidgetList<T extends Actor> extends ScrollPane {
                         }
                     }
                     pressedIndex = -1;
+                    overIndex = -1;
                 }
 
                 public void touchDragged(InputEvent event, float x, float y, int pointer) {
@@ -246,12 +247,11 @@ public class VerticalWidgetList<T extends Actor> extends ScrollPane {
                     else if (selected) {
                         drawable = selectedDrawable;
                     }
-                    if (overIndex == i && style.over != null)
-                        style.over.draw(batch, x, y + itemY - itemHeight, width, itemHeight + padTop + padBottom);
                     if (drawable != null)
                         drawable.draw(batch, x, y + itemY - itemHeight, width, itemHeight + padTop + padBottom);
-
-                    drawItem(batch, item, x + padLeft, y + itemY - padTop - padBottom, parentAlpha);
+                    if (overIndex == i && style.over != null)
+                        style.over.draw(batch, x, y + itemY - itemHeight, width, itemHeight + padTop + padBottom);
+                    drawItem(batch, item, x + padLeft, y + itemY - itemHeight / 2 + padBottom, parentAlpha);
                 } else if (itemY < cullingArea.y) {
                     break;
                 }
