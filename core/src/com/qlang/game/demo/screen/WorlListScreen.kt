@@ -7,15 +7,15 @@ import com.qlang.game.demo.entity.WorlInfo
 import com.qlang.game.demo.model.WorlListViewModel
 import com.qlang.game.demo.mvvm.BaseVMScreen
 import com.qlang.game.demo.route.Navigator
-import com.qlang.game.demo.stage.WorlRecordSatge
+import com.qlang.game.demo.stage.WorlRecordStage
 import com.qlang.game.demo.utils.Log
 import com.qlang.gdxkt.lifecycle.Observer
 
 class WorlListScreen : BaseVMScreen<WorlListViewModel> {
-    private var recordsStage: WorlRecordSatge? = null
+    private var recordsStage: WorlRecordStage? = null
 
     init {
-        recordsStage = WorlRecordSatge()
+        recordsStage = WorlRecordStage()
 
         recordsStage?.setOnItemClickListener {
             Log.e("QL", "------->>$it")

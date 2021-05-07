@@ -30,6 +30,7 @@ object R {
         const val bg_redux_bottom = "atlas/images/bg_redux_dark_bottom.atlas"
         const val bg_redux_bottom_solid = "atlas/images/bg_redux_dark_bottom_solid.atlas"
         const val bg_redux_bottom_over = "atlas/images/bg_redux_dark_bottom_vignette1.atlas"
+        const val bg_redux_wardrobe_bg = "atlas/images/bg_redux_wardrobe_bg.atlas"
 
         const val customisation = "atlas/images/customisation.atlas"
         const val fepanels = "atlas/images/fepanels.atlas"
@@ -37,13 +38,16 @@ object R {
         const val frontscreen = "atlas/images/frontscreen.atlas"
         const val fx = "atlas/images/fx.atlas"
         const val hud = "atlas/images/hud.atlas"
+        const val option_hud = "atlas/images/option_hud.atlas"
         const val inventoryimages = "atlas/images/inventoryimages.atlas"
         const val saveslot_port = "atlas/images/saveslot_portraits.atlas"
         const val selectscreen_port = "atlas/images/selectscreen_portraits.atlas"
         const val ui = "atlas/images/ui.atlas"
         const val woodie = "atlas/images/woodie.atlas"
         const val globalpanels = "atlas/images/globalpanels.atlas"
+        const val globalpanels2 = "atlas/images/globalpanels2.atlas"
         const val saveslot_portraits = "atlas/images/saveslot_portraits.atlas"
+        const val minimap_atlas = "atlas/images/minimap_atlas.atlas"
 
         object fxs {
             const val frostbreath = "atlas/fx/frostbreath.atlas"

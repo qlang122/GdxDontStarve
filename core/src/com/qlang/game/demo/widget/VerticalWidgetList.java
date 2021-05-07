@@ -245,10 +245,12 @@ public class VerticalWidgetList<T extends Actor> extends ScrollPane {
                         drawable = style.down;
                     else if (selected) {
                         drawable = selectedDrawable;
-                    } else if (overIndex == i && style.over != null)
-                        drawable = style.over;
+                    }
+                    if (overIndex == i && style.over != null)
+                        style.over.draw(batch, x, y + itemY - itemHeight, width, itemHeight + padTop + padBottom);
                     if (drawable != null)
                         drawable.draw(batch, x, y + itemY - itemHeight, width, itemHeight + padTop + padBottom);
+
                     drawItem(batch, item, x + padLeft, y + itemY - padTop - padBottom, parentAlpha);
                 } else if (itemY < cullingArea.y) {
                     break;

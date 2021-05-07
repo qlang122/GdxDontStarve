@@ -1,0 +1,173 @@
+
+option_hud.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+slider_line
+  rotate: false
+  xy: 1, 143
+  size: 49, 742
+  orig: 49, 742
+  offset: 0, 0
+  index: -1
+item_over
+  rotate: false
+  xy: 52, 768
+  size: 544, 117
+  orig: 544, 117
+  offset: 0, 0
+  index: -1
+item_select
+  rotate: false
+  xy: 52, 649
+  size: 544, 117
+  orig: 544, 117
+  offset: 0, 0
+  index: -1
+edit_bg_n
+  rotate: false
+  xy: 52, 581
+  size: 593, 66
+  orig: 593, 66
+  offset: 0, 0
+  index: -1
+edit_bg_over
+  rotate: false
+  xy: 52, 513
+  size: 593, 66
+  orig: 593, 66
+  offset: 0, 0
+  index: -1
+button_dis
+  rotate: false
+  xy: 598, 783
+  size: 367, 102
+  orig: 367, 102
+  offset: 0, 0
+  index: -1
+button_n
+  rotate: false
+  xy: 52, 409
+  size: 367, 102
+  orig: 367, 102
+  offset: 0, 0
+  index: -1
+button_over
+  rotate: false
+  xy: 598, 679
+  size: 367, 102
+  orig: 367, 102
+  offset: 0, 0
+  index: -1
+tab_n
+  rotate: false
+  xy: 52, 332
+  size: 328, 75
+  orig: 328, 75
+  offset: 0, 0
+  index: -1
+tab_over
+  rotate: false
+  xy: 52, 255
+  size: 328, 75
+  orig: 328, 75
+  offset: 0, 0
+  index: -1
+tab_sl
+  rotate: false
+  xy: 52, 178
+  size: 328, 75
+  orig: 328, 75
+  offset: 0, 0
+  index: -1
+option_over
+  rotate: false
+  xy: 647, 597
+  size: 291, 80
+  orig: 291, 80
+  offset: 0, 0
+  index: -1
+panel_bg
+  rotate: false
+  xy: 421, 361
+  size: 200, 150
+  orig: 200, 150
+  offset: 0, 0
+  index: -1
+panel_bg_c
+  rotate: false
+  xy: 52, 148
+  size: 94, 28
+  orig: 94, 28
+  offset: 0, 0
+  index: -1
+arrow_l
+  rotate: false
+  xy: 1, 72
+  size: 41, 69
+  orig: 41, 69
+  offset: 0, 0
+  index: -1
+arrow_l_dis
+  rotate: false
+  xy: 967, 816
+  size: 41, 69
+  orig: 41, 69
+  offset: 0, 0
+  index: -1
+arrow_r
+  rotate: false
+  xy: 647, 526
+  size: 41, 69
+  orig: 41, 69
+  offset: 0, 0
+  index: -1
+arrow_r_dis
+  rotate: false
+  xy: 1, 1
+  size: 41, 69
+  orig: 41, 69
+  offset: 0, 0
+  index: -1
+cb_n
+  rotate: false
+  xy: 690, 543
+  size: 52, 52
+  orig: 52, 52
+  offset: 0, 0
+  index: -1
+cb_sl
+  rotate: false
+  xy: 744, 543
+  size: 52, 52
+  orig: 52, 52
+  offset: 0, 0
+  index: -1
+slider_down
+  rotate: false
+  xy: 798, 545
+  size: 49, 50
+  orig: 49, 50
+  offset: 0, 0
+  index: -1
+slider_up
+  rotate: false
+  xy: 849, 545
+  size: 49, 50
+  orig: 49, 50
+  offset: 0, 0
+  index: -1
+delete
+  rotate: false
+  xy: 967, 773
+  size: 38, 41
+  orig: 38, 41
+  offset: 0, 0
+  index: -1
+slider_point
+  rotate: false
+  xy: 382, 378
+  size: 32, 29
+  orig: 32, 29
+  offset: 0, 0
+  index: -1
