@@ -215,6 +215,8 @@ public class HorizontalList<T extends Actor> extends Widget implements Cullable 
                     drawable = selectedDrawable;
                 } else if (overIndex == i && style.over != null) //
                     drawable = style.over;
+                if (style.up != null)
+                    style.up.draw(batch, x, y, itemWidth + padLeft + padRight, prefHeight);
                 if (drawable != null)
                     drawable.draw(batch, x, y, itemWidth + padLeft + padRight, prefHeight);
                 drawItem(batch, item, x + padLeft, y + prefHeight / 2f, parentAlpha);
@@ -450,7 +452,7 @@ public class HorizontalList<T extends Actor> extends Widget implements Cullable 
     static public class ListStyle {
         public Drawable selection;
         public @Null
-        Drawable down, over, background;
+        Drawable up, down, over, background;
 
         public ListStyle() {
         }
@@ -462,6 +464,7 @@ public class HorizontalList<T extends Actor> extends Widget implements Cullable 
         public ListStyle(ListStyle style) {
             selection = style.selection;
 
+            up = style.up;
             down = style.down;
             over = style.over;
             background = style.background;

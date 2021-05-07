@@ -84,25 +84,13 @@ class WorlRecordSatge : Stage() {
                 setPosition(100f, 30f)
             })
 
-            addActor(Table().apply {
-                val groupWidth = Gdx.graphics.width - 640f//left 480+30+20, right 80+30
-                paramsTitles.forEach {
-                    add(TextButton(it, TextButton.TextButtonStyle().apply {
-                        font = bitmapFont11
-                        up = TextureRegionDrawable(uiTexture.findRegion("button"))
-                        down = TextureRegionDrawable(uiTexture.findRegion("button_over"))
-                    })).padLeft(-5f).minWidth(groupWidth / 5f)
-                }
-                background = TextureRegionDrawable(uiTexture.findRegion("textbox_long"))
-                setSize(groupWidth, 80f)
-                setPosition(480f + 30f + 20f, Gdx.graphics.height - 160f, Align.left)//margin top 80, height 60
-            })
             addActor(HorizontalList<Label>(HorizontalList.ListStyle().apply {
                 selection = TextureRegionDrawable(uiTexture.findRegion("button_over"))
+                up = TextureRegionDrawable(uiTexture.findRegion("button"))
                 background = TextureRegionDrawable(uiTexture.findRegion("textbox_long"))
             }).apply {
                 val groupWidth = Gdx.graphics.width - 640f//left 480+30+20, right 80+30
-                setPosition(480f + 30f + 20f, Gdx.graphics.height - 260f, Align.left)
+                setPosition(480f + 30f + 20f, Gdx.graphics.height - 160f, Align.left)
                 val items = Array<Label>()
                 paramsTitles.forEach {
                     items.add(Label(it, Label.LabelStyle(bitmapFont11, null)).apply {
