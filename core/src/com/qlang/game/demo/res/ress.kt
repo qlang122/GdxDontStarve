@@ -48,6 +48,7 @@ object R {
         const val globalpanels2 = "atlas/images/globalpanels2.atlas"
         const val saveslot_portraits = "atlas/images/saveslot_portraits.atlas"
         const val minimap_atlas = "atlas/images/minimap_atlas.atlas"
+        const val server_intentions = "atlas/images/server_intentions.atlas"
 
         object fxs {
             const val frostbreath = "atlas/fx/frostbreath.atlas"

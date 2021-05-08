@@ -215,12 +215,12 @@ public class HorizontalList<T extends Actor> extends Widget implements Cullable 
                     drawable = selectedDrawable;
                 }
                 if (style.up != null)
-                    style.up.draw(batch, x, y, itemWidth + padLeft + padRight, prefHeight);
+                    style.up.draw(batch, x + style.leftOffset, y, itemWidth + padLeft + padRight + style.rightOffset, prefHeight);
                 if (drawable != null)
-                    drawable.draw(batch, x, y, itemWidth + padLeft + padRight, prefHeight);
+                    drawable.draw(batch, x + style.leftOffset, y, itemWidth + padLeft + padRight + style.rightOffset, prefHeight);
                 if (overIndex == i && style.over != null) //
-                    style.over.draw(batch, x, y, itemWidth + padLeft + padRight, prefHeight);
-                drawItem(batch, item, x + padLeft, y + prefHeight / 2f, parentAlpha);
+                    style.over.draw(batch, x + style.leftOffset, y, itemWidth + padLeft + padRight + style.rightOffset, prefHeight);
+                drawItem(batch, item, x + padLeft + style.leftOffset, y + prefHeight / 2f, parentAlpha);
             } else if (x < cullingArea.x) {
                 break;
             }
@@ -337,7 +337,7 @@ public class HorizontalList<T extends Actor> extends Widget implements Cullable 
         float curr = 0f;
 
         for (int i = 0; i < items.size; i++) {
-            float iW = itemWidth + padLeft + padRight;
+            float iW = itemWidth + padLeft + padRight + style.leftOffset + style.rightOffset;
             if (x >= curr && x <= curr + iW) return i;
             curr += iW;
         }
@@ -454,6 +454,8 @@ public class HorizontalList<T extends Actor> extends Widget implements Cullable 
         public Drawable selection;
         public @Null
         Drawable up, down, over, background;
+        public float leftOffset = 0f;
+        public float rightOffset = 0f;
 
         public ListStyle() {
         }
@@ -469,6 +471,9 @@ public class HorizontalList<T extends Actor> extends Widget implements Cullable 
             down = style.down;
             over = style.over;
             background = style.background;
+
+            leftOffset = style.leftOffset;
+            rightOffset = style.rightOffset;
         }
     }
 }

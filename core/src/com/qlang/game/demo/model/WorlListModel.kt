@@ -10,7 +10,7 @@ import com.qlang.gdxkt.lifecycle.MutableLiveData
 import com.qlang.gdxkt.lifecycle.Transformations
 import com.qlang.gdxkt.lifecycle.liveData
 
-class WorlListViewModel : ViewModel() {
+class WorlListModel : ViewModel() {
 
     val records = ArrayList<WorlInfo>()
 

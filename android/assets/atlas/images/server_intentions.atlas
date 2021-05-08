@@ -1,0 +1,33 @@
+
+server_intentions.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+madness
+  rotate: false
+  xy: 600, 0
+  size: 299, 249
+  orig: 299, 249
+  offset: 0, 0
+  index: -1
+social
+  rotate: false
+  xy: 0, 252
+  size: 299, 249
+  orig: 299, 249
+  offset: 0, 0
+  index: -1
+coop
+  rotate: false
+  xy: 300, 0
+  size: 299, 249
+  orig: 299, 249
+  offset: 0, 0
+  index: -1
+competitive
+  rotate: false
+  xy: 0, 0
+  size: 299, 249
+  orig: 299, 249
+  offset: 0, 0
+  index: -1

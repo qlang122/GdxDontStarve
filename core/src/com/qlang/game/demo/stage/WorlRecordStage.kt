@@ -16,22 +16,24 @@ import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable
 import com.badlogic.gdx.utils.Align
 import com.badlogic.gdx.utils.Array
-import com.badlogic.gdx.utils.Scaling
 import com.qlang.game.demo.GameManager
 import com.qlang.game.demo.entity.WorlInfo
+import com.qlang.game.demo.ktx.setOnClickListener
 import com.qlang.game.demo.ktx.trycatch
 import com.qlang.game.demo.res.R
 import com.qlang.game.demo.widget.HorizontalList
 import com.qlang.game.demo.widget.VerticalWidgetList
 
-class WorlRecordStage : Stage() {
+class WorlRecordStage<T> : Stage() {
     private val manager: AssetManager? = GameManager.instance?.mainManager
 
     private var recordList: VerticalWidgetList<Actor>? = null
+    private val infoList = ArrayList<WorlInfo>()
+    private var currInfo: WorlInfo? = null
 
-    private var itemClickListener: ((index: Int) -> Unit)? = null
-    private var itemDeleteListener: ((index: Int) -> Unit)? = null
-    private var itemPlayListener: ((index: Int) -> Unit)? = null
+    private var itemClickListener: ((index: Int, t: T?) -> Unit)? = null
+    private var itemDeleteListener: ((index: Int, t: T?) -> Unit)? = null
+    private var itemPlayListener: ((index: Int, t: T?) -> Unit)? = null
     private var backClickListener: (() -> Unit)? = null
 
     private var bitmapFont: BitmapFont? = null
@@ -42,6 +44,10 @@ class WorlRecordStage : Stage() {
 
     private var currParamsStage: Stage? = null
     private var setStage: ParamsSettingStage? = null
+    private var setStyleStage: SettingGameStyleStage? = null
+
+    private var btnDelete: TextButton? = null
+    private var btnPlay: TextButton? = null
 
     private var tabList: HorizontalList<Label>? = null
     private val tabClickListener = object : ClickListener() {
@@ -112,31 +118,27 @@ class WorlRecordStage : Stage() {
             })
 
             addActor(Group().apply {
-                val panelWidth = Gdx.graphics.width - 480f - 80f + 10f
+                val panelWidth = Gdx.graphics.width - 480f - 60f + 10f
                 val panelHeight = Gdx.graphics.height - 40f - 80f + 60f
                 addActor(Image(TextureRegionDrawable(hudTexture.findRegion("panel_bg_c")))).apply {
-                    setPosition(panelWidth / 2f - panelWidth / 2f, 10f)
+                    width = 150f
+                    setPosition(panelWidth / 2f - width / 2f, 10f)
                 }
                 addActor(Image(NinePatchDrawable(NinePatch(hudTexture.findRegion("panel_bg"), 70, 70, 60, 60))).apply {
-                    setSize(panelWidth - 20, panelHeight - 120f)
+                    setSize(panelWidth, panelHeight - 120f)
                 })
                 setSize(panelWidth, panelHeight)
                 setPosition(480f, 40f + 80f - 20f)
             })
 
             addActor(tabList ?: HorizontalList<Label>(HorizontalList.ListStyle().apply {
-                selection = TextureRegionDrawable(hudTexture.findRegion("tab_sl")).apply {
-                    leftWidth -= 5f;rightWidth -= 5f
-                }
-                up = TextureRegionDrawable(hudTexture.findRegion("tab_n")).apply {
-                    leftWidth -= 5f;rightWidth -= 5f
-                }
-                over = TextureRegionDrawable(hudTexture.findRegion("tab_over")).apply {
-                    leftWidth -= 5f;rightWidth -= 5f
-                }
+                selection = TextureRegionDrawable(hudTexture.findRegion("tab_sl"))
+                up = TextureRegionDrawable(hudTexture.findRegion("tab_n"))
+                over = TextureRegionDrawable(hudTexture.findRegion("tab_over"))
+                rightOffset = 15f
             }).apply {
                 tabList = this
-                val groupWidth = Gdx.graphics.width - 680f//left 480+20+60, right 80+40
+                val groupWidth = Gdx.graphics.width - 710f//left 480+20+60, right 80+40
                 setPosition(480f + 20f + 60f, Gdx.graphics.height - 120f, Align.left)
                 val items = Array<Label>()
                 paramsTitles.forEach {
@@ -150,40 +152,49 @@ class WorlRecordStage : Stage() {
             })
 
             addActor(Group().apply {
-                addActor(TextButton("删除服务器", TextButton.TextButtonStyle().apply {
+                addActor(btnDelete ?: TextButton("删除服务器", TextButton.TextButtonStyle().apply {
                     font = bitmapFont
-                    up = TextureRegionDrawable(uiTexture.findRegion("button"))
-                    down = TextureRegionDrawable(uiTexture.findRegion("button_over"))
+                    up = TextureRegionDrawable(hudTexture.findRegion("button_n"))
+                    down = TextureRegionDrawable(hudTexture.findRegion("button_n"))
+                    over = TextureRegionDrawable(hudTexture.findRegion("button_over"))
+                    disabled = TextureRegionDrawable(hudTexture.findRegion("button_dis"))
                 }).apply {
+                    isDisabled = true
                     setSize(380f, 90f)
                     addListener(object : ClickListener() {
                         override fun clicked(event: InputEvent?, x: Float, y: Float) {
-                            itemDeleteListener?.invoke(recordList?.content?.selectedIndex ?: -1)
+                            val i = recordList?.content?.selectedIndex ?: -1
+                            itemDeleteListener?.invoke(i, currInfo as? T?)
                         }
                     })
-                })
+                }.also { btnDelete = it })
                 addActor(Image(TextureRegionDrawable(hudTexture.findRegion("delete"))).apply {
-                    setPosition(parent?.x ?: 0 + 20f, parent?.y ?: 0 + prefHeight / 2)
+                    setPosition(50f, 25f)
                     setSize(40f, 40f)
                 })
                 setPosition(480f + 60f + 20f, 40f)//margin left 30, margin list 20
             })
 
-            addActor(TextButton("回到世界", TextButton.TextButtonStyle().apply {
+            addActor(btnPlay ?: TextButton("创建世界", TextButton.TextButtonStyle().apply {
                 font = bitmapFont
-                up = TextureRegionDrawable(uiTexture.findRegion("button"))
-                down = TextureRegionDrawable(uiTexture.findRegion("button_over"))
+                up = TextureRegionDrawable(hudTexture.findRegion("button_n"))
+                down = TextureRegionDrawable(hudTexture.findRegion("button_n"))
+                over = TextureRegionDrawable(hudTexture.findRegion("button_over"))
+                disabled = TextureRegionDrawable(hudTexture.findRegion("button_dis"))
             }).apply {
                 setSize(380f, 90f)
                 setPosition(Gdx.graphics.width - 80f - 380f - 60f, 40f)//margin right 80, width 280, margin right 30.
                 addListener(object : ClickListener() {
                     override fun clicked(event: InputEvent?, x: Float, y: Float) {
-                        itemPlayListener?.invoke(recordList?.content?.selectedIndex ?: -1)
+                        val i = recordList?.content?.selectedIndex ?: -1
+                        itemPlayListener?.invoke(i, currInfo as? T?)
                     }
                 })
-            })
+            }.also { btnPlay = it })
 
-            setStage = ParamsSettingStage()
+            setStage = ParamsSettingStage().apply {
+                GameManager.instance?.addInputProcessor(this)
+            }
             currParamsStage = setStage
         }
     }
@@ -201,11 +212,11 @@ class WorlRecordStage : Stage() {
                 background = bgImage;setSize(prefWidth, prefHeight)
             })
             add(Table().apply {
-                align(Align.left)
                 add(Label("${info.name}", Label.LabelStyle(bitmapFont11, null)))
                 row()
-                add(Label("${info.days} 天", Label.LabelStyle(bitmapFont, null))).padTop(10f)
+                add(Label(if (info.days <= 0) "" else "${info.days}天", Label.LabelStyle(bitmapFont, null)))
                 setSize(prefWidth, prefHeight)
+                left()
             }).padLeft(20f)
             setSize(prefWidth, prefHeight)
         } as T
@@ -214,24 +225,44 @@ class WorlRecordStage : Stage() {
     fun updateRecords(list: kotlin.collections.List<WorlInfo>) {
         val texture = manager?.get(R.image.saveslot_portraits, TextureAtlas::class.java)
         val items = Array<Actor>()
-        list.forEach { newListItem<Actor>(it, texture)?.let { act -> items.add(act) } }
+        infoList.clear()
+        list.forEach {
+            newListItem<Actor>(it, texture)?.let { act ->
+                items.add(act);infoList.add(it)
+            }
+        }
         recordList?.content?.setItems(items)
         recordList?.content?.addListener(object : ClickListener() {
             override fun clicked(event: InputEvent?, x: Float, y: Float) {
-                itemClickListener?.invoke(recordList?.content?.selectedIndex ?: -1)
+                val i = recordList?.content?.selectedIndex ?: -1
+                currInfo = if (i >= 0 && i < infoList.size) infoList[i] else null
+                val b = currInfo?.days ?: 0 <= 0
+                setStage?.isEditEnable = b
+                if (b) {
+                    btnDelete?.isDisabled = true
+                    btnPlay?.setText("创建世界")
+                } else {
+                    btnDelete?.isDisabled = false
+                    btnPlay?.setText("回到世界")
+                }
+                itemClickListener?.invoke(i, currInfo as? T?)
             }
         })
+        if (infoList.size > 0 && infoList[0].days > 0) {
+            btnDelete?.isDisabled = false
+            btnPlay?.setText("回到世界")
+        }
     }
 
-    fun setOnItemClickListener(lis: (index: Int) -> Unit) {
+    fun setOnItemClickListener(lis: (index: Int, t: T?) -> Unit) {
         itemClickListener = lis
     }
 
-    fun setOnItemDeleteListener(lis: (index: Int) -> Unit) {
+    fun setOnItemDeleteListener(lis: (index: Int, t: T?) -> Unit) {
         itemDeleteListener = lis
     }
 
-    fun setOnItemPlayListener(lis: (index: Int) -> Unit) {
+    fun setOnItemPlayListener(lis: (index: Int, t: T?) -> Unit) {
         itemPlayListener = lis
     }
 
@@ -266,10 +297,22 @@ class WorlRecordStage : Stage() {
         currParamsStage?.draw()
     }
 
+    override fun dispose() {
+        setStage?.let { GameManager.instance?.removeInputProcessor(it) }
+        super.dispose()
+    }
+
     private inner class ParamsSettingStage : Stage() {
         private var etName: TextField? = null
         private var etDesc: TextField? = null
         private var etPwd: TextField? = null
+
+        private var btnStyle: TextButton? = null
+
+        var isEditEnable = true
+
+        var gameStyle: Int = 0
+            private set
 
         init {
             manager?.let { mgr ->
@@ -277,12 +320,28 @@ class WorlRecordStage : Stage() {
 
                 addActor(Table().apply {
                     add(Label("游戏风格： ", Label.LabelStyle(bitmapFont, Color.valueOf("#ceab8dff"))))
-                    add(TextButton("XXX", TextButton.TextButtonStyle().apply {
+                    add(btnStyle ?: TextButton("社交", TextButton.TextButtonStyle().apply {
                         font = bitmapFont
                         up = TextureRegionDrawable(hudTexture.findRegion("button_n"))
                         disabled = TextureRegionDrawable(hudTexture.findRegion("button_dis"))
                         over = TextureRegionDrawable(hudTexture.findRegion("button_over"))
-                    })).width(400f)
+                    }).apply {
+                        setOnClickListener {
+                            setStyleStage = SettingGameStyleStage().apply {
+                                setOnItemClickListener {
+                                    gameStyle = it
+                                    btnStyle?.setText(when (it) {
+                                        1 -> "合作";2 -> "竞争";3 -> "疯狂";else -> "社交"
+                                    })
+                                    currParamsStage = setStage
+                                    setStyleStage?.let { GameManager.instance?.removeInputProcessor(it) }
+                                    setStyleStage = null
+                                }
+                                GameManager.instance?.addInputProcessor(this)
+                            }
+                            currParamsStage = setStyleStage
+                        }
+                    }.also { btnStyle = it }).width(400f)
                     row()
                     add(Label("名称： ", Label.LabelStyle(bitmapFont, Color.valueOf("#ceab8dff"))))
                     add(etName ?: TextField("", TextField.TextFieldStyle().apply {
@@ -384,10 +443,86 @@ class WorlRecordStage : Stage() {
                         }).apply { clearChildren();add(image).size(60f, 60f) })
                     }).padTop(25f)
                     top()
-                    setSize(Gdx.graphics.width - 480f - 20f - 80f, Gdx.graphics.height - 40f - 80f - 160f + 30f)
+                    setSize(Gdx.graphics.width - 480f - 20f - 60f, Gdx.graphics.height - 40f - 80f - 160f + 30f)
                     setPosition(480f + 20f, 40f + 80f - 20f)
                 })
             }
         }
+    }
+
+    private inner class SettingGameStyleStage : Stage() {
+        private var listener: ((index: Int) -> Unit)? = null
+
+        init {
+            manager?.let { mgr ->
+                val hudTexture = mgr.get(R.image.option_hud, TextureAtlas::class.java)
+                val imgTexture = mgr.get(R.image.server_intentions, TextureAtlas::class.java)
+
+                addActor(Table().apply {
+                    val panelWidth = Gdx.graphics.width - 480f - 20f - 60f
+                    var btnWidth = (panelWidth - 200f) / 4f
+                    add(Label("你的服务器是什么游戏风格？", Label.LabelStyle(bitmapFont13, Color.valueOf("#efefefff")))).center().padTop(60f)
+                    row()
+                    add(Table().apply {
+                        add(ImageTextButton("社交", ImageTextButton.ImageTextButtonStyle().apply {
+                            font = bitmapFont13;fontColor = Color.BLACK
+//                            background = TextureRegionDrawable(hudTexture.findRegion("intentions_bg"))
+                            up = TextureRegionDrawable(hudTexture.findRegion("intentions_n"))
+                            down = TextureRegionDrawable(hudTexture.findRegion("intentions_sl"))
+                            over = TextureRegionDrawable(hudTexture.findRegion("intentions_sl"))
+                            imageUp = TextureRegionDrawable(imgTexture.findRegion("social"))
+                        }).apply {
+                            clearChildren();add(label).padTop(40f).padBottom(20f);
+                            row();add(image).pad(0f, 50f, 20f, 50f)
+                            setOnClickListener { listener?.invoke(0) }
+                        }).size(btnWidth, btnWidth - 20f)
+                        add(ImageTextButton("合作", ImageTextButton.ImageTextButtonStyle().apply {
+                            font = bitmapFont13;fontColor = Color.BLACK
+//                            background = TextureRegionDrawable(hudTexture.findRegion("intentions_bg"))
+                            up = TextureRegionDrawable(hudTexture.findRegion("intentions_n"))
+                            down = TextureRegionDrawable(hudTexture.findRegion("intentions_sl"))
+                            over = TextureRegionDrawable(hudTexture.findRegion("intentions_sl"))
+                            imageUp = TextureRegionDrawable(imgTexture.findRegion("coop"))
+                        }).apply {
+                            clearChildren();add(label).padTop(40f).padBottom(20f);
+                            row();add(image).pad(0f, 50f, 20f, 50f)
+                            setOnClickListener { listener?.invoke(1) }
+                        }).size(btnWidth, btnWidth - 20f).space(30f)
+                        add(ImageTextButton("竞争", ImageTextButton.ImageTextButtonStyle().apply {
+                            font = bitmapFont13;fontColor = Color.BLACK
+//                            background = TextureRegionDrawable(hudTexture.findRegion("intentions_bg"))
+                            up = TextureRegionDrawable(hudTexture.findRegion("intentions_n"))
+                            down = TextureRegionDrawable(hudTexture.findRegion("intentions_sl"))
+                            over = TextureRegionDrawable(hudTexture.findRegion("intentions_sl"))
+                            imageUp = TextureRegionDrawable(imgTexture.findRegion("competitive"))
+                        }).apply {
+                            clearChildren();add(label).padTop(40f).padBottom(20f);
+                            row();add(image).pad(0f, 50f, 20f, 50f)
+                            setOnClickListener { listener?.invoke(2) }
+                        }).size(btnWidth, btnWidth - 20f).space(30f)
+                        add(ImageTextButton("疯狂", ImageTextButton.ImageTextButtonStyle().apply {
+                            font = bitmapFont13;fontColor = Color.BLACK
+                            background = TextureRegionDrawable(hudTexture.findRegion("intentions_bg"))
+                            up = TextureRegionDrawable(hudTexture.findRegion("intentions_n"))
+                            down = TextureRegionDrawable(hudTexture.findRegion("intentions_sl"))
+                            over = TextureRegionDrawable(hudTexture.findRegion("intentions_sl"))
+                            imageUp = TextureRegionDrawable(imgTexture.findRegion("madness"))
+                        }).apply {
+                            clearChildren();add(label).padTop(40f).padBottom(20f);
+                            row();add(image).pad(0f, 50f, 20f, 50f)
+                            setOnClickListener { listener?.invoke(3) }
+                        }).size(btnWidth, btnWidth - 20f).space(30f)
+                    }).padTop(60f)
+                    top()
+                    setSize(panelWidth, Gdx.graphics.height - 40f - 80f - 160f + 30f)
+                    setPosition(480f + 20f, 40f + 80f - 20f)
+                })
+            }
+        }
+
+        fun setOnItemClickListener(lis: (index: Int) -> Unit) {
+            listener = lis
+        }
+
     }
 }

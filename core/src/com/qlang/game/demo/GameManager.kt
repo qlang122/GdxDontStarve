@@ -8,6 +8,7 @@ import com.badlogic.gdx.assets.AssetManager
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.qlang.game.demo.res.R
+import java.util.concurrent.CopyOnWriteArrayList
 import kotlin.random.Random
 
 class GameManager private constructor() : ApplicationAdapter() {
@@ -18,7 +19,7 @@ class GameManager private constructor() : ApplicationAdapter() {
     lateinit var game: Game
         private set
 
-    private val processors = ArrayList<InputProcessor>()
+    private val processors = CopyOnWriteArrayList<InputProcessor>()
 
     var homeMenuBgIndex = Random.nextInt(3)
         private set
@@ -69,11 +70,11 @@ class GameManager private constructor() : ApplicationAdapter() {
     }
 
     fun <T : InputProcessor> addInputProcessor(processor: T) {
-        processors.add(processor)
+        synchronized(processors) { processors.add(processor) }
     }
 
     fun <T : InputProcessor> removeInputProcessor(processor: T) {
-        processors.remove(processor)
+        synchronized(processors) { processors.remove(processor) }
     }
 
     override fun dispose() {
@@ -85,42 +86,42 @@ class GameManager private constructor() : ApplicationAdapter() {
 
     private inner class MyInputProcessor : InputProcessor {
         override fun touchUp(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean {
-            processors.forEach { it.touchUp(screenX, screenY, pointer, button) }
+            synchronized(processors) { processors.forEach { it.touchUp(screenX, screenY, pointer, button) } }
             return true
         }
 
         override fun mouseMoved(screenX: Int, screenY: Int): Boolean {
-            processors.forEach { it.mouseMoved(screenX, screenY) }
+            synchronized(processors) { processors.forEach { it.mouseMoved(screenX, screenY) } }
             return true
         }
 
         override fun keyTyped(character: Char): Boolean {
-            processors.forEach { it.keyTyped(character) }
+            synchronized(processors) { processors.forEach { it.keyTyped(character) } }
             return true
         }
 
         override fun scrolled(amountX: Float, amountY: Float): Boolean {
-            processors.forEach { it.scrolled(amountX, amountY) }
+            synchronized(processors) { processors.forEach { it.scrolled(amountX, amountY) } }
             return true
         }
 
         override fun keyUp(keycode: Int): Boolean {
-            processors.forEach { it.keyUp(keycode) }
+            synchronized(processors) { processors.forEach { it.keyUp(keycode) } }
             return true
         }
 
         override fun touchDragged(screenX: Int, screenY: Int, pointer: Int): Boolean {
-            processors.forEach { it.touchDragged(screenX, screenY, pointer) }
+            synchronized(processors) { processors.forEach { it.touchDragged(screenX, screenY, pointer) } }
             return true
         }
 
         override fun keyDown(keycode: Int): Boolean {
-            processors.forEach { it.keyDown(keycode) }
+            synchronized(processors) { processors.forEach { it.keyDown(keycode) } }
             return true
         }
 
         override fun touchDown(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean {
-            processors.forEach { it.touchDown(screenX, screenY, pointer, button) }
+            synchronized(processors) { processors.forEach { it.touchDown(screenX, screenY, pointer, button) } }
             return true
         }
 

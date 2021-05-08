@@ -5,168 +5,189 @@ filter: Nearest,Nearest
 repeat: none
 slider_line
   rotate: false
-  xy: 1, 143
+  xy: 1, 277
   size: 49, 742
   orig: 49, 742
   offset: 0, 0
   index: -1
 item_over
   rotate: false
-  xy: 52, 768
+  xy: 52, 902
   size: 544, 117
   orig: 544, 117
   offset: 0, 0
   index: -1
 item_select
   rotate: false
-  xy: 52, 649
+  xy: 52, 783
   size: 544, 117
   orig: 544, 117
   offset: 0, 0
   index: -1
 edit_bg_n
   rotate: false
-  xy: 52, 581
+  xy: 52, 715
   size: 593, 66
   orig: 593, 66
   offset: 0, 0
   index: -1
 edit_bg_over
   rotate: false
-  xy: 52, 513
+  xy: 52, 647
   size: 593, 66
   orig: 593, 66
   offset: 0, 0
   index: -1
+intentions_bg
+  rotate: false
+  xy: 52, 348
+  size: 309, 297
+  orig: 309, 297
+  offset: 0, 0
+  index: -1
+intentions_n
+  rotate: false
+  xy: 363, 348
+  size: 309, 297
+  orig: 309, 297
+  offset: 0, 0
+  index: -1
 button_dis
   rotate: false
-  xy: 598, 783
+  xy: 598, 917
   size: 367, 102
   orig: 367, 102
   offset: 0, 0
   index: -1
 button_n
   rotate: false
-  xy: 52, 409
+  xy: 598, 813
   size: 367, 102
   orig: 367, 102
   offset: 0, 0
   index: -1
 button_over
   rotate: false
-  xy: 598, 679
+  xy: 52, 244
   size: 367, 102
   orig: 367, 102
   offset: 0, 0
   index: -1
+intentions_sl
+  rotate: false
+  xy: 674, 514
+  size: 309, 297
+  orig: 309, 297
+  offset: 0, 0
+  index: -1
 tab_n
   rotate: false
-  xy: 52, 332
+  xy: 674, 437
   size: 328, 75
   orig: 328, 75
   offset: 0, 0
   index: -1
 tab_over
   rotate: false
-  xy: 52, 255
+  xy: 674, 360
   size: 328, 75
   orig: 328, 75
   offset: 0, 0
   index: -1
 tab_sl
   rotate: false
-  xy: 52, 178
+  xy: 1, 167
   size: 328, 75
   orig: 328, 75
   offset: 0, 0
   index: -1
 option_over
   rotate: false
-  xy: 647, 597
+  xy: 1, 85
   size: 291, 80
   orig: 291, 80
   offset: 0, 0
   index: -1
 panel_bg
   rotate: false
-  xy: 421, 361
+  xy: 421, 196
   size: 200, 150
   orig: 200, 150
   offset: 0, 0
   index: -1
 panel_bg_c
   rotate: false
-  xy: 52, 148
+  xy: 1, 55
   size: 94, 28
   orig: 94, 28
   offset: 0, 0
   index: -1
 arrow_l
   rotate: false
-  xy: 1, 72
+  xy: 967, 950
   size: 41, 69
   orig: 41, 69
   offset: 0, 0
   index: -1
 arrow_l_dis
   rotate: false
-  xy: 967, 816
+  xy: 623, 277
   size: 41, 69
   orig: 41, 69
   offset: 0, 0
   index: -1
 arrow_r
   rotate: false
-  xy: 647, 526
+  xy: 331, 173
   size: 41, 69
   orig: 41, 69
   offset: 0, 0
   index: -1
 arrow_r_dis
   rotate: false
-  xy: 1, 1
+  xy: 967, 879
   size: 41, 69
   orig: 41, 69
   offset: 0, 0
   index: -1
 cb_n
   rotate: false
-  xy: 690, 543
+  xy: 1, 1
   size: 52, 52
   orig: 52, 52
   offset: 0, 0
   index: -1
 cb_sl
   rotate: false
-  xy: 744, 543
+  xy: 623, 223
   size: 52, 52
   orig: 52, 52
   offset: 0, 0
   index: -1
 slider_down
   rotate: false
-  xy: 798, 545
-  size: 49, 50
-  orig: 49, 50
-  offset: 0, 0
-  index: -1
-slider_up
-  rotate: false
-  xy: 849, 545
+  xy: 967, 827
   size: 49, 50
   orig: 49, 50
   offset: 0, 0
   index: -1
 delete
   rotate: false
-  xy: 967, 773
+  xy: 985, 784
   size: 38, 41
   orig: 38, 41
   offset: 0, 0
   index: -1
+slider_up
+  rotate: false
+  xy: 55, 3
+  size: 49, 50
+  orig: 49, 50
+  offset: 0, 0
+  index: -1
 slider_point
   rotate: false
-  xy: 382, 378
+  xy: 1, 246
   size: 32, 29
   orig: 32, 29
   offset: 0, 0

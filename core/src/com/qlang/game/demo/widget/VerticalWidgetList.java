@@ -364,7 +364,7 @@ public class VerticalWidgetList<T extends Actor> extends ScrollPane {
             float padTop = selectedDrawable.getTopHeight();
             float padBottom = selectedDrawable.getBottomHeight();
 
-            y = parent.getTop() - (y - parent.getY());
+            y = prefHeight > parent.getHeight() ? (prefHeight - y) : (parent.getHeight() - y);
 
             float curr = 0f;
             for (int i = 0; i < items.size; i++) {
