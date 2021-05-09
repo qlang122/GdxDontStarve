@@ -10,7 +10,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.3'
+        classpath 'com.android.tools.build:gradle:3.2.1'
         classpath 'com.mobidevelop.robovm:robovm-gradle-plugin:2.3.12'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
@@ -120,8 +120,6 @@ project(":core") {
         api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
         api "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
         api "com.esotericsoftware.spine:spine-libgdx:3.8.55.1"
-
-        api 'com.github.qlang122:spriter:1.0.2'
 
 //        api "com.github.qlang122:gdx-kt-lifecycle:1.0.0"
         api project(":gdx-lifecycle")

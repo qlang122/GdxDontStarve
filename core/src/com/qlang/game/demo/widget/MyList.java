@@ -34,6 +34,7 @@ public class MyList<T> extends Widget implements Cullable {
     int pressedIndex = -1, overIndex = -1;
     private InputListener keyListener;
     boolean typeToSelect;
+    boolean showSelection = false;
 
     public MyList(Skin skin) {
         this(skin.get(List.ListStyle.class));
@@ -120,6 +121,7 @@ public class MyList<T> extends Widget implements Cullable {
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
                 if (pointer != 0 || button != 0) return;
                 pressedIndex = -1;
+                overIndex = -1;
             }
 
             public void touchDragged(InputEvent event, float x, float y, int pointer) {
@@ -212,13 +214,14 @@ public class MyList<T> extends Widget implements Cullable {
                 Drawable drawable = null;
                 if (pressedIndex == i && style.down != null)
                     drawable = style.down;
-                else if (false/*selected*/) {//change
+                else if (showSelection && selected) {
                     drawable = selectedDrawable;
                     font.setColor(fontColorSelected.r, fontColorSelected.g, fontColorSelected.b, fontColorSelected.a * parentAlpha);
-                } else if (overIndex == i && style.over != null) //
-                    drawable = style.over;
+                }
                 if (drawable != null)
                     drawable.draw(batch, x, y + itemY - itemHeight, width, itemHeight);
+                if (overIndex == i && style.over != null) //
+                    style.over.draw(batch, x, y + itemY - itemHeight, width, itemHeight);
                 drawItem(batch, font, i, item, x + textOffsetX, y + itemY - textOffsetY, textWidth);
                 if (selected) {
                     font.setColor(fontColorUnselected.r, fontColorUnselected.g, fontColorUnselected.b,
@@ -253,6 +256,14 @@ public class MyList<T> extends Widget implements Cullable {
 
     public void setSelection(ArraySelection<T> selection) {
         this.selection = selection;
+    }
+
+    public boolean isShowSelection() {
+        return showSelection;
+    }
+
+    public void setShowSelection(boolean showSelection) {
+        this.showSelection = showSelection;
     }
 
     /**

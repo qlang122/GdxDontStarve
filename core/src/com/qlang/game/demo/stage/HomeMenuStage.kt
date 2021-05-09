@@ -23,20 +23,24 @@ class HomeMenuStage : Stage() {
     init {
         manager?.let { mgr ->
             val style = List.ListStyle().apply {
-                font = mgr.get(R.font.font_cn, BitmapFont::class.java).apply { data?.setScale(1.2f) }
-                val ui = mgr.get(R.image.ui, TextureAtlas::class.java)
-                down = TextureRegionDrawable(ui.findRegion("button_long"))
-                selection = TextureRegionDrawable(ui.findRegion("button_long_over")).apply {
+                val f = mgr.get(R.font.font_cn, BitmapFont::class.java)
+                font = BitmapFont(BitmapFont.BitmapFontData(f.data.fontFile, false), f.regions, true).apply {
+                    data?.setScale(1.3f)
+                }
+                val hud = mgr.get(R.image.option_hud, TextureAtlas::class.java)
+                down = TextureRegionDrawable(hud.findRegion("item_over"))
+                over = TextureRegionDrawable(hud.findRegion("item_over"))
+                selection = TextureRegionDrawable(hud.findRegion("item_over")).apply {
                     leftWidth += 50f
                     rightWidth += 50f
-                    topHeight += 18f
-                    bottomHeight += 18f
+                    topHeight += 22f
+                    bottomHeight += 22f
                 }
             }
             list = MyList<String>(style).apply {
                 setItems(*MENU_NAMES)
                 setSize(prefWidth, prefHeight)
-                setPosition(100f, 100f)
+                setPosition(100f, 50f)
                 addListener(MyClickListener())
             }
             addActor(list)

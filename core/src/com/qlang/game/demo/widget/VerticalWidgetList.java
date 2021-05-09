@@ -18,9 +18,11 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Null;
 import com.badlogic.gdx.utils.ObjectSet;
+import com.qlang.game.demo.utils.Log;
 
 public class VerticalWidgetList<T extends Actor> extends ScrollPane {
     private InnerList<T> list = null;
+    private boolean isShowSelection = true;
 
     public VerticalWidgetList() {
         this(new ScrollPaneStyle(), new WidgetListStyle());
@@ -57,6 +59,14 @@ public class VerticalWidgetList<T extends Actor> extends ScrollPane {
         return list;
     }
 
+    public boolean isShowSelection() {
+        return isShowSelection;
+    }
+
+    public void setShowSelection(boolean showSelection) {
+        isShowSelection = showSelection;
+    }
+
     static public class InnerList<T extends Actor> extends Widget implements Cullable {
         WidgetListStyle style;
         final Array<T> items = new Array<T>();
@@ -70,9 +80,9 @@ public class VerticalWidgetList<T extends Actor> extends ScrollPane {
 
         private float oldScrollY;
 
-        private final ScrollPane parent;
+        private final VerticalWidgetList parent;
 
-        public InnerList(WidgetListStyle style, ScrollPane parent) {
+        public InnerList(WidgetListStyle style, VerticalWidgetList parent) {
             this.parent = parent;
 
             selection.setActor(this);
@@ -138,7 +148,6 @@ public class VerticalWidgetList<T extends Actor> extends ScrollPane {
             addListener(new InputListener() {
                 public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                     oldScrollY = parent.getScrollY();
-
                     int index = getItemIndexAt(y);
                     if (!selection.isDisabled() && index >= 0) {
                         if (getStage() != null) getStage().setKeyboardFocus(InnerList.this);
@@ -206,7 +215,7 @@ public class VerticalWidgetList<T extends Actor> extends ScrollPane {
                 prefWidth = Math.max(prefWidth + background.getLeftWidth() + background.getRightWidth(), background.getMinWidth());
                 prefHeight = Math.max(prefHeight + background.getTopHeight() + background.getBottomHeight(), background.getMinHeight());
             }
-            prefWidth = Math.min(prefWidth, parent.getPrefWidth());
+            prefWidth = Math.max(prefWidth, parent.getPrefWidth());
         }
 
         public void draw(Batch batch, float parentAlpha) {
@@ -244,7 +253,7 @@ public class VerticalWidgetList<T extends Actor> extends ScrollPane {
                     Drawable drawable = null;
                     if (pressedIndex == i && style.down != null)
                         drawable = style.down;
-                    else if (selected) {
+                    else if (parent.isShowSelection && selected) {
                         drawable = selectedDrawable;
                     }
                     if (drawable != null)

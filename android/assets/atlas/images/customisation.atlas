@@ -138,7 +138,7 @@ wormattacks
   index: -1
 blank_grassy
   rotate: false
-  xy: 1920, 0
+  xy: 0, 768
   size: 127, 127
   orig: 127, 127
   offset: 0, 0
