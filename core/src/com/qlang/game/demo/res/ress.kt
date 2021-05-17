@@ -26,6 +26,10 @@ object R {
         }
     }
 
+    object skin {
+        const val option_hud = "atlas/images/option_hud.json"
+    }
+
     object image {
         const val bg_redux_bottom = "atlas/images/bg_redux_dark_bottom.atlas"
         const val bg_redux_bottom_solid = "atlas/images/bg_redux_dark_bottom_solid.atlas"

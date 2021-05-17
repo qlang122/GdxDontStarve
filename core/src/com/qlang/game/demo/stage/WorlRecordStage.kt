@@ -213,10 +213,10 @@ class WorlRecordStage<T> : Stage() {
                 background = bgImage;setSize(prefWidth, prefHeight)
             })
             add(Table().apply {
+                align(Align.topLeft)
                 add(Label("${info.name}", Label.LabelStyle(bitmapFont11, null)))
                 row()
-                add(Label(if (info.days <= 0) "" else "${info.days}天", Label.LabelStyle(bitmapFont, null)))
-                align(Align.left)
+                add(Label(if (info.days <= 0) "" else "${info.days}天", Label.LabelStyle(bitmapFont, null))).padTop(5f).align(Align.left)
                 setSize(prefWidth, prefHeight)
             }).padLeft(20f)
             setSize(prefWidth, prefHeight)
@@ -1181,7 +1181,7 @@ class WorlRecordStage<T> : Stage() {
                     up = TextureRegionDrawable(texture.findRegion("arrow_l"))
                     down = TextureRegionDrawable(texture.findRegion("arrow_l"))
                     disabled = TextureRegionDrawable(texture.findRegion("arrow_l_dis"))
-//                    setOnClickListener { onPrev(valLabel) }
+                    setOnClickListener { onPrev(valLabel) }
                 })).size(60f, 90f)
                 add(Table().apply {
                     add(Label(desc, Label.LabelStyle(bitmapFont, Color.valueOf("#edededff"))))
@@ -1195,7 +1195,7 @@ class WorlRecordStage<T> : Stage() {
                     up = TextureRegionDrawable(texture.findRegion("arrow_r"))
                     down = TextureRegionDrawable(texture.findRegion("arrow_r"))
                     disabled = TextureRegionDrawable(texture.findRegion("arrow_r_dis"))
-//                    setOnClickListener { onNext(valLabel) }
+                    setOnClickListener { onNext(valLabel) }
                 })).size(60f, 90f)
                 setSize(prefWidth, prefHeight)
             }

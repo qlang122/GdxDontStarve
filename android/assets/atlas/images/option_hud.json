@@ -1,0 +1,31 @@
+{
+  com.badlogic.gdx.files.FileHandle:{
+    font_cn: { file: ../../fonts/font_cn.fnt }
+  }
+  com.badlogic.gdx.graphics.g2d.BitmapFont$BitmapFontData: {
+    font_scale11: { fontFile: font_cn, flipped: true},
+    font_scale12: { fontFile: font_cn, flipped: true},
+    font_scale13: { fontFile: font_cn, flipped: true},
+    font_scale14: { fontFile: font_cn, flipped: true},
+    font_scale15: { fontFile: font_cn, flipped: true},
+    font_scale16: { fontFile: font_cn, flipped: true},
+    font_scale17: { fontFile: font_cn, flipped: true},
+    font_scale18: { fontFile: font_cn, flipped: true},
+    font_scale20: { fontFile: font_cn, flipped: true}
+  },
+  com.badlogic.gdx.graphics.g2d.BitmapFont: {
+    default-font: { file: ../../fonts/font_cn.fnt }
+  },
+  com.badlogic.gdx.graphics.Color: {
+    green: { a: 1, b: 0, g: 1, r: 0 },
+    white: { a: 1, b: 1, g: 1, r: 1 },
+    red: { a: 1, b: 0, g: 0, r: 1 },
+    black: { a: 1, b: 0, g: 0, r: 0 }
+  },
+  com.badlogic.gdx.scenes.scene2d.ui.List$ListStyle: {
+    default: {
+      fontColorUnselected: white, fontColorSelected: white, font: default-font,
+      down: item_over, over: item_over, selection: item_over
+    }
+  },
+}
