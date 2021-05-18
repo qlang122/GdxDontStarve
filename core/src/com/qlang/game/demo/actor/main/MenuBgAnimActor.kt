@@ -6,14 +6,15 @@ import com.qlang.game.demo.GameManager
 import com.qlang.game.demo.res.R
 
 class MenuBgAnimActor {
-
-    fun createActor(): Array<BaseAnimActor> {
-        val index = GameManager.instance?.homeMenuBgIndex ?: 0
-        return when (index) {
-            1 -> arrayOf(MenuFeastBgActor(), MenuFeastActor())
-            2 -> arrayOf(MenuHalloweenActor())
-            3 -> arrayOf(MenuLunacyActor())
-            else -> arrayOf(MenuBaseActor())
+    companion object {
+        fun createActor(): Array<BaseAnimActor> {
+            val index = GameManager.instance?.homeMenuBgIndex ?: 0
+            return when (index) {
+                1 -> arrayOf(MenuFeastBgActor(), MenuFeastActor())
+                2 -> arrayOf(MenuHalloweenActor())
+                3 -> arrayOf(MenuLunacyActor())
+                else -> arrayOf(MenuBaseActor())
+            }
         }
     }
 

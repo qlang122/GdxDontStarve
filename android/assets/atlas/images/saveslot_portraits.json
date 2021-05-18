@@ -1,0 +1,20 @@
+{
+  com.badlogic.gdx.scenes.scene2d.ui.Image: {
+    default: {drawable:random },
+    background: {drawable:background },
+    waxwell:{ drawable:waxwell },
+    wilson:{ drawable:wilson },
+    wilton:{ drawable:wilton },
+    woodie:{ drawable:woodie },
+    wolfgang:{ drawable:wolfgang },
+    wx78:{ drawable:wx78 },
+    wathgrithr:{ drawable:wathgrithr },
+    wortox:{ drawable:wortox },
+    wendy:{ drawable:wendy },
+    willow:{ drawable:willow },
+    wes:{ drawable:wes },
+    webber:{ drawable:webber },
+    winnie:{ drawable:winnie },
+    wickerbottom:{ drawable:wickerbottom }
+  }
+}

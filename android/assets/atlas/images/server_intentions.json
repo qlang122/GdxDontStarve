@@ -1,0 +1,8 @@
+{
+  com.badlogic.gdx.scenes.scene2d.ui.Image: {
+    social:{ drawable:social },
+    coop:{ drawable:coop },
+    competitive:{ drawable:competitive },
+    madness:{ drawable:madness }
+  }
+}

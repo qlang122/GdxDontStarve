@@ -22,7 +22,7 @@ class HomeBgStage : Stage() {
 
         manager?.let {
 
-            for (actor in MenuBgAnimActor().createActor()) {
+            for (actor in MenuBgAnimActor.createActor()) {
                 addActor(actor)
             }
             it.trycatch {

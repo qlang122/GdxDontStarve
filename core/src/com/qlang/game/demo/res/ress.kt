@@ -28,6 +28,21 @@ object R {
 
     object skin {
         const val option_hud = "atlas/images/option_hud.json"
+        const val ui = "atlas/images/ui.json"
+        const val saveslot_portraits = "atlas/images/saveslot_portraits.json"
+        const val server_intentions = "atlas/images/server_intentions.json"
+
+        fun skins(): ArrayList<String> {
+            val list = ArrayList<String>()
+            for (it in this.javaClass.fields) {
+                val name = it?.name
+                if (name != null && name != "INSTANCE") {
+                    it.isAccessible = true
+                    it.get(this)?.toString()?.let { if (it.endsWith(".json")) list.add(it) }
+                }
+            }
+            return list
+        }
     }
 
     object image {

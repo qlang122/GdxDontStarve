@@ -8,7 +8,7 @@ import com.qlang.game.demo.GameManager
 import com.qlang.game.demo.ktx.trycatch
 import com.qlang.game.demo.res.R
 
-class WorlParamsStage : Stage() {
+class PlayHudStage : Stage() {
     private val manager: AssetManager? = GameManager.instance?.mainManager
 
     private var bitmapFont: BitmapFont? = null

@@ -7,6 +7,7 @@ import com.badlogic.gdx.InputProcessor
 import com.badlogic.gdx.assets.AssetManager
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
+import com.badlogic.gdx.scenes.scene2d.ui.Skin
 import com.qlang.game.demo.res.R
 import java.util.concurrent.CopyOnWriteArrayList
 import kotlin.random.Random
@@ -42,6 +43,7 @@ class GameManager private constructor() : ApplicationAdapter() {
     private fun AssetManager.loadAssets() {
         load(R.font.font_cn, BitmapFont::class.java)
         R.image.atlas().forEach { load(it, TextureAtlas::class.java) }
+        R.skin.skins().forEach { load(it, Skin::class.java) }
         load(when (homeMenuBgIndex) {
             1 -> R.anim.menu.feast_atlas
             2 -> R.anim.menu.halloween_atlas

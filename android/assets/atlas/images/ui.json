@@ -1,0 +1,31 @@
+{
+  com.badlogic.gdx.graphics.g2d.BitmapFont: {
+    default-font: { file: fonts/font_cn.fnt, scaledSize:-1 },
+    size34-font: { file: fonts/font_cn.fnt, scaledSize:34 },
+    size36-font: { file: fonts/font_cn.fnt, scaledSize:36 },
+    size38-font: { file: fonts/font_cn.fnt, scaledSize:38 },
+    size40-font: { file: fonts/font_cn.fnt, scaledSize:40 },
+    size44-font: { file: fonts/font_cn.fnt, scaledSize:44 },
+    size48-font: { file: fonts/font_cn.fnt, scaledSize:48 },
+    size52-font: { file: fonts/font_cn.fnt, scaledSize:52 }
+  },
+  com.badlogic.gdx.graphics.Color: {
+    green: { a: 1, b: 0, g: 1, r: 0 },
+    white: { a: 1, b: 1, g: 1, r: 1 },
+    grey: { a: 1.0, b: 0.9137255, g: 0.9137255, r: 0.9137255 },
+    lightGray: { a: 1.0, b: 0.84313726, g: 0.84313726, r: 0.84313726 },
+    gray: { a: 1.0, b: 0.68235296, g: 0.68235296, r: 0.68235296 },
+    darkGray: { a: 1.0, b: 0.59607846, g: 0.59607846, r: 0.59607846 },
+    lightBlack: { a: 1.0, b: 0.19607843, g: 0.19607843, r: 0.19607843 },
+    darkBlack: { a: 1.0, b: 0.11372549, g: 0.11372549, r: 0.11372549 },
+    black: { a: 1, b: 0, g: 0, r: 0 }
+    red: { a: 1, b: 0, g: 0, r: 1 },
+  },
+  com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton$ImageTextButtonStyle: {
+    default: {font:default-font, fontColor: white, overFontColor: grey, downFontColor: grey, up: arrow_left, down: arrow_left_over},
+    font34: {font:size34-font, fontColor: white, overFontColor: grey, downFontColor: grey, up: arrow_left, down: arrow_left_over},
+    font36: {font:size36-font, fontColor: white, overFontColor: grey, downFontColor: grey, up: arrow_left, down: arrow_left_over},
+    font38: {font:size38-font, fontColor: white, overFontColor: grey, downFontColor: grey, up: arrow_left, down: arrow_left_over},
+    font40: {font:size40-font, fontColor: white, overFontColor: grey, downFontColor: grey, up: arrow_left, down: arrow_left_over}
+  }
+}

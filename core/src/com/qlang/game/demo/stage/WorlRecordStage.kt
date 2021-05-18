@@ -2,7 +2,6 @@ package com.qlang.game.demo.stage
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.assets.AssetManager
-import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.NinePatch
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
@@ -12,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.*
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable
 import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable
 import com.badlogic.gdx.utils.Align
@@ -21,7 +21,6 @@ import com.qlang.game.demo.entity.WorlInfo
 import com.qlang.game.demo.ktx.setOnClickListener
 import com.qlang.game.demo.ktx.trycatch
 import com.qlang.game.demo.res.R
-import com.qlang.game.demo.utils.Log
 import com.qlang.game.demo.widget.HorizontalList
 import com.qlang.game.demo.widget.VerticalWidgetList
 
@@ -65,6 +64,9 @@ class WorlRecordStage<T> : Stage() {
 
     init {
         manager?.let { mgr ->
+            val hudSkin = mgr.get(R.skin.option_hud, Skin::class.java)
+            val uiSkin = mgr.get(R.skin.ui, Skin::class.java)
+
             bitmapFont = mgr.trycatch {
                 get(R.font.font_cn, BitmapFont::class.java)
             }?.let {
@@ -74,17 +76,11 @@ class WorlRecordStage<T> : Stage() {
                         it.regions, true).apply { data?.setScale(1.3f) }
                 it
             }
-            val uiTexture = mgr.get(R.image.ui, TextureAtlas::class.java)
             val hudTexture = mgr.get(R.image.option_hud, TextureAtlas::class.java)
 
-            recordList = VerticalWidgetList<Actor>(ScrollPane.ScrollPaneStyle(), VerticalWidgetList.WidgetListStyle().apply {
-                selection = TextureRegionDrawable(hudTexture.findRegion("item_select")).apply {
-                    leftWidth += 20f
-                    topHeight += 15f
-                    bottomHeight += 15f
-                }
-                down = TextureRegionDrawable(hudTexture.findRegion("item_over"))
-                over = TextureRegionDrawable(hudTexture.findRegion("item_over"))
+            val listStyle = hudSkin.get(VerticalWidgetList.WidgetListStyle::class.java)
+            recordList = VerticalWidgetList<Actor>(ScrollPane.ScrollPaneStyle(), listStyle.apply {
+                selection = hudSkin.newDrawable(selection)?.apply { leftWidth += 20f;topHeight += 15f;bottomHeight += 15f }
             }).apply {
                 setSize(500f, Gdx.graphics.height - 320f)
                 setPosition(80f, 150f)
@@ -96,25 +92,17 @@ class WorlRecordStage<T> : Stage() {
                 setPosition(-150f, -150f)
             })
 
-            addActor(Label("游戏", Label.LabelStyle(bitmapFont11, null)).apply {
+            addActor(Label("游戏", hudSkin, "font26").apply {
                 setPosition(100f, Gdx.graphics.height - 80f)
             })
-            addActor(Label("服务器设定", Label.LabelStyle(bitmapFont11, Color.valueOf("#f2f2f2ff"))).apply {
+            addActor(Label("服务器设定", hudSkin, "font30-f2f2f2").apply {
                 setPosition(100f, Gdx.graphics.height - 140f)
             })
 
             addActor(recordList)
 
-            addActor(ImageTextButton("返回", ImageTextButton.ImageTextButtonStyle().apply {
-                font = bitmapFont13
-                up = TextureRegionDrawable(uiTexture.findRegion("arrow_left"))
-                down = TextureRegionDrawable(uiTexture.findRegion("arrow_left_over"))
-            }).apply {
-                addListener(object : ClickListener() {
-                    override fun clicked(event: InputEvent?, x: Float, y: Float) {
-                        backClickListener?.invoke()
-                    }
-                })
+            addActor(ImageTextButton("返回", uiSkin, "font36").apply {
+                setOnClickListener { backClickListener?.invoke() }
                 clearChildren()
                 add(image.apply { setSize(60f, 60f) });add(label).padLeft(170f)
                 setPosition(100f, 30f)
@@ -123,7 +111,7 @@ class WorlRecordStage<T> : Stage() {
             addActor(Group().apply {
                 val panelWidth = Gdx.graphics.width - 580f - 60f + 10f
                 val panelHeight = Gdx.graphics.height - 40f - 80f + 60f
-                addActor(Image(TextureRegionDrawable(hudTexture.findRegion("panel_bg_c"))).apply {
+                addActor(hudSkin.get("panel-bg-c", Image::class.java).apply {
                     setPosition(panelWidth / 2f - width / 2f, 5f)
                 })
                 addActor(Image(NinePatchDrawable(NinePatch(hudTexture.findRegion("panel_bg"), 70, 70, 60, 60))).apply {
@@ -133,66 +121,47 @@ class WorlRecordStage<T> : Stage() {
                 setPosition(580f, 40f + 80f - 20f)
             })
 
-            addActor(tabList ?: HorizontalList<Label>(HorizontalList.ListStyle().apply {
-                selection = TextureRegionDrawable(hudTexture.findRegion("tab_sl"))
-                up = TextureRegionDrawable(hudTexture.findRegion("tab_n"))
-                over = TextureRegionDrawable(hudTexture.findRegion("tab_over"))
-                rightOffset = 15f
-            }).apply {
-                tabList = this
-                val groupWidth = Gdx.graphics.width - 810f//left 480+20+60, right 80+40
-                setPosition(580f + 20f + 60f, Gdx.graphics.height - 120f, Align.left)
-                val items = Array<Label>()
-                paramsTitles.forEach {
-                    items.add(Label(it, Label.LabelStyle(bitmapFont11, null)).apply {
-                        setAlignment(Align.center);setSize(groupWidth / 5f, 60f)
+            addActor(tabList
+                    ?: HorizontalList<Label>(hudSkin.get("tab", HorizontalList.ListStyle::class.java)).apply {
+                        tabList = this
+                        val groupWidth = Gdx.graphics.width - 810f//left 480+20+60, right 80+40
+                        setPosition(580f + 20f + 60f, Gdx.graphics.height - 120f, Align.left)
+                        val items = Array<Label>()
+                        paramsTitles.forEach {
+                            items.add(Label(it, hudSkin.get("font26", Label.LabelStyle::class.java)).apply {
+                                setAlignment(Align.center);setSize(groupWidth / 5f, 60f)
+                            })
+                        }
+                        setItems(items)
+                        setSize(prefWidth, prefHeight)
+                        addListener(tabClickListener)
                     })
-                }
-                setItems(items)
-                setSize(prefWidth, prefHeight)
-                addListener(tabClickListener)
-            })
 
             addActor(Group().apply {
-                addActor(btnDelete ?: TextButton("删除服务器", TextButton.TextButtonStyle().apply {
-                    font = bitmapFont
-                    up = TextureRegionDrawable(hudTexture.findRegion("button_n"))
-                    down = TextureRegionDrawable(hudTexture.findRegion("button_n"))
-                    over = TextureRegionDrawable(hudTexture.findRegion("button_over"))
-                    disabled = TextureRegionDrawable(hudTexture.findRegion("button_dis"))
-                }).apply {
-                    isDisabled = true
-                    setSize(380f, 90f)
-                    addListener(object : ClickListener() {
-                        override fun clicked(event: InputEvent?, x: Float, y: Float) {
-                            val i = recordList?.content?.selectedIndex ?: -1
-                            itemDeleteListener?.invoke(i, currInfo as? T?)
-                        }
-                    })
-                }.also { btnDelete = it })
+                addActor(btnDelete
+                        ?: TextButton("删除服务器", hudSkin.get("font26", TextButton.TextButtonStyle::class.java)).apply {
+                            isDisabled = true
+                            setSize(380f, 90f)
+                            setOnClickListener {
+                                val i = recordList?.content?.selectedIndex ?: -1
+                                itemDeleteListener?.invoke(i, currInfo as? T?)
+                            }
+                        }.also { btnDelete = it })
                 addActor(Image(TextureRegionDrawable(hudTexture.findRegion("delete"))).apply {
-                    setPosition(50f, 25f)
-                    setSize(40f, 40f)
+                    setPosition(50f, 25f);setSize(40f, 40f)
                 })
                 setPosition(580f + 60f + 20f, 40f)//margin left 30, margin list 20
             })
 
-            addActor(btnPlay ?: TextButton("创建世界", TextButton.TextButtonStyle().apply {
-                font = bitmapFont
-                up = TextureRegionDrawable(hudTexture.findRegion("button_n"))
-                down = TextureRegionDrawable(hudTexture.findRegion("button_n"))
-                over = TextureRegionDrawable(hudTexture.findRegion("button_over"))
-                disabled = TextureRegionDrawable(hudTexture.findRegion("button_dis"))
-            }).apply {
-                setSize(380f, 90f)
-                setPosition(Gdx.graphics.width - 80f - 380f - 60f, 40f)//margin right 80, width 280, margin right 30.
-                addListener(object : ClickListener() {
-                    override fun clicked(event: InputEvent?, x: Float, y: Float) {
-                        val i = recordList?.content?.selectedIndex ?: -1
-                        itemPlayListener?.invoke(i, currInfo as? T?)
-                    }
-                })
-            }.also { btnPlay = it })
+            addActor(btnPlay
+                    ?: TextButton("创建世界", hudSkin.get("font26", TextButton.TextButtonStyle::class.java)).apply {
+                        setSize(380f, 90f)
+                        setPosition(Gdx.graphics.width - 80f - 380f - 60f, 40f)//margin right 80, width 280, margin right 30.
+                        setOnClickListener {
+                            val i = recordList?.content?.selectedIndex ?: -1
+                            itemPlayListener?.invoke(i, currInfo as? T?)
+                        }
+                    }.also { btnPlay = it })
 
             setStage = ParamsSettingStage()
             forestStage = ParamsForestStage()
@@ -200,23 +169,23 @@ class WorlRecordStage<T> : Stage() {
         }
     }
 
-    private fun <T : Actor> newListItem(info: WorlInfo, textureAtlas: TextureAtlas?): T? {
-        textureAtlas ?: return null
-        bitmapFont ?: return null
-        bitmapFont11 ?: return null
+    private fun <T : Actor> newListItem(info: WorlInfo, skin: Skin?, hudSkin: Skin?): T? {
+        skin ?: return null
+        hudSkin ?: return null
 
-        val bgImage = TextureRegionDrawable(textureAtlas.findRegion("background"))
-        val roleHead = getRoleHead(info.role, textureAtlas) ?: return null
-
+        val role = if (info.role.isNullOrEmpty()) "default" else info.role
+        val bgImage = skin.get("background", Image::class.java).drawable
+        val roleHead = skin.get(role, Image::class.java).apply { setSize(110f, 120f) }
+        val font20Style = hudSkin.get("font20", Label.LabelStyle::class.java)
+        val font24Style = hudSkin.get("font24", Label.LabelStyle::class.java)
         return Table().apply {
-            add(Container(Image(roleHead).apply { setSize(110f, 120f) }).apply {
-                background = bgImage;setSize(prefWidth, prefHeight)
-            })
+            add(Container(roleHead).apply { background = bgImage;setSize(prefWidth, prefHeight) })
             add(Table().apply {
                 align(Align.topLeft)
-                add(Label("${info.name}", Label.LabelStyle(bitmapFont11, null)))
+                add(Label("${info.name}", font24Style))
                 row()
-                add(Label(if (info.days <= 0) "" else "${info.days}天", Label.LabelStyle(bitmapFont, null))).padTop(5f).align(Align.left)
+                add(Label(if (info.days <= 0) "" else "${info.days}天", font20Style))
+                        .padTop(5f).align(Align.left)
                 setSize(prefWidth, prefHeight)
             }).padLeft(20f)
             setSize(prefWidth, prefHeight)
@@ -224,11 +193,12 @@ class WorlRecordStage<T> : Stage() {
     }
 
     fun updateRecords(list: kotlin.collections.List<WorlInfo>) {
-        val texture = manager?.get(R.image.saveslot_portraits, TextureAtlas::class.java)
+        val skin = manager?.get(R.skin.saveslot_portraits, Skin::class.java)
+        val hudSkin = manager?.get(R.skin.option_hud, Skin::class.java)
         val items = Array<Actor>()
         infoList.clear()
         list.forEach {
-            newListItem<Actor>(it, texture)?.let { act ->
+            newListItem<Actor>(it, skin, hudSkin)?.let { act ->
                 items.add(act);infoList.add(it)
             }
         }
@@ -270,28 +240,6 @@ class WorlRecordStage<T> : Stage() {
 
     fun setBackClickListener(lis: () -> Unit) {
         backClickListener = lis
-    }
-
-    private fun getRoleHead(role: String?, textureAtlas: TextureAtlas): TextureRegionDrawable? {
-        return trycatch {
-            when (role) {
-                "waxwell" -> TextureRegionDrawable(textureAtlas.findRegion("waxwell"))
-                "wilson" -> TextureRegionDrawable(textureAtlas.findRegion("wilson"))
-                "wilton" -> TextureRegionDrawable(textureAtlas.findRegion("wilton"))
-                "woodie" -> TextureRegionDrawable(textureAtlas.findRegion("woodie"))
-                "wolfgang" -> TextureRegionDrawable(textureAtlas.findRegion("wolfgang"))
-                "wx78" -> TextureRegionDrawable(textureAtlas.findRegion("wx78"))
-                "wathgrithr" -> TextureRegionDrawable(textureAtlas.findRegion("wathgrithr"))
-                "wortox" -> TextureRegionDrawable(textureAtlas.findRegion("wortox"))
-                "wendy" -> TextureRegionDrawable(textureAtlas.findRegion("wendy"))
-                "willow" -> TextureRegionDrawable(textureAtlas.findRegion("willow"))
-                "wes" -> TextureRegionDrawable(textureAtlas.findRegion("wes"))
-                "webber" -> TextureRegionDrawable(textureAtlas.findRegion("webber"))
-                "winnie" -> TextureRegionDrawable(textureAtlas.findRegion("winnie"))
-                "wickerbottom" -> TextureRegionDrawable(textureAtlas.findRegion("wickerbottom"))
-                else -> TextureRegionDrawable(textureAtlas.findRegion("random"))
-            }
-        }
     }
 
     override fun act() {
@@ -364,69 +312,56 @@ class WorlRecordStage<T> : Stage() {
 
         init {
             manager?.let { mgr ->
-                val hudTexture = mgr.get(R.image.option_hud, TextureAtlas::class.java)
+                val hudSkin = mgr.get(R.skin.option_hud, Skin::class.java)
 
+                val font22Style = hudSkin.get("font22-ceab8d", Label.LabelStyle::class.java)
+                val font24TextStyle = hudSkin.get("font24-black", TextField.TextFieldStyle::class.java)
+                val font24BtnStyle = hudSkin.get("font24", TextButton.TextButtonStyle::class.java)
                 addActor(Table().apply {
-                    add(Label("游戏风格： ", Label.LabelStyle(bitmapFont, Color.valueOf("#ceab8dff"))))
-                    add(btnStyle ?: TextButton("社交", TextButton.TextButtonStyle().apply {
-                        font = bitmapFont
-                        up = TextureRegionDrawable(hudTexture.findRegion("button_n"))
-                        disabled = TextureRegionDrawable(hudTexture.findRegion("button_dis"))
-                        over = TextureRegionDrawable(hudTexture.findRegion("button_over"))
-                    }).apply {
+                    add(Label("游戏风格： ", font22Style))
+                    btnStyle = btnStyle ?: TextButton("社交", font24BtnStyle).apply {
                         setOnClickListener {
                             setStyleStage = setStyleStage ?: newStyleSatge()
                             currParamsStage = setStyleStage
                         }
-                    }.also { btnStyle = it }).width(400f)
+                    }
+                    add(btnStyle).width(400f)
                     row()
-                    add(Label("名称： ", Label.LabelStyle(bitmapFont, Color.valueOf("#ceab8dff"))))
-                    add(etName ?: TextField("", TextField.TextFieldStyle().apply {
-                        font = bitmapFont
-                        fontColor = Color.BLACK
-                        background = TextureRegionDrawable(hudTexture.findRegion("edit_bg_n"))
-                        focusedBackground = TextureRegionDrawable(hudTexture.findRegion("edit_bg_over"))
-                    }).also { etName = it }).width(700f).padTop(25f)
+                    add(Label("名称： ", font22Style))
+                    etName = etName ?: TextField("", font24TextStyle)
+                    add(etName).width(700f).padTop(25f)
                     row()
-                    add(Label("描述： ", Label.LabelStyle(bitmapFont, Color.valueOf("#ceab8dff"))))
-                    add(etDesc ?: TextField("", TextField.TextFieldStyle().apply {
-                        font = bitmapFont
-                        fontColor = Color.BLACK
-                        background = TextureRegionDrawable(hudTexture.findRegion("edit_bg_n"))
-                        focusedBackground = TextureRegionDrawable(hudTexture.findRegion("edit_bg_over"))
-                    }).also { etDesc = it }).width(700f).padTop(25f)
+                    add(Label("描述： ", font22Style))
+                    etDesc = etDesc ?: TextField("", font24TextStyle)
+                    add(etDesc).width(700f).padTop(25f)
                     row()
-                    add(Label("游戏模式： ", Label.LabelStyle(bitmapFont, Color.valueOf("#ceab8dff"))))
-                    add(newModelSelectItem(hudTexture, "生存", {
+                    add(Label("游戏模式： ", font22Style))
+                    add(newModelSelectItem(hudSkin, "生存", {
 
                     }, {
 
                     })).padTop(25f)
                     row()
-                    add(Label("玩家对战： ", Label.LabelStyle(bitmapFont, Color.valueOf("#ceab8dff"))))
-                    add(newModelSelectItem(hudTexture, "关闭", {
+                    add(Label("玩家对战： ", font22Style))
+                    add(newModelSelectItem(hudSkin, "关闭", {
 
                     }, {
 
                     })).padTop(25f)
                     row()
-                    add(Label("玩家： ", Label.LabelStyle(bitmapFont, Color.valueOf("#ceab8dff"))))
-                    add(newModelSelectItem(hudTexture, "4", {
+                    add(Label("玩家： ", font22Style))
+                    add(newModelSelectItem(hudSkin, "4", {
 
                     }, {
 
                     })).padTop(25f)
                     row()
-                    add(Label("密码： ", Label.LabelStyle(bitmapFont, Color.valueOf("#ceab8dff"))))
-                    add(etPwd ?: TextField("", TextField.TextFieldStyle().apply {
-                        font = bitmapFont
-                        fontColor = Color.BLACK
-                        background = TextureRegionDrawable(hudTexture.findRegion("edit_bg_n"))
-                        focusedBackground = TextureRegionDrawable(hudTexture.findRegion("edit_bg_over"))
-                    }).also { etPwd = it }).padTop(25f).width(700f)
+                    add(Label("密码： ", font22Style))
+                    etPwd = etPwd ?: TextField("", font24TextStyle)
+                    add(etPwd).padTop(25f).width(700f)
                     row()
-                    add(Label("服务器模式： ", Label.LabelStyle(bitmapFont, Color.valueOf("#ceab8dff"))))
-                    add(newModelSelectItem(hudTexture, "线下", {
+                    add(Label("服务器模式： ", font22Style))
+                    add(newModelSelectItem(hudSkin, "线下", {
 
                     }, {
 
@@ -443,32 +378,23 @@ class WorlRecordStage<T> : Stage() {
             }
         }
 
-        private fun newModelSelectItem(texture: TextureAtlas, text: String,
+        private fun newModelSelectItem(skin: Skin?, text: String,
                                        onPrev: (txtButton: TextButton?) -> Unit,
                                        onNext: (txtButton: TextButton?) -> Unit): Actor {
+            skin ?: return Actor()
             var btnTxt: TextButton? = null
+            val font24BtnStyle = skin.get("font24-ceab8d", TextButton.TextButtonStyle::class.java)
             return HorizontalGroup().apply {
-                addActor(ImageButton(ImageButton.ImageButtonStyle().apply {
-                    up = TextureRegionDrawable(texture.findRegion("arrow_l"))
-                    down = TextureRegionDrawable(texture.findRegion("arrow_l"))
-                    disabled = TextureRegionDrawable(texture.findRegion("arrow_l_dis"))
-                }).apply {
+                addActor(ImageButton(skin, "arrow-left").apply {
                     clearChildren();add(image).size(60f, 60f).padLeft(0f)
                     setOnClickListener { onPrev(btnTxt) }
                 })
-                addActor(btnTxt ?: TextButton(text, TextButton.TextButtonStyle().apply {
-                    font = bitmapFont
-                    disabledFontColor = Color.DARK_GRAY
-                    fontColor = Color.valueOf("#ceab8dff")
-                }).apply {
+                btnTxt = btnTxt ?: TextButton(text, font24BtnStyle).apply {
                     clearChildren()
                     add(label).pad(0f, 80f, 0f, 80f).size(80f, 60f)
-                }.also { btnTxt = it })
-                addActor(ImageButton(ImageButton.ImageButtonStyle().apply {
-                    up = TextureRegionDrawable(texture.findRegion("arrow_r"))
-                    down = TextureRegionDrawable(texture.findRegion("arrow_r"))
-                    disabled = TextureRegionDrawable(texture.findRegion("arrow_r_dis"))
-                }).apply {
+                }
+                addActor(btnTxt)
+                addActor(ImageButton(skin, "arrow-right").apply {
                     clearChildren();add(image).size(60f, 60f)
                     setOnClickListener { onNext(btnTxt) }
                 })
@@ -489,7 +415,6 @@ class WorlRecordStage<T> : Stage() {
                 GameManager.instance?.addInputProcessor(this)
             }
         }
-
     }
 
     private inner class SettingGameStyleStage : Stage() {
@@ -497,23 +422,24 @@ class WorlRecordStage<T> : Stage() {
 
         init {
             manager?.let { mgr ->
-                val hudTexture = mgr.get(R.image.option_hud, TextureAtlas::class.java)
-                val imgTexture = mgr.get(R.image.server_intentions, TextureAtlas::class.java)
+                val hudSkin = mgr.get(R.skin.option_hud, Skin::class.java)
+                val imgSkin = mgr.get(R.skin.server_intentions, Skin::class.java)
 
+                val font34F2LabelStyle = hudSkin.get("font34-f2f2f2", Label.LabelStyle::class.java)
                 addActor(Table().apply {
                     val panelWidth = Gdx.graphics.width - 580f - 20f - 60f
                     var btnWidth = (panelWidth - 200f) / 4f
-                    add(Label("你的服务器是什么游戏风格？", Label.LabelStyle(bitmapFont13, Color.valueOf("#efefefff")))).center().padTop(60f)
+                    add(Label("你的服务器是什么游戏风格？", font34F2LabelStyle)).center().padTop(60f)
                     row()
                     add(Table().apply {
-                        add(newStyleItem("社交", hudTexture, imgTexture, "social", 0))
-                                .size(btnWidth, btnWidth - 20f)
-                        add(newStyleItem("合作", hudTexture, imgTexture, "coop", 1))
-                                .size(btnWidth, btnWidth - 20f).space(30f)
-                        add(newStyleItem("竞争", hudTexture, imgTexture, "competitive", 2))
-                                .size(btnWidth, btnWidth - 20f).space(30f)
-                        add(newStyleItem("疯狂", hudTexture, imgTexture, "madness", 3))
-                                .size(btnWidth, btnWidth - 20f).space(30f)
+                        val drawable1 = imgSkin.get("social", Image::class.java).drawable
+                        add(newStyleItem("社交", hudSkin, drawable1, 0)).size(btnWidth, btnWidth - 20f)
+                        val drawable2 = imgSkin.get("coop", Image::class.java).drawable
+                        add(newStyleItem("合作", hudSkin, drawable2, 1)).size(btnWidth, btnWidth - 20f).space(30f)
+                        val drawable3 = imgSkin.get("competitive", Image::class.java).drawable
+                        add(newStyleItem("竞争", hudSkin, drawable3, 2)).size(btnWidth, btnWidth - 20f).space(30f)
+                        val drawable4 = imgSkin.get("madness", Image::class.java).drawable
+                        add(newStyleItem("疯狂", hudSkin, drawable4, 3)).size(btnWidth, btnWidth - 20f).space(30f)
                     }).padTop(60f)
                     top()
                     setSize(panelWidth, Gdx.graphics.height - 40f - 80f - 160f + 30f)
@@ -526,15 +452,13 @@ class WorlRecordStage<T> : Stage() {
             listener = lis
         }
 
-        private fun newStyleItem(text: String, texture: TextureAtlas, imgTexture: TextureAtlas,
-                                 iconName: String, index: Int): Actor {
-            return ImageTextButton(text, ImageTextButton.ImageTextButtonStyle().apply {
-                font = bitmapFont13;fontColor = Color.BLACK
-                up = TextureRegionDrawable(texture.findRegion("intentions_n"))
-                down = TextureRegionDrawable(texture.findRegion("intentions_sl"))
-                over = TextureRegionDrawable(texture.findRegion("intentions_sl"))
-                imageUp = TextureRegionDrawable(imgTexture.findRegion(iconName))
-            }).apply {
+        private fun newStyleItem(text: String, hudSkin: Skin?, imgDrawable: Drawable, index: Int): Actor {
+            hudSkin ?: return Actor()
+            val style = hudSkin.get("game-style-bg", ImageTextButton.ImageTextButtonStyle::class.java).let {
+                it.imageUp = hudSkin.newDrawable(imgDrawable)
+                ImageTextButton.ImageTextButtonStyle(it)
+            }
+            return ImageTextButton(text, style).apply {
                 clearChildren();add(label).padTop(40f).padBottom(20f)
                 row();add(image).pad(0f, 50f, 20f, 50f)
                 setOnClickListener { listener?.invoke(index) }
@@ -547,38 +471,29 @@ class WorlRecordStage<T> : Stage() {
 
         init {
             manager?.let { mgr ->
-                val hudTexture = mgr.get(R.image.option_hud, TextureAtlas::class.java)
+                val hudSkin = mgr.get(R.skin.option_hud, Skin::class.java)
                 val iconTexture = mgr.get(R.image.customisation, TextureAtlas::class.java)
 
                 val panelWidth = Gdx.graphics.width - 580f - 20f - 60f
                 val panelHeight = Gdx.graphics.height - 40f - 80f - 130f
                 var topHeight = 0f
 
+                val font22BtnStyle = hudSkin.get("font22-ceab8d", TextButton.TextButtonStyle::class.java)
                 addActor(VerticalGroup().apply {
                     addActor(HorizontalGroup().apply {
-                        addActor(Label("森林 预设", Label.LabelStyle(bitmapFont, Color.valueOf("#ceab8dff"))))
+                        addActor(Label("森林 预设", hudSkin.get("font22-ceab8d", Label.LabelStyle::class.java)))
                         addActor(Table().apply {
-                            add(ImageButton(ImageButton.ImageButtonStyle().apply {
-                                up = TextureRegionDrawable(hudTexture.findRegion("arrow_l"))
-                                down = TextureRegionDrawable(hudTexture.findRegion("arrow_l"))
-                                disabled = TextureRegionDrawable(hudTexture.findRegion("arrow_l_dis"))
-                            }).apply { clearChildren();add(image).size(60f, 60f) })
-                            add(TextButton("默认", TextButton.TextButtonStyle().apply {
-                                font = bitmapFont
-                                disabledFontColor = Color.DARK_GRAY
-                                fontColor = Color.valueOf("#ceab8dff")
-                            }).apply { clearChildren();add(label).pad(0f, 80f, 0f, 80f).size(280f, 60f) })
-                            add(ImageButton(ImageButton.ImageButtonStyle().apply {
-                                up = TextureRegionDrawable(hudTexture.findRegion("arrow_r"))
-                                down = TextureRegionDrawable(hudTexture.findRegion("arrow_r"))
-                                disabled = TextureRegionDrawable(hudTexture.findRegion("arrow_r_dis"))
-                            }).apply { clearChildren();add(image).size(60f, 60f) })
+                            add(ImageButton(hudSkin, "arrow-left").apply { clearChildren();add(image).size(60f, 60f) })
+                            add(TextButton("默认", font22BtnStyle).apply {
+                                clearChildren();add(label).pad(0f, 80f, 0f, 80f).size(280f, 60f)
+                            })
+                            add(ImageButton(hudSkin, "arrow-right").apply { clearChildren();add(image).size(60f, 60f) })
                             padLeft(600f)
                         })
                         pad(10f, 0f, 30f, 0f)
                         topHeight += prefHeight
                     })
-                    addActor(Label("标准《饥荒》体验。", Label.LabelStyle(bitmapFont, null)).apply {
+                    addActor(Label("标准《饥荒》体验。", hudSkin.get("font20", Label.LabelStyle::class.java)).apply {
                         pad(0f, 50f, 15f, 50f)
                         topHeight += prefHeight
                     })
@@ -586,7 +501,7 @@ class WorlRecordStage<T> : Stage() {
 
                     addActor(Group().apply {
                         addActor(ScrollPane(Table().apply {
-                            newParamsPanelItems(hudTexture, iconTexture).forEach {
+                            newParamsPanelItems(hudSkin, iconTexture).forEach {
                                 add(it).padTop(15f);row()
                             }
                         }).apply {
@@ -600,21 +515,22 @@ class WorlRecordStage<T> : Stage() {
                     setPosition(580f + 20f, 40f + 80f)
                 })
 
-
             }
         }
 
-        private fun newParamsPanelItems(hudTexture: TextureAtlas, iconTexture: TextureAtlas): Array<Actor> {
+        private fun newParamsPanelItems(skin: Skin?, iconTexture: TextureAtlas): Array<Actor> {
+            skin ?: return Array()
+            val titleTxtStyle = skin.get("font24-empty-bg", TextButton.TextButtonStyle::class.java)
             var itemW = 0f
             return Array<Actor>().apply {
                 val table = Table().apply {
-                    add(newSelectItem("创世界：生物群落", "默认", hudTexture,
+                    add(newSelectItem("创世界：生物群落", "默认", skin,
                             iconTexture, "world_map", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("创世界：出生点", "默认", hudTexture,
+                    add(newSelectItem("创世界：出生点", "默认", skin,
                             iconTexture, "world_start", {
 
                     }, {
@@ -622,18 +538,18 @@ class WorlRecordStage<T> : Stage() {
                     })).padLeft(50f)
                     setSize(prefWidth, prefHeight);itemW = prefWidth
                 }
-                add(TextButton("森林 世界", TextButton.TextButtonStyle(null, null, null, bitmapFont)).apply {
+                add(TextButton("森林 世界", titleTxtStyle).apply {
                     clearChildren();add(label).padTop(20f).padBottom(20f);setSize(itemW, prefHeight)
                 })
                 add(table)
                 add(Table().apply {
-                    add(newSelectItem("创世界：大小", "大", hudTexture,
+                    add(newSelectItem("创世界：大小", "大", skin,
                             iconTexture, "world_size", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("创世界：分支", "默认", hudTexture,
+                    add(newSelectItem("创世界：分支", "默认", skin,
                             iconTexture, "world_branching", {
 
                     }, {
@@ -642,13 +558,13 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("创世界：循环", "默认", hudTexture,
+                    add(newSelectItem("创世界：循环", "默认", skin,
                             iconTexture, "world_loop", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("事件", "默认", hudTexture,
+                    add(newSelectItem("事件", "默认", skin,
                             iconTexture, "events", {
 
                     }, {
@@ -657,13 +573,13 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("春", "默认", hudTexture,
+                    add(newSelectItem("春", "默认", skin,
                             iconTexture, "spring", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("夏", "默认", hudTexture,
+                    add(newSelectItem("夏", "默认", skin,
                             iconTexture, "summer", {
 
                     }, {
@@ -673,13 +589,13 @@ class WorlRecordStage<T> : Stage() {
                 })
 
                 add(Table().apply {
-                    add(newSelectItem("秋", "默认", hudTexture,
+                    add(newSelectItem("秋", "默认", skin,
                             iconTexture, "autumn", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("冬", "默认", hudTexture,
+                    add(newSelectItem("冬", "默认", skin,
                             iconTexture, "winter", {
 
                     }, {
@@ -688,13 +604,13 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("起始季节", "秋", hudTexture,
+                    add(newSelectItem("起始季节", "秋", skin,
                             iconTexture, "season_start", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("昼夜选项", "默认", hudTexture,
+                    add(newSelectItem("昼夜选项", "默认", skin,
                             iconTexture, "day", {
 
                     }, {
@@ -703,13 +619,13 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("雨", "秋", hudTexture,
+                    add(newSelectItem("雨", "秋", skin,
                             iconTexture, "rain", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("闪电", "默认", hudTexture,
+                    add(newSelectItem("闪电", "默认", skin,
                             iconTexture, "lightning", {
 
                     }, {
@@ -718,13 +634,13 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("青蛙雨", "秋", hudTexture,
+                    add(newSelectItem("青蛙雨", "秋", skin,
                             iconTexture, "frog_rain", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("野火", "默认", hudTexture,
+                    add(newSelectItem("野火", "默认", skin,
                             iconTexture, "smoke", {
 
                     }, {
@@ -733,13 +649,13 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("世界再生", "秋", hudTexture,
+                    add(newSelectItem("世界再生", "秋", skin,
                             iconTexture, "regrowth", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("复活石", "默认", hudTexture,
+                    add(newSelectItem("复活石", "默认", skin,
                             iconTexture, "resurrection", {
 
                     }, {
@@ -748,13 +664,13 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("失败的幸存者", "秋", hudTexture,
+                    add(newSelectItem("失败的幸存者", "秋", skin,
                             iconTexture, "skeletons", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("疾病", "默认", hudTexture,
+                    add(newSelectItem("疾病", "默认", skin,
                             iconTexture, "berrybush_diseased", {
 
                     }, {
@@ -763,13 +679,13 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("开始资源多样化", "秋", hudTexture,
+                    add(newSelectItem("开始资源多样化", "秋", skin,
                             iconTexture, "start_resource", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("森林石化", "默认", hudTexture,
+                    add(newSelectItem("森林石化", "默认", skin,
                             iconTexture, "petrified_tree", {
 
                     }, {
@@ -777,17 +693,17 @@ class WorlRecordStage<T> : Stage() {
                     })).padLeft(50f)
                     setSize(prefWidth, prefHeight)
                 })
-                add(TextButton("森林 资源", TextButton.TextButtonStyle(null, null, null, bitmapFont)).apply {
+                add(TextButton("森林 资源", titleTxtStyle).apply {
                     clearChildren();add(label).padTop(20f).padBottom(20f);setSize(itemW, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("花，邪恶花", "秋", hudTexture,
+                    add(newSelectItem("花，邪恶花", "秋", skin,
                             iconTexture, "flowers", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("草", "默认", hudTexture,
+                    add(newSelectItem("草", "默认", skin,
                             iconTexture, "grass", {
 
                     }, {
@@ -796,13 +712,13 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("树苗", "秋", hudTexture,
+                    add(newSelectItem("树苗", "秋", skin,
                             iconTexture, "sapling", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("尖灌木", "默认", hudTexture,
+                    add(newSelectItem("尖灌木", "默认", skin,
                             iconTexture, "marsh_bush", {
 
                     }, {
@@ -811,13 +727,13 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("风滚草", "秋", hudTexture,
+                    add(newSelectItem("风滚草", "秋", skin,
                             iconTexture, "tumbleweeds", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("芦苇", "默认", hudTexture,
+                    add(newSelectItem("芦苇", "默认", skin,
                             iconTexture, "blank_grassy", {
 
                     }, {
@@ -826,13 +742,13 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("树（所有）", "秋", hudTexture,
+                    add(newSelectItem("树（所有）", "秋", skin,
                             iconTexture, "trees", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("燧石", "默认", hudTexture,
+                    add(newSelectItem("燧石", "默认", skin,
                             iconTexture, "flint", {
 
                     }, {
@@ -841,13 +757,13 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("巨石", "秋", hudTexture,
+                    add(newSelectItem("巨石", "秋", skin,
                             iconTexture, "rock", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("小冰川", "默认", hudTexture,
+                    add(newSelectItem("小冰川", "默认", skin,
                             iconTexture, "iceboulder", {
 
                     }, {
@@ -856,13 +772,13 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("流星区域", "秋", hudTexture,
+                    add(newSelectItem("流星区域", "秋", skin,
                             iconTexture, "burntground", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("流星频率", "默认", hudTexture,
+                    add(newSelectItem("流星频率", "默认", skin,
                             iconTexture, "meteor", {
 
                     }, {
@@ -870,17 +786,17 @@ class WorlRecordStage<T> : Stage() {
                     })).padLeft(50f)
                     setSize(prefWidth, prefHeight)
                 })
-                add(TextButton("森林 食物", TextButton.TextButtonStyle(null, null, null, bitmapFont)).apply {
+                add(TextButton("森林 食物", titleTxtStyle).apply {
                     clearChildren();add(label).padTop(20f).padBottom(20f);setSize(itemW, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("浆果灌木", "秋", hudTexture,
+                    add(newSelectItem("浆果灌木", "秋", skin,
                             iconTexture, "berrybush", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("胡萝卜", "默认", hudTexture,
+                    add(newSelectItem("胡萝卜", "默认", skin,
                             iconTexture, "carrot", {
 
                     }, {
@@ -889,13 +805,13 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("蘑菇", "秋", hudTexture,
+                    add(newSelectItem("蘑菇", "秋", skin,
                             iconTexture, "mushrooms", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("仙人掌", "默认", hudTexture,
+                    add(newSelectItem("仙人掌", "默认", skin,
                             iconTexture, "cactus", {
 
                     }, {
@@ -903,17 +819,17 @@ class WorlRecordStage<T> : Stage() {
                     })).padLeft(50f)
                     setSize(prefWidth, prefHeight)
                 })
-                add(TextButton("森林 动物", TextButton.TextButtonStyle(null, null, null, bitmapFont)).apply {
+                add(TextButton("森林 动物", titleTxtStyle).apply {
                     clearChildren();add(label).padTop(20f).padBottom(20f);setSize(itemW, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("兔子", "秋", hudTexture,
+                    add(newSelectItem("兔子", "秋", skin,
                             iconTexture, "rabbits", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("鼹鼠", "默认", hudTexture,
+                    add(newSelectItem("鼹鼠", "默认", skin,
                             iconTexture, "mole", {
 
                     }, {
@@ -922,13 +838,13 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("蝴蝶", "秋", hudTexture,
+                    add(newSelectItem("蝴蝶", "秋", skin,
                             iconTexture, "butterfly", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("鸟", "默认", hudTexture,
+                    add(newSelectItem("鸟", "默认", skin,
                             iconTexture, "birds", {
 
                     }, {
@@ -937,13 +853,13 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("美洲鹫", "秋", hudTexture,
+                    add(newSelectItem("美洲鹫", "秋", skin,
                             iconTexture, "buzzard", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("浣猫", "默认", hudTexture,
+                    add(newSelectItem("浣猫", "默认", skin,
                             iconTexture, "catcoon", {
 
                     }, {
@@ -952,13 +868,13 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("雄火鸡", "秋", hudTexture,
+                    add(newSelectItem("雄火鸡", "秋", skin,
                             iconTexture, "perd", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("猪", "默认", hudTexture,
+                    add(newSelectItem("猪", "默认", skin,
                             iconTexture, "pigs", {
 
                     }, {
@@ -967,13 +883,13 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("伏特山羊", "秋", hudTexture,
+                    add(newSelectItem("伏特山羊", "秋", skin,
                             iconTexture, "lightning_goat", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("牦牛", "默认", hudTexture,
+                    add(newSelectItem("牦牛", "默认", skin,
                             iconTexture, "beefalo", {
 
                     }, {
@@ -982,13 +898,13 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("牦牛交配频率", "秋", hudTexture,
+                    add(newSelectItem("牦牛交配频率", "秋", skin,
                             iconTexture, "beefaloheat", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("狩猎", "默认", hudTexture,
+                    add(newSelectItem("狩猎", "默认", skin,
                             iconTexture, "tracks", {
 
                     }, {
@@ -997,13 +913,13 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("追猎惊喜", "秋", hudTexture,
+                    add(newSelectItem("追猎惊喜", "秋", skin,
                             iconTexture, "alternatehunt", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("企鹅", "默认", hudTexture,
+                    add(newSelectItem("企鹅", "默认", skin,
                             iconTexture, "pengull", {
 
                     }, {
@@ -1012,13 +928,13 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("池塘", "秋", hudTexture,
+                    add(newSelectItem("池塘", "秋", skin,
                             iconTexture, "ponds", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("蜜蜂", "默认", hudTexture,
+                    add(newSelectItem("蜜蜂", "默认", skin,
                             iconTexture, "beehive", {
 
                     }, {
@@ -1027,13 +943,13 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("杀人蜂", "秋", hudTexture,
+                    add(newSelectItem("杀人蜂", "秋", skin,
                             iconTexture, "wasphive", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("高脚鸟", "默认", hudTexture,
+                    add(newSelectItem("高脚鸟", "默认", skin,
                             iconTexture, "tallbirds", {
 
                     }, {
@@ -1041,17 +957,17 @@ class WorlRecordStage<T> : Stage() {
                     })).padLeft(50f)
                     setSize(prefWidth, prefHeight)
                 })
-                add(TextButton("森林 怪物", TextButton.TextButtonStyle(null, null, null, bitmapFont)).apply {
+                add(TextButton("森林 怪物", titleTxtStyle).apply {
                     clearChildren();add(label).padTop(20f).padBottom(20f);setSize(itemW, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("蜘蛛", "秋", hudTexture,
+                    add(newSelectItem("蜘蛛", "秋", skin,
                             iconTexture, "spiders", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("猎犬袭击", "默认", hudTexture,
+                    add(newSelectItem("猎犬袭击", "默认", skin,
                             iconTexture, "hounds", {
 
                     }, {
@@ -1060,13 +976,13 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("猎犬丘", "秋", hudTexture,
+                    add(newSelectItem("猎犬丘", "秋", skin,
                             iconTexture, "houndmound", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("鱼人", "默认", hudTexture,
+                    add(newSelectItem("鱼人", "默认", skin,
                             iconTexture, "merms", {
 
                     }, {
@@ -1075,13 +991,13 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("触手", "秋", hudTexture,
+                    add(newSelectItem("触手", "秋", skin,
                             iconTexture, "tentacles", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("发条装置", "默认", hudTexture,
+                    add(newSelectItem("发条装置", "默认", skin,
                             iconTexture, "chess_monsters", {
 
                     }, {
@@ -1090,13 +1006,13 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("食人花", "秋", hudTexture,
+                    add(newSelectItem("食人花", "秋", skin,
                             iconTexture, "lureplant", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("海象人营地", "默认", hudTexture,
+                    add(newSelectItem("海象人营地", "默认", skin,
                             iconTexture, "mactusk", {
 
                     }, {
@@ -1105,13 +1021,13 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("树精守卫", "秋", hudTexture,
+                    add(newSelectItem("树精守卫", "秋", skin,
                             iconTexture, "liefs", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("毒山毛榉树", "默认", hudTexture,
+                    add(newSelectItem("毒山毛榉树", "默认", skin,
                             iconTexture, "deciduouspoison", {
 
                     }, {
@@ -1120,13 +1036,13 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("坎普斯", "秋", hudTexture,
+                    add(newSelectItem("坎普斯", "秋", skin,
                             iconTexture, "krampus", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("狂暴熊獾", "默认", hudTexture,
+                    add(newSelectItem("狂暴熊獾", "默认", skin,
                             iconTexture, "bearger", {
 
                     }, {
@@ -1135,13 +1051,13 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("独眼巨鹿", "秋", hudTexture,
+                    add(newSelectItem("独眼巨鹿", "秋", skin,
                             iconTexture, "deerclops", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("驼鹿/鹅", "默认", hudTexture,
+                    add(newSelectItem("驼鹿/鹅", "默认", skin,
                             iconTexture, "goosemoose", {
 
                     }, {
@@ -1150,13 +1066,13 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("龙蝇", "秋", hudTexture,
+                    add(newSelectItem("龙蝇", "秋", skin,
                             iconTexture, "dragonfly", {
 
                     }, {
 
                     }))
-                    add(newSelectItem("蚁狮贡品", "默认", hudTexture,
+                    add(newSelectItem("蚁狮贡品", "默认", skin,
                             iconTexture, "antlion_tribute", {
 
                     }, {
@@ -1167,36 +1083,32 @@ class WorlRecordStage<T> : Stage() {
             }
         }
 
-        private fun newSelectItem(desc: String, value: String, texture: TextureAtlas,
+        private fun newSelectItem(desc: String, value: String, skin: Skin?,
                                   iconTexture: TextureAtlas, iconName: String,
                                   onPrev: (valueLabel: Label?) -> Unit,
                                   onNext: (valueLabel: Label?) -> Unit): Actor {
+            skin ?: return Actor()
             var valLabel: Label? = null
-            return Button(Button.ButtonStyle().apply {
-                over = TextureRegionDrawable(texture.findRegion("option_over"))
-            }).apply {
+
+            val btnStyle = skin.get("option_bg", Button.ButtonStyle::class.java)
+            val font26F2Style = skin.get("font22-f2f2f2", Label.LabelStyle::class.java)
+            val font22CeStyle = skin.get("font20-ceab8d", Label.LabelStyle::class.java)
+            return Button(btnStyle).apply {
                 clearChildren()
                 add(Image(TextureRegionDrawable(iconTexture.findRegion(iconName)))).size(100f, 100f)
-                add(ImageButton(ImageButton.ImageButtonStyle().apply {
-                    up = TextureRegionDrawable(texture.findRegion("arrow_l"))
-                    down = TextureRegionDrawable(texture.findRegion("arrow_l"))
-                    disabled = TextureRegionDrawable(texture.findRegion("arrow_l_dis"))
+                add(ImageButton(skin, "arrow-left").apply {
                     setOnClickListener { onPrev(valLabel) }
-                })).size(60f, 90f)
+                }).size(60f, 90f)
                 add(Table().apply {
-                    add(Label(desc, Label.LabelStyle(bitmapFont, Color.valueOf("#edededff"))))
+                    add(Label(desc, font26F2Style))
                     row()
-                    valLabel = valLabel
-                            ?: Label(value, Label.LabelStyle(bitmapFont, Color.valueOf("#ceab8dff"))).also { valLabel = it }
+                    valLabel = valLabel ?: Label(value, font22CeStyle)
                     add(valLabel).padTop(10f)
                     setSize(prefWidth, prefHeight)
                 }).size(300f, 60f).padLeft(50f).padRight(50f)
-                add(ImageButton(ImageButton.ImageButtonStyle().apply {
-                    up = TextureRegionDrawable(texture.findRegion("arrow_r"))
-                    down = TextureRegionDrawable(texture.findRegion("arrow_r"))
-                    disabled = TextureRegionDrawable(texture.findRegion("arrow_r_dis"))
+                add(ImageButton(skin, "arrow-right").apply {
                     setOnClickListener { onNext(valLabel) }
-                })).size(60f, 90f)
+                }).size(60f, 90f)
                 setSize(prefWidth, prefHeight)
             }
         }
