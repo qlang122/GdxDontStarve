@@ -36,10 +36,6 @@ class WorlRecordStage<T> : Stage() {
     private var itemPlayListener: ((index: Int, t: T?) -> Unit)? = null
     private var backClickListener: (() -> Unit)? = null
 
-    private var bitmapFont: BitmapFont? = null
-    private var bitmapFont11: BitmapFont? = null
-    private var bitmapFont13: BitmapFont? = null
-
     private val paramsTitles = arrayOf("设置", "森林", "洞穴", "模组", "回滚")
 
     private var currParamsStage: Stage? = null
@@ -66,16 +62,6 @@ class WorlRecordStage<T> : Stage() {
         manager?.let { mgr ->
             val hudSkin = mgr.get(R.skin.option_hud, Skin::class.java)
             val uiSkin = mgr.get(R.skin.ui, Skin::class.java)
-
-            bitmapFont = mgr.trycatch {
-                get(R.font.font_cn, BitmapFont::class.java)
-            }?.let {
-                bitmapFont11 = BitmapFont(BitmapFont.BitmapFontData(it.data.fontFile, false),
-                        it.regions, true).apply { data?.setScale(1.1f) }
-                bitmapFont13 = BitmapFont(BitmapFont.BitmapFontData(it.data.fontFile, false),
-                        it.regions, true).apply { data?.setScale(1.3f) }
-                it
-            }
             val hudTexture = mgr.get(R.image.option_hud, TextureAtlas::class.java)
 
             val listStyle = hudSkin.get(VerticalWidgetList.WidgetListStyle::class.java)

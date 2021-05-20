@@ -15,10 +15,12 @@ class WorlListScreen : BaseVMScreen<WorlListModel> {
     private var recordsStage: WorlRecordStage<WorlInfo>? = null
 
     init {
-        recordsStage = WorlRecordStage()
-
-        recordsStage?.setOnItemClickListener { index, t ->
-            Log.e("QL", "------->>$index")
+        recordsStage = WorlRecordStage<WorlInfo>().apply {
+            setOnItemClickListener { index, t ->
+                Log.e("QL", "------->>$index")
+            }
+            setOnItemPlayListener { index, t -> go2Play(t) }
+            setOnItemDeleteListener { index, t -> }
         }
         recordsStage?.setBackClickListener { Navigator.pop(this) }
 
@@ -52,6 +54,14 @@ class WorlListScreen : BaseVMScreen<WorlListModel> {
     override fun dispose() {
         recordsStage?.dispose()
         recordsStage = null
+    }
+
+    private fun go2Play(info: WorlInfo?) {
+        Navigator.push(PlayLoadingScreen())
+        GameManager.instance?.apply {
+            playManager.loadPlayAssets()
+            playManager.finishLoading()
+        }
     }
 
     override fun observe() {

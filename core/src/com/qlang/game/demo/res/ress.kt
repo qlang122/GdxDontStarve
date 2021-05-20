@@ -27,6 +27,7 @@ object R {
     }
 
     object skin {
+        const val hud = "atlas/images/hud.json"
         const val option_hud = "atlas/images/option_hud.json"
         const val ui = "atlas/images/ui.json"
         const val saveslot_portraits = "atlas/images/saveslot_portraits.json"
@@ -50,6 +51,8 @@ object R {
         const val bg_redux_bottom_solid = "atlas/images/bg_redux_dark_bottom_solid.atlas"
         const val bg_redux_bottom_over = "atlas/images/bg_redux_dark_bottom_vignette1.atlas"
         const val bg_redux_wardrobe_bg = "atlas/images/bg_redux_wardrobe_bg.atlas"
+        const val bg_spiral_anim = "atlas/images/bg_spiral_anim.atlas"
+        const val bg_spiral_anim_overlay = "atlas/images/bg_spiral_anim_overlay.atlas"
 
         const val customisation = "atlas/images/customisation.atlas"
         const val fepanels = "atlas/images/fepanels.atlas"
