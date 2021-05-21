@@ -1,6 +1,6 @@
 {
   com.badlogic.gdx.graphics.g2d.BitmapFont: {
-    default-font: { file: fonts/font_cn.fnt, scaledSize: -1 },
+    default: { file: fonts/font_cn.fnt, scaledSize: -1 },
     size20-font: { file: fonts/font_cn.fnt, scaledSize: 20 },
     size24-font: { file: fonts/font_cn.fnt, scaledSize: 24 }
   },
@@ -20,35 +20,48 @@
     ceab8d: { a: 1.0, b: 0.5529412, g: 0.67058825, r: 0.80784315 }
   },
   com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle: {
+    default: {}
     tool-empty:{  },
-    tool-crafting_table:{ imageUp:tab_crafting_table },
-    tool-sculpt:{ imageUp:tab_sculpt  },
-    tool-engineering:{ imageUp:tab_engineering  },
-    tool-build:{ imageUp:tab_build  },
-    tool-seafaring:{ imageUp:tab_seafaring },
-    tool-foodprocessing:{ imageUp:tab_foodprocessing  },
-    tool-madscience_lab:{ imageUp:tab_madscience_lab  },
-    tool-book:{ imageUp:tab_book  },
-    tool-shadow:{ imageUp:tab_shadow  },
-    tool-light:{ imageUp:tab_light  },
-    tool-orphanage:{ imageUp:tab_orphanage  },
-    tool-gemology:{ imageUp:tab_gemology  },
-    tool-arcane:{ imageUp:tab_arcane },
-    tool-tool:{ imageUp:tab_tool },
-    tool-refine:{ imageUp:tab_refine  },
-    tool-fight:{ imageUp:tab_fight  },
-    tool-farm:{ imageUp:tab_farm  },
-    tool-trap:{ imageUp:tab_trap  },
-    tool-dress:{ imageUp:tab_dress  },
-    tool-science:{ imageUp:tab_science  },
-    tool-moonaltar:{ imageUp:tab_moonaltar  },
-    tool-cartography:{ imageUp:tab_cartography  },
-    tool-nature:{ imageUp:tab_nature  }
+    tool-crafting_table:{ imageUp:tab_crafting_table, up:tab_highlight , checked:tab_selected},
+    tool-sculpt:{ imageUp:tab_sculpt, up:tab_highlight , checked:tab_selected},
+    tool-engineering:{ imageUp:tab_engineering, up:tab_highlight , checked:tab_selected},
+    tool-build:{ imageUp:tab_build, up:tab_highlight , checked:tab_selected },
+    tool-seafaring:{ imageUp:tab_seafaring, up:tab_highlight , checked:tab_selected},
+    tool-foodprocessing:{ imageUp:tab_foodprocessing, up:tab_highlight , checked:tab_selected },
+    tool-madscience_lab:{ imageUp:tab_madscience_lab, up:tab_highlight , checked:tab_selected },
+    tool-book:{ imageUp:tab_book, up:tab_highlight , checked:tab_selected },
+    tool-shadow:{ imageUp:tab_shadow, up:tab_highlight , checked:tab_selected },
+    tool-light:{ imageUp:tab_light, up:tab_highlight , checked:tab_selected },
+    tool-orphanage:{ imageUp:tab_orphanage, up:tab_highlight , checked:tab_selected },
+    tool-gemology:{ imageUp:tab_gemology, up:tab_highlight  , checked:tab_selected},
+    tool-arcane:{ imageUp:tab_arcane, up:tab_highlight , checked:tab_selected},
+    tool-tool:{ imageUp:tab_tool, up:tab_highlight , checked:tab_selected},
+    tool-refine:{ imageUp:tab_refine, up:tab_highlight , checked:tab_selected },
+    tool-fight:{ imageUp:tab_fight, up:tab_highlight , checked:tab_selected },
+    tool-farm:{ imageUp:tab_farm, up:tab_highlight , checked:tab_selected },
+    tool-trap:{ imageUp:tab_trap, up:tab_highlight , checked:tab_selected },
+    tool-dress:{ imageUp:tab_dress, up:tab_highlight , checked:tab_selected },
+    tool-science:{ imageUp:tab_science, up:tab_highlight , checked:tab_selected },
+    tool-moonaltar:{ imageUp:tab_moonaltar, up:tab_highlight , checked:tab_selected },
+    tool-cartography:{ imageUp:tab_cartography, up:tab_highlight , checked:tab_selected },
+    tool-nature:{ imageUp:tab_nature, up:tab_highlight , checked:tab_selected },
+    btn-map:{up: map_button},
+    btn-turnarrow:{up: turnarrow_icon, down:turnarrow_icon_over, over:turnarrow_icon_over},
+    btn-pause:{up:pause},
+    tab-goods_item_n:{up:inv_slot},
+    tab-goods_item_hand:{up:equip_slot},
+    tab-goods_item_head:{up:equip_slot_head},
+    tab-goods_item_body:{up:equip_slot_body},
+    tab-goods_item_pack:{up:inv_slot},
+    tab-goods_item_gemstone:{up:inv_slot}
   },
   com.qlang.game.demo.widget.VerticalWidgetList$WidgetListStyle: {
-    default: {up:tab_highlight, down:tab_selected, over:tab_shadow, selection:tab_selected}
+    default: { }
+    tool-tab: { down:tab_selected, over:tab_shadow}
   },
   com.badlogic.gdx.scenes.scene2d.ui.ScrollPane$ScrollPaneStyle: {
-    default: {background:craft_bg}
+    default: { }
+    tool-tab: {background: craft_bg}
+    goods-tab: {background: inventory_bg}
   }
 }

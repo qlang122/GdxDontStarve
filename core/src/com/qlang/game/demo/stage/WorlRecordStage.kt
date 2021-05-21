@@ -66,7 +66,7 @@ class WorlRecordStage<T> : Stage() {
 
             val listStyle = hudSkin.get(VerticalWidgetList.WidgetListStyle::class.java)
             recordList = VerticalWidgetList<Actor>(ScrollPane.ScrollPaneStyle(), listStyle.apply {
-                selection = hudSkin.newDrawable(selection)?.apply { leftWidth += 20f;topHeight += 15f;bottomHeight += 15f }
+                selection = trycatch { hudSkin.newDrawable(selection) }?.apply { leftWidth += 20f;topHeight += 15f;bottomHeight += 15f }
             }).apply {
                 setSize(500f, Gdx.graphics.height - 320f)
                 setPosition(80f, 150f)
@@ -372,7 +372,7 @@ class WorlRecordStage<T> : Stage() {
             val font24BtnStyle = skin.get("font24-ceab8d", TextButton.TextButtonStyle::class.java)
             return HorizontalGroup().apply {
                 addActor(ImageButton(skin, "arrow-left").apply {
-                    clearChildren();add(image).size(60f, 60f).padLeft(0f)
+                    clearChildren();add(image).size(60f, 60f)
                     setOnClickListener { onPrev(btnTxt) }
                 })
                 btnTxt = btnTxt ?: TextButton(text, font24BtnStyle).apply {

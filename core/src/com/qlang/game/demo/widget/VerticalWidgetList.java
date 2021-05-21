@@ -201,14 +201,19 @@ public class VerticalWidgetList<T extends Actor> extends ScrollPane {
         public void layout() {
             Drawable selectedDrawable = style.selection;
 
+            float topHeight = selectedDrawable != null ? selectedDrawable.getTopHeight() : 0;
+            float bottomHeight = selectedDrawable != null ? selectedDrawable.getBottomHeight() : 0;
+            float leftWidth = selectedDrawable != null ? selectedDrawable.getLeftWidth() : 0;
+            float rightWidth = selectedDrawable != null ? selectedDrawable.getRightWidth() : 0;
+
             prefWidth = 0;
             prefHeight = 0;
             for (int i = 0; i < items.size; i++) {
                 T item = items.get(i);
                 prefWidth = Math.max(item.getWidth(), prefWidth);
-                prefHeight += item.getHeight() + selectedDrawable.getTopHeight() + selectedDrawable.getBottomHeight();
+                prefHeight += item.getHeight() + topHeight + bottomHeight;
             }
-            prefWidth += selectedDrawable.getLeftWidth() + selectedDrawable.getRightWidth();
+            prefWidth += leftWidth + rightWidth;
 
             Drawable background = style.background;
             if (background != null) {
@@ -239,10 +244,10 @@ public class VerticalWidgetList<T extends Actor> extends ScrollPane {
                 width -= leftWidth + background.getRightWidth();
             }
 
-            float padLeft = selectedDrawable.getLeftWidth();
-//            float padRight = selectedDrawable.getRightWidth();
-            float padTop = selectedDrawable.getTopHeight();
-            float padBottom = selectedDrawable.getBottomHeight();
+            float padLeft = selectedDrawable != null ? selectedDrawable.getLeftWidth() : 0;
+//            float padRight = selectedDrawable != null ?selectedDrawable.getRightWidth() : 0;
+            float padTop = selectedDrawable != null ? selectedDrawable.getTopHeight() : 0;
+            float padBottom = selectedDrawable != null ? selectedDrawable.getBottomHeight() : 0;
             itemY -= padTop + padBottom;
 
             for (int i = 0; i < items.size; i++) {
@@ -370,8 +375,8 @@ public class VerticalWidgetList<T extends Actor> extends ScrollPane {
                 y -= background.getBottomHeight();
             }
             Drawable selectedDrawable = style.selection;
-            float padTop = selectedDrawable.getTopHeight();
-            float padBottom = selectedDrawable.getBottomHeight();
+            float padTop = selectedDrawable != null ? selectedDrawable.getTopHeight() : 0;
+            float padBottom = selectedDrawable != null ? selectedDrawable.getBottomHeight() : 0;
 
             y = prefHeight > parent.getHeight() ? (prefHeight - y) : (parent.getHeight() - y);
 
@@ -431,6 +436,10 @@ public class VerticalWidgetList<T extends Actor> extends ScrollPane {
             invalidateHierarchy();
         }
 
+        public void setSelectionRequired(boolean b) {
+            selection.setRequired(b);
+        }
+
         /**
          * Returns the internal items array. If modified, {@link #setItems(Array)} must be called to reflect the changes.
          */
@@ -483,7 +492,8 @@ public class VerticalWidgetList<T extends Actor> extends ScrollPane {
     }
 
     static public class WidgetListStyle {
-        public Drawable selection;
+        public @Null
+        Drawable selection;
         public @Null
         Drawable up, down, over, background;
 

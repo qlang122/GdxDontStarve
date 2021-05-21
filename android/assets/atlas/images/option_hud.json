@@ -1,6 +1,6 @@
 {
   com.badlogic.gdx.graphics.g2d.BitmapFont: {
-    default-font: { file: fonts/font_cn.fnt, scaledSize:-1 },
+    default: { file: fonts/font_cn.fnt, scaledSize:-1 },
     size14-font: { file: fonts/font_cn.fnt, scaledSize:14 },
     size16-font: { file: fonts/font_cn.fnt, scaledSize:16 },
     size18-font: { file: fonts/font_cn.fnt, scaledSize:18 },
@@ -36,7 +36,7 @@
   },
   com.badlogic.gdx.scenes.scene2d.ui.List$ListStyle: {
     default: {
-      fontColorUnselected: white, fontColorSelected: white, font: default-font,
+      fontColorUnselected: white, fontColorSelected: white, font: default,
       down: item_over, over: item_over, selection: item_select
     },
     font26: {
@@ -62,7 +62,7 @@
     tab:{ up: tab_n, over: tab_over, selection: tab_sl, rightOffset: 15}
   },
   com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
-    default:{font: default-font, fontColor: white },
+    default:{font: default, fontColor: white },
     font16:{font: size16-font, fontColor: white },
     font18:{font: size18-font, fontColor: white },
     font20:{font: size20-font, fontColor: white },
@@ -75,7 +75,7 @@
     font34:{font: size34-font, fontColor: white },
     font36:{font: size36-font, fontColor: white },
     font38:{font: size38-font, fontColor: white },
-    default-f2f2f2:{font: default-font, fontColor: f2f2f2 },
+    default-f2f2f2:{font: default, fontColor: f2f2f2 },
     font20-f2f2f2:{font: size20-font, fontColor: f2f2f2 },
     font22-f2f2f2:{font: size22-font, fontColor: f2f2f2 },
     font24-f2f2f2:{font: size24-font, fontColor: f2f2f2 },
@@ -83,7 +83,7 @@
     font28-f2f2f2:{font: size28-font, fontColor: f2f2f2 },
     font30-f2f2f2:{font: size30-font, fontColor: f2f2f2 },
     font34-f2f2f2:{font: size34-font, fontColor: f2f2f2 },
-    default-ceab8d:{font: default-font, fontColor: ceab8d },
+    default-ceab8d:{font: default, fontColor: ceab8d },
     font20-ceab8d:{font: size20-font, fontColor: ceab8d },
     font22-ceab8d:{font: size22-font, fontColor: ceab8d },
     font24-ceab8d:{font: size24-font, fontColor: ceab8d },
@@ -96,7 +96,7 @@
     panel-bg-c:{ drawable:panel_bg_c }
   },
   com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle:{
-    default:{font:default-font, fontColor: white, overFontColor: grey, downFontColor: grey,
+    default:{font:default, fontColor: white, overFontColor: grey, downFontColor: grey,
       disabledFontColor:darkGray, up: button_n, down: button_n, over:button_over, disabled:button_dis},
     font20-empty-bg: {font:size20-font, fontColor:white, overFontColor:snow, disabledFontColor:gray},
     font24-empty-bg: {font:size24-font, fontColor:white, overFontColor:snow, disabledFontColor:gray},
@@ -126,12 +126,12 @@
     arrow-right:{ up: arrow_r, over: arrow_r, disabled: arrow_r_dis}
   },
   com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton$ImageTextButtonStyle: {
-    default: {font: default-font, fontColor: white, downFontColor:grey, disabledFontColor:gray, up: button_n, over: button_over, disabled: button_dis},
+    default: {font: default, fontColor: white, downFontColor:grey, disabledFontColor:gray, up: button_n, over: button_over, disabled: button_dis},
     game-style-bg: {font: size28-font, fontColor: black, downFontColor:grey, disabledFontColor:gray, up: intentions_n, over: intentions_sl}
   },
   com.badlogic.gdx.scenes.scene2d.ui.TextField$TextFieldStyle: {
-    default:{ font: default-font, fontColor: white, disabledFontColor: gray, background: edit_bg_n, focusedBackground: edit_bg_over},
-    black-default:{ font: default-font, fontColor: black, disabledFontColor: darkGray, background: edit_bg_n, focusedBackground: edit_bg_over},
+    default:{ font: default, fontColor: white, disabledFontColor: gray, background: edit_bg_n, focusedBackground: edit_bg_over},
+    black-default:{ font: default, fontColor: black, disabledFontColor: darkGray, background: edit_bg_n, focusedBackground: edit_bg_over},
     font22-default:{ font: size22-font, fontColor: white, disabledFontColor: darkGray, background: edit_bg_n, focusedBackground: edit_bg_over},
     font24-default:{ font: size24-font, fontColor: white, disabledFontColor: darkGray, background: edit_bg_n, focusedBackground: edit_bg_over},
     font26-default:{ font: size26-font, fontColor: white, disabledFontColor: darkGray, background: edit_bg_n, focusedBackground: edit_bg_over},

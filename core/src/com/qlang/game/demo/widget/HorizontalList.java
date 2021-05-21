@@ -173,7 +173,7 @@ public class HorizontalList<T extends Actor> extends Widget implements Cullable 
             itemWidth = Math.max(t.getWidth(), itemWidth);
         }
         prefWidth = items.size * itemWidth;
-        prefHeight += selectedDrawable.getTopHeight() + selectedDrawable.getBottomHeight();
+        prefHeight += (selectedDrawable != null ? selectedDrawable.getTopHeight() : 0) + (selectedDrawable != null ? selectedDrawable.getBottomHeight() : 0);
 
         Drawable background = style.background;
         if (background != null) {
@@ -199,10 +199,10 @@ public class HorizontalList<T extends Actor> extends Widget implements Cullable 
             x += background.getLeftWidth();
         }
 
-        float padLeft = selectedDrawable.getLeftWidth();
-        float padRight = selectedDrawable.getRightWidth();
-//        float padTop = selectedDrawable.getTopHeight();
-        float padBottom = selectedDrawable.getBottomHeight();
+        float padLeft = selectedDrawable != null ? selectedDrawable.getLeftWidth() : 0;
+        float padRight = selectedDrawable != null ? selectedDrawable.getRightWidth() : 0;
+//        float padTop = selectedDrawable != null ? selectedDrawable.getTopHeight() : 0;
+        float padBottom = selectedDrawable != null ? selectedDrawable.getBottomHeight() : 0;
 
         for (int i = 0; i < items.size; i++) {
             T item = items.get(i);
@@ -331,8 +331,8 @@ public class HorizontalList<T extends Actor> extends Widget implements Cullable 
         }
 
         Drawable selectedDrawable = style.selection;
-        float padLeft = selectedDrawable.getLeftWidth();
-        float padRight = selectedDrawable.getRightWidth();
+        float padLeft = selectedDrawable != null ? selectedDrawable.getLeftWidth() : 0;
+        float padRight = selectedDrawable != null ? selectedDrawable.getRightWidth() : 0;
 
         float curr = 0f;
 

@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.ScreenAdapter
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.scenes.scene2d.Stage
+import com.qlang.game.demo.GameManager
 import com.qlang.game.demo.stage.PlayHudStage
 
 class PlayScreen : ScreenAdapter() {
@@ -19,6 +20,16 @@ class PlayScreen : ScreenAdapter() {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
 
         hudStage?.apply { act();draw() }
+    }
+
+    override fun show() {
+        super.show()
+        hudStage?.let { GameManager.instance?.addInputProcessor(it) }
+    }
+
+    override fun hide() {
+        super.hide()
+        hudStage?.let { GameManager.instance?.removeInputProcessor(it) }
     }
 
     override fun dispose() {

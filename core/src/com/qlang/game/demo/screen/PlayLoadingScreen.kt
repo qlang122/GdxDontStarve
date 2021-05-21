@@ -54,7 +54,7 @@ class PlayLoadingScreen : ScreenAdapter() {
             else -> txtLabel.setText("$TXT_LOAD")
         }
 
-        if (delay >= 3 && GameManager.instance?.isPlayAssetsLoaded == true) {
+        if (delay >= 2 && GameManager.instance?.isPlayAssetsLoaded == true) {
             Navigator.push(PlayScreen())
             Navigator.pop(this)
             return

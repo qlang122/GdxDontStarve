@@ -11,7 +11,6 @@ import com.qlang.game.demo.GameManager
 import com.qlang.game.demo.route.Navigator
 import kotlin.random.Random
 
-
 class LaunchScreen : ScreenAdapter() {
     private var bgTexture: TextureAtlas? = null
     private var bgOverlayTexture: TextureAtlas? = null
