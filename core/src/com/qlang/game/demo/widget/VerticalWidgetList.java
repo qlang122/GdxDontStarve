@@ -250,7 +250,7 @@ public class VerticalWidgetList<T extends Actor> extends ScrollPane {
                 float itemHeight = item.getHeight();
                 if (cullingArea == null || (itemY - itemHeight - padTop - padBottom <= cullingArea.y + cullingArea.height && itemY >= cullingArea.y)) {
                     boolean selected = selection.contains(item);
-                    Drawable drawable = null;
+                    Drawable drawable = style.up;
                     if (pressedIndex == i && style.down != null)
                         drawable = style.down;
                     else if (parent.isShowSelection && selected) {
@@ -485,7 +485,7 @@ public class VerticalWidgetList<T extends Actor> extends ScrollPane {
     static public class WidgetListStyle {
         public Drawable selection;
         public @Null
-        Drawable down, over, background;
+        Drawable up, down, over, background;
 
         public WidgetListStyle() {
         }
@@ -497,6 +497,7 @@ public class VerticalWidgetList<T extends Actor> extends ScrollPane {
         public WidgetListStyle(WidgetListStyle style) {
             selection = style.selection;
 
+            up = style.up;
             down = style.down;
             over = style.over;
             background = style.background;
