@@ -5,11 +5,12 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.Skin
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
+import com.badlogic.gdx.utils.viewport.FillViewport
 import com.qlang.game.demo.res.R
 import com.qlang.game.demo.widget.MyList
 import com.qlang.game.demo.GameManager
 
-class HomeMenuStage : Stage() {
+class HomeMenuStage : Stage(FillViewport(1920f, 1080f)) {
     private val manager: AssetManager? = GameManager.instance?.mainManager
     private lateinit var list: MyList<String>
 
@@ -20,7 +21,7 @@ class HomeMenuStage : Stage() {
     init {
         manager?.let { mgr ->
             val skin = mgr.get(R.skin.option_hud, Skin::class.java)
-            list = MyList<String>(skin, "font30").apply {
+            list = MyList<String>(skin, "font22").apply {
                 this.style?.selection = skin.newDrawable(this.style.selection)?.apply {
                     leftWidth += 50f;rightWidth += 50f;topHeight += 22f;bottomHeight += 22f
                 }

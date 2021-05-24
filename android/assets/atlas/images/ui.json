@@ -1,6 +1,6 @@
 {
   com.badlogic.gdx.graphics.g2d.BitmapFont: {
-    default: { file: fonts/font_cn.fnt, scaledSize:-1 },
+    default: { file: fonts/font_cn.fnt, scaledSize:18 },
     size14-font: { file: fonts/font_cn.fnt, scaledSize:14 },
     size16-font: { file: fonts/font_cn.fnt, scaledSize:16 },
     size18-font: { file: fonts/font_cn.fnt, scaledSize:18 },

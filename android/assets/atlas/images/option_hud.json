@@ -1,6 +1,6 @@
 {
   com.badlogic.gdx.graphics.g2d.BitmapFont: {
-    default: { file: fonts/font_cn.fnt, scaledSize:-1 },
+    default: { file: fonts/font_cn.fnt, scaledSize:18 },
     size14-font: { file: fonts/font_cn.fnt, scaledSize:14 },
     size16-font: { file: fonts/font_cn.fnt, scaledSize:16 },
     size18-font: { file: fonts/font_cn.fnt, scaledSize:18 },
@@ -37,6 +37,14 @@
   com.badlogic.gdx.scenes.scene2d.ui.List$ListStyle: {
     default: {
       fontColorUnselected: white, fontColorSelected: white, font: default,
+      down: item_over, over: item_over, selection: item_select
+    },
+    font20: {
+      fontColorUnselected: white, fontColorSelected: white, font: size20-font,
+      down: item_over, over: item_over, selection: item_select
+    },
+    font22: {
+      fontColorUnselected: white, fontColorSelected: white, font: size22-font,
       down: item_over, over: item_over, selection: item_select
     },
     font26: {

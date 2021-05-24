@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.*
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable
 import com.badlogic.gdx.utils.Array
 import com.qlang.game.demo.GameManager
+import com.qlang.game.demo.actor.PlayHudClock
 import com.qlang.game.demo.entity.GoodsInfo
 import com.qlang.game.demo.entity.HudTabGoodsAttr
 import com.qlang.game.demo.ktx.setOnClickListener
@@ -25,6 +26,8 @@ class PlayHudStage : Stage() {
             "tool-science", "tool-fight", "tool-build", "tool-seafaring", "tool-refine",
             "tool-arcane", "tool-dress", "tool-empty", "tool-crafting_table", "tool-cartography"
     )
+
+    private var clockActor: PlayHudClock? = null
 
     private val tabGoodsBottomArrays: ArrayList<ArrayList<HudTabGoodsAttr>> = arrayListOf(
             ArrayList<HudTabGoodsAttr>().apply {
@@ -120,6 +123,13 @@ class PlayHudStage : Stage() {
                 setSize(if (b) (width - 150f - 240f - 10f) else (tabWidth + 50f), 180f)
                 setPosition(if (b) 150f else ((width - prefWidth) / 2f - 50f), 0f)
             })
+
+            clockActor = PlayHudClock(hudSkin).apply {
+                setPosition(Gdx.graphics.width - prefWidth - 30f, Gdx.graphics.height - prefHeight - 20f)
+                setSize(prefWidth, prefHeight)
+            }
+            clockActor?.date?.hour = 56
+            addActor(clockActor)
         }
     }
 
