@@ -47,7 +47,7 @@ class PlayHudStage : Stage() {
             val hudSkin = mgr.get(R.skin.hud, Skin::class.java)
 
             addActor(VerticalWidgetList<Button>(hudSkin, "tool-tab", hudSkin, "tool-tab").apply {
-                style?.background?.let { it.topHeight += 25f;it.bottomHeight += 25f;it.rightWidth += 20f }
+                style?.background?.let { it.topHeight += 23f;it.bottomHeight += 23f;it.rightWidth += 15f }
                 content?.style?.selection?.let { it.bottomHeight += 10f }
                 isShowSelection = true
                 content?.setSelectionRequired(false)
@@ -56,7 +56,7 @@ class PlayHudStage : Stage() {
                 setPosition(0f, Gdx.graphics.height / 2f - h / 2f)
                 setSize(100f, h)
                 content?.setOnClickListener {
-                    val item = content?.selected?.toggle()
+                    val item = content?.selected?.apply { isChecked = !isChecked }
                 }
             })
 
@@ -104,20 +104,21 @@ class PlayHudStage : Stage() {
             var tabWidth = 0f
             addActor(ScrollPane(Table().apply {
                 tabGoodsBottomArrays[0].forEachIndexed { i, it ->
-                    add(ImageButton(hudSkin, it.icon)).size(70f, 70f).padLeft(if (i % 5 == 0) 10f else 5f)
+                    add(ImageButton(hudSkin, it.icon)).size(80f, 80f).padLeft(if (i % 5 == 0) 10f else 5f)
                 }
                 row().padTop(5f)
                 tabGoodsBottomArrays[1].forEachIndexed { i, it ->
-                    add(ImageButton(hudSkin, it.icon)).size(70f, 70f).padLeft(if (i % 5 == 0) 10f else 5f)
+                    add(ImageButton(hudSkin, it.icon)).size(80f, 80f).padLeft(if (i % 5 == 0) 10f else 5f)
                 }
                 tabWidth = prefWidth
                 setSize(prefWidth, prefHeight)
             }, hudSkin, "goods-tab").apply {
-                style?.background?.let { it.leftWidth += 25f;it.rightWidth += 25f;it.topHeight += 20f;it.bottomHeight += 10f }
+                setScrollingDisabled(false, true)
+                style?.background?.let { it.leftWidth += 20f;it.rightWidth += 20f;it.topHeight += 25f;it.bottomHeight += 10f }
                 val width = Gdx.graphics.width
                 val b = tabWidth > (width - 300f)
-                setSize(if (b) (width - 150f - 240f - 10f) else (width - 300f), 180f)
-                setPosition(if (b) 150f else width / 2f - prefWidth / 2f, 0f)
+                setSize(if (b) (width - 150f - 240f - 10f) else (tabWidth + 50f), 180f)
+                setPosition(if (b) 150f else ((width - prefWidth) / 2f - 50f), 0f)
             })
         }
     }

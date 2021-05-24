@@ -1,6 +1,15 @@
 android {
     buildToolsVersion "30.0.3"
     compileSdkVersion 30
+
+    defaultConfig {
+        applicationId "com.qlang.game.demo"
+        minSdkVersion 14
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+    }
+
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
@@ -17,17 +26,32 @@ android {
         exclude 'META-INF/robovm/ios/robovm.xml'
         exclude 'META-INF/proguard/coroutines.pro'
     }
-    defaultConfig {
-        applicationId "com.qlang.game.demo"
-        minSdkVersion 14
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+
+    signingConfigs {
+        def alias = rootProject.ext.key_alias
+        def password = rootProject.ext.key_pwd
+        def filePath = rootProject.ext.key_file_path
+        debug {
+            keyAlias alias
+            keyPassword password
+            storeFile file(filePath)
+            storePassword(password)
+        }
+        release {
+            keyAlias alias
+            keyPassword password
+            storeFile file(filePath)
+            storePassword(password)
+        }
     }
+
     buildTypes {
         release {
             minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 
@@ -35,6 +59,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
 }
 
 dependencies {
