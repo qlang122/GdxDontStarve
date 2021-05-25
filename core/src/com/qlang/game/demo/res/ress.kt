@@ -7,8 +7,18 @@ object R {
             const val idle = "anim/player-idles.scml"
             const val basic = "anim/player-basic.scml"
 
-            object wilson {
-                const val atlas = "anim/wilson/wilson.atlas"
+            const val wilson_atlas = "anim/player/wilson.atlas"
+
+            fun atlas(): ArrayList<String> {
+                val list = ArrayList<String>()
+                for (it in this.javaClass.fields) {
+                    val name = it?.name
+                    if (name != null && name != "INSTANCE") {
+                        it.isAccessible = true
+                        it.get(this)?.toString()?.let { if (it.endsWith(".atlas")) list.add(it) }
+                    }
+                }
+                return list
             }
         }
 
@@ -23,6 +33,31 @@ object R {
             const val halloween_atlas = "anim/menu/dst_menu_halloween.atlas"
             const val lunacy = "anim/menu/dst_menu_lunacy.scml"
             const val lunacy_atlas = "anim/menu/dst_menu_lunacy.atlas"
+        }
+
+        object hud {
+            const val health = "anim/hud/health.scml"
+            const val health_atlas = "anim/hud/health.atlas"
+            const val hunger = "anim/hud/hunger.scml"
+            const val hunger_atlas = "anim/hud/hunger.atlas"
+            const val sanity = "anim/hud/sanity.scml"
+            const val sanity_atlas = "anim/hud/sanity.atlas"
+            const val sanity_arrow = "anim/hud/sanity_arrow.scml"
+            const val sanity_arrow_atlas = "anim/hud/sanity_arrow.atlas"
+            const val wet_meter = "anim/hud/wet_meter.scml"
+            const val wet_meter_atlas = "anim/hud/wet_meter.atlas"
+
+            fun atlas(): ArrayList<String> {
+                val list = ArrayList<String>()
+                for (it in this.javaClass.fields) {
+                    val name = it?.name
+                    if (name != null && name != "INSTANCE") {
+                        it.isAccessible = true
+                        it.get(this)?.toString()?.let { if (it.endsWith(".atlas")) list.add(it) }
+                    }
+                }
+                return list
+            }
         }
     }
 

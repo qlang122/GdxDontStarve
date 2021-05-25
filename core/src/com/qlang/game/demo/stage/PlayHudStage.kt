@@ -2,7 +2,6 @@ package com.qlang.game.demo.stage
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.assets.AssetManager
-import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.scenes.scene2d.Actor
 import com.badlogic.gdx.scenes.scene2d.Stage
@@ -10,8 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.*
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable
 import com.badlogic.gdx.utils.Array
 import com.qlang.game.demo.GameManager
-import com.qlang.game.demo.actor.PlayHudClock
-import com.qlang.game.demo.entity.GoodsInfo
+import com.qlang.game.demo.actor.hud.*
 import com.qlang.game.demo.entity.HudTabGoodsAttr
 import com.qlang.game.demo.ktx.setOnClickListener
 import com.qlang.game.demo.ktx.trycatch
@@ -20,14 +18,19 @@ import com.qlang.game.demo.utils.Log
 import com.qlang.game.demo.widget.VerticalWidgetList
 
 class PlayHudStage : Stage() {
-    private val manager: AssetManager? = GameManager.instance?.mainManager
+    private val mainManager: AssetManager? = GameManager.instance?.mainManager
+    private val playManager: AssetManager? = GameManager.instance?.playManager
 
     private val tabToolKeys = arrayOf("tool-tool", "tool-light", "tool-trap", "tool-farm",
             "tool-science", "tool-fight", "tool-build", "tool-seafaring", "tool-refine",
             "tool-arcane", "tool-dress", "tool-empty", "tool-crafting_table", "tool-cartography"
     )
 
-    private var clockActor: PlayHudClock? = null
+    private var clockActor: PlayClockActor? = null
+    private var healthActor: PlayerHealthActor? = null
+    private var hungerActor: PlayerHungerActor? = null
+    private var sanityActor: PlayerSanityActor? = null
+    private var wetMeterActor: PlayerWetMeterActor? = null
 
     private val tabGoodsBottomArrays: ArrayList<ArrayList<HudTabGoodsAttr>> = arrayListOf(
             ArrayList<HudTabGoodsAttr>().apply {
@@ -45,8 +48,7 @@ class PlayHudStage : Stage() {
     )
 
     init {
-        manager?.let { mgr ->
-            val hudTexture = mgr.get(R.image.hud, TextureAtlas::class.java)
+        mainManager?.let { mgr ->
             val hudSkin = mgr.get(R.skin.hud, Skin::class.java)
 
             addActor(VerticalWidgetList<Button>(hudSkin, "tool-tab", hudSkin, "tool-tab").apply {
@@ -124,14 +126,21 @@ class PlayHudStage : Stage() {
                 setPosition(if (b) 150f else ((width - prefWidth) / 2f - 50f), 0f)
             })
 
-            clockActor = PlayHudClock(hudSkin).apply {
-                style?.background?.let { it.leftWidth += 20f;it.topHeight += 20f;it.rightWidth += 20f;it.bottomHeight += 20f }
-//                setPosition(Gdx.graphics.width - prefWidth - 30f, Gdx.graphics.height - prefHeight - 20f)
-                setSize(prefWidth, prefHeight)
-                setPosition(0f, 0f)
+            clockActor = PlayClockActor(hudSkin).apply { pack();setSize(140f, 140f) }
+            playManager?.let {
+                healthActor = PlayerHealthActor(it).apply { setSize(100f, 100f) }
+                hungerActor = PlayerHungerActor(it).apply { setSize(100f, 100f) }
+                sanityActor = PlayerSanityActor(it).apply { setSize(100f, 100f) }
+                wetMeterActor = PlayerWetMeterActor(it).apply { setSize(100f, 100f) }
             }
-            clockActor?.date?.hour = 56
-            addActor(clockActor)
+            addActor(Table().apply {
+                setPosition(Gdx.graphics.width / 2f - prefWidth / 2 - 30f, Gdx.graphics.height / 2f - prefHeight / 2 - 15f)
+                add(clockActor);row().pad(0f)
+                add(hungerActor).padRight(20f);add(healthActor).padLeft(20f)
+                row().pad(0f);add(sanityActor);row().pad(0f);add(wetMeterActor)
+                pack()
+            })
+            addActor(healthActor)
         }
     }
 

@@ -67,7 +67,7 @@
     tool-tab: {background: craft_bg}
     goods-tab: {background: inventory_bg}
   },
-  com.qlang.game.demo.actor.PlayHudClock$ClockStyle:{
+  com.qlang.game.demo.actor.hud.PlayClockActor$ClockStyle:{
     default:{font:size24-font, background:clock_NIGHT, wedge:clock_wedge, rim: clock_rim, hand: clock_hand}
   }
 }

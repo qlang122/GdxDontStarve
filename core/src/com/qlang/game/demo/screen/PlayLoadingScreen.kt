@@ -27,11 +27,11 @@ class PlayLoadingScreen : ScreenAdapter() {
             stage = Stage()
 
             val hudSkin = mgr.get(R.skin.option_hud, Skin::class.java)
-            stage?.addActor(Image(TextureRegionDrawable(mgr.get(R.image.bg_spiral_anim, TextureAtlas::class.java).findRegion("spiral_bg"))).apply {
-                setSize(Gdx.graphics.width.plus(0f), Gdx.graphics.height.plus(0f))
-            })
+//            stage?.addActor(Image(TextureRegionDrawable(mgr.get(R.image.bg_spiral_anim, TextureAtlas::class.java).findRegion("spiral_bg"))).apply {
+//                setSize(Gdx.graphics.width.plus(0f), Gdx.graphics.height.plus(0f))
+//            })
 
-            txtLabel = Label("正在加载.", hudSkin, "font32").apply {
+            txtLabel = Label("正在加载.", hudSkin, "font24").apply {
                 setPosition(120f, 80f)
             }
             stage?.addActor(txtLabel)

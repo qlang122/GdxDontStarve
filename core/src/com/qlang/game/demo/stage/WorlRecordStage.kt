@@ -68,7 +68,7 @@ class WorlRecordStage<T> : Stage() {
             recordList = VerticalWidgetList<Actor>(ScrollPane.ScrollPaneStyle(), listStyle.apply {
                 selection = trycatch { hudSkin.newDrawable(selection) }?.apply { leftWidth += 20f;topHeight += 15f;bottomHeight += 15f }
             }).apply {
-                setSize(500f, Gdx.graphics.height - 320f)
+                setSize(400f, Gdx.graphics.height - 320f)
                 setPosition(80f, 150f)
             }
 
@@ -78,24 +78,27 @@ class WorlRecordStage<T> : Stage() {
                 setPosition(-150f, -150f)
             })
 
-            addActor(Label("游戏", hudSkin, "font26").apply {
+            addActor(Label("游戏", hudSkin, "font16").apply {
                 setPosition(100f, Gdx.graphics.height - 80f)
             })
-            addActor(Label("服务器设定", hudSkin, "font30-f2f2f2").apply {
+            addActor(Label("服务器设定", hudSkin, "font18-f2f2f2").apply {
                 setPosition(100f, Gdx.graphics.height - 140f)
             })
 
             addActor(recordList)
 
-            addActor(ImageTextButton("返回", uiSkin, "font36").apply {
+            addActor(ImageTextButton("返回", uiSkin, "font24").apply {
+                style?.up?.minWidth = 0f;style?.up?.minHeight = 0f
+                style?.down?.minWidth = 0f;style?.down?.minHeight = 0f
+                style?.over?.minWidth = 0f;style?.over?.minHeight = 0f
                 setOnClickListener { backClickListener?.invoke() }
                 clearChildren()
-                add(image.apply { setSize(60f, 60f) });add(label).padLeft(170f)
+                add(image).size(60f, 60f);add(label).padLeft(170f)
                 setPosition(100f, 30f)
             })
 
             addActor(Group().apply {
-                val panelWidth = Gdx.graphics.width - 580f - 60f + 10f
+                val panelWidth = Gdx.graphics.width - 480f - 60f + 10f
                 val panelHeight = Gdx.graphics.height - 40f - 80f + 60f
                 addActor(hudSkin.get("panel-bg-c", Image::class.java).apply {
                     setPosition(panelWidth / 2f - width / 2f, 5f)
@@ -104,17 +107,17 @@ class WorlRecordStage<T> : Stage() {
                     setSize(panelWidth, panelHeight - 120f)
                 })
                 setSize(panelWidth, panelHeight)
-                setPosition(580f, 40f + 80f - 20f)
+                setPosition(480f, 40f + 80f - 20f)
             })
 
             addActor(tabList
                     ?: HorizontalList<Label>(hudSkin.get("tab", HorizontalList.ListStyle::class.java)).apply {
                         tabList = this
-                        val groupWidth = Gdx.graphics.width - 810f//left 480+20+60, right 80+40
-                        setPosition(580f + 20f + 60f, Gdx.graphics.height - 120f, Align.left)
+                        val groupWidth = Gdx.graphics.width - 680f//left 480+20+60, right 80+40
+                        setPosition(480f + 20f + 60f, Gdx.graphics.height - 120f, Align.left)
                         val items = Array<Label>()
                         paramsTitles.forEach {
-                            items.add(Label(it, hudSkin.get("font26", Label.LabelStyle::class.java)).apply {
+                            items.add(Label(it, hudSkin.get("font20", Label.LabelStyle::class.java)).apply {
                                 setAlignment(Align.center);setSize(groupWidth / 5f, 60f)
                             })
                         }
@@ -125,24 +128,24 @@ class WorlRecordStage<T> : Stage() {
 
             addActor(Group().apply {
                 addActor(btnDelete
-                        ?: TextButton("删除服务器", hudSkin.get("font26", TextButton.TextButtonStyle::class.java)).apply {
+                        ?: TextButton("删除服务器", hudSkin.get("font20", TextButton.TextButtonStyle::class.java)).apply {
                             isDisabled = true
-                            setSize(380f, 90f)
+                            setSize(300f, 90f)
                             setOnClickListener {
                                 val i = recordList?.content?.selectedIndex ?: -1
                                 itemDeleteListener?.invoke(i, currInfo as? T?)
                             }
                         }.also { btnDelete = it })
                 addActor(Image(TextureRegionDrawable(hudTexture.findRegion("delete"))).apply {
-                    setPosition(50f, 25f);setSize(40f, 40f)
+                    setPosition(25f, 25f);setSize(40f, 40f)
                 })
-                setPosition(580f + 60f + 20f, 40f)//margin left 30, margin list 20
+                setPosition(480f + 60f + 20f, 40f)//margin left 30, margin list 20
             })
 
             addActor(btnPlay
-                    ?: TextButton("创建世界", hudSkin.get("font26", TextButton.TextButtonStyle::class.java)).apply {
-                        setSize(380f, 90f)
-                        setPosition(Gdx.graphics.width - 80f - 380f - 60f, 40f)//margin right 80, width 280, margin right 30.
+                    ?: TextButton("创建世界", hudSkin.get("font20", TextButton.TextButtonStyle::class.java)).apply {
+                        setSize(300f, 90f)
+                        setPosition(Gdx.graphics.width - 80f - 300f - 60f, 40f)//margin right 80, width 280, margin right 30.
                         setOnClickListener {
                             val i = recordList?.content?.selectedIndex ?: -1
                             itemPlayListener?.invoke(i, currInfo as? T?)
@@ -162,15 +165,15 @@ class WorlRecordStage<T> : Stage() {
         val role = if (info.role.isNullOrEmpty()) "default" else info.role
         val bgImage = skin.get("background", Image::class.java).drawable
         val roleHead = skin.get(role, Image::class.java).apply { setSize(110f, 120f) }
-        val font20Style = hudSkin.get("font20", Label.LabelStyle::class.java)
-        val font24Style = hudSkin.get("font24", Label.LabelStyle::class.java)
+        val fontDesStyle = hudSkin.get("font14", Label.LabelStyle::class.java)
+        val fontTitleStyle = hudSkin.get("font18", Label.LabelStyle::class.java)
         return Table().apply {
             add(Container(roleHead).apply { background = bgImage;setSize(prefWidth, prefHeight) })
             add(Table().apply {
                 align(Align.topLeft)
-                add(Label("${info.name}", font24Style))
+                add(Label("${info.name}", fontTitleStyle))
                 row()
-                add(Label(if (info.days <= 0) "" else "${info.days}天", font20Style))
+                add(Label(if (info.days <= 0) "" else "${info.days}天", fontDesStyle))
                         .padTop(5f).align(Align.left)
                 setSize(prefWidth, prefHeight)
             }).padLeft(20f)
@@ -300,61 +303,61 @@ class WorlRecordStage<T> : Stage() {
             manager?.let { mgr ->
                 val hudSkin = mgr.get(R.skin.option_hud, Skin::class.java)
 
-                val font22Style = hudSkin.get("font22-ceab8d", Label.LabelStyle::class.java)
-                val font24TextStyle = hudSkin.get("font24-black", TextField.TextFieldStyle::class.java)
-                val font24BtnStyle = hudSkin.get("font24", TextButton.TextButtonStyle::class.java)
+                val fontTitleStyle = hudSkin.get("font16-ceab8d", Label.LabelStyle::class.java)
+                val fontEtStyle = hudSkin.get("font18-black", TextField.TextFieldStyle::class.java)
+                val fontBtnStyle = hudSkin.get("font18", TextButton.TextButtonStyle::class.java)
                 addActor(Table().apply {
-                    add(Label("游戏风格： ", font22Style))
-                    btnStyle = btnStyle ?: TextButton("社交", font24BtnStyle).apply {
+                    add(Label("游戏风格： ", fontTitleStyle))
+                    btnStyle = btnStyle ?: TextButton("社交", fontBtnStyle).apply {
                         setOnClickListener {
                             setStyleStage = setStyleStage ?: newStyleSatge()
                             currParamsStage = setStyleStage
                         }
                     }
-                    add(btnStyle).width(400f)
+                    add(btnStyle).width(300f)
                     row()
-                    add(Label("名称： ", font22Style))
-                    etName = etName ?: TextField("", font24TextStyle)
-                    add(etName).width(700f).padTop(25f)
+                    add(Label("名称： ", fontTitleStyle))
+                    etName = etName ?: TextField("", fontEtStyle)
+                    add(etName).width(500f).padTop(25f)
                     row()
-                    add(Label("描述： ", font22Style))
-                    etDesc = etDesc ?: TextField("", font24TextStyle)
-                    add(etDesc).width(700f).padTop(25f)
+                    add(Label("描述： ", fontTitleStyle))
+                    etDesc = etDesc ?: TextField("", fontEtStyle)
+                    add(etDesc).width(500f).padTop(25f)
                     row()
-                    add(Label("游戏模式： ", font22Style))
+                    add(Label("游戏模式： ", fontTitleStyle))
                     add(newModelSelectItem(hudSkin, "生存", {
 
                     }, {
 
                     })).padTop(25f)
                     row()
-                    add(Label("玩家对战： ", font22Style))
+                    add(Label("玩家对战： ", fontTitleStyle))
                     add(newModelSelectItem(hudSkin, "关闭", {
 
                     }, {
 
                     })).padTop(25f)
                     row()
-                    add(Label("玩家： ", font22Style))
+                    add(Label("玩家： ", fontTitleStyle))
                     add(newModelSelectItem(hudSkin, "4", {
 
                     }, {
 
                     })).padTop(25f)
                     row()
-                    add(Label("密码： ", font22Style))
-                    etPwd = etPwd ?: TextField("", font24TextStyle)
-                    add(etPwd).padTop(25f).width(700f)
+                    add(Label("密码： ", fontTitleStyle))
+                    etPwd = etPwd ?: TextField("", fontEtStyle)
+                    add(etPwd).padTop(25f).width(500f)
                     row()
-                    add(Label("服务器模式： ", font22Style))
+                    add(Label("服务器模式： ", fontTitleStyle))
                     add(newModelSelectItem(hudSkin, "线下", {
 
                     }, {
 
                     })).padTop(25f)
                     top()
-                    setSize(Gdx.graphics.width - 580f - 20f - 60f, Gdx.graphics.height - 40f - 80f - 160f + 30f)
-                    setPosition(580f + 20f, 40f + 80f - 20f)
+                    setSize(Gdx.graphics.width - 480f - 20f - 60f, Gdx.graphics.height - 40f - 80f - 160f + 30f)
+                    setPosition(480f + 20f, 40f + 80f - 20f)
                 })
             }
 
@@ -369,13 +372,13 @@ class WorlRecordStage<T> : Stage() {
                                        onNext: (txtButton: TextButton?) -> Unit): Actor {
             skin ?: return Actor()
             var btnTxt: TextButton? = null
-            val font24BtnStyle = skin.get("font24-ceab8d", TextButton.TextButtonStyle::class.java)
+            val fontBtnStyle = skin.get("font18-ceab8d", TextButton.TextButtonStyle::class.java)
             return HorizontalGroup().apply {
                 addActor(ImageButton(skin, "arrow-left").apply {
                     clearChildren();add(image).size(60f, 60f)
                     setOnClickListener { onPrev(btnTxt) }
                 })
-                btnTxt = btnTxt ?: TextButton(text, font24BtnStyle).apply {
+                btnTxt = btnTxt ?: TextButton(text, fontBtnStyle).apply {
                     clearChildren()
                     add(label).pad(0f, 80f, 0f, 80f).size(80f, 60f)
                 }
@@ -411,11 +414,11 @@ class WorlRecordStage<T> : Stage() {
                 val hudSkin = mgr.get(R.skin.option_hud, Skin::class.java)
                 val imgSkin = mgr.get(R.skin.server_intentions, Skin::class.java)
 
-                val font34F2LabelStyle = hudSkin.get("font34-f2f2f2", Label.LabelStyle::class.java)
+                val fontF2LabelStyle = hudSkin.get("font30-f2f2f2", Label.LabelStyle::class.java)
                 addActor(Table().apply {
-                    val panelWidth = Gdx.graphics.width - 580f - 20f - 60f
+                    val panelWidth = Gdx.graphics.width - 480f - 20f - 60f
                     var btnWidth = (panelWidth - 200f) / 4f
-                    add(Label("你的服务器是什么游戏风格？", font34F2LabelStyle)).center().padTop(60f)
+                    add(Label("你的服务器是什么游戏风格？", fontF2LabelStyle)).center().padTop(60f)
                     row()
                     add(Table().apply {
                         val drawable1 = imgSkin.get("social", Image::class.java).drawable
@@ -429,7 +432,7 @@ class WorlRecordStage<T> : Stage() {
                     }).padTop(60f)
                     top()
                     setSize(panelWidth, Gdx.graphics.height - 40f - 80f - 160f + 30f)
-                    setPosition(580f + 20f, 40f + 80f - 20f)
+                    setPosition(480f + 20f, 40f + 80f - 20f)
                 })
             }
         }
@@ -460,26 +463,26 @@ class WorlRecordStage<T> : Stage() {
                 val hudSkin = mgr.get(R.skin.option_hud, Skin::class.java)
                 val iconTexture = mgr.get(R.image.customisation, TextureAtlas::class.java)
 
-                val panelWidth = Gdx.graphics.width - 580f - 20f - 60f
+                val panelWidth = Gdx.graphics.width - 480f - 20f - 60f
                 val panelHeight = Gdx.graphics.height - 40f - 80f - 130f
                 var topHeight = 0f
 
-                val font22BtnStyle = hudSkin.get("font22-ceab8d", TextButton.TextButtonStyle::class.java)
+                val fontBtnStyle = hudSkin.get("font20-ceab8d", TextButton.TextButtonStyle::class.java)
                 addActor(VerticalGroup().apply {
                     addActor(HorizontalGroup().apply {
-                        addActor(Label("森林 预设", hudSkin.get("font22-ceab8d", Label.LabelStyle::class.java)))
+                        addActor(Label("森林 预设", hudSkin.get("font20-ceab8d", Label.LabelStyle::class.java)))
                         addActor(Table().apply {
                             add(ImageButton(hudSkin, "arrow-left").apply { clearChildren();add(image).size(60f, 60f) })
-                            add(TextButton("默认", font22BtnStyle).apply {
-                                clearChildren();add(label).pad(0f, 80f, 0f, 80f).size(280f, 60f)
+                            add(TextButton("默认", fontBtnStyle).apply {
+                                clearChildren();add(label).pad(0f, 80f, 0f, 80f).size(220f, 60f)
                             })
                             add(ImageButton(hudSkin, "arrow-right").apply { clearChildren();add(image).size(60f, 60f) })
-                            padLeft(600f)
+                            padLeft(400f)
                         })
                         pad(10f, 0f, 30f, 0f)
                         topHeight += prefHeight
                     })
-                    addActor(Label("标准《饥荒》体验。", hudSkin.get("font20", Label.LabelStyle::class.java)).apply {
+                    addActor(Label("标准《饥荒》体验。", hudSkin.get("font18", Label.LabelStyle::class.java)).apply {
                         pad(0f, 50f, 15f, 50f)
                         topHeight += prefHeight
                     })
@@ -498,7 +501,7 @@ class WorlRecordStage<T> : Stage() {
                     padTop(15f)
                     columnAlign(Align.left);expand()
                     setSize(panelWidth, panelHeight)
-                    setPosition(580f + 20f, 40f + 80f)
+                    setPosition(480f + 20f, 40f + 80f)
                 })
 
             }
@@ -506,7 +509,7 @@ class WorlRecordStage<T> : Stage() {
 
         private fun newParamsPanelItems(skin: Skin?, iconTexture: TextureAtlas): Array<Actor> {
             skin ?: return Array()
-            val titleTxtStyle = skin.get("font24-empty-bg", TextButton.TextButtonStyle::class.java)
+            val titleTxtStyle = skin.get("font20-empty-bg", TextButton.TextButtonStyle::class.java)
             var itemW = 0f
             return Array<Actor>().apply {
                 val table = Table().apply {
@@ -1077,8 +1080,8 @@ class WorlRecordStage<T> : Stage() {
             var valLabel: Label? = null
 
             val btnStyle = skin.get("option_bg", Button.ButtonStyle::class.java)
-            val font26F2Style = skin.get("font22-f2f2f2", Label.LabelStyle::class.java)
-            val font22CeStyle = skin.get("font20-ceab8d", Label.LabelStyle::class.java)
+            val fontF2Style = skin.get("font18-f2f2f2", Label.LabelStyle::class.java)
+            val fontCeStyle = skin.get("font14-ceab8d", Label.LabelStyle::class.java)
             return Button(btnStyle).apply {
                 clearChildren()
                 add(Image(TextureRegionDrawable(iconTexture.findRegion(iconName)))).size(100f, 100f)
@@ -1086,12 +1089,12 @@ class WorlRecordStage<T> : Stage() {
                     setOnClickListener { onPrev(valLabel) }
                 }).size(60f, 90f)
                 add(Table().apply {
-                    add(Label(desc, font26F2Style))
+                    add(Label(desc, fontF2Style))
                     row()
-                    valLabel = valLabel ?: Label(value, font22CeStyle)
+                    valLabel = valLabel ?: Label(value, fontCeStyle)
                     add(valLabel).padTop(10f)
                     setSize(prefWidth, prefHeight)
-                }).size(300f, 60f).padLeft(50f).padRight(50f)
+                }).size(240f, 60f).padLeft(50f).padRight(50f)
                 add(ImageButton(skin, "arrow-right").apply {
                     setOnClickListener { onNext(valLabel) }
                 }).size(60f, 90f)

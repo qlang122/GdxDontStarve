@@ -1,6 +1,7 @@
 {
   com.badlogic.gdx.graphics.g2d.BitmapFont: {
-    default: { file: fonts/font_cn.fnt, scaledSize:18 },
+    default: { file: fonts/font_cn.fnt, scaledSize:16 },
+    size12-font: { file: fonts/font_cn.fnt, scaledSize:12 },
     size14-font: { file: fonts/font_cn.fnt, scaledSize:14 },
     size16-font: { file: fonts/font_cn.fnt, scaledSize:16 },
     size18-font: { file: fonts/font_cn.fnt, scaledSize:18 },
@@ -14,10 +15,7 @@
     size34-font: { file: fonts/font_cn.fnt, scaledSize:34 },
     size36-font: { file: fonts/font_cn.fnt, scaledSize:36 },
     size38-font: { file: fonts/font_cn.fnt, scaledSize:38 },
-    size40-font: { file: fonts/font_cn.fnt, scaledSize:40 },
-    size44-font: { file: fonts/font_cn.fnt, scaledSize:44 },
-    size48-font: { file: fonts/font_cn.fnt, scaledSize:48 },
-    size52-font: { file: fonts/font_cn.fnt, scaledSize:52 }
+    size40-font: { file: fonts/font_cn.fnt, scaledSize:40 }
   },
   com.badlogic.gdx.graphics.Color: {
     green: { a: 1, b: 0, g: 1, r: 0 },
@@ -33,9 +31,17 @@
   },
   com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton$ImageTextButtonStyle: {
     default: {font:default, fontColor: white, overFontColor: grey, downFontColor: grey, up: arrow_left, down: arrow_left_over},
+    font14: {font:size14-font, fontColor: white, overFontColor: grey, downFontColor: grey, up: arrow_left, down: arrow_left_over},
+    font16: {font:size16-font, fontColor: white, overFontColor: grey, downFontColor: grey, up: arrow_left, down: arrow_left_over},
+    font18: {font:size18-font, fontColor: white, overFontColor: grey, downFontColor: grey, up: arrow_left, down: arrow_left_over},
+    font20: {font:size20-font, fontColor: white, overFontColor: grey, downFontColor: grey, up: arrow_left, down: arrow_left_over},
+    font22: {font:size22-font, fontColor: white, overFontColor: grey, downFontColor: grey, up: arrow_left, down: arrow_left_over},
+    font24: {font:size24-font, fontColor: white, overFontColor: grey, downFontColor: grey, up: arrow_left, down: arrow_left_over},
+    font26: {font:size26-font, fontColor: white, overFontColor: grey, downFontColor: grey, up: arrow_left, down: arrow_left_over},
+    font28: {font:size28-font, fontColor: white, overFontColor: grey, downFontColor: grey, up: arrow_left, down: arrow_left_over},
+    font30: {font:size30-font, fontColor: white, overFontColor: grey, downFontColor: grey, up: arrow_left, down: arrow_left_over},
+    font32: {font:size32-font, fontColor: white, overFontColor: grey, downFontColor: grey, up: arrow_left, down: arrow_left_over},
     font34: {font:size34-font, fontColor: white, overFontColor: grey, downFontColor: grey, up: arrow_left, down: arrow_left_over},
-    font36: {font:size36-font, fontColor: white, overFontColor: grey, downFontColor: grey, up: arrow_left, down: arrow_left_over},
-    font38: {font:size38-font, fontColor: white, overFontColor: grey, downFontColor: grey, up: arrow_left, down: arrow_left_over},
-    font40: {font:size40-font, fontColor: white, overFontColor: grey, downFontColor: grey, up: arrow_left, down: arrow_left_over}
+    font36: {font:size36-font, fontColor: white, overFontColor: grey, downFontColor: grey, up: arrow_left, down: arrow_left_over}
   }
 }

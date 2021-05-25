@@ -1,9 +1,10 @@
-package com.qlang.game.demo.actor
+package com.qlang.game.demo.actor.hud
 
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.g2d.Batch
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.GlyphLayout
+import com.badlogic.gdx.scenes.scene2d.Group
 import com.badlogic.gdx.scenes.scene2d.InputEvent
 import com.badlogic.gdx.scenes.scene2d.InputListener
 import com.badlogic.gdx.scenes.scene2d.ui.Skin
@@ -13,9 +14,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.TransformDrawable
 import com.badlogic.gdx.utils.Align
 import com.badlogic.gdx.utils.Pools
 import com.qlang.game.demo.entity.GameDate
-import com.qlang.game.demo.utils.Log
 
-class PlayHudClock : Widget {
+class PlayClockActor : Widget {
     var style: ClockStyle? = null
         set(value) {
             field = value
@@ -28,8 +28,10 @@ class PlayHudClock : Widget {
             invalidate()
         }
 
-    private val dayTintColor = Color.valueOf("#ffbf1466")
-    private val eveningTintColor = Color.valueOf("#e0483c66")
+    private val dayTintColor = Color.valueOf("#bd9e45f0")
+    private val dayTintLightColor = Color.valueOf("#fcd352f0")
+    private val eveningTintColor = Color.valueOf("#784640f0")
+    private val eveningTintLightColor = Color.valueOf("#a55a54f0")
     private var needUpdateDay = true
     private val daytime: Int = 9
         get() = if (needUpdateDay) field else when (date.season) {
@@ -77,6 +79,9 @@ class PlayHudClock : Widget {
         textWidth = layout.width
         layoutPool.free(layout)
 
+        prefWidth = Math.max(prefWidth, width)
+        prefHeight = Math.max(prefHeight, height)
+
         addListener(object : InputListener() {
             override fun touchDown(event: InputEvent?, x: Float, y: Float, pointer: Int, button: Int): Boolean {
                 isOver = true
@@ -105,33 +110,37 @@ class PlayHudClock : Widget {
         val rightWidth = style?.background?.rightWidth ?: 0f
         val topHeight = style?.background?.topHeight ?: 0f
 
-        style?.background?.draw(batch, x + leftWidth, y + bottomHeight, prefWidth - leftWidth - rightWidth, prefWidth - topHeight - bottomHeight)
+        style?.background?.draw(batch, x + leftWidth, y + bottomHeight,
+                prefWidth - leftWidth - rightWidth, prefWidth - topHeight - bottomHeight)
 
         val oldColor = batch?.packedColor
-        batch?.color = batch?.color?.mul(dayTintColor)
-        for (i in 1 until daytime) {
+
+        for (i in 0 until daytime) {
             val wedge = style?.wedge
+            batch?.color = if (i % 2 == 0) batch?.color?.mul(dayTintColor) else batch?.color?.mul(dayTintLightColor)
             if (wedge is TransformDrawable) {
-                val degrees = i * 22.5f - 90
+                val degrees = i * 22.5f + 22.5f
                 wedge.draw(batch, x + prefWidth / 2f, y + prefHeight / 2f, 0f, 0f,
                         (Math.sin(22.50) * (prefWidth - leftWidth - rightWidth) / 2f).toFloat(),
-                        (prefWidth - topHeight - bottomHeight) / 2f, 1f, 1f, degrees)
+                        (prefWidth - topHeight - bottomHeight - prefWidth / 6f) / 2f, 1f, 1f, 360 - degrees)
             } else wedge?.draw(batch, x + prefWidth / 2f, y + prefHeight / 2f,
                     (Math.sin(22.5) * (prefWidth - leftWidth - rightWidth) / 2f).toFloat(),
                     (prefWidth - topHeight - bottomHeight) / 2f)
+            batch?.packedColor = oldColor ?: 0f
         }
         batch?.packedColor = oldColor ?: 0f
-        batch?.color = batch?.color?.mul(eveningTintColor)
         for (i in daytime until (daytime + evening)) {
             val wedge = style?.wedge
+            batch?.color = if (i % 2 == 0) batch?.color?.mul(eveningTintColor) else batch?.color?.mul(eveningTintLightColor)
             if (wedge is TransformDrawable) {
-                val degrees = i * 22.5f - 90
+                val degrees = i * 22.5f + 22.5f
                 wedge.draw(batch, x + prefWidth / 2f, y + prefHeight / 2f, 0f, 0f,
                         (Math.sin(22.5) * (prefWidth - leftWidth - rightWidth) / 2f).toFloat(),
-                        (prefWidth - topHeight - bottomHeight) / 2f, 1f, 1f, degrees)
+                        (prefWidth - topHeight - bottomHeight - prefWidth / 6f) / 2f, 1f, 1f, 360 - degrees)
             } else wedge?.draw(batch, x + prefWidth / 2f, y + prefHeight / 2f,
                     (Math.sin(22.5) * (prefWidth - leftWidth - rightWidth) / 2f).toFloat(),
                     (prefWidth - topHeight - bottomHeight) / 2f)
+            batch?.packedColor = oldColor ?: 0f
         }
         batch?.packedColor = oldColor ?: 0f
 
@@ -140,10 +149,9 @@ class PlayHudClock : Widget {
         val hourDegrees = (date.hour * 15.0f + 15.0f * date.minute / 60) % 360
         val hand = style?.hand
         if (hand is TransformDrawable) {
-            hand.draw(batch, x + (prefWidth / 2f - hand.minHeight / 2f), (y + prefHeight / 2f - hand.minHeight / 2f),
-                    hand.minWidth / 2f, hand.minHeight / 2f,
-                    hand.minWidth, hand.minHeight, 1f, 1f, hourDegrees)
-        } else hand?.draw(batch, x + prefWidth / 2f, y + prefHeight / 2f, hand.minWidth, hand.minHeight)
+            hand.draw(batch, x + leftWidth, y + bottomHeight, prefWidth / 2f, prefHeight / 2f,
+                    prefWidth, prefHeight, 1f, 1f, hourDegrees)
+        } else hand?.draw(batch, x + leftWidth, y + bottomHeight, prefWidth, prefHeight)
 
         if (isOver) {
             val str = "${date.day}天"
@@ -165,10 +173,12 @@ class PlayHudClock : Widget {
     }
 
     override fun getPrefWidth(): Float {
+        validate()
         return prefWidth
     }
 
     override fun getPrefHeight(): Float {
+        validate()
         return prefHeight
     }
 

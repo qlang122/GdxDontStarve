@@ -3,7 +3,7 @@ package com.qlang.game.demo.actor.player
 import com.badlogic.gdx.Gdx
 import com.qlang.game.demo.res.R
 
-class WilsonActor : PlayerActor(R.anim.player.wilson.atlas) {
+class WilsonActor : PlayerActor(R.anim.player.wilson_atlas) {
 
     init {
         manager?.let {

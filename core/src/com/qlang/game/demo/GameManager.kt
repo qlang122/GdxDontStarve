@@ -59,7 +59,8 @@ class GameManager private constructor() : ApplicationAdapter() {
     val isMainAssetsLoaded: Boolean get() = mainManager.isFinished
 
     fun AssetManager.loadPlayAssets() {
-        load(R.anim.player.wilson.atlas, TextureAtlas::class.java)
+        R.anim.player.atlas().forEach { load(it, TextureAtlas::class.java) }
+        R.anim.hud.atlas().forEach { load(it, TextureAtlas::class.java) }
         R.image.fxs.atlas().forEach { load(it, TextureAtlas::class.java) }
         R.image.tile.atlas().forEach { load(it, TextureAtlas::class.java) }
     }
