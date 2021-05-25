@@ -19,7 +19,7 @@ class PlayHudClock : Widget {
     var style: ClockStyle? = null
         set(value) {
             field = value
-            invalidate()
+            invalidateHierarchy()
         }
 
     var date: GameDate = GameDate()
@@ -28,8 +28,8 @@ class PlayHudClock : Widget {
             invalidate()
         }
 
-    private val dayTintColor = Color.valueOf("#ffbf14")
-    private val eveningTintColor = Color.valueOf("#e0483c")
+    private val dayTintColor = Color.valueOf("#ffbf1466")
+    private val eveningTintColor = Color.valueOf("#e0483c66")
     private var needUpdateDay = true
     private val daytime: Int = 9
         get() = if (needUpdateDay) field else when (date.season) {
@@ -61,14 +61,14 @@ class PlayHudClock : Widget {
 
     constructor (style: ClockStyle) : super() {
         this.style = style
+
         setSize(getPrefWidth(), getPrefHeight())
     }
 
     override fun layout() {
         style?.background?.let {
-
-            prefWidth = Math.max(prefWidth + it.leftWidth + it.rightWidth, it.minWidth)
-            prefHeight = Math.max(prefHeight + it.topHeight + it.bottomHeight, it.minHeight)
+            prefWidth = Math.max(it.minWidth + it.leftWidth + it.rightWidth, it.minWidth)
+            prefHeight = Math.max(it.minWidth + it.topHeight + it.bottomHeight, it.minHeight)
         }
 
         val layoutPool = Pools.get(GlyphLayout::class.java)
@@ -76,7 +76,6 @@ class PlayHudClock : Widget {
         layout.setText(style?.font, "${date.day}天")
         textWidth = layout.width
         layoutPool.free(layout)
-        Log.e("QL", style, prefWidth, prefHeight)
 
         addListener(object : InputListener() {
             override fun touchDown(event: InputEvent?, x: Float, y: Float, pointer: Int, button: Int): Boolean {
@@ -96,7 +95,7 @@ class PlayHudClock : Widget {
     }
 
     override fun draw(batch: Batch?, parentAlpha: Float) {
-        invalidate()
+        validate()
 
         val color = color
         batch?.setColor(color.r, color.g, color.b, color.a * parentAlpha)
@@ -106,42 +105,50 @@ class PlayHudClock : Widget {
         val rightWidth = style?.background?.rightWidth ?: 0f
         val topHeight = style?.background?.topHeight ?: 0f
 
-        style?.background?.draw(batch, x + leftWidth, y + bottomHeight, width - leftWidth - rightWidth, height - topHeight - bottomHeight)
+        style?.background?.draw(batch, x + leftWidth, y + bottomHeight, prefWidth - leftWidth - rightWidth, prefWidth - topHeight - bottomHeight)
 
         val oldColor = batch?.packedColor
         batch?.color = batch?.color?.mul(dayTintColor)
         for (i in 1 until daytime) {
-            val degrees = i * 22.5f
             val wedge = style?.wedge
             if (wedge is TransformDrawable) {
-                wedge.draw(batch, prefWidth / 2f, prefHeight / 2f, 0f, 0f,
-                        width - leftWidth - rightWidth, height - topHeight - bottomHeight, 1f, 1f, degrees)
-            } else wedge?.draw(batch, prefWidth / 2f, prefHeight / 2f, width - leftWidth - rightWidth, height - topHeight - bottomHeight)
+                val degrees = i * 22.5f - 90
+                wedge.draw(batch, x + prefWidth / 2f, y + prefHeight / 2f, 0f, 0f,
+                        (Math.sin(22.50) * (prefWidth - leftWidth - rightWidth) / 2f).toFloat(),
+                        (prefWidth - topHeight - bottomHeight) / 2f, 1f, 1f, degrees)
+            } else wedge?.draw(batch, x + prefWidth / 2f, y + prefHeight / 2f,
+                    (Math.sin(22.5) * (prefWidth - leftWidth - rightWidth) / 2f).toFloat(),
+                    (prefWidth - topHeight - bottomHeight) / 2f)
         }
         batch?.packedColor = oldColor ?: 0f
         batch?.color = batch?.color?.mul(eveningTintColor)
         for (i in daytime until (daytime + evening)) {
-            val degrees = i * 22.5f
             val wedge = style?.wedge
             if (wedge is TransformDrawable) {
-                wedge.draw(batch, prefWidth / 2f, prefHeight / 2f, 0f, 0f,
-                        width - leftWidth - rightWidth, height - topHeight - bottomHeight, 1f, 1f, degrees)
-            } else wedge?.draw(batch, prefWidth / 2f, prefHeight / 2f, width - leftWidth - rightWidth, height - topHeight - bottomHeight)
+                val degrees = i * 22.5f - 90
+                wedge.draw(batch, x + prefWidth / 2f, y + prefHeight / 2f, 0f, 0f,
+                        (Math.sin(22.5) * (prefWidth - leftWidth - rightWidth) / 2f).toFloat(),
+                        (prefWidth - topHeight - bottomHeight) / 2f, 1f, 1f, degrees)
+            } else wedge?.draw(batch, x + prefWidth / 2f, y + prefHeight / 2f,
+                    (Math.sin(22.5) * (prefWidth - leftWidth - rightWidth) / 2f).toFloat(),
+                    (prefWidth - topHeight - bottomHeight) / 2f)
         }
         batch?.packedColor = oldColor ?: 0f
 
-        style?.rim?.draw(batch, x + leftWidth, y + bottomHeight, width - leftWidth - rightWidth, height - topHeight - bottomHeight)
+        style?.rim?.draw(batch, x + leftWidth, y + bottomHeight, prefWidth - leftWidth - rightWidth, prefHeight - topHeight - bottomHeight)
 
         val hourDegrees = (date.hour * 15.0f + 15.0f * date.minute / 60) % 360
         val hand = style?.hand
         if (hand is TransformDrawable) {
-            hand.draw(batch, prefWidth / 2f, prefHeight / 2f, hand.minWidth / 2f, hand.minHeight / 2f,
-                    width, height, 1f, 1f, hourDegrees)
-        } else hand?.draw(batch, prefWidth / 2f, prefHeight / 2f, width, height)
+            hand.draw(batch, x + (prefWidth / 2f - hand.minHeight / 2f), (y + prefHeight / 2f - hand.minHeight / 2f),
+                    hand.minWidth / 2f, hand.minHeight / 2f,
+                    hand.minWidth, hand.minHeight, 1f, 1f, hourDegrees)
+        } else hand?.draw(batch, x + prefWidth / 2f, y + prefHeight / 2f, hand.minWidth, hand.minHeight)
 
         if (isOver) {
             val str = "${date.day}天"
-            style?.font?.draw(batch, str, prefWidth / 2f, prefHeight / 2f, 0, str.length, textWidth, Align.left, false)
+            style?.let { it.font.setColor(it.fontColor.r, it.fontColor.g, it.fontColor.b, it.fontColor.a) }
+            style?.font?.draw(batch, str, x + prefWidth / 2f - textWidth / 2f, y + prefHeight / 2f, 0, str.length, textWidth, Align.left, false)
         }
     }
 

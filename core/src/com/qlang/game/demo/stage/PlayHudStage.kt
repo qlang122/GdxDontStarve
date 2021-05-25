@@ -125,8 +125,10 @@ class PlayHudStage : Stage() {
             })
 
             clockActor = PlayHudClock(hudSkin).apply {
-                setPosition(Gdx.graphics.width - prefWidth - 30f, Gdx.graphics.height - prefHeight - 20f)
+                style?.background?.let { it.leftWidth += 20f;it.topHeight += 20f;it.rightWidth += 20f;it.bottomHeight += 20f }
+//                setPosition(Gdx.graphics.width - prefWidth - 30f, Gdx.graphics.height - prefHeight - 20f)
                 setSize(prefWidth, prefHeight)
+                setPosition(0f, 0f)
             }
             clockActor?.date?.hour = 56
             addActor(clockActor)
