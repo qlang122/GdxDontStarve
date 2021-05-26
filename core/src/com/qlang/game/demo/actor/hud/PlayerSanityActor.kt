@@ -19,6 +19,8 @@ class PlayerSanityActor(val manager: AssetManager) : Actor() {
     private var arrowAnim: Animation? = null
     private var currStage = BodyIndexState.NEUTRAL
 
+    private var currProgress = 35f
+
     init {
         val file = Gdx.files.internal(R.anim.hud.sanity)
         val parameters = SCMLLoader.Parameters(R.anim.hud.sanity_atlas)
@@ -26,6 +28,7 @@ class PlayerSanityActor(val manager: AssetManager) : Actor() {
         val entity = scml.getEntity("sanity")
         animation = entity?.getAnimation(0)
         animation?.isLooping = false
+        animation?.update(35f)
 
         val arrowFile = Gdx.files.internal(R.anim.hud.sanity_arrow)
         val arrowParameters = SCMLLoader.Parameters(R.anim.hud.sanity_arrow_atlas)
@@ -40,7 +43,8 @@ class PlayerSanityActor(val manager: AssetManager) : Actor() {
     fun setProgress(value: Float) {
         if (value < 0 || value >= 1) return
         val len = animation?.length ?: 0
-        animation?.update(value * len)
+        currProgress = value * len
+        animation?.update(currProgress)
     }
 
     fun changeState(value: BodyIndexState = BodyIndexState.NEUTRAL) {
@@ -54,6 +58,13 @@ class PlayerSanityActor(val manager: AssetManager) : Actor() {
             BodyIndexState.INC_MOST -> arrowEntity?.getAnimation("arrow_loop_increase_most_90s")
             else -> arrowEntity?.getAnimation("neutral_90s")
         }
+    }
+
+    override fun setPosition(x: Float, y: Float) {
+        super.setPosition(x, y)
+        animation?.root?.position?.set(x, y)
+        arrowAnim?.root?.position?.set(x, y)
+        animation?.update(currProgress)
     }
 
     override fun draw(batch: Batch?, parentAlpha: Float) {

@@ -134,11 +134,33 @@ class PlayHudStage : Stage() {
                 wetMeterActor = PlayerWetMeterActor(it).apply { setSize(100f, 100f) }
             }
             addActor(Table().apply {
-                setPosition(Gdx.graphics.width / 2f - prefWidth / 2 - 30f, Gdx.graphics.height / 2f - prefHeight / 2 - 15f)
+                val tX = Gdx.graphics.width / 2f - prefWidth / 2 - 30f
+                val tY = Gdx.graphics.height / 2f - prefHeight / 2 - 15f
                 add(clockActor);row().pad(0f)
-                add(hungerActor).padRight(20f);add(healthActor).padLeft(20f)
-                row().pad(0f);add(sanityActor);row().pad(0f);add(wetMeterActor)
+                add(hungerActor).apply {
+                    pack();
+                    Log.e("QL", "--1-->", tX, tY, actorX, actorY, padLeft, padBottom)
+                    hungerActor?.setPosition(tX + actorX + padLeft, tY + actorY + padBottom)
+                }
+                add(healthActor).padLeft(20f).apply {
+                    pack();
+                    Log.e("QL", "--2-->", tX, tY, actorX, actorY, padLeft, padBottom)
+                    healthActor?.setPosition(tX + actorX + padLeft, tY + actorY + padBottom)
+                }
+                row().pad(0f)
+                add(sanityActor).apply {
+                    pack();
+                    Log.e("QL", "--3-->", tX, tY, actorX, actorY, padLeft, padBottom)
+                    sanityActor?.setPosition(tX + actorX + padLeft, tY + actorY + padBottom)
+                }
+                row().pad(0f)
+                add(wetMeterActor).apply {
+                    pack();
+                    Log.e("QL", "--4-->", tX, tY, actorX, actorY, padLeft, padBottom)
+                    wetMeterActor?.setPosition(tX + actorX + padLeft, tY + actorY + padBottom)
+                }
                 pack()
+                setPosition(tX, tY)
             })
             addActor(healthActor)
         }
