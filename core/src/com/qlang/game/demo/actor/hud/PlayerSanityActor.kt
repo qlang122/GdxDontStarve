@@ -19,16 +19,16 @@ class PlayerSanityActor(val manager: AssetManager) : Actor() {
     private var arrowAnim: Animation? = null
     private var currStage = BodyIndexState.NEUTRAL
 
-    private var currProgress = 35f
+    private var currProgress = 1f
 
     init {
         val file = Gdx.files.internal(R.anim.hud.sanity)
         val parameters = SCMLLoader.Parameters(R.anim.hud.sanity_atlas)
         val scml = SCMLLoader(InternalFileHandleResolver()).load(manager, "", file, parameters)
         val entity = scml.getEntity("sanity")
-        animation = entity?.getAnimation(0)
+        animation = entity?.getAnimation("sanity")
         animation?.isLooping = false
-        animation?.update(35f)
+        animation?.update(1f)
 
         val arrowFile = Gdx.files.internal(R.anim.hud.sanity_arrow)
         val arrowParameters = SCMLLoader.Parameters(R.anim.hud.sanity_arrow_atlas)
@@ -58,13 +58,31 @@ class PlayerSanityActor(val manager: AssetManager) : Actor() {
             BodyIndexState.INC_MOST -> arrowEntity?.getAnimation("arrow_loop_increase_most_90s")
             else -> arrowEntity?.getAnimation("neutral_90s")
         }
+        animation?.root?.position?.let { arrowAnim?.root?.position?.set(it) }
     }
 
     override fun setPosition(x: Float, y: Float) {
-        super.setPosition(x, y)
-        animation?.root?.position?.set(x, y)
-        arrowAnim?.root?.position?.set(x, y)
+//        var p = parent
+//        var offsetX = 0f
+//        var offsetY = 0f
+//        while (p != null) {
+//            offsetX += p.x;offsetY += p.y
+//            p = p.parent
+//        }
+////        Log.e("QL", "--3-->>", x, y, this.x, this.y, offsetX, offsetY, width, height)
+//        animation?.root?.position?.set(x + this.x + offsetX + width / 2f, y + this.y + offsetY + height / 2f)
+//        arrowAnim?.root?.position?.set(x + this.x + offsetX + width / 2f, y + this.y + offsetY + height / 2f)
+        animation?.root?.position?.set(x + width / 2f, y + height / 2f)
+        arrowAnim?.root?.position?.set(x + width / 2f, y + height / 2f -10f)
         animation?.update(currProgress)
+    }
+
+    override fun act(delta: Float) {
+        super.act(delta)
+        arrowAnim?.let {
+            if (it.isDone) it.reset()
+            it.update(delta.times(1000))//delta单位为s，0.001
+        }
     }
 
     override fun draw(batch: Batch?, parentAlpha: Float) {

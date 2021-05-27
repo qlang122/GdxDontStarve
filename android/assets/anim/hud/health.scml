@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r7">
     <folder id="0" name="bg">
-        <file id="0" name="bg/bg-0.png" width="64" height="64" pivot_x="-0.858594" pivot_y="1.88242"/>
+        <file id="0" name="bg/bg-0.png" width="64" height="64" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
     <folder id="1" name="heart">
-        <file id="0" name="heart/heart-0.png" width="52" height="52" pivot_x="0.482202" pivot_y="0.573567"/>
-        <file id="1" name="heart/heart-1.png" width="52" height="48" pivot_x="0.496625" pivot_y="0.576052"/>
-        <file id="2" name="heart/heart-2.png" width="48" height="40" pivot_x="0.483844" pivot_y="0.546262"/>
-        <file id="3" name="heart/heart-3.png" width="40" height="36" pivot_x="0.499987" pivot_y="0.599319"/>
+        <file id="0" name="heart/heart-0.png" width="52" height="52" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="1" name="heart/heart-1.png" width="52" height="48" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="2" name="heart/heart-2.png" width="48" height="40" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="3" name="heart/heart-3.png" width="40" height="36" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
     <folder id="2" name="frame_circle">
-        <file id="0" name="frame_circle/frame_circle-0.png" width="80" height="84" pivot_x="0.499994" pivot_y="0.512804"/>
+        <file id="0" name="frame_circle/frame_circle-0.png" width="80" height="84" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
     <folder id="3" name="bg2">
-        <file id="0" name="bg2/bg2-0.png" width="64" height="64" pivot_x="-0.8625" pivot_y="1.88203"/>
+        <file id="0" name="bg2/bg2-0.png" width="64" height="64" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
     <folder id="4" name="health_level">
         <file id="0" name="health_level/health_level-0.png" width="68" height="68" pivot_x="0.500728" pivot_y="0.499272"/>
@@ -213,76 +213,76 @@
             </mainline>
             <timeline id="0" name="frame_circle">
                 <key id="0" spin="0">
-                    <object folder="2" file="0" x="0.5" y="0.649" angle="0"/>
+                    <object folder="2" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="1" time="34" spin="0">
-                    <object folder="2" file="0" x="0.5" y="0.649" angle="0"/>
+                    <object folder="2" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="2" time="67" spin="0">
-                    <object folder="2" file="0" x="0.5" y="0.649" angle="0"/>
+                    <object folder="2" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="3" time="100" spin="0">
-                    <object folder="2" file="0" x="0.5" y="0.649" angle="0"/>
+                    <object folder="2" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="4" time="134" spin="0">
-                    <object folder="2" file="0" x="0.5" y="0.649" angle="0"/>
+                    <object folder="2" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="5" time="167" spin="0">
-                    <object folder="2" file="0" x="0.5" y="0.649" angle="0"/>
+                    <object folder="2" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="6" time="200" spin="0">
-                    <object folder="2" file="0" x="0.5" y="0.649" angle="0"/>
+                    <object folder="2" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="7" time="234" spin="0">
-                    <object folder="2" file="0" x="0.5" y="0.649" angle="0"/>
+                    <object folder="2" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="8" time="267" spin="0">
-                    <object folder="2" file="0" x="0.5" y="0.649" angle="0"/>
+                    <object folder="2" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="9" time="300" spin="0">
-                    <object folder="2" file="0" x="0.5" y="0.649" angle="0"/>
+                    <object folder="2" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="10" time="334" spin="0">
-                    <object folder="2" file="0" x="0.5" y="0.649" angle="0"/>
+                    <object folder="2" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="11" time="367" spin="0">
-                    <object folder="2" file="0" x="0.5" y="0.649" angle="0"/>
+                    <object folder="2" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="12" time="400" spin="0">
-                    <object folder="2" file="0" x="0.5" y="0.649" angle="0"/>
+                    <object folder="2" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="13" time="434" spin="0">
-                    <object folder="2" file="0" x="0.5" y="0.649" angle="0"/>
+                    <object folder="2" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="14" time="467" spin="0">
-                    <object folder="2" file="0" x="0.5" y="0.649" angle="0"/>
+                    <object folder="2" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="15" time="500" spin="0">
-                    <object folder="2" file="0" x="0.5" y="0.649" angle="0"/>
+                    <object folder="2" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="16" time="534" spin="0">
-                    <object folder="2" file="0" x="0.5" y="0.649" angle="0"/>
+                    <object folder="2" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="17" time="567" spin="0">
-                    <object folder="2" file="0" x="0.5" y="0.649" angle="0"/>
+                    <object folder="2" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="18" time="600" spin="0">
-                    <object folder="2" file="0" x="0.5" y="0.649" angle="0"/>
+                    <object folder="2" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="19" time="634" spin="0">
-                    <object folder="2" file="0" x="0.5" y="0.649" angle="0"/>
+                    <object folder="2" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="20" time="667" spin="0">
-                    <object folder="2" file="0" x="0.5" y="0.649" angle="0"/>
+                    <object folder="2" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="21" time="700" spin="0">
-                    <object folder="2" file="0" x="0.5" y="0.649" angle="0"/>
+                    <object folder="2" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="22" time="734" spin="0">
-                    <object folder="2" file="0" x="0.5" y="0.649" angle="0"/>
+                    <object folder="2" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="23" time="767" spin="0">
-                    <object folder="2" file="0" x="0.5" y="0.649" angle="0"/>
+                    <object folder="2" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="heart">
@@ -435,150 +435,150 @@
             </timeline>
             <timeline id="3" name="bg">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-86.549" y="87.599" angle="0"/>
+                    <object folder="0" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="1" time="34" spin="0">
-                    <object folder="0" file="0" x="-86.549" y="87.599" angle="0"/>
+                    <object folder="0" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="2" time="67" spin="0">
-                    <object folder="0" file="0" x="-86.549" y="87.599" angle="0"/>
+                    <object folder="0" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="3" time="100" spin="0">
-                    <object folder="0" file="0" x="-86.549" y="87.599" angle="0"/>
+                    <object folder="0" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="4" time="134" spin="0">
-                    <object folder="0" file="0" x="-86.549" y="87.599" angle="0"/>
+                    <object folder="0" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="5" time="167" spin="0">
-                    <object folder="0" file="0" x="-86.549" y="87.599" angle="0"/>
+                    <object folder="0" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="6" time="200" spin="0">
-                    <object folder="0" file="0" x="-86.549" y="87.599" angle="0"/>
+                    <object folder="0" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="7" time="234" spin="0">
-                    <object folder="0" file="0" x="-86.549" y="87.599" angle="0"/>
+                    <object folder="0" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="8" time="267" spin="0">
-                    <object folder="0" file="0" x="-86.549" y="87.599" angle="0"/>
+                    <object folder="0" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="9" time="300" spin="0">
-                    <object folder="0" file="0" x="-86.549" y="87.599" angle="0"/>
+                    <object folder="0" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="10" time="334" spin="0">
-                    <object folder="0" file="0" x="-86.549" y="87.599" angle="0"/>
+                    <object folder="0" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="11" time="367" spin="0">
-                    <object folder="0" file="0" x="-86.549" y="87.599" angle="0"/>
+                    <object folder="0" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="12" time="400" spin="0">
-                    <object folder="0" file="0" x="-86.549" y="87.599" angle="0"/>
+                    <object folder="0" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="13" time="434" spin="0">
-                    <object folder="0" file="0" x="-86.549" y="87.599" angle="0"/>
+                    <object folder="0" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="14" time="467" spin="0">
-                    <object folder="0" file="0" x="-86.549" y="87.599" angle="0"/>
+                    <object folder="0" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="15" time="500" spin="0">
-                    <object folder="0" file="0" x="-86.549" y="87.599" angle="0"/>
+                    <object folder="0" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="16" time="534" spin="0">
-                    <object folder="0" file="0" x="-86.549" y="87.599" angle="0"/>
+                    <object folder="0" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="17" time="567" spin="0">
-                    <object folder="0" file="0" x="-86.549" y="87.599" angle="0"/>
+                    <object folder="0" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="18" time="600" spin="0">
-                    <object folder="0" file="0" x="-86.549" y="87.599" angle="0"/>
+                    <object folder="0" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="19" time="634" spin="0">
-                    <object folder="0" file="0" x="-86.549" y="87.599" angle="0"/>
+                    <object folder="0" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="20" time="667" spin="0">
-                    <object folder="0" file="0" x="-86.549" y="87.599" angle="0"/>
+                    <object folder="0" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="21" time="700" spin="0">
-                    <object folder="0" file="0" x="-86.549" y="87.599" angle="0"/>
+                    <object folder="0" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="22" time="734" spin="0">
-                    <object folder="0" file="0" x="-86.549" y="87.599" angle="0"/>
+                    <object folder="0" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="23" time="767" spin="0">
-                    <object folder="0" file="0" x="-86.549" y="87.599" angle="0"/>
+                    <object folder="0" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
             </timeline>
             <timeline id="4" name="bg2">
                 <key id="0" spin="0">
-                    <object folder="3" file="0" x="-86.749" y="87.749" angle="0"/>
+                    <object folder="3" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="1" time="34" spin="0">
-                    <object folder="3" file="0" x="-86.749" y="87.749" angle="0"/>
+                    <object folder="3" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="2" time="67" spin="0">
-                    <object folder="3" file="0" x="-86.749" y="87.749" angle="0"/>
+                    <object folder="3" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="3" time="100" spin="0">
-                    <object folder="3" file="0" x="-86.749" y="87.749" angle="0"/>
+                    <object folder="3" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="4" time="134" spin="0">
-                    <object folder="3" file="0" x="-86.749" y="87.749" angle="0"/>
+                    <object folder="3" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="5" time="167" spin="0">
-                    <object folder="3" file="0" x="-86.749" y="87.749" angle="0"/>
+                    <object folder="3" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="6" time="200" spin="0">
-                    <object folder="3" file="0" x="-86.749" y="87.749" angle="0"/>
+                    <object folder="3" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="7" time="234" spin="0">
-                    <object folder="3" file="0" x="-86.749" y="87.749" angle="0"/>
+                    <object folder="3" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="8" time="267" spin="0">
-                    <object folder="3" file="0" x="-86.749" y="87.749" angle="0"/>
+                    <object folder="3" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="9" time="300" spin="0">
-                    <object folder="3" file="0" x="-86.749" y="87.749" angle="0"/>
+                    <object folder="3" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="10" time="334" spin="0">
-                    <object folder="3" file="0" x="-86.749" y="87.749" angle="0"/>
+                    <object folder="3" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="11" time="367" spin="0">
-                    <object folder="3" file="0" x="-86.749" y="87.749" angle="0"/>
+                    <object folder="3" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="12" time="400" spin="0">
-                    <object folder="3" file="0" x="-86.749" y="87.749" angle="0"/>
+                    <object folder="3" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="13" time="434" spin="0">
-                    <object folder="3" file="0" x="-86.749" y="87.749" angle="0"/>
+                    <object folder="3" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="14" time="467" spin="0">
-                    <object folder="3" file="0" x="-86.749" y="87.749" angle="0"/>
+                    <object folder="3" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="15" time="500" spin="0">
-                    <object folder="3" file="0" x="-86.749" y="87.749" angle="0"/>
+                    <object folder="3" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="16" time="534" spin="0">
-                    <object folder="3" file="0" x="-86.749" y="87.749" angle="0"/>
+                    <object folder="3" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="17" time="567" spin="0">
-                    <object folder="3" file="0" x="-86.749" y="87.749" angle="0"/>
+                    <object folder="3" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="18" time="600" spin="0">
-                    <object folder="3" file="0" x="-86.749" y="87.749" angle="0"/>
+                    <object folder="3" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="19" time="634" spin="0">
-                    <object folder="3" file="0" x="-86.749" y="87.749" angle="0"/>
+                    <object folder="3" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="20" time="667" spin="0">
-                    <object folder="3" file="0" x="-86.749" y="87.749" angle="0"/>
+                    <object folder="3" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="21" time="700" spin="0">
-                    <object folder="3" file="0" x="-86.749" y="87.749" angle="0"/>
+                    <object folder="3" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="22" time="734" spin="0">
-                    <object folder="3" file="0" x="-86.749" y="87.749" angle="0"/>
+                    <object folder="3" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
                 <key id="23" time="767" spin="0">
-                    <object folder="3" file="0" x="-86.749" y="87.749" angle="0"/>
+                    <object folder="3" file="0" x="0.5" y="0.5" angle="0"/>
                 </key>
             </timeline>
         </animation>

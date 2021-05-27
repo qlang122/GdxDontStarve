@@ -61,6 +61,7 @@ class PlayHudStage : Stage() {
                 setPosition(0f, Gdx.graphics.height / 2f - h / 2f)
                 setSize(100f, h)
                 content?.setOnClickListener {
+                    content?.items?.forEach { it.isChecked = false }
                     val item = content?.selected?.apply { isChecked = !isChecked }
                 }
             })
@@ -126,44 +127,35 @@ class PlayHudStage : Stage() {
                 setPosition(if (b) 150f else ((width - prefWidth) / 2f - 50f), 0f)
             })
 
-            clockActor = PlayClockActor(hudSkin).apply { pack();setSize(140f, 140f) }
+            clockActor = PlayClockActor(hudSkin).apply { setSize(140f, 140f) }
             playManager?.let {
-                healthActor = PlayerHealthActor(it).apply { setSize(100f, 100f) }
-                hungerActor = PlayerHungerActor(it).apply { setSize(100f, 100f) }
-                sanityActor = PlayerSanityActor(it).apply { setSize(100f, 100f) }
-                wetMeterActor = PlayerWetMeterActor(it).apply { setSize(100f, 100f) }
+                healthActor = PlayerHealthActor(it).apply { setSize(80f, 80f) }
+                hungerActor = PlayerHungerActor(it).apply { setSize(80f, 80f) }
+                sanityActor = PlayerSanityActor(it).apply { setSize(80f, 80f) }
+                wetMeterActor = PlayerWetMeterActor(it).apply { setSize(80f, 80f) }
             }
-            addActor(Table().apply {
-                val tX = Gdx.graphics.width / 2f - prefWidth / 2 - 30f
-                val tY = Gdx.graphics.height / 2f - prefHeight / 2 - 15f
-                add(clockActor);row().pad(0f)
-                add(hungerActor).apply {
-                    pack();
-                    Log.e("QL", "--1-->", tX, tY, actorX, actorY, padLeft, padBottom)
-                    hungerActor?.setPosition(tX + actorX + padLeft, tY + actorY + padBottom)
-                }
-                add(healthActor).padLeft(20f).apply {
-                    pack();
-                    Log.e("QL", "--2-->", tX, tY, actorX, actorY, padLeft, padBottom)
-                    healthActor?.setPosition(tX + actorX + padLeft, tY + actorY + padBottom)
-                }
-                row().pad(0f)
-                add(sanityActor).apply {
-                    pack();
-                    Log.e("QL", "--3-->", tX, tY, actorX, actorY, padLeft, padBottom)
-                    sanityActor?.setPosition(tX + actorX + padLeft, tY + actorY + padBottom)
-                }
-                row().pad(0f)
-                add(wetMeterActor).apply {
-                    pack();
-                    Log.e("QL", "--4-->", tX, tY, actorX, actorY, padLeft, padBottom)
-                    wetMeterActor?.setPosition(tX + actorX + padLeft, tY + actorY + padBottom)
-                }
-                pack()
-                setPosition(tX, tY)
-            })
+            addActor(clockActor)
+            addActor(hungerActor)
             addActor(healthActor)
+            addActor(sanityActor)
+            addActor(wetMeterActor)
+            val tX = Gdx.graphics.width - 140f - 30f
+            val tY = Gdx.graphics.height - 140f - 10f
+            clockActor?.setPosition(tX, tY)
+            hungerActor?.setPosition(tX + 70f - 10f - 80f, tY - 70f)
+            healthActor?.setPosition(tX + 70f + 10f, tY - 70f)
+            sanityActor?.setPosition(tX + 70f - 40f, tY - 70f - 60f)
+            wetMeterActor?.setPosition(tX + 70f - 40f, tY - 70f - 60f - 5f - 70f)
+
         }
+    }
+
+    private fun showToolItemList() {
+        val panel = VerticalGroup().apply {
+
+        }
+
+
     }
 
     private fun newToolTabIcons(skin: Skin?): Array<Actor> {

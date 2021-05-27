@@ -30,6 +30,7 @@ allprojects {
         ashleyVersion = '1.7.3'
         aiVersion = '1.8.2'
         gdxControllersVersion = '2.1.0'
+        h2dVersion = '0.0.5'
     }
 
     repositories {
@@ -124,9 +125,11 @@ project(":core") {
         api "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
         api "com.esotericsoftware.spine:spine-libgdx:3.8.55.1"
 
-//        api "com.github.qlang122:gdx-kt-lifecycle:1.0.0"
+        api "games.rednblack.hyperlap2d:runtime-libgdx:$h2dVersion"
+
+//        api "com.github.qlang122:libgdx-lifecycle-kt:1.0.0"
         api project(":gdx-lifecycle")
-//        api "com.github.qlang122:gdx-animation:1.0.5"
+//        api "com.github.qlang122:libgdx-spriter-runtime:1.0.5"
         api project(":gdx-animation")
     }
 }
