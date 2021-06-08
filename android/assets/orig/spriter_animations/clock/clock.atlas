@@ -1,0 +1,27 @@
+
+clock.png
+size: 512, 128
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+clock_NIGHT
+  rotate: false
+  xy: 2, 2
+  size: 107, 107
+  orig: 107, 107
+  offset: 0, 0
+  index: -1
+clock_rim
+  rotate: false
+  xy: 111, 2
+  size: 107, 107
+  orig: 107, 107
+  offset: 0, 0
+  index: -1
+clock_wedge
+  rotate: false
+  xy: 220, 2
+  size: 107, 107
+  orig: 107, 107
+  offset: 0, 0
+  index: -1

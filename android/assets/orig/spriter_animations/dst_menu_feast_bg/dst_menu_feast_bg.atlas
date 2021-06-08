@@ -1,0 +1,19 @@
+
+dst_menu_feast_bg.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+background-0
+  rotate: false
+  xy: 1, 271
+  size: 1944, 1100
+  orig: 1944, 1100
+  offset: 0, 0
+  index: -1
+grooSnow-0
+  rotate: false
+  xy: 1, 1
+  size: 928, 268
+  orig: 928, 268
+  offset: 0, 0
+  index: -1

@@ -9,6 +9,8 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.scenes.scene2d.ui.Skin
 import com.qlang.game.demo.res.R
+import games.rednblack.editor.renderer.resources.AsyncResourceManager
+import games.rednblack.editor.renderer.resources.ResourceManagerLoader
 import java.util.concurrent.CopyOnWriteArrayList
 import kotlin.random.Random
 
@@ -32,7 +34,9 @@ class GameManager private constructor() : ApplicationAdapter() {
 
     override fun create() {
         mainManager = AssetManager()
+        mainManager.setLoader(AsyncResourceManager::class.java, ResourceManagerLoader(mainManager.fileHandleResolver))
         playManager = AssetManager()
+        playManager.setLoader(AsyncResourceManager::class.java, ResourceManagerLoader(playManager.fileHandleResolver))
 
         mainManager.loadAssets()
         mainManager.finishLoading()
@@ -53,6 +57,7 @@ class GameManager private constructor() : ApplicationAdapter() {
         if (homeMenuBgIndex == 1) {
             load(R.anim.menu.feast_bg_atlas, TextureAtlas::class.java)
         }
+        load("project.dt", AsyncResourceManager::class.java)
     }
 
     val mainAssetsLoadProgress: Float get() = mainManager.progress

@@ -1,0 +1,12 @@
+
+bg_redux_dark_bottom_vignette1.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+dark_bottom_vignette1
+  rotate: false
+  xy: 0, 0
+  size: 434, 243
+  orig: 434, 243
+  offset: 0, 0
+  index: -1

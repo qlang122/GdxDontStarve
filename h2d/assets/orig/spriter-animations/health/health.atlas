@@ -1,0 +1,208 @@
+
+health.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+frame_circle-0
+  rotate: false
+  xy: 1, 171
+  size: 80, 84
+  orig: 80, 84
+  offset: 0, 0
+  index: -1
+health_level-0
+  rotate: false
+  xy: 1, 101
+  size: 68, 68
+  orig: 68, 68
+  offset: 0, 0
+  index: -1
+health_level-1
+  rotate: false
+  xy: 83, 191
+  size: 68, 64
+  orig: 68, 64
+  offset: 0, 0
+  index: -1
+bg-0
+  rotate: false
+  xy: 1, 35
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+health_level-14
+  rotate: false
+  xy: 1, 1
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+bg2-0
+  rotate: false
+  xy: 153, 191
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+health_level-2
+  rotate: false
+  xy: 219, 195
+  size: 68, 60
+  orig: 68, 60
+  offset: 0, 0
+  index: -1
+health_level-3
+  rotate: false
+  xy: 289, 195
+  size: 68, 60
+  orig: 68, 60
+  offset: 0, 0
+  index: -1
+health_level-4
+  rotate: false
+  xy: 359, 199
+  size: 68, 56
+  orig: 68, 56
+  offset: 0, 0
+  index: -1
+health_level-5
+  rotate: false
+  xy: 429, 199
+  size: 68, 56
+  orig: 68, 56
+  offset: 0, 0
+  index: -1
+health_level-10
+  rotate: false
+  xy: 83, 145
+  size: 68, 44
+  orig: 68, 44
+  offset: 0, 0
+  index: -1
+health_level-6
+  rotate: false
+  xy: 153, 137
+  size: 68, 52
+  orig: 68, 52
+  offset: 0, 0
+  index: -1
+health_level-7
+  rotate: false
+  xy: 223, 145
+  size: 68, 48
+  orig: 68, 48
+  offset: 0, 0
+  index: -1
+health_level-8
+  rotate: false
+  xy: 293, 145
+  size: 68, 48
+  orig: 68, 48
+  offset: 0, 0
+  index: -1
+health_level-9
+  rotate: false
+  xy: 363, 153
+  size: 68, 44
+  orig: 68, 44
+  offset: 0, 0
+  index: -1
+health_level-11
+  rotate: false
+  xy: 433, 157
+  size: 68, 40
+  orig: 68, 40
+  offset: 0, 0
+  index: -1
+health_level-12
+  rotate: false
+  xy: 71, 107
+  size: 68, 36
+  orig: 68, 36
+  offset: 0, 0
+  index: -1
+health_level-13
+  rotate: false
+  xy: 141, 99
+  size: 68, 36
+  orig: 68, 36
+  offset: 0, 0
+  index: -1
+health_level-15
+  rotate: false
+  xy: 223, 111
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+health_level-16
+  rotate: false
+  xy: 289, 115
+  size: 60, 28
+  orig: 60, 28
+  offset: 0, 0
+  index: -1
+health_level-17
+  rotate: false
+  xy: 363, 127
+  size: 60, 24
+  orig: 60, 24
+  offset: 0, 0
+  index: -1
+health_level-18
+  rotate: false
+  xy: 71, 81
+  size: 56, 24
+  orig: 56, 24
+  offset: 0, 0
+  index: -1
+heart-0
+  rotate: false
+  xy: 67, 27
+  size: 52, 52
+  orig: 52, 52
+  offset: 0, 0
+  index: -1
+health_level-19
+  rotate: false
+  xy: 67, 5
+  size: 52, 20
+  orig: 52, 20
+  offset: 0, 0
+  index: -1
+heart-1
+  rotate: false
+  xy: 129, 49
+  size: 52, 48
+  orig: 52, 48
+  offset: 0, 0
+  index: -1
+heart-2
+  rotate: false
+  xy: 121, 7
+  size: 48, 40
+  orig: 48, 40
+  offset: 0, 0
+  index: -1
+heart-3
+  rotate: false
+  xy: 183, 61
+  size: 40, 36
+  orig: 40, 36
+  offset: 0, 0
+  index: -1
+health_level-20
+  rotate: false
+  xy: 225, 89
+  size: 44, 20
+  orig: 44, 20
+  offset: 0, 0
+  index: -1
+health_level-21
+  rotate: false
+  xy: 225, 71
+  size: 40, 16
+  orig: 40, 16
+  offset: 0, 0
+  index: -1

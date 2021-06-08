@@ -5,7 +5,6 @@ import com.badlogic.gdx.assets.AssetManager
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver
 import com.badlogic.gdx.graphics.g2d.Batch
 import com.badlogic.gdx.scenes.scene2d.Actor
-import com.badlogic.gdx.scenes.scene2d.Group
 import com.qlang.game.demo.res.R
 import com.qlang.game.demo.utils.Log
 import me.winter.gdx.animation.Animation
@@ -73,7 +72,7 @@ class PlayerHealthActor(val manager: AssetManager) : Actor() {
 //        animation?.root?.position?.set(x + this.x + offsetX + width / 2f, y + this.y + offsetY + height / 2f)
 //        arrowAnim?.root?.position?.set(x + this.x + offsetX + width / 2f, y + this.y + offsetY + height / 2f)
         animation?.root?.position?.set(x + width / 2f, y + height / 2f)
-        arrowAnim?.root?.position?.set(x + width / 2f, y + height / 2f -10f)
+        arrowAnim?.root?.position?.set(x + width / 2f, y + height / 2f - 10f)
         animation?.update(currProgress)
     }
 
