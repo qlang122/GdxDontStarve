@@ -1,0 +1,488 @@
+
+ui.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+scroll_arrow_over
+  rotate: false
+  xy: 1228, 1012
+  size: 79, 149
+  orig: 79, 149
+  offset: 0, 0
+  index: -1
+button_long_over
+  rotate: false
+  xy: 856, 980
+  size: 199, 71
+  orig: 199, 71
+  offset: 0, 0
+  index: -1
+arrow_right_over
+  rotate: false
+  xy: 644, 1052
+  size: 99, 99
+  orig: 99, 99
+  offset: 0, 0
+  index: -1
+logo_CAPY
+  rotate: false
+  xy: 1608, 0
+  size: 302, 476
+  orig: 302, 476
+  offset: 0, 0
+  index: -1
+spin_arrow_disabled
+  rotate: false
+  xy: 1876, 1108
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+textbox_long
+  rotate: false
+  xy: 0, 720
+  size: 799, 99
+  orig: 799, 99
+  offset: 0, 0
+  index: -1
+special_button_over
+  rotate: false
+  xy: 1600, 792
+  size: 347, 155
+  orig: 347, 155
+  offset: 0, 0
+  index: -1
+sw_unknown
+  rotate: false
+  xy: 1680, 948
+  size: 149, 111
+  orig: 149, 111
+  offset: 0, 0
+  index: -1
+button_disabled
+  rotate: false
+  xy: 1832, 1028
+  size: 171, 79
+  orig: 171, 79
+  offset: 0, 0
+  index: -1
+spinner_end_focus
+  rotate: false
+  xy: 1748, 1108
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+button
+  rotate: false
+  xy: 1056, 1012
+  size: 171, 79
+  orig: 171, 79
+  offset: 0, 0
+  index: -1
+next_arrow_over
+  rotate: false
+  xy: 1976, 544
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+bg_plain
+  rotate: false
+  xy: 0, 0
+  size: 1279, 719
+  orig: 1279, 719
+  offset: 0, 0
+  index: -1
+SWicontoggle
+  rotate: false
+  xy: 1596, 1060
+  size: 85, 95
+  orig: 85, 95
+  offset: 0, 0
+  index: -1
+update_banner
+  rotate: false
+  xy: 600, 820
+  size: 339, 79
+  orig: 339, 79
+  offset: 0, 0
+  index: -1
+nondefault_customization
+  rotate: false
+  xy: 1280, 636
+  size: 283, 67
+  orig: 283, 67
+  offset: 0, 0
+  index: -1
+button_checkbox1
+  rotate: false
+  xy: 1912, 0
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+spinner_end_changing
+  rotate: false
+  xy: 1684, 1108
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+ds_on
+  rotate: false
+  xy: 1072, 900
+  size: 149, 111
+  orig: 149, 111
+  offset: 0, 0
+  index: -1
+spinner_end
+  rotate: false
+  xy: 1104, 1092
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+spin_arrow
+  rotate: false
+  xy: 1812, 1108
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+sw_on
+  rotate: false
+  xy: 1528, 948
+  size: 149, 111
+  orig: 149, 111
+  offset: 0, 0
+  index: -1
+buttonblk
+  rotate: false
+  xy: 1832, 948
+  size: 199, 79
+  orig: 199, 79
+  offset: 0, 0
+  index: -1
+scroll_arrow_disabled
+  rotate: false
+  xy: 1948, 788
+  size: 79, 149
+  orig: 79, 149
+  offset: 0, 0
+  index: -1
+sw_off
+  rotate: false
+  xy: 1376, 932
+  size: 149, 111
+  orig: 149, 111
+  offset: 0, 0
+  index: -1
+spinner_short
+  rotate: false
+  xy: 2000, 384
+  size: 43, 63
+  orig: 43, 63
+  offset: 0, 0
+  index: -1
+buybutton_over
+  rotate: false
+  xy: 1628, 480
+  size: 347, 155
+  orig: 347, 155
+  offset: 0, 0
+  index: -1
+special_button
+  rotate: false
+  xy: 1600, 636
+  size: 347, 155
+  orig: 347, 155
+  offset: 0, 0
+  index: -1
+buywithgoogle
+  rotate: false
+  xy: 940, 820
+  size: 235, 79
+  orig: 235, 79
+  offset: 0, 0
+  index: -1
+spin_arrow_down
+  rotate: false
+  xy: 1940, 1108
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+spinner_short_changing
+  rotate: false
+  xy: 2004, 1028
+  size: 43, 63
+  orig: 43, 63
+  offset: 0, 0
+  index: -1
+black
+  rotate: false
+  xy: 2040, 0
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+spin_arrow_over
+  rotate: false
+  xy: 0, 1112
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+SWicon
+  rotate: false
+  xy: 1508, 1060
+  size: 85, 95
+  orig: 85, 95
+  offset: 0, 0
+  index: -1
+rog_on
+  rotate: false
+  xy: 152, 920
+  size: 149, 111
+  orig: 149, 111
+  offset: 0, 0
+  index: -1
+button_small_disabled
+  rotate: false
+  xy: 1684, 1060
+  size: 95, 47
+  orig: 95, 47
+  offset: 0, 0
+  index: -1
+rog_off
+  rotate: false
+  xy: 0, 920
+  size: 149, 111
+  orig: 149, 111
+  offset: 0, 0
+  index: -1
+blank
+  rotate: false
+  xy: 2044, 0
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+buybutton
+  rotate: false
+  xy: 1280, 480
+  size: 347, 155
+  orig: 347, 155
+  offset: 0, 0
+  index: -1
+button_place
+  rotate: false
+  xy: 172, 1032
+  size: 171, 79
+  orig: 171, 79
+  offset: 0, 0
+  index: -1
+arrow_right_disabled
+  rotate: false
+  xy: 544, 1052
+  size: 99, 99
+  orig: 99, 99
+  offset: 0, 0
+  index: -1
+textbox_short
+  rotate: false
+  xy: 0, 820
+  size: 299, 99
+  orig: 299, 99
+  offset: 0, 0
+  index: -1
+SWDLC_icon
+  rotate: false
+  xy: 920, 1052
+  size: 85, 95
+  orig: 85, 95
+  offset: 0, 0
+  index: -1
+buywithpaypal
+  rotate: false
+  xy: 600, 900
+  size: 235, 79
+  orig: 235, 79
+  offset: 0, 0
+  index: -1
+arrow_right
+  rotate: false
+  xy: 444, 1052
+  size: 99, 99
+  orig: 99, 99
+  offset: 0, 0
+  index: -1
+textbox_short_over
+  rotate: false
+  xy: 300, 820
+  size: 299, 99
+  orig: 299, 99
+  offset: 0, 0
+  index: -1
+buywithgoogle_over
+  rotate: false
+  xy: 1176, 820
+  size: 235, 79
+  orig: 235, 79
+  offset: 0, 0
+  index: -1
+button_checkbox2
+  rotate: false
+  xy: 1912, 128
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+arrow_left
+  rotate: false
+  xy: 344, 1032
+  size: 99, 99
+  orig: 99, 99
+  offset: 0, 0
+  index: -1
+arrow_left_disabled
+  rotate: false
+  xy: 1308, 1044
+  size: 99, 99
+  orig: 99, 99
+  offset: 0, 0
+  index: -1
+SWBase_icon
+  rotate: false
+  xy: 832, 1052
+  size: 85, 95
+  orig: 85, 95
+  offset: 0, 0
+  index: -1
+scroll_arrow
+  rotate: false
+  xy: 1948, 636
+  size: 79, 149
+  orig: 79, 149
+  offset: 0, 0
+  index: -1
+rog_unknown
+  rotate: false
+  xy: 304, 920
+  size: 149, 111
+  orig: 149, 111
+  offset: 0, 0
+  index: -1
+spinner_short_focus
+  rotate: false
+  xy: 1168, 1092
+  size: 43, 63
+  orig: 43, 63
+  offset: 0, 0
+  index: -1
+button_long_disabled
+  rotate: false
+  xy: 656, 980
+  size: 199, 71
+  orig: 199, 71
+  offset: 0, 0
+  index: -1
+klei_new_logo
+  rotate: false
+  xy: 1280, 0
+  size: 327, 471
+  orig: 327, 471
+  offset: 0, 0
+  index: -1
+portrait_bg
+  rotate: false
+  xy: 1912, 256
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+button_long
+  rotate: false
+  xy: 456, 980
+  size: 199, 71
+  orig: 199, 71
+  offset: 0, 0
+  index: -1
+next_arrow
+  rotate: false
+  xy: 1976, 480
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+button_small_over
+  rotate: false
+  xy: 1008, 1092
+  size: 95, 47
+  orig: 95, 47
+  offset: 0, 0
+  index: -1
+DLCicon
+  rotate: false
+  xy: 1912, 384
+  size: 85, 95
+  orig: 85, 95
+  offset: 0, 0
+  index: -1
+button_over
+  rotate: false
+  xy: 0, 1032
+  size: 171, 79
+  orig: 171, 79
+  offset: 0, 0
+  index: -1
+ds_off
+  rotate: false
+  xy: 1412, 820
+  size: 149, 111
+  orig: 149, 111
+  offset: 0, 0
+  index: -1
+buywithpaypal_over
+  rotate: false
+  xy: 836, 900
+  size: 235, 79
+  orig: 235, 79
+  offset: 0, 0
+  index: -1
+DLCicontoggle
+  rotate: false
+  xy: 744, 1052
+  size: 85, 95
+  orig: 85, 95
+  offset: 0, 0
+  index: -1
+arrow_left_over
+  rotate: false
+  xy: 1408, 1044
+  size: 99, 99
+  orig: 99, 99
+  offset: 0, 0
+  index: -1
+button_small
+  rotate: false
+  xy: 456, 920
+  size: 95, 47
+  orig: 95, 47
+  offset: 0, 0
+  index: -1
+textbox_long_over
+  rotate: false
+  xy: 800, 720
+  size: 799, 99
+  orig: 799, 99
+  offset: 0, 0
+  index: -1
+ds_unknown
+  rotate: false
+  xy: 1224, 900
+  size: 149, 111
+  orig: 149, 111
+  offset: 0, 0
+  index: -1

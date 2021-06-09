@@ -5,13 +5,15 @@ import com.badlogic.gdx.ScreenAdapter
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.scenes.scene2d.Stage
-import com.badlogic.gdx.utils.viewport.ExtendViewport
+import com.badlogic.gdx.utils.Scaling
+import com.badlogic.gdx.utils.viewport.ScalingViewport
+import com.badlogic.gdx.utils.viewport.Viewport
 import com.qlang.game.demo.GameManager
+import com.qlang.game.demo.config.AppConfig
 import com.qlang.game.demo.route.Navigator
 import com.qlang.game.demo.stage.ExitAppDialog
 import com.qlang.game.demo.stage.HomeBgStage
 import com.qlang.game.demo.stage.HomeMenuStage
-import com.qlang.game.demo.utils.Log
 import games.rednblack.editor.renderer.SceneLoader
 import games.rednblack.editor.renderer.resources.AsyncResourceManager
 
@@ -21,7 +23,7 @@ class HomeScreen : ScreenAdapter() {
     private var exitDialog: ExitAppDialog? = null
 
     private var sceneLoader: SceneLoader? = null
-    private var viewport: ExtendViewport
+    private var viewport: Viewport
     private val camera = OrthographicCamera()
 
     init {
@@ -30,7 +32,7 @@ class HomeScreen : ScreenAdapter() {
             setOnItemClickListener { navigation2Menu(it) }
         }
 
-        viewport = ExtendViewport(1920f, 1080f, 0f, 0f, camera)
+        viewport = ScalingViewport(Scaling.stretch, AppConfig.worldWidth, AppConfig.worldHeight, camera)
 
         GameManager.instance?.mainManager?.let {
             sceneLoader = SceneLoader(it.get("project.dt", AsyncResourceManager::class.java))

@@ -1,0 +1,12 @@
+
+motd_fallbacks_box3.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+box3
+  rotate: false
+  xy: 0, 0
+  size: 800, 450
+  orig: 800, 450
+  offset: 0, 0
+  index: -1
