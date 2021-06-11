@@ -1,0 +1,22 @@
+
+pack.png
+size: 2048, 1024
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+recordList
+  rotate: false
+  xy: 2, 2
+  size: 380, 700
+  split: 0, 0, 0, 0
+  split: 0, 0, 0, 0
+  orig: 380, 700
+  offset: 0, 0
+  index: -1
+tabTitle
+  rotate: false
+  xy: 2, 704
+  size: 1300, 80
+  orig: 1300, 80
+  offset: 0, 0
+  index: -1

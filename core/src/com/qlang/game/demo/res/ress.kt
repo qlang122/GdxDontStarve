@@ -175,6 +175,6 @@ object R {
     }
 
     object font {
-        const val font_cn = "fonts/font_cn.fnt"
+        const val font_cn = "fonts/default-font-cn.fnt"
     }
 }

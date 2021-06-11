@@ -112,6 +112,7 @@ panel_bg
   rotate: false
   xy: 421, 196
   size: 200, 150
+  split: 54, 55, 55, 49
   orig: 200, 150
   offset: 0, 0
   index: -1

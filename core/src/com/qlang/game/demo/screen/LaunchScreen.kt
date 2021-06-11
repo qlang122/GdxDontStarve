@@ -3,11 +3,15 @@ package com.qlang.game.demo.screen
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.ScreenAdapter
 import com.badlogic.gdx.graphics.GL20
+import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.Image
+import com.badlogic.gdx.utils.Scaling
+import com.badlogic.gdx.utils.viewport.ScalingViewport
 import com.qlang.game.demo.GameManager
+import com.qlang.game.demo.config.AppConfig
 import com.qlang.game.demo.route.Navigator
 import kotlin.random.Random
 
@@ -37,7 +41,7 @@ class LaunchScreen : ScreenAdapter() {
         bitmapFont = BitmapFont(Gdx.files.internal(NAME_FONT))
         bitmapFont?.data?.setScale(1.5f)
 
-        screenStage = Stage()
+        screenStage = Stage(ScalingViewport(Scaling.stretch, AppConfig.worldWidth, AppConfig.worldHeight, OrthographicCamera()))
 
 //        screenStage?.addActor(Image(bgTexture?.findRegion("spiral_bg")).apply {
 //            setFillParent(true)

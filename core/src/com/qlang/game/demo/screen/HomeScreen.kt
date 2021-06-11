@@ -23,7 +23,7 @@ class HomeScreen : ScreenAdapter() {
     private var exitDialog: ExitAppDialog? = null
 
     private var sceneLoader: SceneLoader? = null
-    private var viewport: Viewport
+    private lateinit var viewport: Viewport
     private val camera = OrthographicCamera()
 
     init {
@@ -33,7 +33,6 @@ class HomeScreen : ScreenAdapter() {
         }
 
         viewport = ScalingViewport(Scaling.stretch, AppConfig.worldWidth, AppConfig.worldHeight, camera)
-
         GameManager.instance?.mainManager?.let {
             sceneLoader = SceneLoader(it.get("project.dt", AsyncResourceManager::class.java))
             sceneLoader?.loadScene("MainScene", viewport)
