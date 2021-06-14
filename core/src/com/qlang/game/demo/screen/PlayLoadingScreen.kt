@@ -48,6 +48,10 @@ class PlayLoadingScreen : ScreenAdapter() {
 
         delay += delta
 
+        GameManager.instance?.apply {
+            playManager.update()
+        }
+
         when (delay.toInt() % 3) {
             1 -> txtLabel.setText("${TXT_LOAD}.")
             2 -> txtLabel.setText("${TXT_LOAD}..")

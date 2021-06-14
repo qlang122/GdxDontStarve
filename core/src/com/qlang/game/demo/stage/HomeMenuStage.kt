@@ -9,8 +9,9 @@ import com.badlogic.gdx.utils.viewport.FillViewport
 import com.qlang.game.demo.res.R
 import com.qlang.game.demo.widget.MyList
 import com.qlang.game.demo.GameManager
+import com.qlang.game.demo.config.AppConfig
 
-class HomeMenuStage : Stage(FillViewport(1920f, 1080f)) {
+class HomeMenuStage : Stage(FillViewport(AppConfig.worldWidth, AppConfig.worldHeight)) {
     private val manager: AssetManager? = GameManager.instance?.mainManager
     private lateinit var list: MyList<String>
 
@@ -26,8 +27,8 @@ class HomeMenuStage : Stage(FillViewport(1920f, 1080f)) {
                     leftWidth += 50f;rightWidth += 50f;topHeight += 22f;bottomHeight += 22f
                 }
                 setItems(*MENU_NAMES)
-                setSize(prefWidth, prefHeight)
-                setPosition(100f, 50f)
+                setSize(400f, prefHeight)
+                setPosition(80f, 50f)
                 addListener(MyClickListener())
             }
             addActor(list)

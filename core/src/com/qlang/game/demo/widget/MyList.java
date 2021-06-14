@@ -177,6 +177,7 @@ public class MyList<T> extends Widget implements Cullable {
             prefWidth = Math.max(prefWidth + background.getLeftWidth() + background.getRightWidth(), background.getMinWidth());
             prefHeight = Math.max(prefHeight + background.getTopHeight() + background.getBottomHeight(), background.getMinHeight());
         }
+        prefWidth = Math.max(prefWidth, getWidth());
     }
 
     public void draw(Batch batch, float parentAlpha) {

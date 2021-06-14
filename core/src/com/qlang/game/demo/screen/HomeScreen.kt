@@ -14,6 +14,7 @@ import com.qlang.game.demo.route.Navigator
 import com.qlang.game.demo.stage.ExitAppDialog
 import com.qlang.game.demo.stage.HomeBgStage
 import com.qlang.game.demo.stage.HomeMenuStage
+import com.qlang.h2d.extention.spriter.SpriterItemType
 import games.rednblack.editor.renderer.SceneLoader
 import games.rednblack.editor.renderer.resources.AsyncResourceManager
 
@@ -24,17 +25,17 @@ class HomeScreen : ScreenAdapter() {
 
     private var sceneLoader: SceneLoader? = null
     private lateinit var viewport: Viewport
-    private val camera = OrthographicCamera()
 
     init {
-        bgStage = HomeBgStage()
+//        bgStage = HomeBgStage()
         menuStage = HomeMenuStage().apply {
             setOnItemClickListener { navigation2Menu(it) }
         }
 
-        viewport = ScalingViewport(Scaling.stretch, AppConfig.worldWidth, AppConfig.worldHeight, camera)
+        viewport = ScalingViewport(Scaling.stretch, AppConfig.worldWidth, AppConfig.worldHeight)
         GameManager.instance?.mainManager?.let {
             sceneLoader = SceneLoader(it.get("project.dt", AsyncResourceManager::class.java))
+            sceneLoader?.injectExternalItemType(SpriterItemType())
             sceneLoader?.loadScene("MainScene", viewport)
         }
     }
@@ -75,7 +76,7 @@ class HomeScreen : ScreenAdapter() {
         Gdx.gl.glClearColor(0.9f, 0.9f, 0.9f, 1f)
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
 
-        camera.update()
+        viewport.camera.update()
         viewport.apply()
         sceneLoader?.engine?.update(Gdx.graphics.deltaTime)
 
@@ -86,6 +87,7 @@ class HomeScreen : ScreenAdapter() {
     override fun dispose() {
         bgStage?.dispose()
         menuStage?.dispose()
+        sceneLoader?.dispose()
         bgStage = null
         menuStage = null
         exitDialog = null

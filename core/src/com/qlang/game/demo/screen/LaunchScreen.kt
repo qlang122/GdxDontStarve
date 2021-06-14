@@ -39,19 +39,19 @@ class LaunchScreen : ScreenAdapter() {
         bgImgTexture = TextureAtlas(Gdx.files.internal(NAEM_BG_IMG))
 
         bitmapFont = BitmapFont(Gdx.files.internal(NAME_FONT))
-        bitmapFont?.data?.setScale(1.5f)
+        bitmapFont?.data?.setScale(1.2f)
 
         screenStage = Stage(ScalingViewport(Scaling.stretch, AppConfig.worldWidth, AppConfig.worldHeight, OrthographicCamera()))
 
-//        screenStage?.addActor(Image(bgTexture?.findRegion("spiral_bg")).apply {
-//            setFillParent(true)
-//        })
-//        screenStage?.addActor(Image(bgOverlayTexture?.findRegion("spiral_ol")).apply {
-//            setFillParent(true)
-//        })
-//        screenStage?.addActor(Image(bgImgTexture?.findRegion("bg_image")).apply {
-//            setFillParent(true)
-//        })
+        screenStage?.addActor(Image(bgTexture?.findRegion("spiral_bg")).apply {
+            setFillParent(true)
+        })
+        screenStage?.addActor(Image(bgOverlayTexture?.findRegion("spiral_ol")).apply {
+            setFillParent(true)
+        })
+        screenStage?.addActor(Image(bgImgTexture?.findRegion("bg_image")).apply {
+            setFillParent(true)
+        })
     }
 
     override fun show() {
@@ -63,6 +63,8 @@ class LaunchScreen : ScreenAdapter() {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
 
         delay += delta
+
+        GameManager.instance?.mainManager?.update()
 
         if (delay >= 5f && GameManager.instance?.isMainAssetsLoaded == true) {
             Navigator.push(HomeScreen())

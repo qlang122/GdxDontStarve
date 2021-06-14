@@ -8,16 +8,18 @@ import com.badlogic.gdx.assets.AssetManager
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.scenes.scene2d.ui.Skin
+import com.qlang.game.demo.ktx.execAsync
 import com.qlang.game.demo.res.R
+import com.qlang.game.demo.utils.Log
 import games.rednblack.editor.renderer.resources.AsyncResourceManager
 import games.rednblack.editor.renderer.resources.ResourceManagerLoader
 import java.util.concurrent.CopyOnWriteArrayList
 import kotlin.random.Random
 
 class GameManager private constructor() : ApplicationAdapter() {
-    lateinit var mainManager: AssetManager
+    var mainManager: AssetManager = AssetManager()
         private set
-    lateinit var playManager: AssetManager
+    var playManager: AssetManager = AssetManager()
         private set
     lateinit var game: Game
         private set
@@ -33,18 +35,15 @@ class GameManager private constructor() : ApplicationAdapter() {
     }
 
     override fun create() {
-        mainManager = AssetManager()
         mainManager.setLoader(AsyncResourceManager::class.java, ResourceManagerLoader(mainManager.fileHandleResolver))
-        playManager = AssetManager()
         playManager.setLoader(AsyncResourceManager::class.java, ResourceManagerLoader(playManager.fileHandleResolver))
 
         mainManager.loadAssets()
-        mainManager.finishLoading()
 
         Gdx.input.inputProcessor = MyInputProcessor()
     }
 
-    private fun AssetManager.loadAssets() {
+    fun AssetManager.loadAssets() {
         load(R.font.font_cn, BitmapFont::class.java)
         R.image.atlas().forEach { load(it, TextureAtlas::class.java) }
         R.skin.skins().forEach { load(it, Skin::class.java) }
