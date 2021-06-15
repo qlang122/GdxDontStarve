@@ -43,15 +43,15 @@ class LaunchScreen : ScreenAdapter() {
 
         screenStage = Stage(ScalingViewport(Scaling.stretch, AppConfig.worldWidth, AppConfig.worldHeight, OrthographicCamera()))
 
-        screenStage?.addActor(Image(bgTexture?.findRegion("spiral_bg")).apply {
-            setFillParent(true)
-        })
-        screenStage?.addActor(Image(bgOverlayTexture?.findRegion("spiral_ol")).apply {
-            setFillParent(true)
-        })
-        screenStage?.addActor(Image(bgImgTexture?.findRegion("bg_image")).apply {
-            setFillParent(true)
-        })
+//        screenStage?.addActor(Image(bgTexture?.findRegion("spiral_bg")).apply {
+//            setFillParent(true)
+//        })
+//        screenStage?.addActor(Image(bgOverlayTexture?.findRegion("spiral_ol")).apply {
+//            setFillParent(true)
+//        })
+//        screenStage?.addActor(Image(bgImgTexture?.findRegion("bg_image")).apply {
+//            setFillParent(true)
+//        })
     }
 
     override fun show() {

@@ -608,7 +608,7 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("雨", "秋", skin,
+                    add(newSelectItem("雨", "默认", skin,
                             iconTexture, "rain", {
 
                     }, {
@@ -623,7 +623,7 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("青蛙雨", "秋", skin,
+                    add(newSelectItem("青蛙雨", "默认", skin,
                             iconTexture, "frog_rain", {
 
                     }, {
@@ -638,7 +638,7 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("世界再生", "秋", skin,
+                    add(newSelectItem("世界再生", "默认", skin,
                             iconTexture, "regrowth", {
 
                     }, {
@@ -653,7 +653,7 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("失败的幸存者", "秋", skin,
+                    add(newSelectItem("失败的幸存者", "默认", skin,
                             iconTexture, "skeletons", {
 
                     }, {
@@ -668,7 +668,7 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("开始资源多样化", "秋", skin,
+                    add(newSelectItem("开始资源多样化", "默认", skin,
                             iconTexture, "start_resource", {
 
                     }, {
@@ -686,7 +686,7 @@ class WorlRecordStage<T> : Stage() {
                     clearChildren();add(label).padTop(20f).padBottom(20f);setSize(itemW, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("花，邪恶花", "秋", skin,
+                    add(newSelectItem("花，邪恶花", "默认", skin,
                             iconTexture, "flowers", {
 
                     }, {
@@ -701,7 +701,7 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("树苗", "秋", skin,
+                    add(newSelectItem("树苗", "默认", skin,
                             iconTexture, "sapling", {
 
                     }, {
@@ -716,7 +716,7 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("风滚草", "秋", skin,
+                    add(newSelectItem("风滚草", "默认", skin,
                             iconTexture, "tumbleweeds", {
 
                     }, {
@@ -731,7 +731,7 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("树（所有）", "秋", skin,
+                    add(newSelectItem("树（所有）", "默认", skin,
                             iconTexture, "trees", {
 
                     }, {
@@ -746,7 +746,7 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("巨石", "秋", skin,
+                    add(newSelectItem("巨石", "默认", skin,
                             iconTexture, "rock", {
 
                     }, {
@@ -761,7 +761,7 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("流星区域", "秋", skin,
+                    add(newSelectItem("流星区域", "默认", skin,
                             iconTexture, "burntground", {
 
                     }, {
@@ -779,7 +779,7 @@ class WorlRecordStage<T> : Stage() {
                     clearChildren();add(label).padTop(20f).padBottom(20f);setSize(itemW, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("浆果灌木", "秋", skin,
+                    add(newSelectItem("浆果灌木", "默认", skin,
                             iconTexture, "berrybush", {
 
                     }, {
@@ -794,7 +794,7 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("蘑菇", "秋", skin,
+                    add(newSelectItem("蘑菇", "默认", skin,
                             iconTexture, "mushrooms", {
 
                     }, {
@@ -812,7 +812,7 @@ class WorlRecordStage<T> : Stage() {
                     clearChildren();add(label).padTop(20f).padBottom(20f);setSize(itemW, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("兔子", "秋", skin,
+                    add(newSelectItem("兔子", "默认", skin,
                             iconTexture, "rabbits", {
 
                     }, {
@@ -827,7 +827,7 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("蝴蝶", "秋", skin,
+                    add(newSelectItem("蝴蝶", "默认", skin,
                             iconTexture, "butterfly", {
 
                     }, {
@@ -842,7 +842,7 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("美洲鹫", "秋", skin,
+                    add(newSelectItem("美洲鹫", "默认", skin,
                             iconTexture, "buzzard", {
 
                     }, {
@@ -857,7 +857,7 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("雄火鸡", "秋", skin,
+                    add(newSelectItem("雄火鸡", "默认", skin,
                             iconTexture, "perd", {
 
                     }, {
@@ -872,7 +872,7 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("伏特山羊", "秋", skin,
+                    add(newSelectItem("伏特山羊", "默认", skin,
                             iconTexture, "lightning_goat", {
 
                     }, {
@@ -887,7 +887,7 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("牦牛交配频率", "秋", skin,
+                    add(newSelectItem("牦牛交配频率", "默认", skin,
                             iconTexture, "beefaloheat", {
 
                     }, {
@@ -902,7 +902,7 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("追猎惊喜", "秋", skin,
+                    add(newSelectItem("追猎惊喜", "默认", skin,
                             iconTexture, "alternatehunt", {
 
                     }, {
@@ -917,7 +917,7 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("池塘", "秋", skin,
+                    add(newSelectItem("池塘", "默认", skin,
                             iconTexture, "ponds", {
 
                     }, {
@@ -932,7 +932,7 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("杀人蜂", "秋", skin,
+                    add(newSelectItem("杀人蜂", "默认", skin,
                             iconTexture, "wasphive", {
 
                     }, {
@@ -950,7 +950,7 @@ class WorlRecordStage<T> : Stage() {
                     clearChildren();add(label).padTop(20f).padBottom(20f);setSize(itemW, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("蜘蛛", "秋", skin,
+                    add(newSelectItem("蜘蛛", "默认", skin,
                             iconTexture, "spiders", {
 
                     }, {
@@ -965,7 +965,7 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("猎犬丘", "秋", skin,
+                    add(newSelectItem("猎犬丘", "默认", skin,
                             iconTexture, "houndmound", {
 
                     }, {
@@ -980,7 +980,7 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("触手", "秋", skin,
+                    add(newSelectItem("触手", "默认", skin,
                             iconTexture, "tentacles", {
 
                     }, {
@@ -995,7 +995,7 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("食人花", "秋", skin,
+                    add(newSelectItem("食人花", "默认", skin,
                             iconTexture, "lureplant", {
 
                     }, {
@@ -1010,7 +1010,7 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("树精守卫", "秋", skin,
+                    add(newSelectItem("树精守卫", "默认", skin,
                             iconTexture, "liefs", {
 
                     }, {
@@ -1025,7 +1025,7 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("坎普斯", "秋", skin,
+                    add(newSelectItem("坎普斯", "默认", skin,
                             iconTexture, "krampus", {
 
                     }, {
@@ -1040,7 +1040,7 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("独眼巨鹿", "秋", skin,
+                    add(newSelectItem("独眼巨鹿", "默认", skin,
                             iconTexture, "deerclops", {
 
                     }, {
@@ -1055,7 +1055,7 @@ class WorlRecordStage<T> : Stage() {
                     setSize(prefWidth, prefHeight)
                 })
                 add(Table().apply {
-                    add(newSelectItem("龙蝇", "秋", skin,
+                    add(newSelectItem("龙蝇", "默认", skin,
                             iconTexture, "dragonfly", {
 
                     }, {
