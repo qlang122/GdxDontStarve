@@ -4,6 +4,13 @@ size: 2048, 1024
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
+goods_ph
+  rotate: false
+  xy: 1304, 826
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
 placeholder
   rotate: false
   xy: 2, 2

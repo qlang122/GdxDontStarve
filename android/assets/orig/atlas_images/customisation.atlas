@@ -1,0 +1,761 @@
+
+customisation.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+worms
+  rotate: false
+  xy: 1408, 768
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+mosquitos
+  rotate: false
+  xy: 1792, 384
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+iceboulder
+  rotate: false
+  xy: 1920, 256
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+changing_resources
+  rotate: false
+  xy: 1536, 128
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+butterfly
+  rotate: false
+  xy: 640, 128
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+pigs
+  rotate: false
+  xy: 640, 512
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+carrot
+  rotate: false
+  xy: 1024, 128
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+ponds
+  rotate: false
+  xy: 768, 512
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+slurtles
+  rotate: false
+  xy: 640, 640
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+regrowth
+  rotate: false
+  xy: 1280, 512
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+bunnymen
+  rotate: false
+  xy: 384, 128
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+trees
+  rotate: false
+  xy: 1920, 640
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+season
+  rotate: false
+  xy: 0, 640
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+summer
+  rotate: false
+  xy: 1408, 640
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+flint
+  rotate: false
+  xy: 768, 256
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+bearger
+  rotate: false
+  xy: 768, 0
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+start_resource
+  rotate: false
+  xy: 1280, 640
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+slurper
+  rotate: false
+  xy: 512, 640
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+wormattacks
+  rotate: false
+  xy: 1152, 768
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+blank_grassy
+  rotate: false
+  xy: 0, 768
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+mushrooms
+  rotate: false
+  xy: 1920, 384
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+autumn
+  rotate: false
+  xy: 384, 0
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+flower_cave
+  rotate: false
+  xy: 1024, 256
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+season_length
+  rotate: false
+  xy: 128, 640
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+bigfoot
+  rotate: false
+  xy: 1664, 0
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+fern
+  rotate: false
+  xy: 512, 256
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+bees
+  rotate: false
+  xy: 1280, 0
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+deciduouspoison
+  rotate: false
+  xy: 1920, 128
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+caves
+  rotate: false
+  xy: 1408, 128
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+lureplant
+  rotate: false
+  xy: 768, 384
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+world_branching
+  rotate: false
+  xy: 512, 768
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+birds
+  rotate: false
+  xy: 1792, 0
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+cactus
+  rotate: false
+  xy: 896, 128
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+meteor
+  rotate: false
+  xy: 1408, 384
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+tracks
+  rotate: false
+  xy: 1792, 640
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+world_loop
+  rotate: false
+  xy: 640, 768
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+wormlights
+  rotate: false
+  xy: 1280, 768
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+rain
+  rotate: false
+  xy: 1024, 512
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+liefs
+  rotate: false
+  xy: 384, 384
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+frog_rain
+  rotate: false
+  xy: 1280, 256
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+houndmound
+  rotate: false
+  xy: 1664, 256
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+cavelight
+  rotate: false
+  xy: 1280, 128
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+dragonfly
+  rotate: false
+  xy: 128, 256
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+grass
+  rotate: false
+  xy: 1536, 256
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+catcoon
+  rotate: false
+  xy: 1152, 128
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+beehive
+  rotate: false
+  xy: 1152, 0
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+lichen
+  rotate: false
+  xy: 256, 384
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+warg
+  rotate: false
+  xy: 128, 768
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+skeletons
+  rotate: false
+  xy: 384, 640
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+lightning_goat
+  rotate: false
+  xy: 640, 384
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+banana
+  rotate: false
+  xy: 512, 0
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+mushtree
+  rotate: false
+  xy: 0, 512
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+mole
+  rotate: false
+  xy: 1536, 384
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+berrybush_diseased
+  rotate: false
+  xy: 1536, 0
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+day
+  rotate: false
+  xy: 1792, 128
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+flowers
+  rotate: false
+  xy: 896, 256
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+blank_season_red
+  rotate: false
+  xy: 0, 128
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+wasphive
+  rotate: false
+  xy: 256, 768
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+blank_season_yellow
+  rotate: false
+  xy: 128, 128
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+world_size
+  rotate: false
+  xy: 896, 768
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+rabbits
+  rotate: false
+  xy: 896, 512
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+reeds
+  rotate: false
+  xy: 1152, 512
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+spring
+  rotate: false
+  xy: 1024, 640
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+burntground
+  rotate: false
+  xy: 512, 128
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+buzzard
+  rotate: false
+  xy: 768, 128
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+angry_bees
+  rotate: false
+  xy: 128, 0
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+petrified_tree
+  rotate: false
+  xy: 512, 512
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+starting_variety
+  rotate: false
+  xy: 1152, 640
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+season_start
+  rotate: false
+  xy: 256, 640
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+marsh_bush
+  rotate: false
+  xy: 1152, 384
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+monkey
+  rotate: false
+  xy: 1664, 384
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+perd
+  rotate: false
+  xy: 256, 512
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+world_start
+  rotate: false
+  xy: 1024, 768
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+fissure
+  rotate: false
+  xy: 640, 256
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+tumbleweeds
+  rotate: false
+  xy: 0, 768
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+smoke
+  rotate: false
+  xy: 768, 640
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+spiders
+  rotate: false
+  xy: 896, 640
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+periodic_resource
+  rotate: false
+  xy: 384, 512
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+beefalo
+  rotate: false
+  xy: 896, 0
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+rocky
+  rotate: false
+  xy: 1792, 512
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+mandrake
+  rotate: false
+  xy: 1024, 384
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+tallbirds
+  rotate: false
+  xy: 1536, 640
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+antlion_tribute
+  rotate: false
+  xy: 256, 0
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+events
+  rotate: false
+  xy: 384, 256
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+chess_monsters
+  rotate: false
+  xy: 1664, 128
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+berrybush
+  rotate: false
+  xy: 1408, 0
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+hounds
+  rotate: false
+  xy: 1792, 256
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+mactusk
+  rotate: false
+  xy: 896, 384
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+earthquakes
+  rotate: false
+  xy: 256, 256
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+merms
+  rotate: false
+  xy: 1280, 384
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+sapling
+  rotate: false
+  xy: 1920, 512
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+blank_world
+  rotate: false
+  xy: 256, 128
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+winter
+  rotate: false
+  xy: 384, 768
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+alternatehunt
+  rotate: false
+  xy: 0, 0
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+deerclops
+  rotate: false
+  xy: 0, 256
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+rock
+  rotate: false
+  xy: 1536, 512
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+world_map
+  rotate: false
+  xy: 768, 768
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+lightning
+  rotate: false
+  xy: 512, 384
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+pengull
+  rotate: false
+  xy: 128, 512
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+frogs
+  rotate: false
+  xy: 1152, 256
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+rocks
+  rotate: false
+  xy: 1664, 512
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+krampus
+  rotate: false
+  xy: 128, 384
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+tentacles
+  rotate: false
+  xy: 1664, 640
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+koalafants
+  rotate: false
+  xy: 0, 384
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+goosemoose
+  rotate: false
+  xy: 1408, 256
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+resurrection
+  rotate: false
+  xy: 1408, 512
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+beefaloheat
+  rotate: false
+  xy: 1024, 0
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+bats
+  rotate: false
+  xy: 640, 0
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1

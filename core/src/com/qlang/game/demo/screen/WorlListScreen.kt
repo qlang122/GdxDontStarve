@@ -22,13 +22,16 @@ import com.qlang.game.demo.model.WorlListModel
 import com.qlang.game.demo.mvvm.BaseVMScreen
 import com.qlang.game.demo.res.R
 import com.qlang.game.demo.route.Navigator
+import com.qlang.game.demo.utils.Log
 import com.qlang.game.demo.widget.VerticalWidgetList
 import com.qlang.gdxkt.lifecycle.Observer
 import games.rednblack.editor.renderer.SceneLoader
 import games.rednblack.editor.renderer.components.DimensionsComponent
+import games.rednblack.editor.renderer.components.TransformComponent
 import games.rednblack.editor.renderer.components.additional.ButtonComponent
 import games.rednblack.editor.renderer.components.label.LabelComponent
 import games.rednblack.editor.renderer.data.CompositeItemVO
+import games.rednblack.editor.renderer.data.LayerItemVO
 import games.rednblack.editor.renderer.data.MainItemVO
 import games.rednblack.editor.renderer.resources.AsyncResourceManager
 import games.rednblack.editor.renderer.scene2d.CompositeActor
@@ -52,11 +55,17 @@ class WorlListScreen : BaseVMScreen<WorlListModel> {
     private var tvPlay: LabelComponent? = null
     private var tvGameStyle: LabelComponent? = null
 
+    private var layerStyle: LayerItemVO? = null
+    private var layerStyleMode: LayerItemVO? = null
+    private var layerStyleForest: LayerItemVO? = null
+
     private var btnSetting: ButtonComponent? = null
     private var btnForest: ButtonComponent? = null
     private var btnCave: ButtonComponent? = null
     private var btnModules: ButtonComponent? = null
     private var btnRecords: ButtonComponent? = null
+
+    private var paramsScrollPane: ScrollPane? = null
 
     init {
 
@@ -92,20 +101,24 @@ class WorlListScreen : BaseVMScreen<WorlListModel> {
             }
             applyListSize()
 
-            sceneLoader?.sceneVO?.composite?.getLayerByName("game_style")?.isVisible = true
+            layerStyle = sceneLoader?.sceneVO?.composite?.getLayerByName("game_style")
+            layerStyleMode = sceneLoader?.sceneVO?.composite?.getLayerByName("gamestyle_mode")
+            layerStyleForest = sceneLoader?.sceneVO?.composite?.getLayerByName("gamestyle_forest")
+            layerStyle?.isVisible = true
+
             val lySetting = wrapper?.getChild("ly_setting")
             lySetting?.entity?.let {
                 ItemWrapper(it).getChild("ly_style")?.entity?.let {
                     ItemWrapper(it).getChild("btn_style")?.entity?.let {
                         it.getComponent(ButtonComponent::class.java)?.setOnClickListener {
-                            sceneLoader?.sceneVO?.composite?.getLayerByName("game_style")?.isVisible = false
-                            sceneLoader?.sceneVO?.composite?.getLayerByName("gamestyle_mode")?.isVisible = true
+                            if (layerStyle?.isVisible == true) {
+                                layerStyle?.isVisible = false
+                                layerStyleMode?.isVisible = true
+                            }
                         }
                         tvGameStyle = ItemWrapper(it).getChild("tv_gameStyle")?.entity?.getComponent(LabelComponent::class.java)
                     }
                 }
-
-                val actor = CompositeActor(CompositeItemVO().apply { loadFromEntity(it) }, sceneLoader?.rm)
             }
 
             val tvModeTypeTips = wrapper?.getChild("tv_mode_tips")?.entity?.getComponent(LabelComponent::class.java)
@@ -134,7 +147,17 @@ class WorlListScreen : BaseVMScreen<WorlListModel> {
                 btnRecords?.setOnClickListener { onTabItemClick(5) }
             }
 
+            wrapper?.getChild("ly_forest_params")?.entity?.let {
+                val paramsActor = CompositeActor(CompositeItemVO().apply { loadFromEntity(it) }, sceneLoader?.rm)
+                paramsScrollPane = ScrollPane(paramsActor).apply {
+                    setScrollingDisabled(true, false)
+                    isVisible = false
+                }
+                applyForestContentSize()
+            }
+
             seceenStage.addActor(recordList)
+            seceenStage.addActor(paramsScrollPane)
         }
     }
 
@@ -159,6 +182,7 @@ class WorlListScreen : BaseVMScreen<WorlListModel> {
     override fun resize(width: Int, height: Int) {
         super.resize(width, height)
         applyListSize()
+        applyForestContentSize()
     }
 
     override fun render(delta: Float) {
@@ -186,8 +210,10 @@ class WorlListScreen : BaseVMScreen<WorlListModel> {
     }
 
     private fun onStyleModeClick(index: Int) {
-        sceneLoader?.sceneVO?.composite?.getLayerByName("game_style")?.isVisible = true
-        sceneLoader?.sceneVO?.composite?.getLayerByName("gamestyle_mode")?.isVisible = false
+        if (layerStyleMode?.isVisible != true) return
+
+        layerStyle?.isVisible = true
+        layerStyleMode?.isVisible = false
         val txt = when (index) {
             1 -> "社交"
             2 -> "合作"
@@ -205,24 +231,23 @@ class WorlListScreen : BaseVMScreen<WorlListModel> {
         btnModules?.isChecked = false
         btnRecords?.isChecked = false
 
-        val layerStyle = sceneLoader?.sceneVO?.composite?.getLayerByName("game_style")
-        val layerForest = sceneLoader?.sceneVO?.composite?.getLayerByName("gamestyle_forest")
-        val layerMode = sceneLoader?.sceneVO?.composite?.getLayerByName("gamestyle_mode")
-        val isShowMode = layerMode?.isVisible ?: false
+        val isShowMode = layerStyleMode?.isVisible ?: false
         layerStyle?.isVisible = false
-        layerMode?.isVisible = false
-        layerForest?.isVisible = false
+        layerStyleMode?.isVisible = false
+        layerStyleForest?.isVisible = false
+        paramsScrollPane?.isVisible = false
 
         when (index) {
             1 -> {
                 btnSetting?.isChecked = true
                 if (isShowMode)
-                    layerMode?.isVisible = true
+                    layerStyleMode?.isVisible = true
                 else layerStyle?.isVisible = true
             }
             2 -> {
                 btnForest?.isChecked = true
-                layerForest?.isVisible = true
+                layerStyleForest?.isVisible = true
+                paramsScrollPane?.isVisible = true
             }
             3 -> {
                 btnCave?.isChecked = true
@@ -251,6 +276,24 @@ class WorlListScreen : BaseVMScreen<WorlListModel> {
             recordList?.setSize(width, height)
             recordList?.setPosition(vo.x, vo.y)
 //            Log.e("QL", "------->", width, height, vo.x, vo.y, dime?.width, dime?.height, vo?.scaleX, vo?.scaleY)
+        }
+    }
+
+    private fun applyForestContentSize() {
+        wrapper?.getChild("ly_forest_content")?.entity?.let {
+            val vo = MainItemVO().apply { loadFromEntity(it) }
+            val dime = it.getComponent(DimensionsComponent::class.java)
+            val tran = it.getComponent(TransformComponent::class.java)
+
+            val sX = Gdx.graphics.width.plus(0f) / viewport.screenWidth
+            val sY = Gdx.graphics.height.plus(0f) / viewport.screenHeight
+
+            val width = dime?.width?.times(vo.scaleX)?.times(sX)
+                    ?: 700f
+            val height = dime?.height?.times(vo.scaleY)?.times(sY)
+                    ?: 420f
+            paramsScrollPane?.setSize(width, height)
+            paramsScrollPane?.setPosition(vo.x - width / 2 + vo.originX, vo.y - height / 2 + vo.originY)
         }
     }
 
