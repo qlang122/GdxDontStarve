@@ -4,8 +4,9 @@
         <file id="0" name="clock_NIGHT.png" width="107" height="107" pivot_x="0.5" pivot_y="0.5"/>
         <file id="1" name="clock_rim.png" width="107" height="107" pivot_x="0.5" pivot_y="0.5"/>
         <file id="2" name="clock_wedge.png" width="107" height="107" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="3" name="clock_hand.png" width="111" height="111" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
-    <entity id="0" name="entity_000">
+    <entity id="0" name="entity">
         <animation id="0" name="clock" length="1000" interval="100">
             <mainline>
                 <key id="0">
@@ -27,6 +28,7 @@
                     <object_ref id="15" timeline="15" key="0" z_index="15"/>
                     <object_ref id="16" timeline="16" key="0" z_index="16"/>
                     <object_ref id="17" timeline="17" key="0" z_index="17"/>
+                    <object_ref id="18" timeline="18" key="0" z_index="18"/>
                 </key>
             </mainline>
             <timeline id="0" name="clock_NIGHT">
@@ -117,6 +119,11 @@
             <timeline id="17" name="clock_rim">
                 <key id="0" spin="0">
                     <object folder="0" file="1" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="18" name="clock_hand">
+                <key id="0" spin="0">
+                    <object folder="0" file="3" angle="0" scale_x="0.95" scale_y="0.95"/>
                 </key>
             </timeline>
         </animation>

@@ -1,31 +1,21 @@
 package com.qlang.game.demo.actor.hud
 
+import com.badlogic.ashley.core.Entity
 import com.badlogic.gdx.graphics.Color
-import com.badlogic.gdx.graphics.g2d.Batch
-import com.badlogic.gdx.graphics.g2d.BitmapFont
-import com.badlogic.gdx.graphics.g2d.GlyphLayout
-import com.badlogic.gdx.scenes.scene2d.Group
-import com.badlogic.gdx.scenes.scene2d.InputEvent
-import com.badlogic.gdx.scenes.scene2d.InputListener
-import com.badlogic.gdx.scenes.scene2d.ui.Skin
-import com.badlogic.gdx.scenes.scene2d.ui.Widget
-import com.badlogic.gdx.scenes.scene2d.utils.Drawable
-import com.badlogic.gdx.scenes.scene2d.utils.TransformDrawable
-import com.badlogic.gdx.utils.Align
-import com.badlogic.gdx.utils.Pools
+import com.qlang.game.demo.actor.PlayerBodyIndexState
 import com.qlang.game.demo.entity.GameDate
+import com.qlang.h2d.extention.spriter.SpriterObjectComponent
+import com.sun.org.apache.xpath.internal.operations.Bool
+import games.rednblack.editor.renderer.components.MainItemComponent
+import games.rednblack.editor.renderer.components.label.LabelComponent
+import games.rednblack.editor.renderer.factory.EntityFactory
+import java.util.*
 
-class PlayClockActor : Widget {
-    var style: ClockStyle? = null
-        set(value) {
-            field = value
-            invalidateHierarchy()
-        }
-
+class PlayClockActor {
     var date: GameDate = GameDate()
         set(value) {
             field = value
-            invalidate()
+            update()
         }
 
     private val dayTintColor = Color.valueOf("#bd9e45f0")
@@ -48,168 +38,83 @@ class PlayClockActor : Widget {
             else -> 5
         }
 
-    private var prefWidth: Float = 0f
-    private var prefHeight: Float = 0f
-    private var textWidth: Float = 0f
     private var isOver = false
 
-    constructor() : this(ClockStyle())
+    private var clockEntity: Entity? = null
+    private var textEntity: Entity? = null
 
-    constructor(skin: Skin) : this(skin.get(ClockStyle::class.java)) {
-    }
+    private var spriter: SpriterObjectComponent? = null
 
-    constructor(skin: Skin, styleName: String) : this(skin.get(styleName, ClockStyle::class.java)) {
-    }
+    constructor (clock: Entity?, text: Entity?) {
+        clockEntity = clock
+        textEntity = text
 
-    constructor (style: ClockStyle) : super() {
-        this.style = style
-
-        setSize(getPrefWidth(), getPrefHeight())
-    }
-
-    override fun layout() {
-        style?.background?.let {
-            prefWidth = Math.max(it.minWidth + it.leftWidth + it.rightWidth, it.minWidth)
-            prefHeight = Math.max(it.minWidth + it.topHeight + it.bottomHeight, it.minHeight)
+        val component = clock?.getComponent(MainItemComponent::class.java)
+        if (component?.entityType == EntityFactory.SPRITER_TYPE) {
+            spriter = clock.getComponent(SpriterObjectComponent::class.java)
         }
 
-        val layoutPool = Pools.get(GlyphLayout::class.java)
-        val layout = layoutPool.obtain()
-        layout.setText(style?.font, "${date.day}天")
-        textWidth = layout.width
-        layoutPool.free(layout)
-
-        prefWidth = Math.max(prefWidth, width)
-        prefHeight = Math.max(prefHeight, height)
-
-        addListener(object : InputListener() {
-            override fun touchDown(event: InputEvent?, x: Float, y: Float, pointer: Int, button: Int): Boolean {
-                isOver = true
-                return true
-            }
-
-            override fun mouseMoved(event: InputEvent?, x: Float, y: Float): Boolean {
-                isOver = true
-                return true
-            }
-
-            override fun touchUp(event: InputEvent?, x: Float, y: Float, pointer: Int, button: Int) {
-                isOver = false
-            }
-        })
     }
 
-    override fun draw(batch: Batch?, parentAlpha: Float) {
-        validate()
+    fun update(date: Date) {
+        this.date.setTime(date)
+        update()
+    }
 
-        val color = color
-        batch?.setColor(color.r, color.g, color.b, color.a * parentAlpha)
-
-        val leftWidth = style?.background?.leftWidth ?: 0f
-        val bottomHeight = style?.background?.bottomHeight ?: 0f
-        val rightWidth = style?.background?.rightWidth ?: 0f
-        val topHeight = style?.background?.topHeight ?: 0f
-
-        style?.background?.draw(batch, x + leftWidth, y + bottomHeight,
-                prefWidth - leftWidth - rightWidth, prefWidth - topHeight - bottomHeight)
-
-        val oldColor = batch?.packedColor
+    private fun update() {
+        val invisable = hashMapOf<String, Boolean>()
+        val dayVisable = hashMapOf<String, Boolean>()
+        val eveningVisable = hashMapOf<String, Boolean>()
+        for (i in 1..16) {
+            invisable["clock_wedge_0${if (i < 10) "0$i" else i}"] = false
+        }
+        spriter?.animation?.makeTimelineVisible(invisable)
 
         for (i in 0 until daytime) {
-            val wedge = style?.wedge
-            batch?.color = if (i % 2 == 0) batch?.color?.mul(dayTintColor) else batch?.color?.mul(dayTintLightColor)
-            if (wedge is TransformDrawable) {
-                val degrees = i * 22.5f + 22.5f
-                wedge.draw(batch, x + prefWidth / 2f, y + prefHeight / 2f, 0f, 0f,
-                        (Math.sin(22.50) * (prefWidth - leftWidth - rightWidth) / 2f).toFloat(),
-                        (prefWidth - topHeight - bottomHeight - prefWidth / 6f) / 2f, 1f, 1f, 360 - degrees)
-            } else wedge?.draw(batch, x + prefWidth / 2f, y + prefHeight / 2f,
-                    (Math.sin(22.5) * (prefWidth - leftWidth - rightWidth) / 2f).toFloat(),
-                    (prefWidth - topHeight - bottomHeight) / 2f)
-            batch?.packedColor = oldColor ?: 0f
-        }
-        batch?.packedColor = oldColor ?: 0f
-        for (i in daytime until (daytime + evening)) {
-            val wedge = style?.wedge
-            batch?.color = if (i % 2 == 0) batch?.color?.mul(eveningTintColor) else batch?.color?.mul(eveningTintLightColor)
-            if (wedge is TransformDrawable) {
-                val degrees = i * 22.5f + 22.5f
-                wedge.draw(batch, x + prefWidth / 2f, y + prefHeight / 2f, 0f, 0f,
-                        (Math.sin(22.5) * (prefWidth - leftWidth - rightWidth) / 2f).toFloat(),
-                        (prefWidth - topHeight - bottomHeight - prefWidth / 6f) / 2f, 1f, 1f, 360 - degrees)
-            } else wedge?.draw(batch, x + prefWidth / 2f, y + prefHeight / 2f,
-                    (Math.sin(22.5) * (prefWidth - leftWidth - rightWidth) / 2f).toFloat(),
-                    (prefWidth - topHeight - bottomHeight) / 2f)
-            batch?.packedColor = oldColor ?: 0f
-        }
-        batch?.packedColor = oldColor ?: 0f
+            val name = "clock_wedge_0${if (i < 10) "0${i + 1}" else (i + 1)}"
+            dayVisable[name] = true
 
-        style?.rim?.draw(batch, x + leftWidth, y + bottomHeight, prefWidth - leftWidth - rightWidth, prefHeight - topHeight - bottomHeight)
+            if (i % 2 == 0) {
+                spriter?.animation?.getTimeline(name)?.let {
+                    spriter?.animation?.tintSpriteTimeline(it, dayTintColor)
+                }
+            } else {
+                spriter?.animation?.getTimeline(name)?.let {
+                    spriter?.animation?.tintSpriteTimeline(it, dayTintLightColor)
+                }
+            }
+        }
+        spriter?.animation?.makeTimelineVisible(dayVisable)
+        for (i in daytime until (daytime + evening)) {
+            val name = "clock_wedge_0${if (i < 10) "0${i + 1}" else (i + 1)}"
+            dayVisable[name] = true
+
+            if (i % 2 == 0) {
+                spriter?.animation?.getTimeline(name)?.let {
+                    spriter?.animation?.tintSpriteTimeline(it, eveningTintColor)
+                }
+            } else {
+                spriter?.animation?.getTimeline(name)?.let {
+                    spriter?.animation?.tintSpriteTimeline(it, eveningTintLightColor)
+                }
+            }
+        }
+        spriter?.animation?.makeTimelineVisible(eveningVisable)
 
         val hourDegrees = (date.hour * 15.0f + 15.0f * date.minute / 60) % 360
-        val hand = style?.hand
-        if (hand is TransformDrawable) {
-            hand.draw(batch, x + leftWidth, y + bottomHeight, prefWidth / 2f, prefHeight / 2f,
-                    prefWidth, prefHeight, 1f, 1f, hourDegrees)
-        } else hand?.draw(batch, x + leftWidth, y + bottomHeight, prefWidth, prefHeight)
+        spriter?.animation?.getTimeline("clock_hand")?.keys?.get(0)?.`object`?.setAngle(hourDegrees)
 
         if (isOver) {
-            val str = "${date.day}天"
-            style?.let { it.font.setColor(it.fontColor.r, it.fontColor.g, it.fontColor.b, it.fontColor.a) }
-            style?.font?.draw(batch, str, x + prefWidth / 2f - textWidth / 2f, y + prefHeight / 2f, 0, str.length, textWidth, Align.left, false)
+            val str = "天 ${date.day}"
+            textEntity?.getComponent(MainItemComponent::class.java)?.let {
+                if (it.entityType == EntityFactory.LABEL_TYPE) {
+                    textEntity?.getComponent(LabelComponent::class.java)?.setText(str)
+                }
+            }
         }
     }
 
     fun updateDay() {
         needUpdateDay = true
-    }
-
-    override fun getMinWidth(): Float {
-        return 0f
-    }
-
-    override fun getMinHeight(): Float {
-        return 0f
-    }
-
-    override fun getPrefWidth(): Float {
-        validate()
-        return prefWidth
-    }
-
-    override fun getPrefHeight(): Float {
-        validate()
-        return prefHeight
-    }
-
-    class ClockStyle {
-        lateinit var font: BitmapFont
-        var fontColor = Color(1f, 1f, 1f, 1f)
-        var fontColorDown = Color(1f, 1f, 1f, 1f)
-        var fontColorOver = Color(1f, 1f, 1f, 1f)
-        lateinit var background: Drawable
-        lateinit var hand: Drawable
-        var rim: Drawable? = null
-        var wedge: Drawable? = null
-
-        constructor()
-
-        constructor(font: BitmapFont, fontColor: Color, background: Drawable, hand: Drawable) {
-            this.font = font
-            this.fontColor.set(fontColor)
-            this.background = background
-            this.hand = hand
-        }
-
-        constructor(style: ClockStyle) {
-            font = style.font
-            fontColor.set(style.fontColor)
-            fontColorDown.set(style.fontColorDown)
-            fontColorOver.set(style.fontColorOver)
-            background = style.background
-            hand = style.hand
-            rim = style.rim
-            wedge = style.wedge
-        }
     }
 }

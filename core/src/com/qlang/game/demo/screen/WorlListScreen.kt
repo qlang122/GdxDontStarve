@@ -35,7 +35,6 @@ import games.rednblack.editor.renderer.data.LayerItemVO
 import games.rednblack.editor.renderer.data.MainItemVO
 import games.rednblack.editor.renderer.resources.AsyncResourceManager
 import games.rednblack.editor.renderer.scene2d.CompositeActor
-import games.rednblack.editor.renderer.utils.ComponentRetriever
 import games.rednblack.editor.renderer.utils.ItemWrapper
 
 class WorlListScreen : BaseVMScreen<WorlListModel> {
@@ -86,7 +85,6 @@ class WorlListScreen : BaseVMScreen<WorlListModel> {
 
             wrapper = ItemWrapper(sceneLoader?.root)
 
-            ComponentRetriever.addMapper(ButtonComponent::class.java)
             wrapper?.getChild("btn_back")?.entity?.getComponent(ButtonComponent::class.java)?.let {
                 it.setOnClickListener { Navigator.pop(this) }
             }

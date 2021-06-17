@@ -7,3 +7,7 @@ object PlayerStatus {
     const val WALK = 3
     const val JUMP = 4
 }
+
+enum class PlayerBodyIndexState {
+    FULL, FILL_UP, FILL_DOWN
+}

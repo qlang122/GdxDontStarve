@@ -1,0 +1,530 @@
+
+sanity.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+glow-3
+  rotate: false
+  xy: 1, 379
+  size: 132, 132
+  orig: 132, 132
+  offset: 0, 0
+  index: -1
+glow2-3
+  rotate: false
+  xy: 1, 245
+  size: 132, 132
+  orig: 132, 132
+  offset: 0, 0
+  index: -1
+glow-2
+  rotate: false
+  xy: 135, 383
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+glow2-2
+  rotate: false
+  xy: 1, 115
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+glow-1
+  rotate: false
+  xy: 135, 261
+  size: 120, 120
+  orig: 120, 120
+  offset: 0, 0
+  index: -1
+glow2-1
+  rotate: false
+  xy: 265, 391
+  size: 120, 120
+  orig: 120, 120
+  offset: 0, 0
+  index: -1
+glow-0
+  rotate: false
+  xy: 1, 17
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: -1
+glow2-0
+  rotate: false
+  xy: 387, 415
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: -1
+frame_circle-0
+  rotate: false
+  xy: 485, 427
+  size: 80, 84
+  orig: 80, 84
+  offset: 0, 0
+  index: -1
+crack-4
+  rotate: false
+  xy: 567, 443
+  size: 68, 68
+  orig: 68, 68
+  offset: 0, 0
+  index: -1
+lunacy_level-0
+  rotate: false
+  xy: 637, 443
+  size: 68, 68
+  orig: 68, 68
+  offset: 0, 0
+  index: -1
+sanity_level-0
+  rotate: false
+  xy: 707, 443
+  size: 68, 68
+  orig: 68, 68
+  offset: 0, 0
+  index: -1
+crack-3
+  rotate: false
+  xy: 777, 443
+  size: 64, 68
+  orig: 64, 68
+  offset: 0, 0
+  index: -1
+lunacy_level-1
+  rotate: false
+  xy: 843, 447
+  size: 68, 64
+  orig: 68, 64
+  offset: 0, 0
+  index: -1
+sanity_level-1
+  rotate: false
+  xy: 913, 447
+  size: 68, 64
+  orig: 68, 64
+  offset: 0, 0
+  index: -1
+crack-2
+  rotate: false
+  xy: 99, 45
+  size: 32, 68
+  orig: 32, 68
+  offset: 0, 0
+  index: -1
+brain-3
+  rotate: false
+  xy: 983, 455
+  size: 36, 56
+  orig: 36, 56
+  offset: 0, 0
+  index: -1
+lunacy_level-10
+  rotate: false
+  xy: 387, 369
+  size: 68, 44
+  orig: 68, 44
+  offset: 0, 0
+  index: -1
+lunacy_level-11
+  rotate: false
+  xy: 135, 219
+  size: 68, 40
+  orig: 68, 40
+  offset: 0, 0
+  index: -1
+spiral-4
+  rotate: false
+  xy: 131, 153
+  size: 68, 64
+  orig: 68, 64
+  offset: 0, 0
+  index: -1
+lunacy_level-12
+  rotate: false
+  xy: 131, 115
+  size: 68, 36
+  orig: 68, 36
+  offset: 0, 0
+  index: -1
+bg-0
+  rotate: false
+  xy: 133, 49
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+bg2-0
+  rotate: false
+  xy: 205, 195
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+bg2-1
+  rotate: false
+  xy: 201, 129
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+lunacy_level-13
+  rotate: false
+  xy: 567, 405
+  size: 68, 36
+  orig: 68, 36
+  offset: 0, 0
+  index: -1
+lunacy_level-2
+  rotate: false
+  xy: 637, 381
+  size: 68, 60
+  orig: 68, 60
+  offset: 0, 0
+  index: -1
+lunacy_level-3
+  rotate: false
+  xy: 707, 381
+  size: 68, 60
+  orig: 68, 60
+  offset: 0, 0
+  index: -1
+bg2-2
+  rotate: false
+  xy: 777, 377
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+sanity_level-2
+  rotate: false
+  xy: 843, 385
+  size: 68, 60
+  orig: 68, 60
+  offset: 0, 0
+  index: -1
+sanity_level-3
+  rotate: false
+  xy: 913, 385
+  size: 68, 60
+  orig: 68, 60
+  offset: 0, 0
+  index: -1
+crack-1
+  rotate: false
+  xy: 983, 385
+  size: 24, 68
+  orig: 24, 68
+  offset: 0, 0
+  index: -1
+lunacy_level-4
+  rotate: false
+  xy: 485, 369
+  size: 68, 56
+  orig: 68, 56
+  offset: 0, 0
+  index: -1
+lunacy_level-5
+  rotate: false
+  xy: 555, 347
+  size: 68, 56
+  orig: 68, 56
+  offset: 0, 0
+  index: -1
+lunacy_level-6
+  rotate: false
+  xy: 625, 327
+  size: 68, 52
+  orig: 68, 52
+  offset: 0, 0
+  index: -1
+sanity_level-4
+  rotate: false
+  xy: 695, 323
+  size: 68, 56
+  orig: 68, 56
+  offset: 0, 0
+  index: -1
+sanity_level-5
+  rotate: false
+  xy: 765, 319
+  size: 68, 56
+  orig: 68, 56
+  offset: 0, 0
+  index: -1
+brain-0
+  rotate: false
+  xy: 257, 261
+  size: 52, 64
+  orig: 52, 64
+  offset: 0, 0
+  index: -1
+brain-1
+  rotate: false
+  xy: 271, 199
+  size: 52, 60
+  orig: 52, 60
+  offset: 0, 0
+  index: -1
+sanity_level-11
+  rotate: false
+  xy: 257, 327
+  size: 68, 40
+  orig: 68, 40
+  offset: 0, 0
+  index: -1
+lunacy_level-19
+  rotate: false
+  xy: 265, 369
+  size: 52, 20
+  orig: 52, 20
+  offset: 0, 0
+  index: -1
+crack-0
+  rotate: false
+  xy: 311, 261
+  size: 20, 64
+  orig: 20, 64
+  offset: 0, 0
+  index: -1
+brain-2
+  rotate: false
+  xy: 327, 329
+  size: 44, 60
+  orig: 44, 60
+  offset: 0, 0
+  index: -1
+spiral-3
+  rotate: false
+  xy: 333, 267
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+sanity_level-12
+  rotate: false
+  xy: 373, 331
+  size: 68, 36
+  orig: 68, 36
+  offset: 0, 0
+  index: -1
+sanity_level-6
+  rotate: false
+  xy: 395, 277
+  size: 68, 52
+  orig: 68, 52
+  offset: 0, 0
+  index: -1
+sanity_level-13
+  rotate: false
+  xy: 443, 331
+  size: 68, 36
+  orig: 68, 36
+  offset: 0, 0
+  index: -1
+spiral-2
+  rotate: false
+  xy: 465, 277
+  size: 52, 52
+  orig: 52, 52
+  offset: 0, 0
+  index: -1
+lunacy_level-14
+  rotate: false
+  xy: 201, 95
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+lunacy_level-7
+  rotate: false
+  xy: 199, 45
+  size: 68, 48
+  orig: 68, 48
+  offset: 0, 0
+  index: -1
+lunacy_level-8
+  rotate: false
+  xy: 395, 227
+  size: 68, 48
+  orig: 68, 48
+  offset: 0, 0
+  index: -1
+sanity_level-7
+  rotate: false
+  xy: 465, 227
+  size: 68, 48
+  orig: 68, 48
+  offset: 0, 0
+  index: -1
+lunacy_level-16
+  rotate: false
+  xy: 333, 237
+  size: 60, 28
+  orig: 60, 28
+  offset: 0, 0
+  index: -1
+lunacy_level-9
+  rotate: false
+  xy: 325, 191
+  size: 68, 44
+  orig: 68, 44
+  offset: 0, 0
+  index: -1
+sanity_level-10
+  rotate: false
+  xy: 395, 181
+  size: 68, 44
+  orig: 68, 44
+  offset: 0, 0
+  index: -1
+sanity_level-8
+  rotate: false
+  xy: 465, 177
+  size: 68, 48
+  orig: 68, 48
+  offset: 0, 0
+  index: -1
+lunacy_level-21
+  rotate: false
+  xy: 513, 351
+  size: 40, 16
+  orig: 40, 16
+  offset: 0, 0
+  index: -1
+sanity_level-9
+  rotate: false
+  xy: 843, 339
+  size: 68, 44
+  orig: 68, 44
+  offset: 0, 0
+  index: -1
+lunacy_level-15
+  rotate: false
+  xy: 913, 351
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+spiral-1
+  rotate: false
+  xy: 979, 339
+  size: 44, 44
+  orig: 44, 44
+  offset: 0, 0
+  index: -1
+sanity_level-14
+  rotate: false
+  xy: 913, 317
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+sanity_level-15
+  rotate: false
+  xy: 835, 305
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+lunacy_level-17
+  rotate: false
+  xy: 133, 23
+  size: 60, 24
+  orig: 60, 24
+  offset: 0, 0
+  index: -1
+sanity_level-16
+  rotate: false
+  xy: 195, 15
+  size: 60, 28
+  orig: 60, 28
+  offset: 0, 0
+  index: -1
+sanity_level-19
+  rotate: false
+  xy: 99, 1
+  size: 52, 20
+  orig: 52, 20
+  offset: 0, 0
+  index: -1
+sanity_level-21
+  rotate: false
+  xy: 153, 5
+  size: 40, 16
+  orig: 40, 16
+  offset: 0, 0
+  index: -1
+moon-0
+  rotate: false
+  xy: 519, 277
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+moon-1
+  rotate: false
+  xy: 535, 227
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+moon-2
+  rotate: false
+  xy: 535, 177
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+moon-3
+  rotate: false
+  xy: 569, 297
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+sanity_level-17
+  rotate: false
+  xy: 619, 301
+  size: 60, 24
+  orig: 60, 24
+  offset: 0, 0
+  index: -1
+lunacy_level-18
+  rotate: false
+  xy: 681, 297
+  size: 56, 24
+  orig: 56, 24
+  offset: 0, 0
+  index: -1
+sanity_level-18
+  rotate: false
+  xy: 619, 275
+  size: 56, 24
+  orig: 56, 24
+  offset: 0, 0
+  index: -1
+lunacy_level-20
+  rotate: false
+  xy: 677, 275
+  size: 48, 20
+  orig: 48, 20
+  offset: 0, 0
+  index: -1
+spiral-0
+  rotate: false
+  xy: 979, 305
+  size: 36, 32
+  orig: 36, 32
+  offset: 0, 0
+  index: -1
+sanity_level-20
+  rotate: false
+  xy: 271, 177
+  size: 48, 20
+  orig: 48, 20
+  offset: 0, 0
+  index: -1

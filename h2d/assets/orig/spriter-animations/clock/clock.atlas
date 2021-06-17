@@ -6,21 +6,28 @@ filter: Linear, Linear
 repeat: none
 clock_NIGHT
   rotate: false
-  xy: 2, 2
+  xy: 115, 6
   size: 107, 107
   orig: 107, 107
   offset: 0, 0
   index: -1
+clock_hand
+  rotate: false
+  xy: 2, 2
+  size: 111, 111
+  orig: 111, 111
+  offset: 0, 0
+  index: -1
 clock_rim
   rotate: false
-  xy: 111, 2
+  xy: 224, 6
   size: 107, 107
   orig: 107, 107
   offset: 0, 0
   index: -1
 clock_wedge
   rotate: false
-  xy: 220, 2
+  xy: 333, 6
   size: 107, 107
   orig: 107, 107
   offset: 0, 0
