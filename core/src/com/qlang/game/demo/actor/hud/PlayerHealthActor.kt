@@ -1,39 +1,33 @@
 package com.qlang.game.demo.actor.hud
 
-import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.assets.AssetManager
-import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver
-import com.badlogic.gdx.graphics.g2d.Batch
-import com.badlogic.gdx.scenes.scene2d.Actor
-import com.qlang.game.demo.res.R
-import com.qlang.game.demo.utils.Log
-import me.winter.gdx.animation.Animation
-import me.winter.gdx.animation.Entity
-import me.winter.gdx.animation.scml.SCMLLoader
+import com.badlogic.ashley.core.Entity;
+import com.qlang.h2d.extention.spriter.SpriterObjectComponent
+import games.rednblack.editor.renderer.components.MainItemComponent
+import games.rednblack.editor.renderer.factory.EntityFactory
 
-class PlayerHealthActor(val manager: AssetManager) : Actor() {
-    private var animation: Animation? = null
-
+class PlayerHealthActor {
+    private var mainEntity: Entity? = null
     private var arrowEntity: Entity? = null
-    private var arrowAnim: Animation? = null
+    private var healthSpriter: SpriterObjectComponent? = null
+    private var arrowSpriter: SpriterObjectComponent? = null
+
     private var currStage = BodyIndexState.NEUTRAL
 
     private var currProgress = 1f
 
-    init {
-        val file = Gdx.files.internal(R.anim.hud.health)
-        val parameters = SCMLLoader.Parameters(R.anim.hud.health_atlas)
-        val scml = SCMLLoader(InternalFileHandleResolver()).load(manager, "", file, parameters)
-        val entity = scml.getEntity("health")
-        animation = entity?.getAnimation(0)
-        animation?.isLooping = false
-        animation?.update(1f)
+    constructor(main: Entity?, arrow: Entity?) {
+        mainEntity = main
+        arrowEntity = arrow
 
-        val arrowFile = Gdx.files.internal(R.anim.hud.sanity_arrow)
-        val arrowParameters = SCMLLoader.Parameters(R.anim.hud.sanity_arrow_atlas)
-        val arrowScml = SCMLLoader(InternalFileHandleResolver()).load(manager, "", arrowFile, arrowParameters)
-        arrowEntity = arrowScml.getEntity("sanity_arrow")
-        arrowAnim = arrowEntity?.getAnimation("neutral_90s")
+        val component = mainEntity?.getComponent(MainItemComponent::class.java)
+        if (component?.entityType == EntityFactory.SPRITER_TYPE) {
+            healthSpriter = mainEntity?.getComponent(SpriterObjectComponent::class.java)
+        }
+
+        val arrowComponent = arrow?.getComponent(MainItemComponent::class.java)
+        if (arrowComponent?.entityType == EntityFactory.SPRITER_TYPE) {
+            arrowSpriter = arrow.getComponent(SpriterObjectComponent::class.java)
+        }
     }
 
     /**
@@ -41,53 +35,30 @@ class PlayerHealthActor(val manager: AssetManager) : Actor() {
      */
     fun setProgress(value: Float) {
         if (value < 0 || value >= 1) return
-        val len = animation?.length ?: 0
+        val len = healthSpriter?.animation?.length ?: 0
         currProgress = value * len
-        animation?.update(currProgress)
+        healthSpriter?.animation?.update(currProgress)
     }
 
     fun changeState(value: BodyIndexState = BodyIndexState.NEUTRAL) {
         currStage = value
-        arrowAnim = when (currStage) {
-            BodyIndexState.DESC -> arrowEntity?.getAnimation("arrow_loop_decrease_90s")
-            BodyIndexState.DESC_MORE -> arrowEntity?.getAnimation("arrow_loop_decrease_more_90s")
-            BodyIndexState.DESC_MOST -> arrowEntity?.getAnimation("arrow_loop_decrease_most_90s")
-            BodyIndexState.INC -> arrowEntity?.getAnimation("arrow_loop_increase_90s")
-            BodyIndexState.INC_MORE -> arrowEntity?.getAnimation("arrow_loop_increase_more_90s")
-            BodyIndexState.INC_MOST -> arrowEntity?.getAnimation("arrow_loop_increase_most_90s")
-            else -> arrowEntity?.getAnimation("neutral_90s")
+        val arrowAnim = when (currStage) {
+            BodyIndexState.DESC -> "arrow_loop_decrease_90s"
+            BodyIndexState.DESC_MORE -> "arrow_loop_decrease_more_90s"
+            BodyIndexState.DESC_MOST -> "arrow_loop_decrease_most_90s"
+            BodyIndexState.INC -> "arrow_loop_increase_90s"
+            BodyIndexState.INC_MORE -> "arrow_loop_increase_more_90s"
+            BodyIndexState.INC_MOST -> "arrow_loop_increase_most_90s"
+            else -> "neutral_90s"
         }
-        animation?.root?.position?.let { arrowAnim?.root?.position?.set(it) }
+        arrowSpriter?.setAnimation(arrowAnim)
     }
 
-    override fun setPosition(x: Float, y: Float) {
-//        var p = parent
-//        var offsetX = 0f
-//        var offsetY = 0f
-//        while (p != null) {
-//            offsetX += p.x;offsetY += p.y
-//            p = p.parent
-//        }
-//        Log.e("QL", "--1-->>", x, y, this.x, this.y, offsetX, offsetY, width, height)
-//        animation?.root?.position?.set(x + this.x + offsetX + width / 2f, y + this.y + offsetY + height / 2f)
-//        arrowAnim?.root?.position?.set(x + this.x + offsetX + width / 2f, y + this.y + offsetY + height / 2f)
-        animation?.root?.position?.set(x + width / 2f, y + height / 2f)
-        arrowAnim?.root?.position?.set(x + width / 2f, y + height / 2f - 10f)
-        animation?.update(currProgress)
-    }
-
-    override fun act(delta: Float) {
-        super.act(delta)
-        arrowAnim?.let {
+    fun act(delta: Float) {
+        arrowSpriter?.animation?.let {
             if (it.isDone) it.reset()
             it.update(delta.times(1000))//delta单位为s，0.001
         }
     }
 
-    override fun draw(batch: Batch?, parentAlpha: Float) {
-        batch ?: return
-        if (!isVisible) return
-        animation?.draw(batch)
-        arrowAnim?.draw(batch)
-    }
 }

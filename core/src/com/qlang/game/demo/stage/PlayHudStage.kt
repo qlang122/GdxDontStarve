@@ -55,20 +55,11 @@ class PlayHudStage : Stage {
 
             wrapper?.getChild("ly_playerState")?.entity?.let {
                 val lyState = ItemWrapper(it)
-                lyState.getChild("iv_clock")
-                lyState.getChild("tv_days")
-                lyState.getChild("iv_hunger")
-                lyState.getChild("iv_hunger_up")
-                lyState.getChild("iv_hunger_down")
-                lyState.getChild("iv_health")
-                lyState.getChild("iv_health_up")
-                lyState.getChild("iv_health_down")
-                lyState.getChild("iv_sanity")
-                lyState.getChild("iv_sanity_up")
-                lyState.getChild("iv_sanity_down")
-                lyState.getChild("iv_wet_meter")
-                lyState.getChild("iv_wet_meter_up")
-                lyState.getChild("iv_wet_meter_down")
+                clockActor = PlayClockActor(lyState.getChild("iv_clock")?.entity, lyState.getChild("tv_days")?.entity)
+                healthActor = PlayerHealthActor(lyState.getChild("iv_hunger")?.entity, lyState.getChild("iv_hunger_arrow")?.entity)
+                hungerActor = PlayerHungerActor(lyState.getChild("iv_health")?.entity, lyState.getChild("iv_health_arrow")?.entity)
+                sanityActor = PlayerSanityActor(lyState.getChild("iv_sanity")?.entity, lyState.getChild("iv_sanity_arrow")?.entity)
+                wetMeterActor = PlayerWetMeterActor(lyState.getChild("iv_wet_meter")?.entity, lyState.getChild("iv_wet_meter_arrow")?.entity)
             }
         }
     }

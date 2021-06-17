@@ -2,10 +2,8 @@ package com.qlang.game.demo.actor.hud
 
 import com.badlogic.ashley.core.Entity
 import com.badlogic.gdx.graphics.Color
-import com.qlang.game.demo.actor.PlayerBodyIndexState
 import com.qlang.game.demo.entity.GameDate
 import com.qlang.h2d.extention.spriter.SpriterObjectComponent
-import com.sun.org.apache.xpath.internal.operations.Bool
 import games.rednblack.editor.renderer.components.MainItemComponent
 import games.rednblack.editor.renderer.components.label.LabelComponent
 import games.rednblack.editor.renderer.factory.EntityFactory
@@ -74,14 +72,8 @@ class PlayClockActor {
             val name = "clock_wedge_0${if (i < 10) "0${i + 1}" else (i + 1)}"
             dayVisable[name] = true
 
-            if (i % 2 == 0) {
-                spriter?.animation?.getTimeline(name)?.let {
-                    spriter?.animation?.tintSpriteTimeline(it, dayTintColor)
-                }
-            } else {
-                spriter?.animation?.getTimeline(name)?.let {
-                    spriter?.animation?.tintSpriteTimeline(it, dayTintLightColor)
-                }
+            spriter?.animation?.getTimeline(name)?.let {
+                spriter?.animation?.tintSpriteTimeline(it, if (i % 2 == 0) dayTintColor else dayTintLightColor)
             }
         }
         spriter?.animation?.makeTimelineVisible(dayVisable)
@@ -89,14 +81,8 @@ class PlayClockActor {
             val name = "clock_wedge_0${if (i < 10) "0${i + 1}" else (i + 1)}"
             dayVisable[name] = true
 
-            if (i % 2 == 0) {
-                spriter?.animation?.getTimeline(name)?.let {
-                    spriter?.animation?.tintSpriteTimeline(it, eveningTintColor)
-                }
-            } else {
-                spriter?.animation?.getTimeline(name)?.let {
-                    spriter?.animation?.tintSpriteTimeline(it, eveningTintLightColor)
-                }
+            spriter?.animation?.getTimeline(name)?.let {
+                spriter?.animation?.tintSpriteTimeline(it, if (i % 2 == 0) eveningTintColor else eveningTintLightColor)
             }
         }
         spriter?.animation?.makeTimelineVisible(eveningVisable)
