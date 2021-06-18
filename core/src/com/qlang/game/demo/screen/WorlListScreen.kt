@@ -197,8 +197,11 @@ class WorlListScreen : BaseVMScreen<WorlListModel> {
     }
 
     override fun dispose() {
+        super.dispose()
         seceenStage.dispose()
         sceneLoader?.dispose()
+        sceneLoader = null
+
     }
 
     private fun go2Play(info: WorlInfo?) {
@@ -313,7 +316,8 @@ class WorlListScreen : BaseVMScreen<WorlListModel> {
     }
 
     private fun newListItem(info: WorlInfo, skin: Skin?): Actor? {
-        val roleHead = skin?.get(info.role, Image::class.java)?.apply { setSize(80f, 100f) }
+        val role = if (info.role.isNullOrEmpty()) "default" else info.role
+        val roleHead = skin?.get(role, Image::class.java)?.apply { setSize(80f, 100f) }
 
         return wrapper?.getChild("ly_list_item")?.entity?.let {
             val actor = CompositeActor(CompositeItemVO().apply { loadFromEntity(it) }, sceneLoader?.rm)

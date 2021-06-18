@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog
 import com.badlogic.gdx.scenes.scene2d.ui.Window
+import com.badlogic.gdx.scenes.scene2d.utils.BaseDrawable
 import com.badlogic.gdx.utils.Scaling
 import com.badlogic.gdx.utils.viewport.ScalingViewport
 import com.badlogic.gdx.utils.viewport.Viewport
@@ -67,7 +68,7 @@ class HomeScreen : ScreenAdapter() {
 
                 val actor = CompositeActor(CompositeItemVO().apply { loadFromEntity(it) }, sceneLoader?.rm)
                 exitDialog = Dialog("", Window.WindowStyle().apply {
-                    this.titleFont = bitmapFont
+                    this.titleFont = bitmapFont;background = BaseDrawable()
                     background.minWidth = dimen.width
                     background.minHeight = dimen.height
                 }).apply {
