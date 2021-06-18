@@ -1,0 +1,117 @@
+
+saveslot_portraits.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+wolfgang
+  rotate: false
+  xy: 0, 312
+  size: 119, 103
+  orig: 119, 103
+  offset: 0, 0
+  index: -1
+waxwell
+  rotate: false
+  xy: 360, 0
+  size: 119, 103
+  orig: 119, 103
+  offset: 0, 0
+  index: -1
+wilson
+  rotate: false
+  xy: 120, 208
+  size: 119, 103
+  orig: 119, 103
+  offset: 0, 0
+  index: -1
+wilton
+  rotate: false
+  xy: 240, 208
+  size: 119, 103
+  orig: 119, 103
+  offset: 0, 0
+  index: -1
+woodie
+  rotate: false
+  xy: 120, 312
+  size: 119, 103
+  orig: 119, 103
+  offset: 0, 0
+  index: -1
+random
+  rotate: false
+  xy: 120, 0
+  size: 119, 103
+  orig: 119, 103
+  offset: 0, 0
+  index: -1
+wickerbottom
+  rotate: false
+  xy: 360, 104
+  size: 119, 103
+  orig: 119, 103
+  offset: 0, 0
+  index: -1
+wx78
+  rotate: false
+  xy: 360, 312
+  size: 119, 103
+  orig: 119, 103
+  offset: 0, 0
+  index: -1
+wathgrithr
+  rotate: false
+  xy: 240, 0
+  size: 119, 103
+  orig: 119, 103
+  offset: 0, 0
+  index: -1
+wortox
+  rotate: false
+  xy: 240, 312
+  size: 119, 103
+  orig: 119, 103
+  offset: 0, 0
+  index: -1
+wendy
+  rotate: false
+  xy: 120, 104
+  size: 119, 103
+  orig: 119, 103
+  offset: 0, 0
+  index: -1
+willow
+  rotate: false
+  xy: 0, 208
+  size: 119, 103
+  orig: 119, 103
+  offset: 0, 0
+  index: -1
+background
+  rotate: false
+  xy: 0, 0
+  size: 119, 103
+  orig: 119, 103
+  offset: 0, 0
+  index: -1
+wes
+  rotate: false
+  xy: 240, 104
+  size: 119, 103
+  orig: 119, 103
+  offset: 0, 0
+  index: -1
+webber
+  rotate: false
+  xy: 0, 104
+  size: 119, 103
+  orig: 119, 103
+  offset: 0, 0
+  index: -1
+winnie
+  rotate: false
+  xy: 360, 208
+  size: 119, 103
+  orig: 119, 103
+  offset: 0, 0
+  index: -1
