@@ -1,0 +1,62 @@
+
+saving.png
+size: 512, 256
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+machine_box-0
+  rotate: false
+  xy: 2, 60
+  size: 188, 164
+  orig: 188, 164
+  offset: 0, 0
+  index: -1
+machine_lever-0
+  rotate: false
+  xy: 2, 2
+  size: 156, 56
+  orig: 156, 56
+  offset: 0, 0
+  index: -1
+machine_rope-0
+  rotate: false
+  xy: 318, 72
+  size: 28, 152
+  orig: 28, 152
+  offset: 0, 0
+  index: -1
+machine_rope-1
+  rotate: false
+  xy: 348, 72
+  size: 24, 152
+  orig: 24, 152
+  offset: 0, 0
+  index: -1
+machine_rope-2
+  rotate: false
+  xy: 348, 72
+  size: 24, 152
+  orig: 24, 152
+  offset: 0, 0
+  index: -1
+machine_rope-3
+  rotate: false
+  xy: 348, 72
+  size: 24, 152
+  orig: 24, 152
+  offset: 0, 0
+  index: -1
+machine_rope-4
+  rotate: false
+  xy: 348, 72
+  size: 24, 152
+  orig: 24, 152
+  offset: 0, 0
+  index: -1
+machine_wheel01-0
+  rotate: false
+  xy: 192, 100
+  size: 124, 124
+  orig: 124, 124
+  offset: 0, 0
+  index: -1

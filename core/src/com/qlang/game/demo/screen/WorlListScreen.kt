@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.*
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable
 import com.badlogic.gdx.utils.Align
 import com.badlogic.gdx.utils.Array
 import com.badlogic.gdx.utils.Scaling
@@ -27,6 +28,7 @@ import com.qlang.game.demo.widget.VerticalWidgetList
 import com.qlang.gdxkt.lifecycle.Observer
 import games.rednblack.editor.renderer.SceneLoader
 import games.rednblack.editor.renderer.components.DimensionsComponent
+import games.rednblack.editor.renderer.components.TextureRegionComponent
 import games.rednblack.editor.renderer.components.TransformComponent
 import games.rednblack.editor.renderer.components.additional.ButtonComponent
 import games.rednblack.editor.renderer.components.label.LabelComponent
@@ -310,36 +312,32 @@ class WorlListScreen : BaseVMScreen<WorlListModel> {
         }
     }
 
-    private fun <T : Actor> newListItem(info: WorlInfo, skin: Skin?, hudSkin: Skin?): T? {
-        skin ?: return null
-        hudSkin ?: return null
+    private fun newListItem(info: WorlInfo, skin: Skin?): Actor? {
+        val roleHead = skin?.get(info.role, Image::class.java)?.apply { setSize(80f, 100f) }
 
-        val role = if (info.role.isNullOrEmpty()) "default" else info.role
-        val bgImage = skin.get("background", Image::class.java).drawable
-        val roleHead = skin.get(role, Image::class.java).apply { setSize(80f, 100f) }
-        val fontDesStyle = hudSkin.get("font14", Label.LabelStyle::class.java)
-        val fontTitleStyle = hudSkin.get("font18", Label.LabelStyle::class.java)
-        return Table().apply {
-            add(Container(roleHead).apply { background = bgImage;setSize(prefWidth, prefHeight) })
-            add(Table().apply {
-                align(Align.topLeft)
-                add(Label("${info.name}", fontTitleStyle))
-                row()
-                add(Label(if (info.days <= 0) "" else "${info.days}天", fontDesStyle))
-                        .padTop(5f).align(Align.left)
-                setSize(prefWidth, prefHeight)
-            }).padLeft(20f)
-            setSize(prefWidth, prefHeight)
-        } as T
+        return wrapper?.getChild("ly_list_item")?.entity?.let {
+            val actor = CompositeActor(CompositeItemVO().apply { loadFromEntity(it) }, sceneLoader?.rm)
+            val vo = CompositeItemVO().apply { loadFromEntity(it) }
+            val checked = vo.composite?.getLayerByName("checked")
+            val top = vo.composite?.getLayerByName("top")
+            val unknown = vo.composite?.getLayerByName("unknown")
+
+            val itemWrapper = ItemWrapper(it)
+            itemWrapper.getChild("iv_head")?.entity?.getComponent(TextureRegionComponent::class.java)?.region =
+                    (roleHead?.drawable as? TextureRegionDrawable)?.region
+            itemWrapper.getChild("tv_title")?.entity?.getComponent(LabelComponent::class.java)?.setText(info.name)
+            itemWrapper.getChild("tv_title0")?.entity?.getComponent(LabelComponent::class.java)?.setText(info.name)
+            itemWrapper.getChild("tv_days")?.entity?.getComponent(LabelComponent::class.java)?.setText("${info.days}")
+            actor
+        }
     }
 
-    fun updateRecords(list: kotlin.collections.List<WorlInfo>) {
+    fun updateRecords(list: List<WorlInfo>) {
         val skin = manager?.get(R.skin.saveslot_portraits, Skin::class.java)
-        val hudSkin = manager?.get(R.skin.option_hud, Skin::class.java)
         val items = Array<Actor>()
         infoList.clear()
         list.forEach {
-            newListItem<Actor>(it, skin, hudSkin)?.let { act ->
+            newListItem(it, skin)?.let { act ->
                 items.add(act);infoList.add(it)
             }
         }

@@ -11,10 +11,8 @@ import com.qlang.game.demo.config.AppConfig
 import com.qlang.game.demo.ktx.setOnClickListener
 import com.qlang.h2d.extention.spriter.SpriterItemType
 import games.rednblack.editor.renderer.SceneLoader
-import games.rednblack.editor.renderer.components.MainItemComponent
 import games.rednblack.editor.renderer.components.additional.ButtonComponent
 import games.rednblack.editor.renderer.resources.AsyncResourceManager
-import games.rednblack.editor.renderer.utils.ComponentRetriever
 import games.rednblack.editor.renderer.utils.ItemWrapper
 
 class PlayHudStage : Stage {
@@ -120,10 +118,12 @@ class PlayHudStage : Stage {
     }
 
     private fun onToolItemsClicked(index: Int) {
+        for ((_, v) in toolBtnMaps) v.isChecked = false
         when (index) {
             1 -> {
             }
         }
+        toolBtnMaps[index]?.isChecked = true
     }
 
     private fun onGoodsItemsClicked(index: Int) {

@@ -1,0 +1,110 @@
+
+fepanels.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+frame_alpha_h
+  rotate: false
+  xy: 1, 1585
+  size: 901, 460
+  orig: 901, 460
+  offset: 0, 0
+  index: -1
+frame_black_h
+  rotate: false
+  xy: 1, 943
+  size: 649, 640
+  orig: 649, 640
+  offset: 0, 0
+  index: -1
+frame_alpha_v
+  rotate: false
+  xy: 1, 290
+  size: 493, 651
+  orig: 493, 651
+  offset: 0, 0
+  index: -1
+frame_black_v
+  rotate: false
+  xy: 652, 950
+  size: 292, 633
+  orig: 292, 633
+  offset: 0, 0
+  index: -1
+top_right
+  rotate: false
+  xy: 1, 183
+  size: 267, 105
+  orig: 267, 105
+  offset: 0, 0
+  index: -1
+top_left
+  rotate: false
+  xy: 1, 76
+  size: 261, 105
+  orig: 261, 105
+  offset: 0, 0
+  index: -1
+bottom_left
+  rotate: false
+  xy: 1, 1
+  size: 265, 73
+  orig: 265, 73
+  offset: 0, 0
+  index: -1
+bottom_right
+  rotate: false
+  xy: 270, 215
+  size: 282, 73
+  orig: 282, 73
+  offset: 0, 0
+  index: -1
+block_h_long
+  rotate: false
+  xy: 270, 193
+  size: 241, 20
+  orig: 241, 20
+  offset: 0, 0
+  index: -1
+block_h_short
+  rotate: false
+  xy: 270, 171
+  size: 225, 20
+  orig: 225, 20
+  offset: 0, 0
+  index: -1
+ornament_bottom
+  rotate: false
+  xy: 264, 125
+  size: 220, 44
+  orig: 220, 44
+  offset: 0, 0
+  index: -1
+ornament_top
+  rotate: false
+  xy: 496, 908
+  size: 150, 33
+  orig: 150, 33
+  offset: 0, 0
+  index: -1
+block_v_long
+  rotate: false
+  xy: 904, 1975
+  size: 20, 70
+  orig: 20, 70
+  offset: 0, 0
+  index: -1
+block_v_short
+  rotate: false
+  xy: 264, 79
+  size: 20, 44
+  orig: 20, 44
+  offset: 0, 0
+  index: -1
+block_point
+  rotate: false
+  xy: 513, 193
+  size: 21, 20
+  orig: 21, 20
+  offset: 0, 0
+  index: -1

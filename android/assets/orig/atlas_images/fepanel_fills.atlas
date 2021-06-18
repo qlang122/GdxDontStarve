@@ -1,0 +1,40 @@
+
+fepanel_fills.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+large
+  rotate: false
+  xy: 1, 1172
+  size: 1360, 791
+  orig: 1360, 791
+  offset: 0, 0
+  index: -1
+big
+  rotate: false
+  xy: 1, 512
+  size: 1122, 658
+  orig: 1122, 658
+  offset: 0, 0
+  index: -1
+small
+  rotate: false
+  xy: 1, 1
+  size: 868, 509
+  orig: 868, 509
+  offset: 0, 0
+  index: -1
+little
+  rotate: false
+  xy: 1363, 1602
+  size: 618, 361
+  orig: 618, 361
+  offset: 0, 0
+  index: -1
+square
+  rotate: false
+  xy: 1125, 375
+  size: 757, 795
+  orig: 757, 795
+  offset: 0, 0
+  index: -1
