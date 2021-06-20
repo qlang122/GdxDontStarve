@@ -38,7 +38,9 @@ class PlayerSanityActor {
         if (value < 0 || value >= 1) return
         val len = healthSpriter?.animation?.length ?: 0
         currProgress = value * len
-        healthSpriter?.animation?.update(currProgress)
+        healthSpriter?.animation?.apply {
+            setPlay(true);update(currProgress);setPlay(false)
+        }
     }
 
     fun changeState(value: BodyIndexState = BodyIndexState.NEUTRAL) {

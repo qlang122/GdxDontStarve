@@ -9,7 +9,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.*
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable
-import com.badlogic.gdx.utils.Align
 import com.badlogic.gdx.utils.Array
 import com.badlogic.gdx.utils.Scaling
 import com.badlogic.gdx.utils.viewport.ScalingViewport
@@ -18,13 +17,11 @@ import com.qlang.game.demo.GameManager
 import com.qlang.game.demo.config.AppConfig
 import com.qlang.game.demo.entity.WorlInfo
 import com.qlang.game.demo.ktx.setOnClickListener
-import com.qlang.game.demo.ktx.trycatch
 import com.qlang.game.demo.model.WorlListModel
 import com.qlang.game.demo.mvvm.BaseVMScreen
 import com.qlang.game.demo.res.R
 import com.qlang.game.demo.route.Navigator
 import com.qlang.game.demo.utils.Log
-import com.qlang.game.demo.widget.VerticalWidgetList
 import com.qlang.gdxkt.lifecycle.Observer
 import games.rednblack.editor.renderer.SceneLoader
 import games.rednblack.editor.renderer.components.DimensionsComponent
@@ -44,8 +41,7 @@ class WorlListScreen : BaseVMScreen<WorlListModel> {
 
     private lateinit var seceenStage: Stage
 
-    private var recordList: VerticalWidgetList<Actor>? = null
-    private val infoList = ArrayList<WorlInfo>()
+    private val infoList = ArrayList<WorlInfo>(5)
     private var currInfo: WorlInfo? = null
 
     private var sceneLoader: SceneLoader? = null
@@ -68,6 +64,8 @@ class WorlListScreen : BaseVMScreen<WorlListModel> {
 
     private var paramsScrollPane: ScrollPane? = null
 
+    private val recordBtns: ArrayList<ButtonComponent> = arrayListOf()
+
     init {
 
         viewport = ScalingViewport(Scaling.stretch, AppConfig.worldWidth, AppConfig.worldHeight)
@@ -75,11 +73,6 @@ class WorlListScreen : BaseVMScreen<WorlListModel> {
 
         manager?.let { mgr ->
             val hudSkin = mgr.get(R.skin.option_hud, Skin::class.java)
-
-            val listStyle = hudSkin.get(VerticalWidgetList.WidgetListStyle::class.java)
-            recordList = VerticalWidgetList<Actor>(ScrollPane.ScrollPaneStyle(), listStyle.apply {
-                selection = trycatch { hudSkin.newDrawable(selection) }?.apply { leftWidth += 20f;topHeight += 15f;bottomHeight += 15f }
-            })
 
             sceneLoader = SceneLoader(mgr.get("project.dt", AsyncResourceManager::class.java))
             sceneLoader?.loadScene("WorlParamsScene", viewport)
@@ -99,7 +92,6 @@ class WorlListScreen : BaseVMScreen<WorlListModel> {
                     it.setOnClickListener { go2Play(currInfo) }
                 }
             }
-            applyListSize()
 
             layerStyle = sceneLoader?.sceneVO?.composite?.getLayerByName("game_style")
             layerStyleMode = sceneLoader?.sceneVO?.composite?.getLayerByName("gamestyle_mode")
@@ -156,7 +148,6 @@ class WorlListScreen : BaseVMScreen<WorlListModel> {
                 applyForestContentSize()
             }
 
-            seceenStage.addActor(recordList)
             seceenStage.addActor(paramsScrollPane)
         }
     }
@@ -181,8 +172,8 @@ class WorlListScreen : BaseVMScreen<WorlListModel> {
 
     override fun resize(width: Int, height: Int) {
         super.resize(width, height)
-        applyListSize()
-        applyForestContentSize()
+//        applyListSize()
+//        applyForestContentSize()
     }
 
     override fun render(delta: Float) {
@@ -264,24 +255,6 @@ class WorlListScreen : BaseVMScreen<WorlListModel> {
         }
     }
 
-    private fun applyListSize() {
-        wrapper?.getChild("list_record")?.entity?.let {
-            val vo = MainItemVO().apply { loadFromEntity(it) }
-            val dime = it.getComponent(DimensionsComponent::class.java)
-
-            val sX = Gdx.graphics.width.plus(0f) / viewport.screenWidth
-            val sY = Gdx.graphics.height.plus(0f) / viewport.screenHeight
-
-            val width = dime?.width?.times(vo.scaleX)?.times(sX)
-                    ?: 400f
-            val height = dime?.height?.times(vo.scaleY)?.times(sY)
-                    ?: 820f
-            recordList?.setSize(width, height)
-            recordList?.setPosition(vo.x, vo.y)
-//            Log.e("QL", "------->", width, height, vo.x, vo.y, dime?.width, dime?.height, vo?.scaleX, vo?.scaleY)
-        }
-    }
-
     private fun applyForestContentSize() {
         wrapper?.getChild("ly_forest_content")?.entity?.let {
             val vo = MainItemVO().apply { loadFromEntity(it) }
@@ -315,54 +288,131 @@ class WorlListScreen : BaseVMScreen<WorlListModel> {
         }
     }
 
-    private fun newListItem(info: WorlInfo, skin: Skin?): Actor? {
-        val role = if (info.role.isNullOrEmpty()) "default" else info.role
-        val roleHead = skin?.get(role, Image::class.java)?.apply { setSize(80f, 100f) }
+    fun updateRecords(list: List<WorlInfo>) {
+        infoList.clear()
+        infoList.addAll(list)
 
-        return wrapper?.getChild("ly_list_item")?.entity?.let {
-            val actor = CompositeActor(CompositeItemVO().apply { loadFromEntity(it) }, sceneLoader?.rm)
-            val vo = CompositeItemVO().apply { loadFromEntity(it) }
-            val checked = vo.composite?.getLayerByName("checked")
-            val top = vo.composite?.getLayerByName("top")
-            val unknown = vo.composite?.getLayerByName("unknown")
+        val skin = manager?.get(R.skin.saveslot_portraits, Skin::class.java) ?: return
 
-            val itemWrapper = ItemWrapper(it)
-            itemWrapper.getChild("iv_head")?.entity?.getComponent(TextureRegionComponent::class.java)?.region =
-                    (roleHead?.drawable as? TextureRegionDrawable)?.region
-            itemWrapper.getChild("tv_title")?.entity?.getComponent(LabelComponent::class.java)?.setText(info.name)
-            itemWrapper.getChild("tv_title0")?.entity?.getComponent(LabelComponent::class.java)?.setText(info.name)
-            itemWrapper.getChild("tv_days")?.entity?.getComponent(LabelComponent::class.java)?.setText("${info.days}")
-            actor
+        if (list.size > 0) {
+            val info = list[0]
+            val role = if (info.role.isNullOrEmpty()) null else info.role
+            val roleHead = skin.get(role, Image::class.java).apply { setSize(80f, 100f) }
+
+            wrapper?.getChild("ly_list_item0")?.entity?.let {
+                it.getComponent(ButtonComponent::class.java)?.apply {
+                    recordBtns.add(this);isChecked = true; setOnClickListener { changeBtnStage(0, this) }
+                }
+                CompositeItemVO().apply { loadFromEntity(it) }.composite?.getLayerByName("head")?.isVisible = true
+                val item = ItemWrapper(it)
+                item.getChild("iv_head")?.entity?.getComponent(TextureRegionComponent::class.java)?.region =
+                        (roleHead?.drawable as? TextureRegionDrawable?)?.region
+                item.getChild("tv_title_n")?.entity?.getComponent(LabelComponent::class.java)?.setText(info.name)
+                item.getChild("tv_title_p")?.entity?.getComponent(LabelComponent::class.java)?.setText(info.name)
+                item.getChild("tv_title")?.entity?.getComponent(LabelComponent::class.java)?.setText(info.name)
+                val days = if (info.days <= 0) "一个全新的世界" else info.days
+                item.getChild("tv_days")?.entity?.getComponent(LabelComponent::class.java)?.setText("$days")
+            }
+        }
+
+        if (list.size > 1) {
+            val info = list[1]
+            val role = if (info.role.isNullOrEmpty()) "default" else info.role
+            val roleHead = skin.get(role, Image::class.java).apply { setSize(80f, 100f) }
+
+            wrapper?.getChild("ly_list_item1")?.entity?.let {
+                it.getComponent(ButtonComponent::class.java)?.apply {
+                    recordBtns.add(this);setOnClickListener { changeBtnStage(1, this) }
+                }
+                CompositeItemVO().apply { loadFromEntity(it) }.composite?.getLayerByName("head")?.isVisible = true
+                val item = ItemWrapper(it)
+                item.getChild("iv_head")?.entity?.getComponent(TextureRegionComponent::class.java)?.region =
+                        (roleHead?.drawable as? TextureRegionDrawable?)?.region
+                item.getChild("tv_title_n")?.entity?.getComponent(LabelComponent::class.java)?.setText(info.name)
+                item.getChild("tv_title_p")?.entity?.getComponent(LabelComponent::class.java)?.setText(info.name)
+                item.getChild("tv_title")?.entity?.getComponent(LabelComponent::class.java)?.setText(info.name)
+                val days = if (info.days <= 0) "一个全新的世界" else info.days
+                item.getChild("tv_days")?.entity?.getComponent(LabelComponent::class.java)?.setText("$days")
+            }
+        }
+        if (list.size > 2) {
+            val info = list[2]
+            val role = if (info.role.isNullOrEmpty()) "default" else info.role
+            val roleHead = skin.get(role, Image::class.java).apply { setSize(80f, 100f) }
+
+            wrapper?.getChild("ly_list_item2")?.entity?.let {
+                it.getComponent(ButtonComponent::class.java)?.apply {
+                    recordBtns.add(this);setOnClickListener { changeBtnStage(2, this) }
+                }
+                CompositeItemVO().apply { loadFromEntity(it) }.composite?.getLayerByName("head")?.isVisible = true
+                val item = ItemWrapper(it)
+                item.getChild("iv_head")?.entity?.getComponent(TextureRegionComponent::class.java)?.region =
+                        (roleHead?.drawable as? TextureRegionDrawable?)?.region
+                item.getChild("tv_title_n")?.entity?.getComponent(LabelComponent::class.java)?.setText(info.name)
+                item.getChild("tv_title_p")?.entity?.getComponent(LabelComponent::class.java)?.setText(info.name)
+                item.getChild("tv_title")?.entity?.getComponent(LabelComponent::class.java)?.setText(info.name)
+                val days = if (info.days <= 0) "一个全新的世界" else info.days
+                item.getChild("tv_days")?.entity?.getComponent(LabelComponent::class.java)?.setText("$days")
+            }
+        }
+        if (list.size > 3) {
+            val info = list[3]
+            val role = if (info.role.isNullOrEmpty()) "default" else info.role
+            val roleHead = skin.get(role, Image::class.java).apply { setSize(80f, 100f) }
+
+            wrapper?.getChild("ly_list_item3")?.entity?.let {
+                it.getComponent(ButtonComponent::class.java)?.apply {
+                    recordBtns.add(this);setOnClickListener { changeBtnStage(3, this) }
+                }
+                CompositeItemVO().apply { loadFromEntity(it) }.composite?.getLayerByName("head")?.isVisible = true
+                val item = ItemWrapper(it)
+                item.getChild("iv_head")?.entity?.getComponent(TextureRegionComponent::class.java)?.region =
+                        (roleHead?.drawable as? TextureRegionDrawable?)?.region
+                item.getChild("tv_title_n")?.entity?.getComponent(LabelComponent::class.java)?.setText(info.name)
+                item.getChild("tv_title_p")?.entity?.getComponent(LabelComponent::class.java)?.setText(info.name)
+                item.getChild("tv_title")?.entity?.getComponent(LabelComponent::class.java)?.setText(info.name)
+                val days = if (info.days <= 0) "一个全新的世界" else info.days
+                item.getChild("tv_days")?.entity?.getComponent(LabelComponent::class.java)?.setText("$days")
+            }
+        }
+        if (list.size > 4) {
+            val info = list[4]
+            val role = if (info.role.isNullOrEmpty()) "default" else info.role
+            val roleHead = skin.get(role, Image::class.java).apply { setSize(80f, 100f) }
+
+            wrapper?.getChild("ly_list_item4")?.entity?.let {
+                it.getComponent(ButtonComponent::class.java)?.apply {
+                    recordBtns.add(this);setOnClickListener { changeBtnStage(4, this) }
+                }
+                CompositeItemVO().apply { loadFromEntity(it) }.composite?.getLayerByName("head")?.isVisible = true
+                val item = ItemWrapper(it)
+                item.getChild("iv_head")?.entity?.getComponent(TextureRegionComponent::class.java)?.region =
+                        (roleHead?.drawable as? TextureRegionDrawable?)?.region
+                item.getChild("tv_title_n")?.entity?.getComponent(LabelComponent::class.java)?.setText(info.name)
+                item.getChild("tv_title_p")?.entity?.getComponent(LabelComponent::class.java)?.setText(info.name)
+                item.getChild("tv_title")?.entity?.getComponent(LabelComponent::class.java)?.setText(info.name)
+                val days = if (info.days <= 0) "一个全新的世界" else info.days
+                item.getChild("tv_days")?.entity?.getComponent(LabelComponent::class.java)?.setText("$days")
+            }
+        }
+
+        if (infoList.size > 0) currInfo = infoList[0]
+        if (infoList.size > 0 && infoList[0].days > 0) {
+            btnDelete?.isEnable = true
+            tvPlay?.setText("回到世界")
         }
     }
 
-    fun updateRecords(list: List<WorlInfo>) {
-        val skin = manager?.get(R.skin.saveslot_portraits, Skin::class.java)
-        val items = Array<Actor>()
-        infoList.clear()
-        list.forEach {
-            newListItem(it, skin)?.let { act ->
-                items.add(act);infoList.add(it)
-            }
-        }
-        recordList?.content?.setItems(items)
-        recordList?.content?.addListener(object : ClickListener() {
-            override fun clicked(event: InputEvent?, x: Float, y: Float) {
-                val i = recordList?.content?.selectedIndex ?: -1
-                currInfo = if (i >= 0 && i < infoList.size) infoList[i] else null
-                val b = currInfo?.days ?: 0 <= 0
-                if (b) {
-                    btnDelete?.isEnable = false
-                    tvPlay?.setText("创建世界")
-                } else {
-                    btnDelete?.isEnable = true
-                    tvPlay?.setText("回到世界")
-                }
+    private fun changeBtnStage(index: Int, btn: ButtonComponent) {
+        recordBtns.forEach { it.isChecked = false }
+        btn.isChecked = true
 
-            }
-        })
-        if (infoList.size > 0) currInfo = infoList[0]
-        if (infoList.size > 0 && infoList[0].days > 0) {
+        currInfo = if (index >= 0 && index < infoList.size) infoList[index] else null
+        val b = currInfo?.days ?: 0 <= 0
+        if (b) {
+            btnDelete?.isEnable = false
+            tvPlay?.setText("创建世界")
+        } else {
             btnDelete?.isEnable = true
             tvPlay?.setText("回到世界")
         }

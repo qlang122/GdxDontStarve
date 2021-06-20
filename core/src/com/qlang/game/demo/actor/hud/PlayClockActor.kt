@@ -3,6 +3,7 @@ package com.qlang.game.demo.actor.hud
 import com.badlogic.ashley.core.Entity
 import com.badlogic.gdx.graphics.Color
 import com.qlang.game.demo.entity.GameDate
+import com.qlang.game.demo.utils.Log
 import com.qlang.h2d.extention.spriter.SpriterObjectComponent
 import games.rednblack.editor.renderer.components.MainItemComponent
 import games.rednblack.editor.renderer.components.label.LabelComponent
@@ -22,14 +23,14 @@ class PlayClockActor {
     private val eveningTintLightColor = Color.valueOf("#a55a54f0")
     private var needUpdateDay = true
     private val daytime: Int = 9
-        get() = if (needUpdateDay) field else when (date.season) {
+        get() = if (!needUpdateDay) field else when (date.season) {
             GameDate.Season.SUMMER -> 11
             GameDate.Season.AUTUMN -> 9
             GameDate.Season.WENTER -> 7
             else -> 9
         }
     private val evening: Int = 4
-        get() = if (needUpdateDay) field else when (date.season) {
+        get() = if (!needUpdateDay) field else when (date.season) {
             GameDate.Season.SUMMER -> 3
             GameDate.Season.AUTUMN -> 5
             GameDate.Season.WENTER -> 4
@@ -69,7 +70,7 @@ class PlayClockActor {
         spriter?.animation?.makeTimelineVisible(invisable)
 
         for (i in 0 until daytime) {
-            val name = "clock_wedge_0${if (i < 10) "0${i + 1}" else (i + 1)}"
+            val name = "clock_wedge_0${if ((i + 1) < 10) "0${i + 1}" else (i + 1)}"
             dayVisable[name] = true
 
             spriter?.animation?.getTimeline(name)?.let {
@@ -77,9 +78,9 @@ class PlayClockActor {
             }
         }
         spriter?.animation?.makeTimelineVisible(dayVisable)
-        for (i in daytime until (daytime + evening)) {
-            val name = "clock_wedge_0${if (i < 10) "0${i + 1}" else (i + 1)}"
-            dayVisable[name] = true
+        for (i in daytime - 1 until (daytime + evening)) {
+            val name = "clock_wedge_0${if ((i + 1) < 10) "0${i + 1}" else (i + 1)}"
+            eveningVisable[name] = true
 
             spriter?.animation?.getTimeline(name)?.let {
                 spriter?.animation?.tintSpriteTimeline(it, if (i % 2 == 0) eveningTintColor else eveningTintLightColor)
@@ -90,12 +91,9 @@ class PlayClockActor {
         val hourDegrees = (date.hour * 15.0f + 15.0f * date.minute / 60) % 360
         spriter?.animation?.getTimeline("clock_hand")?.keys?.get(0)?.`object`?.setAngle(hourDegrees)
 
-        if (isOver) {
-            val str = "天 ${date.day}"
-            textEntity?.getComponent(MainItemComponent::class.java)?.let {
-                if (it.entityType == EntityFactory.LABEL_TYPE) {
-                    textEntity?.getComponent(LabelComponent::class.java)?.setText(str)
-                }
+        textEntity?.getComponent(MainItemComponent::class.java)?.let {
+            if (it.entityType == EntityFactory.LABEL_TYPE) {
+                textEntity?.getComponent(LabelComponent::class.java)?.setText("天 ${date.day}")
             }
         }
     }

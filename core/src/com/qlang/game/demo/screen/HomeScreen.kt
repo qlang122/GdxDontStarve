@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog
 import com.badlogic.gdx.scenes.scene2d.ui.Window
-import com.badlogic.gdx.scenes.scene2d.utils.BaseDrawable
 import com.badlogic.gdx.utils.Scaling
 import com.badlogic.gdx.utils.viewport.ScalingViewport
 import com.badlogic.gdx.utils.viewport.Viewport
@@ -17,6 +16,7 @@ import com.qlang.game.demo.ktx.setOnClickListener
 import com.qlang.game.demo.ktx.trycatch
 import com.qlang.game.demo.res.R
 import com.qlang.game.demo.route.Navigator
+import com.qlang.game.demo.utils.Log
 import com.qlang.h2d.extention.spriter.SpriterItemType
 import games.rednblack.editor.renderer.SceneLoader
 import games.rednblack.editor.renderer.components.DimensionsComponent
@@ -58,19 +58,13 @@ class HomeScreen : ScreenAdapter() {
             wrapper?.getChild("btn_exit")?.entity?.getComponent(ButtonComponent::class.java)?.setOnClickListener { navigation2Menu(5) }
 
             wrapper?.getChild("ly_exit")?.entity?.let {
-                ItemWrapper(it).getChild("btn_ok")?.entity?.getComponent(ButtonComponent::class.java)?.setOnClickListener {
-                    Gdx.app.exit()
-                }
-                ItemWrapper(it).getChild("btn_cancel")?.entity?.getComponent(ButtonComponent::class.java)?.setOnClickListener {
-                    exitDialog?.hide()
-                }
                 val dimen = it.getComponent(DimensionsComponent::class.java)
 
                 val actor = CompositeActor(CompositeItemVO().apply { loadFromEntity(it) }, sceneLoader?.rm)
+                actor.getItem("btn_ok")?.setOnClickListener { Gdx.app.exit() }
+                actor.getItem("btn_cancel")?.setOnClickListener { exitDialog?.hide() }
                 exitDialog = Dialog("", Window.WindowStyle().apply {
-                    this.titleFont = bitmapFont;background = BaseDrawable()
-                    background.minWidth = dimen.width
-                    background.minHeight = dimen.height
+                    this.titleFont = bitmapFont
                 }).apply {
                     clearChildren()
                     add(actor).expand().fill()
@@ -100,10 +94,12 @@ class HomeScreen : ScreenAdapter() {
 
     override fun show() {
         super.show()
+        GameManager.instance?.addInputProcessor(stage)
     }
 
     override fun hide() {
         super.hide()
+        GameManager.instance?.removeInputProcessor(stage)
     }
 
     override fun render(delta: Float) {

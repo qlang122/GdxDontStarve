@@ -1,6 +1,7 @@
 package com.qlang.game.demo.actor.hud
 
 import com.badlogic.ashley.core.Entity
+import com.qlang.game.demo.utils.Log
 import com.qlang.h2d.extention.spriter.SpriterObjectComponent
 import games.rednblack.editor.renderer.components.MainItemComponent
 import games.rednblack.editor.renderer.factory.EntityFactory
@@ -37,7 +38,9 @@ class PlayerHungerActor {
         if (value < 0 || value >= 1) return
         val len = healthSpriter?.animation?.length ?: 0
         currProgress = value * len
-        healthSpriter?.animation?.update(currProgress)
+        healthSpriter?.animation?.apply {
+            setPlay(true);update(currProgress);setPlay(false)
+        }
     }
 
     fun changeState(value: BodyIndexState = BodyIndexState.NEUTRAL) {
