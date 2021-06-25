@@ -1,1 +1,1 @@
-{parameterVO:{gridWidth:128,gridHeight:128}}
+{tiles:[{regionName:blocks,atlasName:blocks,regionIndex:1,entityType:12},{regionName:blocks,atlasName:blocks,regionIndex:35,entityType:12},{regionName:goods_ph}],parameterVO:{gridWidth:128,gridHeight:128}}

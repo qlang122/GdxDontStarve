@@ -1,1 +1,1 @@
-{"sceneName":"MapTestScene","composite":{"layers":[{"layerName":"Default","isVisible":true}]},"physicsPropertiesVO":{},"lightsPropertiesVO":{}}
+{"sceneName":"MapTestScene","composite":{"sSpriterAnimations":[{"uniqueId":2,"tags":[],"x":-72,"y":-77,"scaleX":0.4,"scaleY":0.4,"originX":175.5,"originY":174,"layerName":"Default","animationName":"willow","isLooping":true,"currentAnimationName":"atk_pre_down"}],"layers":[{"layerName":"Default","isVisible":true}]},"physicsPropertiesVO":{},"lightsPropertiesVO":{},"verticalGuides":[-960,960],"horizontalGuides":[540,-540]}

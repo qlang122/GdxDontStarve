@@ -15,17 +15,18 @@ abstract class BaseAnimActor : Actor {
     var animation: Animation? = null
         protected set
 
+    private lateinit var loader: SCMLLoader
     private val projects: ArrayList<SCMLProject> = ArrayList()
     private lateinit var parameters: SCMLLoader.Parameters
 
     constructor(textureAtlasName: String) : super() {
         parameters = SCMLLoader.Parameters(textureAtlasName)
+        loader = SCMLLoader(InternalFileHandleResolver())
     }
 
     fun loadScml(manager: AssetManager, name: String) {
         val file = Gdx.files.internal(name)
-        SCMLLoader(InternalFileHandleResolver())
-                .load(manager, "", file, parameters)
+        loader.load(manager, "", file, parameters)
                 .also { projects.add(it) }
     }
 
