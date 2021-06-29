@@ -67,7 +67,7 @@ class LaunchScreen : ScreenAdapter() {
         GameManager.instance?.mainManager?.update()
 
         if (delay >= 5f && GameManager.instance?.isMainAssetsLoaded == true) {
-            Navigator.push(HomeScreen())
+            Navigator.push(PlayScreen())
             Navigator.pop(this)
             return
         }

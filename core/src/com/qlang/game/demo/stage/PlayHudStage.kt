@@ -218,6 +218,10 @@ class PlayHudStage : Stage {
         }
     }
 
+    fun resize(width: Int, height: Int) {
+        if (width != 0 && height != 0) sceneLoader?.resize(width, height)
+    }
+
     override fun draw() {
         super.draw()
         viewport.apply()
