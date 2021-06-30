@@ -32,7 +32,7 @@ class PlayStage : Stage {
             sceneLoader?.injectExternalItemType(SpriterItemType())
             ComponentRetriever.addMapper(PlayerComponent::class.java)
 
-            val cameraSystem = CameraSystem(-2048f, 2048f, -2048f, 2048f)
+            val cameraSystem = CameraSystem(5f, 40f, 5f, 6f)
             sceneLoader?.engine?.let { engine ->
                 engine.addSystem(PlayerAnimationSystem())
                 engine.addSystem(cameraSystem)

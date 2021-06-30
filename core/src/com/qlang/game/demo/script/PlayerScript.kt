@@ -46,7 +46,6 @@ class PlayerScript : BasicScript {
 
     private fun movePlayer(direction: Int) {
         val body = physicsComponent?.body
-
         body?.linearVelocity?.let { speed.set(it) }
 
         when (direction) {
@@ -55,10 +54,7 @@ class PlayerScript : BasicScript {
             UP -> impulse.set(speed.x, 5f)
             DOWN -> impulse.set(speed.x, -5f)
         }
-
-        val sub = impulse.sub(speed)
-        Log.e("QL", "---->>", sub)
-        body?.applyLinearImpulse(sub, body.worldCenter, true)
+        body?.applyLinearImpulse(impulse.sub(speed), body.worldCenter, true)
 
         getPlayerComponent()?.apply {
             this.direction = direction
