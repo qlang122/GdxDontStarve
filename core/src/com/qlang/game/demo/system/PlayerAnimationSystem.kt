@@ -7,10 +7,9 @@ import com.qlang.game.demo.component.Player
 import com.qlang.game.demo.component.PlayerComponent
 import com.qlang.h2d.extention.spriter.SpriterObjectComponent
 import games.rednblack.editor.renderer.components.TransformComponent
-import games.rednblack.editor.renderer.components.ViewPortComponent
 import games.rednblack.editor.renderer.utils.ComponentRetriever
 
-class PlayerAnimationSystem : IteratingSystem(Family.all(ViewPortComponent::class.java).get()) {
+class PlayerAnimationSystem : IteratingSystem(Family.all(PlayerComponent::class.java).get()) {
     override fun processEntity(entity: Entity?, deltaTime: Float) {
 //        val nodeComponent: ParentNodeComponent = ComponentRetriever.get(entity, ParentNodeComponent::class.java)
 //        val body: Body = ComponentRetriever.get(nodeComponent.parentEntity, PhysicsBodyComponent::class.java).body
@@ -19,7 +18,7 @@ class PlayerAnimationSystem : IteratingSystem(Family.all(ViewPortComponent::clas
         val spriterComponent = ComponentRetriever.get(entity, SpriterObjectComponent::class.java)
         val transformComponent = ComponentRetriever.get(entity, TransformComponent::class.java)
 
-        spriterComponent?.currentAnimationName = when (playerComponent?.direction) {
+        spriterComponent?.setAnimation(when (playerComponent?.direction) {
             Player.Direction.LEFT -> {
                 transformComponent?.flipX = true
                 if (playerComponent.isRun) Player.Anim.Run.loop_side else Player.Anim.Idle.loop_side
@@ -37,7 +36,7 @@ class PlayerAnimationSystem : IteratingSystem(Family.all(ViewPortComponent::clas
             else -> {
                 Player.Anim.Idle.loop_down
             }
-        }
-
+        })
+        spriterComponent?.play()
     }
 }

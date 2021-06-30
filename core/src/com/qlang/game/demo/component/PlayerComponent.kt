@@ -6,6 +6,10 @@ class PlayerComponent : BaseComponent {
     var direction: Int = Player.Direction.DOWN
     var isRun = false
 
+    constructor()
+
     override fun reset() {
+        direction = Player.Direction.DOWN
+        isRun = false
     }
 }

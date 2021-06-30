@@ -26,8 +26,8 @@ class PlayerScript : BasicScript {
     private var spriterComponent: SpriterObjectComponent? = null
     private var transformComponent: TransformComponent? = null
 
-    private val impulse: Vector2 = Vector2()
-    private val speed: Vector2 = Vector2()
+    private val impulse: Vector2 = Vector2(0f, 0f)
+    private val speed: Vector2 = Vector2(0f, 0f)
 
     constructor(engine: PooledEngine) {
         this.engine = engine
@@ -45,21 +45,30 @@ class PlayerScript : BasicScript {
     }
 
     private fun movePlayer(direction: Int) {
-        val body = physicsComponent?.body
-        body?.linearVelocity?.let { speed.set(it) }
+//        val body = physicsComponent?.body
+//        body?.linearVelocity?.let { speed.set(it) }
+//
+//        when (direction) {
+//            LEFT -> impulse.set(-5f, speed.y)
+//            RIGHT -> impulse.set(5f, speed.y)
+//            UP -> impulse.set(speed.x, 5f)
+//            DOWN -> impulse.set(speed.x, -5f)
+//        }
+//        val sub = impulse.sub(speed)
+//        Log.e("QL", "--->", body?.linearVelocity, speed, impulse, sub, body?.worldCenter)
+//        body?.applyLinearImpulse(sub, body.worldCenter, true)
 
-        when (direction) {
-            LEFT -> impulse.set(-5f, speed.y)
-            RIGHT -> impulse.set(5f, speed.y)
-            UP -> impulse.set(speed.x, 5f)
-            DOWN -> impulse.set(speed.x, -5f)
+        transformComponent?.apply {
+            Log.e("QL", "----->>", x, y)
+            when (direction) {
+                LEFT -> x += 5f
+                RIGHT -> x -= 5f
+                UP -> y += 5f
+                DOWN -> y -= 5f
+            }
         }
-        body?.applyLinearImpulse(impulse.sub(speed), body.worldCenter, true)
 
-        getPlayerComponent()?.apply {
-            this.direction = direction
-            this.isRun = true
-        }
+        getPlayerComponent()?.apply { this.isRun = true;this.direction = direction }
     }
 
     override fun act(delta: Float) {

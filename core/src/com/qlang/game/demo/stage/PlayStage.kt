@@ -30,13 +30,13 @@ class PlayStage : Stage {
         mainManager?.let { mgr ->
             sceneLoader = SceneLoader(mgr.get("project.dt", AsyncResourceManager::class.java))
             sceneLoader?.injectExternalItemType(SpriterItemType())
-            ComponentRetriever.addMapper(PlayerComponent::class.java)
 
-            val cameraSystem = CameraSystem(5f, 40f, 5f, 6f)
+            val cameraSystem = CameraSystem(-10000f, 10000f, -10000f, 10000f)
             sceneLoader?.engine?.let { engine ->
                 engine.addSystem(PlayerAnimationSystem())
                 engine.addSystem(cameraSystem)
             }
+            ComponentRetriever.addMapper(PlayerComponent::class.java)
 
             sceneLoader?.loadScene("PlayScene", viewport)
 
@@ -44,8 +44,8 @@ class PlayStage : Stage {
 
             sceneLoader?.engine?.let { engine ->
                 val player = wrapper?.getChild("player")
-                player?.addScript(PlayerScript(engine), engine)
                 player?.entity?.add(engine.createComponent(PlayerComponent::class.java))
+                player?.addScript(PlayerScript(engine), engine)
                 cameraSystem.setFocus(player?.entity)
 
                 wrapper?.getChild("dragonfly")?.addScript(DragonflyScript(engine), engine)
