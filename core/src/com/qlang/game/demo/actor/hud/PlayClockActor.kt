@@ -3,7 +3,6 @@ package com.qlang.game.demo.actor.hud
 import com.badlogic.ashley.core.Entity
 import com.badlogic.gdx.graphics.Color
 import com.qlang.game.demo.entity.GameDate
-import com.qlang.game.demo.utils.Log
 import com.qlang.h2d.extention.spriter.SpriterObjectComponent
 import games.rednblack.editor.renderer.components.MainItemComponent
 import games.rednblack.editor.renderer.components.label.LabelComponent
@@ -52,7 +51,7 @@ class PlayClockActor {
         if (component?.entityType == EntityFactory.SPRITER_TYPE) {
             spriter = clock.getComponent(SpriterObjectComponent::class.java)
         }
-
+        spriter?.tintEnable = false
     }
 
     fun update(date: Date) {

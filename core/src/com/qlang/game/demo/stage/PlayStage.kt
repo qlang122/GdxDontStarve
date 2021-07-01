@@ -2,9 +2,14 @@ package com.qlang.game.demo.stage
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.assets.AssetManager
+import com.badlogic.gdx.graphics.Camera
+import com.badlogic.gdx.graphics.OrthographicCamera
+import com.badlogic.gdx.graphics.PerspectiveCamera
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.utils.Scaling
+import com.badlogic.gdx.utils.viewport.ExtendViewport
 import com.badlogic.gdx.utils.viewport.ScalingViewport
+import com.badlogic.gdx.utils.viewport.Viewport
 import com.qlang.game.demo.GameManager
 import com.qlang.game.demo.component.PlayerComponent
 import com.qlang.game.demo.config.AppConfig
@@ -17,6 +22,7 @@ import games.rednblack.editor.renderer.SceneLoader
 import games.rednblack.editor.renderer.resources.AsyncResourceManager
 import games.rednblack.editor.renderer.utils.ComponentRetriever
 import games.rednblack.editor.renderer.utils.ItemWrapper
+import kotlin.math.abs
 
 
 class PlayStage : Stage {
@@ -25,6 +31,9 @@ class PlayStage : Stage {
 
     private var sceneLoader: SceneLoader? = null
     private var wrapper: ItemWrapper? = null
+
+    private var playCamera: Camera? = null
+    private var playViewport: Viewport? = null
 
     constructor() : super(ScalingViewport(Scaling.stretch, AppConfig.worldWidth, AppConfig.worldHeight)) {
         mainManager?.let { mgr ->
@@ -38,7 +47,10 @@ class PlayStage : Stage {
             }
             ComponentRetriever.addMapper(PlayerComponent::class.java)
 
-            sceneLoader?.loadScene("PlayScene", viewport)
+//            playCamera = OrthographicCamera(AppConfig.worldWidth, AppConfig.worldHeight)
+            playCamera = PerspectiveCamera(15f, AppConfig.worldWidth, AppConfig.worldHeight)
+            playViewport = ExtendViewport(AppConfig.worldWidth, AppConfig.worldHeight, playCamera)
+            sceneLoader?.loadScene("PlayScene", playViewport)
 
             wrapper = ItemWrapper(sceneLoader?.root)
 
@@ -54,12 +66,15 @@ class PlayStage : Stage {
     }
 
     fun resize(width: Int, height: Int) {
+        playViewport?.update(width, height)
+
         if (width != 0 && height != 0) sceneLoader?.resize(width, height)
     }
 
     override fun draw() {
         super.draw()
         viewport.apply()
+        playViewport?.apply()
         sceneLoader?.engine?.update(Gdx.graphics.deltaTime)
     }
 
