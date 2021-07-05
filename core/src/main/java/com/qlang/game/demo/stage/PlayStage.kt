@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.viewport.ScalingViewport
 import com.badlogic.gdx.utils.viewport.Viewport
 import com.qlang.game.demo.GameManager
 import com.qlang.game.demo.component.PlayerComponent
+import com.qlang.game.demo.component.ScaleEntityComponent
 import com.qlang.game.demo.config.AppConfig
 import com.qlang.game.demo.script.DragonflyScript
 import com.qlang.game.demo.script.PlayerScript
@@ -21,6 +22,7 @@ import com.qlang.game.demo.system.TiltWorldSystem
 import com.qlang.h2d.extention.spriter.SpriterItemType
 import games.rednblack.editor.renderer.SceneLoader
 import games.rednblack.editor.renderer.components.MainItemComponent
+import games.rednblack.editor.renderer.components.additional.ButtonComponent
 import games.rednblack.editor.renderer.resources.AsyncResourceManager
 import games.rednblack.editor.renderer.utils.ComponentRetriever
 import games.rednblack.editor.renderer.utils.ItemWrapper
@@ -41,16 +43,20 @@ class PlayStage : Stage {
             sceneLoader?.injectExternalItemType(SpriterItemType())
 
             val cameraSystem = CameraSystem(-10000f, 10000f, -10000f, 10000f)
+            val tiltWorldSystem = TiltWorldSystem()
             sceneLoader?.engine?.let { engine ->
                 engine.addSystem(PlayerAnimationSystem())
-                engine.addSystem(TiltWorldSystem())
+                engine.addSystem(tiltWorldSystem)
                 engine.addSystem(cameraSystem)
             }
             ComponentRetriever.addMapper(PlayerComponent::class.java)
+            ComponentRetriever.addMapper(ScaleEntityComponent::class.java)
+            tiltWorldSystem.setViewportHeight(AppConfig.worldHeight)
 
             playCamera = OrthographicCamera(AppConfig.worldWidth, AppConfig.worldHeight)
             playViewport = ExtendViewport(AppConfig.worldWidth, AppConfig.worldHeight, playCamera)
             sceneLoader?.loadScene("PlayScene", playViewport)
+            sceneLoader?.addComponentByTagName("scaleEntity", ScaleEntityComponent::class.java)
 
             wrapper = ItemWrapper(sceneLoader?.root)
 
@@ -59,10 +65,11 @@ class PlayStage : Stage {
                 player?.entity?.add(engine.createComponent(PlayerComponent::class.java))
                 player?.addScript(PlayerScript(engine), engine)
                 cameraSystem.setFocus(player?.entity)
+                tiltWorldSystem.setFocus(player?.entity)
 
                 wrapper?.getChild("dragonfly")?.apply {
                     addScript(DragonflyScript(engine), engine)
-                    entity?.getComponent(MainItemComponent::class.java)?.visible = false
+//                    entity?.getComponent(MainItemComponent::class.java)?.visible = false
                 }
             }
         }
