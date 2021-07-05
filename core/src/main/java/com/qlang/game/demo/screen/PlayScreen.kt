@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage
 import com.qlang.game.demo.GameManager
 import com.qlang.game.demo.stage.PlayHudStage
 import com.qlang.game.demo.stage.PlayStage
+import com.qlang.game.demo.stage.TestStage
 
 class PlayScreen : ScreenAdapter() {
     private var hudStage: PlayHudStage? = null
@@ -23,7 +24,7 @@ class PlayScreen : ScreenAdapter() {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
 
         playStage?.apply { act();draw() }
-        hudStage?.apply { act();draw() }
+//        hudStage?.apply { act();draw() }
     }
 
     override fun show() {

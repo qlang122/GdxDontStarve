@@ -1,10 +1,10 @@
 package com.qlang.game.demo.stage
 
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.Input
 import com.badlogic.gdx.assets.AssetManager
 import com.badlogic.gdx.graphics.Camera
 import com.badlogic.gdx.graphics.OrthographicCamera
-import com.badlogic.gdx.graphics.PerspectiveCamera
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.utils.Scaling
 import com.badlogic.gdx.utils.viewport.ExtendViewport
@@ -17,13 +17,13 @@ import com.qlang.game.demo.script.DragonflyScript
 import com.qlang.game.demo.script.PlayerScript
 import com.qlang.game.demo.system.CameraSystem
 import com.qlang.game.demo.system.PlayerAnimationSystem
+import com.qlang.game.demo.system.TiltWorldSystem
 import com.qlang.h2d.extention.spriter.SpriterItemType
 import games.rednblack.editor.renderer.SceneLoader
+import games.rednblack.editor.renderer.components.MainItemComponent
 import games.rednblack.editor.renderer.resources.AsyncResourceManager
 import games.rednblack.editor.renderer.utils.ComponentRetriever
 import games.rednblack.editor.renderer.utils.ItemWrapper
-import kotlin.math.abs
-
 
 class PlayStage : Stage {
     private val mainManager: AssetManager? = GameManager.instance?.mainManager
@@ -43,12 +43,12 @@ class PlayStage : Stage {
             val cameraSystem = CameraSystem(-10000f, 10000f, -10000f, 10000f)
             sceneLoader?.engine?.let { engine ->
                 engine.addSystem(PlayerAnimationSystem())
+                engine.addSystem(TiltWorldSystem())
                 engine.addSystem(cameraSystem)
             }
             ComponentRetriever.addMapper(PlayerComponent::class.java)
 
-//            playCamera = OrthographicCamera(AppConfig.worldWidth, AppConfig.worldHeight)
-            playCamera = PerspectiveCamera(15f, AppConfig.worldWidth, AppConfig.worldHeight)
+            playCamera = OrthographicCamera(AppConfig.worldWidth, AppConfig.worldHeight)
             playViewport = ExtendViewport(AppConfig.worldWidth, AppConfig.worldHeight, playCamera)
             sceneLoader?.loadScene("PlayScene", playViewport)
 
@@ -60,7 +60,10 @@ class PlayStage : Stage {
                 player?.addScript(PlayerScript(engine), engine)
                 cameraSystem.setFocus(player?.entity)
 
-                wrapper?.getChild("dragonfly")?.addScript(DragonflyScript(engine), engine)
+                wrapper?.getChild("dragonfly")?.apply {
+                    addScript(DragonflyScript(engine), engine)
+                    entity?.getComponent(MainItemComponent::class.java)?.visible = false
+                }
             }
         }
     }
