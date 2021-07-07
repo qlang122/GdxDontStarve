@@ -1,1 +1,123 @@
-{"sceneName":"PlayScene","composite":{"sSpriterAnimations":[{"uniqueId":2,"id":"player","tags":[],"x":-127,"y":-142,"scaleX":0.4,"scaleY":0.4,"originX":129,"originY":193.5,"layerName":"Default","shape":{"polygons":[[{"x":54.166664,"y":179.16666},{"x":91.66641,"y":129.16666},{"x":183.33383,"y":129.16666},{"x":220.83359,"y":175},{"x":203.83334,"y":274.5},{"x":137.49974,"y":312.5},{"x":66.66615,"y":266.16663}],[{"x":183.33383,"y":129.16666},{"x":91.66641,"y":129.16666},{"x":108.33308,"y":41.66667},{"x":166.33308,"y":41.666664}]]},"animationName":"wilson","isLooping":true,"currentAnimationName":"idle_loop_down"},{"uniqueId":3,"id":"dragonfly","tags":["scaleEntity"],"x":-1347,"y":-572,"scaleX":0.65,"scaleY":0.65,"originX":470,"originY":558,"zIndex":1,"layerName":"Default","shape":{"polygons":[[{"x":146.42857,"y":57.14286},{"x":378.5714,"y":128.57143},{"x":196.42857,"y":392.85715}],[{"x":196.42857,"y":392.85715},{"x":378.5714,"y":128.57143},{"x":703.5715,"y":628.5714},{"x":866.85724,"y":1002.857},{"x":664.2857,"y":1103.5715},{"x":357.14285,"y":1121.4286},{"x":114.28572,"y":992.1428},{"x":157.14285,"y":635.7143}],[{"x":39.285713,"y":864.28577},{"x":157.14285,"y":635.7143},{"x":114.28572,"y":992.1428}],[{"x":924.99994,"y":832.1429},{"x":866.85724,"y":1002.857},{"x":703.5715,"y":628.5714}],[{"x":703.5715,"y":628.5714},{"x":378.5714,"y":128.57143},{"x":671.4285,"y":407.14288}],[{"x":671.4285,"y":407.14288},{"x":378.5714,"y":128.57143},{"x":567.8572,"y":92.857155},{"x":745.4285,"y":96.42857}]]},"animationName":"dragonfly_fire_build_000","isLooping":true,"currentAnimationName":"idle"},{"uniqueId":4,"tags":["scaleEntity"],"x":500,"y":78,"scaleX":0.4,"scaleY":0.4,"originX":237.5,"originY":199,"zIndex":2,"layerName":"Default","shape":{"polygons":[[{"x":93.75,"y":131.25},{"x":143.75,"y":12.5},{"x":318.75,"y":25},{"x":368.75,"y":150},{"x":356.25,"y":273},{"x":218.75,"y":350},{"x":93.75,"y":266.75018}]]},"physics":{"rotationalInertia":1,"gravityScale":1,"allowSleep":true,"awake":true,"density":1,"friction":1,"height":1},"animationName":"berrybush","isLooping":true,"currentAnimationName":"idle"},{"uniqueId":11,"tags":["scaleEntity"],"x":1060,"y":-190,"scaleX":0.4,"scaleY":0.4,"originX":237.5,"originY":199,"zIndex":3,"layerName":"Default","shape":{"polygons":[[{"x":93.75,"y":131.25},{"x":143.75,"y":12.5},{"x":318.75,"y":25},{"x":368.75,"y":150},{"x":356.25,"y":273},{"x":218.75,"y":350},{"x":93.75,"y":266.75018}]]},"physics":{"rotationalInertia":1,"gravityScale":1,"allowSleep":true,"awake":true,"density":1,"friction":1,"height":1},"animationName":"berrybush","isLooping":true,"currentAnimationName":"idle"},{"uniqueId":10,"tags":["scaleEntity"],"x":287,"y":763,"scaleX":0.4,"scaleY":0.4,"originX":237.5,"originY":199,"zIndex":4,"layerName":"Default","shape":{"polygons":[[{"x":93.75,"y":131.25},{"x":143.75,"y":12.5},{"x":318.75,"y":25},{"x":368.75,"y":150},{"x":356.25,"y":273},{"x":218.75,"y":350},{"x":93.75,"y":266.75018}]]},"physics":{"rotationalInertia":1,"gravityScale":1,"allowSleep":true,"awake":true,"density":1,"friction":1,"height":1},"animationName":"berrybush","isLooping":true,"currentAnimationName":"idle"},{"uniqueId":9,"tags":["scaleEntity"],"x":-160,"y":273,"scaleX":0.4,"scaleY":0.4,"originX":237.5,"originY":199,"zIndex":5,"layerName":"Default","shape":{"polygons":[[{"x":93.75,"y":131.25},{"x":143.75,"y":12.5},{"x":318.75,"y":25},{"x":368.75,"y":150},{"x":356.25,"y":273},{"x":218.75,"y":350},{"x":93.75,"y":266.75018}]]},"physics":{"rotationalInertia":1,"gravityScale":1,"allowSleep":true,"awake":true,"density":1,"friction":1,"height":1},"animationName":"berrybush","isLooping":true,"currentAnimationName":"idle"},{"uniqueId":8,"tags":["scaleEntity"],"x":193,"y":-432,"scaleX":0.4,"scaleY":0.4,"originX":237.5,"originY":199,"zIndex":6,"layerName":"Default","shape":{"polygons":[[{"x":93.75,"y":131.25},{"x":143.75,"y":12.5},{"x":318.75,"y":25},{"x":368.75,"y":150},{"x":356.25,"y":273},{"x":218.75,"y":350},{"x":93.75,"y":266.75018}]]},"physics":{"rotationalInertia":1,"gravityScale":1,"allowSleep":true,"awake":true,"density":1,"friction":1,"height":1},"animationName":"berrybush","isLooping":true,"currentAnimationName":"idle"}],"layers":[{"layerName":"Default","isVisible":true}]},"physicsPropertiesVO":{},"lightsPropertiesVO":{},"verticalGuides":[-960,960],"horizontalGuides":[540,-540]}
+{
+  "sceneName": "PlayScene",
+  "composite": {
+    "sSpriterAnimations": [
+      {
+        "uniqueId": 2,
+        "id": "player",
+        "tags": [],
+        "x": -129,
+        "y": -193.5,
+        "scaleX": 0.4,
+        "scaleY": 0.4,
+        "originX": 129,
+        "originY": 193.5,
+        "layerName": "Default",
+        "animationName": "wilson",
+        "currentAnimationName": "idle_down"
+      },
+      {
+        "uniqueId": 3,
+        "tags": [
+          "scaleEntity"
+        ],
+        "x": 168,
+        "y": -571,
+        "scaleX": 0.35,
+        "scaleY": 0.35,
+        "originX": 208,
+        "originY": 224,
+        "zIndex": 1,
+        "layerName": "Default",
+        "animationName": "berrybush",
+        "isLooping": true,
+        "currentAnimationName": "idle"
+      },
+      {
+        "uniqueId": 4,
+        "tags": [
+          "scaleEntity"
+        ],
+        "x": 109,
+        "y": -204,
+        "scaleX": 0.35,
+        "scaleY": 0.35,
+        "originX": 208,
+        "originY": 224,
+        "zIndex": 2,
+        "layerName": "Default",
+        "animationName": "berrybush",
+        "isLooping": true,
+        "currentAnimationName": "idle"
+      },
+      {
+        "uniqueId": 5,
+        "tags": [
+          "scaleEntity"
+        ],
+        "x": 436,
+        "y": -74,
+        "scaleX": 0.35,
+        "scaleY": 0.35,
+        "originX": 208,
+        "originY": 224,
+        "zIndex": 3,
+        "layerName": "Default",
+        "animationName": "berrybush",
+        "isLooping": true,
+        "currentAnimationName": "idle"
+      },
+      {
+        "uniqueId": 6,
+        "tags": [
+          "scaleEntity"
+        ],
+        "x": -42,
+        "y": 253,
+        "scaleX": 0.35,
+        "scaleY": 0.35,
+        "originX": 208,
+        "originY": 224,
+        "zIndex": 4,
+        "layerName": "Default",
+        "animationName": "berrybush",
+        "isLooping": true,
+        "currentAnimationName": "idle"
+      },
+      {
+        "uniqueId": 7,
+        "id": "dragonfly",
+        "tags": [
+          "scaleEntity"
+        ],
+        "x": -1472,
+        "y": -678,
+        "scaleX": 0.5,
+        "scaleY": 0.5,
+        "originX": 470,
+        "originY": 558,
+        "zIndex": 5,
+        "layerName": "Default",
+        "animationName": "dragonfly_fire_build_000",
+        "isLooping": true,
+        "currentAnimationName": "idle"
+      }
+    ],
+    "layers": [
+      {
+        "layerName": "Default",
+        "isVisible": true
+      }
+    ]
+  },
+  "physicsPropertiesVO": {},
+  "lightsPropertiesVO": {},
+  "verticalGuides": [
+    -960,
+    960
+  ],
+  "horizontalGuides": [
+    540,
+    -540
+  ]
+}

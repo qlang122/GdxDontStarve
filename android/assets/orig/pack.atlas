@@ -6,29 +6,36 @@ filter: Linear, Linear
 repeat: none
 goods_ph
   rotate: false
-  xy: 1304, 826
+  xy: 1303, 825
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
   index: -1
 placeholder
   rotate: false
-  xy: 2, 2
+  xy: 1, 1
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 recordList
   rotate: false
-  xy: 2, 104
+  xy: 1, 103
   size: 380, 700
   orig: 380, 700
   offset: 0, 0
   index: -1
 tabTitle
   rotate: false
-  xy: 2, 806
+  xy: 1, 805
   size: 1300, 80
   orig: 1300, 80
+  offset: 0, 0
+  index: -1
+white-pixel
+  rotate: false
+  xy: 383, 802
+  size: 1, 1
+  orig: 1, 1
   offset: 0, 0
   index: -1

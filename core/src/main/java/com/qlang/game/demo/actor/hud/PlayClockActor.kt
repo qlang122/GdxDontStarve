@@ -51,7 +51,7 @@ class PlayClockActor {
         if (component?.entityType == EntityFactory.SPRITER_TYPE) {
             spriter = clock.getComponent(SpriterObjectComponent::class.java)
         }
-        spriter?.tintEnable = false
+        spriter?.isTintEnable = false
     }
 
     fun update(date: Date) {

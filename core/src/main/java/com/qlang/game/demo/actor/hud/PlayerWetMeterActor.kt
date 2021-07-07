@@ -53,7 +53,7 @@ class PlayerWetMeterActor {
             BodyIndexState.INC_MOST -> "arrow_loop_increase_most_90s"
             else -> "neutral_90s"
         }
-        arrowSpriter?.setAnimation(arrowAnim)
+        arrowSpriter?.setAnimation(mainEntity, arrowAnim)
     }
 
     fun act(delta: Float) {

@@ -11,14 +11,11 @@ import games.rednblack.editor.renderer.utils.ComponentRetriever
 
 class PlayerAnimationSystem : IteratingSystem(Family.all(PlayerComponent::class.java).get()) {
     override fun processEntity(entity: Entity?, deltaTime: Float) {
-//        val nodeComponent: ParentNodeComponent = ComponentRetriever.get(entity, ParentNodeComponent::class.java)
-//        val body: Body = ComponentRetriever.get(nodeComponent.parentEntity, PhysicsBodyComponent::class.java).body
-
         val playerComponent = ComponentRetriever.get(entity, PlayerComponent::class.java)
         val spriterComponent = ComponentRetriever.get(entity, SpriterObjectComponent::class.java)
         val transformComponent = ComponentRetriever.get(entity, TransformComponent::class.java)
 
-        spriterComponent?.setAnimation(when (playerComponent?.direction) {
+        spriterComponent?.setAnimation(entity, when (playerComponent?.direction) {
             Player.Direction.LEFT -> {
                 transformComponent?.flipX = true
                 if (playerComponent.isRun) Player.Anim.Run.loop_side else Player.Anim.Idle.loop_side
