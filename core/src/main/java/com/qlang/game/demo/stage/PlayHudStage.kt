@@ -11,6 +11,7 @@ import com.qlang.game.demo.GameManager
 import com.qlang.game.demo.actor.hud.*
 import com.qlang.game.demo.config.AppConfig
 import com.qlang.game.demo.event.PlayerBodyIndexEvent
+import com.qlang.game.demo.event.WorldTimeEvent
 import com.qlang.game.demo.ktx.execAsync
 import com.qlang.game.demo.ktx.setOnClickListener
 import com.qlang.game.demo.tool.AccelerateDecelerateInterpolator
@@ -74,18 +75,13 @@ class PlayHudStage : Stage {
             wrapper?.getChild("ly_playerState")?.entity?.let {
                 val lyState = ItemWrapper(it)
                 clockActor = PlayClockActor(lyState.getChild("iv_clock")?.entity, lyState.getChild("tv_days")?.entity)
-                healthActor = PlayerHealthActor(lyState.getChild("iv_hunger")?.entity, lyState.getChild("iv_hunger_arrow")?.entity)
-                hungerActor = PlayerHungerActor(lyState.getChild("iv_health")?.entity, lyState.getChild("iv_health_arrow")?.entity)
+                healthActor = PlayerHealthActor(lyState.getChild("iv_health")?.entity, lyState.getChild("iv_health_arrow")?.entity)
+                hungerActor = PlayerHungerActor(lyState.getChild("iv_hunger")?.entity, lyState.getChild("iv_hunger_arrow")?.entity)
                 sanityActor = PlayerSanityActor(lyState.getChild("iv_sanity")?.entity, lyState.getChild("iv_sanity_arrow")?.entity)
                 wetMeterActor = PlayerWetMeterActor(lyState.getChild("iv_wet_meter")?.entity, lyState.getChild("iv_wet_meter_arrow")?.entity)
             }
 
             toolSubLayer = sceneLoader?.sceneVO?.composite?.getLayerByName("tool_sub")
-
-            clockActor?.update(Date(0, 0, 0, 6, 30))
-            healthActor?.setProgress(0.5f)
-            hungerActor?.setProgress(0.5f)
-            sanityActor?.setProgress(0.5f)
         }
 
         registerEvents()
@@ -97,6 +93,10 @@ class PlayHudStage : Stage {
             hungerActor?.setProgress(it.hunger)
             sanityActor?.setProgress(it.sanity)
             wetMeterActor?.setProgress(it.wet)
+        }, EventBus.DEFAULT)
+
+        EventBus.register(javaClass.simpleName, WorldTimeEvent::class.java, {
+            it.date?.let { d -> clockActor?.update(d) }
         }, EventBus.DEFAULT)
     }
 
@@ -246,5 +246,6 @@ class PlayHudStage : Stage {
     override fun dispose() {
         super.dispose()
         sceneLoader?.dispose()
+        EventBus.unregister(javaClass.simpleName)
     }
 }

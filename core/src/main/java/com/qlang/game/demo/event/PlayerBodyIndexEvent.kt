@@ -5,4 +5,8 @@ object PlayerBodyIndexEvent {
     var hunger: Float = 0f
     var sanity: Float = 0f
     var wet: Float = 0f
+
+    override fun toString(): String {
+        return "PlayerBodyIndexEvent(health=$health, hunger=$hunger, sanity=$sanity, wet=$wet)"
+    }
 }

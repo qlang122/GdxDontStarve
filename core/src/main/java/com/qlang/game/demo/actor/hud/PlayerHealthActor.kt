@@ -36,9 +36,9 @@ class PlayerHealthActor {
     fun setProgress(value: Float) {
         if (value < 0 || value >= 1) return
         val len = healthSpriter?.animation?.length ?: 0
-        currProgress = value * len
+        currProgress = (1.0f - value) * len
         healthSpriter?.animation?.apply {
-            setPlay(true);update(currProgress);setPlay(false)
+            setPlay(true);updateByTime(currProgress);setPlay(false)
         }
     }
 

@@ -38,7 +38,7 @@ class PlayerWetMeterActor {
         val len = healthSpriter?.animation?.length ?: 0
         currProgress = value * len
         healthSpriter?.animation?.apply {
-            setPlay(true);update(currProgress);setPlay(false)
+            setPlay(true);updateByTime(currProgress);setPlay(false)
         }
         mainEntity?.getComponent(MainItemComponent::class.java)?.visible = value != 0f
     }

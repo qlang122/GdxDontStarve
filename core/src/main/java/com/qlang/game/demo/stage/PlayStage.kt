@@ -17,6 +17,7 @@ import com.qlang.game.demo.config.AppConfig
 import com.qlang.game.demo.script.DragonflyScript
 import com.qlang.game.demo.script.PlayerBodyScript
 import com.qlang.game.demo.script.PlayerScript
+import com.qlang.game.demo.script.WorldScript
 import com.qlang.game.demo.system.CameraSystem
 import com.qlang.game.demo.system.PlayerAnimationSystem
 import com.qlang.game.demo.system.ChangeVisionSystem
@@ -64,6 +65,7 @@ class PlayStage : Stage {
 
             sceneLoader?.engine?.let { engine ->
                 wrapper?.entity?.add(engine.createComponent(WorldComponent::class.java))
+                wrapper?.addScript(WorldScript(), engine)
 
                 val player = wrapper?.getChild("player")
                 player?.entity?.add(engine.createComponent(PlayerComponent::class.java))

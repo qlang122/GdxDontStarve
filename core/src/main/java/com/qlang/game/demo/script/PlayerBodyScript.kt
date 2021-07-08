@@ -6,9 +6,9 @@ import com.qlang.game.demo.component.PlayerComponent
 import com.qlang.game.demo.component.WorldComponent
 import com.qlang.game.demo.event.PlayerBodyIndexEvent
 import com.qlang.game.demo.ktx.trycatch
+import com.qlang.game.demo.utils.Log
 import games.rednblack.editor.renderer.scripts.BasicScript
 import games.rednblack.editor.renderer.utils.ComponentRetriever
-import kotlin.math.abs
 
 class PlayerBodyScript : BasicScript {
     private var worldComponent: WorldComponent? = null
@@ -19,7 +19,8 @@ class PlayerBodyScript : BasicScript {
 
     private var rootEntity: Entity? = null
 
-    private var oldTime: Long = 0
+    private var oldHungerTime: Float = 0f
+    private var oldSanityTime: Float = 0f
 
     constructor() {
 
@@ -38,22 +39,24 @@ class PlayerBodyScript : BasicScript {
     private fun handleData() {
         playerComponent?.let { player ->
             worldComponent?.let {
-                val time = it.gameDate.getTime()
-                val b = (time - oldTime) >= 14.4//14.4分钟减一
+                val time = it.gameDate.getGameTime()
+                val b = (time - oldHungerTime) >= 1//10分钟减一
                 player.body.currHunger -= if (b) 1 else 0
-                if (b) oldTime = time
+                if (b) oldHungerTime = time
+
+                val bS = (time - oldSanityTime) >= 2//15分钟减一
+                player.body.currSanity -= if (bS) 1 else 0
+                if (bS) oldSanityTime = time
 
             }
 
             EventBus.post(PlayerBodyIndexEvent.apply {
-                health = (player.body.currHealth / player.body.HEALTH).toFloat()
-                hunger = (player.body.currHunger / player.body.HUNGER).toFloat()
-                sanity = (player.body.currSanity / player.body.SANTITY).toFloat()
+                health = player.body.currHealth.toFloat() / player.body.HEALTH
+                hunger = player.body.currHunger.toFloat() / player.body.HUNGER
+                sanity = player.body.currSanity.toFloat() / player.body.SANTITY
                 wet = (player.body.currWet / player.body.WET).toFloat()
             })
         }
-
-        trycatch { Thread.sleep(1000) }
     }
 
     fun setRootEntity(entity: Entity?) {
@@ -76,6 +79,7 @@ class PlayerBodyScript : BasicScript {
             while (isRunning) {
                 if (interrupted()) break
                 handleData()
+                trycatch { sleep(5000) }
             }
             isRunning = false
         }

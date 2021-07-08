@@ -52,6 +52,16 @@ class PlayClockActor {
             spriter = clock.getComponent(SpriterObjectComponent::class.java)
         }
         spriter?.isTintEnable = false
+
+        update()
+    }
+
+    fun update(date: GameDate) {
+        this.date.season = date.season
+        this.date.day = date.day
+        this.date.hour = date.hour
+        this.date.minute = date.minute
+        update()
     }
 
     fun update(date: Date) {
@@ -88,7 +98,7 @@ class PlayClockActor {
         spriter?.animation?.makeTimelineVisible(eveningVisable)
 
         val hourDegrees = (date.hour * 15.0f + 15.0f * date.minute / 60) % 360
-        spriter?.animation?.getTimeline("clock_hand")?.keys?.get(0)?.`object`?.setAngle(hourDegrees)
+        spriter?.animation?.getTimeline("clock_hand")?.keys?.get(0)?.`object`?.setAngle(-hourDegrees)
 
         textEntity?.getComponent(MainItemComponent::class.java)?.let {
             if (it.entityType == EntityFactory.LABEL_TYPE) {
