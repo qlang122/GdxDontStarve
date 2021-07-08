@@ -12,8 +12,10 @@ import com.badlogic.gdx.utils.viewport.Viewport
 import com.qlang.game.demo.GameManager
 import com.qlang.game.demo.component.PlayerComponent
 import com.qlang.game.demo.component.ScaleEntityComponent
+import com.qlang.game.demo.component.WorldComponent
 import com.qlang.game.demo.config.AppConfig
 import com.qlang.game.demo.script.DragonflyScript
+import com.qlang.game.demo.script.PlayerBodyScript
 import com.qlang.game.demo.script.PlayerScript
 import com.qlang.game.demo.system.CameraSystem
 import com.qlang.game.demo.system.PlayerAnimationSystem
@@ -48,6 +50,7 @@ class PlayStage : Stage {
                 engine.addSystem(changeVisionSystem)
                 engine.addSystem(cameraSystem)
             }
+            ComponentRetriever.addMapper(WorldComponent::class.java)
             ComponentRetriever.addMapper(PlayerComponent::class.java)
             ComponentRetriever.addMapper(ScaleEntityComponent::class.java)
             changeVisionSystem.setViewportHeight(AppConfig.worldHeight)
@@ -60,9 +63,12 @@ class PlayStage : Stage {
             wrapper = ItemWrapper(sceneLoader?.root)
 
             sceneLoader?.engine?.let { engine ->
+                wrapper?.entity?.add(engine.createComponent(WorldComponent::class.java))
+
                 val player = wrapper?.getChild("player")
                 player?.entity?.add(engine.createComponent(PlayerComponent::class.java))
                 player?.addScript(PlayerScript(engine), engine)
+                player?.addScript(PlayerBodyScript().apply { setRootEntity(wrapper?.entity) }, engine)
                 cameraSystem.setFocus(player?.entity)
                 changeVisionSystem.setPlayer(player?.entity)
 

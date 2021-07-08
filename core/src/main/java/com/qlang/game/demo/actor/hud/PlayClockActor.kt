@@ -25,14 +25,14 @@ class PlayClockActor {
         get() = if (!needUpdateDay) field else when (date.season) {
             GameDate.Season.SUMMER -> 11
             GameDate.Season.AUTUMN -> 9
-            GameDate.Season.WENTER -> 7
+            GameDate.Season.WINTER -> 6
             else -> 9
         }
     private val evening: Int = 4
         get() = if (!needUpdateDay) field else when (date.season) {
             GameDate.Season.SUMMER -> 3
-            GameDate.Season.AUTUMN -> 5
-            GameDate.Season.WENTER -> 4
+            GameDate.Season.AUTUMN -> 4
+            GameDate.Season.WINTER -> 5
             else -> 5
         }
 

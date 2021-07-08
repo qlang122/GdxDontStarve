@@ -1,6 +1,10 @@
-package com.qlang.game.demo.component
+package com.qlang.game.demo.res
 
 object Player {
+    enum class BodyIndexState {
+        FULL, FILL_UP, FILL_DOWN
+    }
+
     object Anim {
         object Idle {
             const val down = "idle_down"
@@ -34,12 +38,5 @@ object Player {
             const val pst_side = "run_pst_side"
             const val pst_up = "run_pst_up"
         }
-    }
-
-    object Direction {
-        const val LEFT = 0
-        const val RIGHT = 1
-        const val UP = 2
-        const val DOWN = 3
     }
 }

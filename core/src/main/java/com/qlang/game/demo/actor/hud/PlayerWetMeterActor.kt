@@ -40,6 +40,7 @@ class PlayerWetMeterActor {
         healthSpriter?.animation?.apply {
             setPlay(true);update(currProgress);setPlay(false)
         }
+        mainEntity?.getComponent(MainItemComponent::class.java)?.visible = value != 0f
     }
 
     fun changeState(value: BodyIndexState = BodyIndexState.NEUTRAL) {

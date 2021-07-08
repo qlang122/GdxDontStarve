@@ -1,6 +1,6 @@
 package com.qlang.game.demo.entity
 
-class GoodsInfo {
+class GoodsInfo : BaseInfo() {
     var type: Int = 0 and Type.UNKNOW.ordinal
     var name: String? = null
     var desc: String? = null

@@ -6,9 +6,11 @@ import com.badlogic.gdx.assets.AssetManager
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.utils.Scaling
 import com.badlogic.gdx.utils.viewport.ScalingViewport
+import com.qlang.eventbus.EventBus
 import com.qlang.game.demo.GameManager
 import com.qlang.game.demo.actor.hud.*
 import com.qlang.game.demo.config.AppConfig
+import com.qlang.game.demo.event.PlayerBodyIndexEvent
 import com.qlang.game.demo.ktx.execAsync
 import com.qlang.game.demo.ktx.setOnClickListener
 import com.qlang.game.demo.tool.AccelerateDecelerateInterpolator
@@ -28,6 +30,8 @@ import java.util.*
 import kotlin.collections.HashMap
 
 class PlayHudStage : Stage {
+    private val TAG = "PlayHudStage"
+
     private val mainManager: AssetManager? = GameManager.instance?.mainManager
     private val playManager: AssetManager? = GameManager.instance?.playManager
 
@@ -83,6 +87,17 @@ class PlayHudStage : Stage {
             hungerActor?.setProgress(0.5f)
             sanityActor?.setProgress(0.5f)
         }
+
+        registerEvents()
+    }
+
+    private fun registerEvents() {
+        EventBus.register(javaClass.simpleName, PlayerBodyIndexEvent::class.java, {
+            healthActor?.setProgress(it.health)
+            hungerActor?.setProgress(it.hunger)
+            sanityActor?.setProgress(it.sanity)
+            wetMeterActor?.setProgress(it.wet)
+        }, EventBus.DEFAULT)
     }
 
     private fun initToolButtons() {

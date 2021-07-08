@@ -19,13 +19,12 @@ class ChangeVisionSystem : IteratingSystem {
     private val zIndexMapper: ComponentMapper<ZIndexComponent> = ComponentMapper.getFor(ZIndexComponent::class.java)
     private val scaleEntityMapper: ComponentMapper<ScaleEntityComponent> = ComponentMapper.getFor(ScaleEntityComponent::class.java)
 
-    private var viewOffset = 0.25f
+    private var viewOffset = 0.20f
     private var viewportHeight: Float = 0f
 
     private var focus: Entity? = null
-    private val view = Rectangle()
 
-    constructor() : this(0.25f)
+    constructor() : this(0.20f)
 
     constructor(viewOffset: Float) : super(Family.all(ScaleEntityComponent::class.java).get()) {
         this.viewOffset = viewOffset
