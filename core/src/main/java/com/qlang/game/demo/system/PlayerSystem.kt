@@ -1,5 +1,6 @@
 package com.qlang.game.demo.system
 
+import com.badlogic.ashley.core.ComponentMapper
 import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.core.Family
 import com.badlogic.ashley.systems.IteratingSystem
@@ -9,13 +10,16 @@ import com.qlang.game.demo.res.Direction
 import com.qlang.game.demo.res.Status
 import com.qlang.h2d.extention.spriter.SpriterObjectComponent
 import games.rednblack.editor.renderer.components.TransformComponent
-import games.rednblack.editor.renderer.utils.ComponentRetriever
 
-class PlayerAnimationSystem : IteratingSystem(Family.all(PlayerComponent::class.java).get()) {
+class PlayerSystem : IteratingSystem(Family.all(PlayerComponent::class.java).get()) {
+    private val transformMapper: ComponentMapper<TransformComponent> = ComponentMapper.getFor(TransformComponent::class.java)
+    private val playerMapper: ComponentMapper<PlayerComponent> = ComponentMapper.getFor(PlayerComponent::class.java)
+    private val spriterMapper: ComponentMapper<SpriterObjectComponent> = ComponentMapper.getFor(SpriterObjectComponent::class.java)
+
     override fun processEntity(entity: Entity?, deltaTime: Float) {
-        val playerComponent = ComponentRetriever.get(entity, PlayerComponent::class.java)
-        val spriterComponent = ComponentRetriever.get(entity, SpriterObjectComponent::class.java)
-        val transformComponent = ComponentRetriever.get(entity, TransformComponent::class.java)
+        val playerComponent = playerMapper.get(entity)
+        val spriterComponent = spriterMapper.get(entity)
+        val transformComponent = transformMapper.get(entity)
 
         spriterComponent?.setAnimation(entity, getAnimName(playerComponent))
         when (playerComponent?.direction) {

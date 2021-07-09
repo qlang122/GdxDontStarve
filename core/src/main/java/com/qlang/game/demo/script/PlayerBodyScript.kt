@@ -40,11 +40,11 @@ class PlayerBodyScript : BasicScript {
         playerComponent?.let { player ->
             worldComponent?.let {
                 val time = it.gameDate.getGameTime()
-                val b = (time - oldHungerTime) >= 1//10分钟减一
+                val b = (time - oldHungerTime) >= 3//3分钟减一
                 player.body.currHunger -= if (b) 1 else 0
                 if (b) oldHungerTime = time
 
-                val bS = (time - oldSanityTime) >= 2//15分钟减一
+                val bS = (time - oldSanityTime) >= 5//5分钟减一
                 player.body.currSanity -= if (bS) 1 else 0
                 if (bS) oldSanityTime = time
 

@@ -19,7 +19,7 @@ import com.qlang.game.demo.script.PlayerBodyScript
 import com.qlang.game.demo.script.PlayerScript
 import com.qlang.game.demo.script.WorldScript
 import com.qlang.game.demo.system.CameraSystem
-import com.qlang.game.demo.system.PlayerAnimationSystem
+import com.qlang.game.demo.system.PlayerSystem
 import com.qlang.game.demo.system.ChangeVisionSystem
 import com.qlang.h2d.extention.spriter.SpriterItemType
 import games.rednblack.editor.renderer.SceneLoader
@@ -47,7 +47,7 @@ class PlayStage : Stage {
             val cameraSystem = CameraSystem(-10000f, 10000f, -10000f, 10000f)
 
             sceneLoader?.engine?.let { engine ->
-                engine.addSystem(PlayerAnimationSystem())
+                engine.addSystem(PlayerSystem())
                 engine.addSystem(changeVisionSystem)
                 engine.addSystem(cameraSystem)
             }
