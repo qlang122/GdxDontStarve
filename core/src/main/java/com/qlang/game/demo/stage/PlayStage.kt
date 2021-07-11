@@ -68,7 +68,7 @@ class PlayStage : Stage {
                 wrapper?.addScript(WorldScript(), engine)
 
                 val player = wrapper?.getChild("player")
-                player?.entity?.add(engine.createComponent(PlayerComponent::class.java))
+                player?.getChild("role")?.entity?.add(engine.createComponent(PlayerComponent::class.java))
                 player?.addScript(PlayerScript(engine), engine)
                 player?.addScript(PlayerBodyScript().apply { setRootEntity(wrapper?.entity) }, engine)
                 cameraSystem.setFocus(player?.entity)

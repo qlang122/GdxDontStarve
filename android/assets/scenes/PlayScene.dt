@@ -1,21 +1,99 @@
 {
   "sceneName": "PlayScene",
   "composite": {
-    "sSpriterAnimations": [
+    "sComposites": [
       {
-        "uniqueId": 2,
+        "uniqueId": 8,
         "id": "player",
         "tags": [],
-        "x": -129,
-        "y": -193.5,
-        "scaleX": 0.4,
-        "scaleY": 0.4,
-        "originX": 129,
-        "originY": 193.5,
+        "x": -51,
+        "y": -80,
+        "originX": 0,
+        "originY": 0,
+        "zIndex": 5,
         "layerName": "Default",
-        "animationName": "wilson",
-        "currentAnimationName": "idle_down"
-      },
+        "shape": {
+          "polygons": [
+            [
+              {
+                "x": 60.25113,
+                "y": 9.615387
+              },
+              {
+                "x": 63.461536,
+                "y": 46.794914
+              },
+              {
+                "x": 39.743595,
+                "y": 47.43594
+              },
+              {
+                "x": 42.94872,
+                "y": 9.615386
+              }
+            ],
+            [
+              {
+                "x": 39.743595,
+                "y": 47.43594
+              },
+              {
+                "x": 63.461536,
+                "y": 46.794914
+              },
+              {
+                "x": 73.07685,
+                "y": 71.794914
+              },
+              {
+                "x": 74.35385,
+                "y": 109.28713
+              },
+              {
+                "x": 51.2819,
+                "y": 125.000084
+              },
+              {
+                "x": 30.128202,
+                "y": 110.89733
+              },
+              {
+                "x": 30.128284,
+                "y": 72.10758
+              }
+            ]
+          ]
+        },
+        "composite": {
+          "sSpriterAnimations": [
+            {
+              "uniqueId": 2,
+              "id": "role",
+              "tags": [],
+              "x": -77.4,
+              "y": -116.1,
+              "scaleX": 0.4,
+              "scaleY": 0.4,
+              "originX": 129,
+              "originY": 193.5,
+              "layerName": "Default",
+              "animationName": "wilson",
+              "isLooping": true,
+              "currentAnimationName": "idle_loop_down"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default",
+              "isVisible": true
+            }
+          ]
+        },
+        "width": 103.200005,
+        "height": 154.79999
+      }
+    ],
+    "sSpriterAnimations": [
       {
         "uniqueId": 3,
         "tags": [
@@ -27,7 +105,6 @@
         "scaleY": 0.35,
         "originX": 208,
         "originY": 224,
-        "zIndex": 1,
         "layerName": "Default",
         "animationName": "berrybush",
         "isLooping": true,
@@ -44,8 +121,46 @@
         "scaleY": 0.35,
         "originX": 208,
         "originY": 224,
-        "zIndex": 2,
+        "zIndex": 1,
         "layerName": "Default",
+        "shape": {
+          "polygons": [
+            [
+              {
+                "x": 291.4576,
+                "y": 78.75457
+              },
+              {
+                "x": 307.69257,
+                "y": 142.85724
+              },
+              {
+                "x": 306.10962,
+                "y": 241.04007
+              },
+              {
+                "x": 221.61131,
+                "y": 305.86066
+              },
+              {
+                "x": 148.35123,
+                "y": 239.92673
+              },
+              {
+                "x": 144.68843,
+                "y": 144.68878
+              },
+              {
+                "x": 159.34111,
+                "y": 78.75469
+              },
+              {
+                "x": 223.4432,
+                "y": 67.76568
+              }
+            ]
+          ]
+        },
         "animationName": "berrybush",
         "isLooping": true,
         "currentAnimationName": "idle"
@@ -61,7 +176,7 @@
         "scaleY": 0.35,
         "originX": 208,
         "originY": 224,
-        "zIndex": 3,
+        "zIndex": 2,
         "layerName": "Default",
         "animationName": "berrybush",
         "isLooping": true,
@@ -78,7 +193,7 @@
         "scaleY": 0.35,
         "originX": 208,
         "originY": 224,
-        "zIndex": 4,
+        "zIndex": 3,
         "layerName": "Default",
         "animationName": "berrybush",
         "isLooping": true,
@@ -94,10 +209,84 @@
         "y": -678,
         "scaleX": 0.5,
         "scaleY": 0.5,
-        "originX": 470,
-        "originY": 558,
-        "zIndex": 5,
+        "originX": 487,
+        "originY": 567.5,
+        "zIndex": 4,
         "layerName": "Default",
+        "shape": {
+          "polygons": [
+            [
+              {
+                "x": 160.4168,
+                "y": 693.75024
+              },
+              {
+                "x": 360.41684,
+                "y": 543.7501
+              },
+              {
+                "x": 656.2504,
+                "y": 987.5004
+              },
+              {
+                "x": 331.24988,
+                "y": 1000.0005
+              },
+              {
+                "x": 156.25,
+                "y": 832.9166
+              }
+            ],
+            [
+              {
+                "x": 360.41684,
+                "y": 543.7501
+              },
+              {
+                "x": 329.16656,
+                "y": 310.4169
+              },
+              {
+                "x": 641.6667,
+                "y": 537.5001
+              },
+              {
+                "x": 820.8333,
+                "y": 689.58356
+              },
+              {
+                "x": 826.08344,
+                "y": 832.9167
+              },
+              {
+                "x": 656.2504,
+                "y": 987.5004
+              }
+            ],
+            [
+              {
+                "x": 641.6667,
+                "y": 537.5001
+              },
+              {
+                "x": 329.16656,
+                "y": 310.4169
+              },
+              {
+                "x": 366.6668,
+                "y": 79.166664
+              },
+              {
+                "x": 609.41644,
+                "y": 77.083336
+              },
+              {
+                "x": 664.58344,
+                "y": 329.1666
+              }
+            ]
+          ]
+        },
         "animationName": "dragonfly_fire_build_000",
         "isLooping": true,
         "currentAnimationName": "idle"

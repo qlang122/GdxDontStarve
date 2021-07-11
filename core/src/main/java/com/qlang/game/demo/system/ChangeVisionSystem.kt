@@ -6,6 +6,7 @@ import com.badlogic.ashley.core.Family
 import com.badlogic.ashley.systems.IteratingSystem
 import com.badlogic.gdx.math.Rectangle
 import com.qlang.game.demo.component.ScaleEntityComponent
+import com.qlang.game.demo.utils.Log
 import games.rednblack.editor.renderer.components.BoundingBoxComponent
 import games.rednblack.editor.renderer.components.MainItemComponent
 import games.rednblack.editor.renderer.components.TransformComponent
@@ -51,7 +52,7 @@ class ChangeVisionSystem : IteratingSystem {
             val fl = transform.y - pT.y
             val s = abs(fl) / viewportHeight / 2f * viewOffset
             val overlaps = pB.rectangle.overlaps(b.rectangle)
-
+            Log.e("QL", pT.y, transform.y, pB.rectangle, b.rectangle, overlaps)
             when {
                 fl > 0 -> {
                     scale?.oldScaleX?.minus(s)?.let { transform.scaleX = it }
@@ -61,7 +62,7 @@ class ChangeVisionSystem : IteratingSystem {
                 fl < 0 -> {
                     scale?.oldScaleX?.plus(s)?.let { transform.scaleX = it }
                     scale?.oldScaleY?.plus(s)?.let { transform.scaleY = it }
-                    if (overlaps) pZ.zIndex = z.zIndex - 1
+                    if (overlaps && z.zIndex > 1) pZ.zIndex = z.zIndex - 1
                 }
             }
         } else {

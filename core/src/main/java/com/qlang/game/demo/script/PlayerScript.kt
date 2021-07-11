@@ -9,9 +9,9 @@ import com.qlang.game.demo.res.Direction
 import com.qlang.game.demo.res.Status
 import com.qlang.h2d.extention.spriter.SpriterObjectComponent
 import games.rednblack.editor.renderer.components.TransformComponent
-import games.rednblack.editor.renderer.components.physics.PhysicsBodyComponent
 import games.rednblack.editor.renderer.scripts.BasicScript
 import games.rednblack.editor.renderer.utils.ComponentRetriever
+import games.rednblack.editor.renderer.utils.ItemWrapper
 
 class PlayerScript : BasicScript {
     private val LEFT = Direction.LEFT
@@ -21,7 +21,6 @@ class PlayerScript : BasicScript {
 
     private var engine: PooledEngine? = null
 
-    private var physicsComponent: PhysicsBodyComponent? = null
     private var spriterComponent: SpriterObjectComponent? = null
     private var playerComponent: PlayerComponent? = null
     private var transformComponent: TransformComponent? = null
@@ -34,9 +33,10 @@ class PlayerScript : BasicScript {
         super.init(item)
 
         item?.let {
-            physicsComponent = ComponentRetriever.get(it, PhysicsBodyComponent::class.java)
-            spriterComponent = ComponentRetriever.get(it, SpriterObjectComponent::class.java)
-            playerComponent = ComponentRetriever.get(it, PlayerComponent::class.java)
+            ItemWrapper(it).getChild("role")?.entity?.let { role ->
+                spriterComponent = ComponentRetriever.get(role, SpriterObjectComponent::class.java)
+                playerComponent = ComponentRetriever.get(role, PlayerComponent::class.java)
+            }
             transformComponent = ComponentRetriever.get(it, TransformComponent::class.java)
 
             spriterComponent?.animation?.startPlay()

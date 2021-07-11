@@ -24,7 +24,7 @@ class PlayerSystem : IteratingSystem(Family.all(PlayerComponent::class.java).get
         spriterComponent?.setAnimation(entity, getAnimName(playerComponent))
         when (playerComponent?.direction) {
             Direction.LEFT -> transformComponent?.flipX = true
-            Direction.RIGHT -> transformComponent?.flipX = false
+            else -> transformComponent?.flipX = false
         }
         spriterComponent?.play()
     }
