@@ -25,7 +25,7 @@ class CameraSystem(val xMin: Float, val xMax: Float, val yMin: Float, val yMax: 
             val x = max(xMin, min(xMax, it.x))
             val y = max(yMin, min(yMax, it.y + 2))
 //            Log.e("QL", "----->", x, y, it.x, it.y)
-            camera?.position?.set(x + it.originX, y + it.originY, 0f)
+            camera?.position?.set(x - it.originX * 2, y - it.originY * 2, 0f)
         }
     }
 

@@ -4,13 +4,13 @@ import com.badlogic.ashley.core.ComponentMapper
 import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.core.Family
 import com.badlogic.ashley.systems.IteratingSystem
-import com.badlogic.gdx.math.Rectangle
 import com.qlang.game.demo.component.ScaleEntityComponent
 import com.qlang.game.demo.utils.Log
 import games.rednblack.editor.renderer.components.BoundingBoxComponent
 import games.rednblack.editor.renderer.components.MainItemComponent
 import games.rednblack.editor.renderer.components.TransformComponent
 import games.rednblack.editor.renderer.components.ZIndexComponent
+import games.rednblack.editor.renderer.utils.ComponentRetriever
 import kotlin.math.abs
 
 class ChangeVisionSystem : IteratingSystem {
@@ -19,6 +19,8 @@ class ChangeVisionSystem : IteratingSystem {
     private val mainItemMapper: ComponentMapper<MainItemComponent> = ComponentMapper.getFor(MainItemComponent::class.java)
     private val zIndexMapper: ComponentMapper<ZIndexComponent> = ComponentMapper.getFor(ZIndexComponent::class.java)
     private val scaleEntityMapper: ComponentMapper<ScaleEntityComponent> = ComponentMapper.getFor(ScaleEntityComponent::class.java)
+
+    private var playerTransform: TransformComponent? = null
 
     private var viewOffset = 0.20f
     private var viewportHeight: Float = 0f
@@ -32,7 +34,7 @@ class ChangeVisionSystem : IteratingSystem {
     }
 
     override fun processEntity(entity: Entity?, deltaTime: Float) {
-        if (focus == null) return
+        if (focus == null || playerTransform == null) return
 
         val transform = transformMapper.get(entity)
         val scale = scaleEntityMapper.get(entity)?.apply {
@@ -43,16 +45,15 @@ class ChangeVisionSystem : IteratingSystem {
         val m = mainItemMapper.get(entity)
 
         if (!m.culled) {
-            val pT = transformMapper.get(focus)
             val pZ = zIndexMapper.get(focus)
             val pB = boundingBoxMapper.get(focus)
             val z = zIndexMapper.get(entity)
             val b = boundingBoxMapper.get(entity)
 
-            val fl = transform.y - pT.y
+            val fl = b.rectangle.y - (playerTransform?.y ?: 0f)
             val s = abs(fl) / viewportHeight / 2f * viewOffset
             val overlaps = pB.rectangle.overlaps(b.rectangle)
-            Log.e("QL", pT.y, transform.y, pB.rectangle, b.rectangle, overlaps)
+//            Log.e("QL", playerTransform?.y, transform.y, pB.rectangle, b.rectangle, overlaps)
             when {
                 fl > 0 -> {
                     scale?.oldScaleX?.minus(s)?.let { transform.scaleX = it }
@@ -62,7 +63,7 @@ class ChangeVisionSystem : IteratingSystem {
                 fl < 0 -> {
                     scale?.oldScaleX?.plus(s)?.let { transform.scaleX = it }
                     scale?.oldScaleY?.plus(s)?.let { transform.scaleY = it }
-                    if (overlaps && z.zIndex > 1) pZ.zIndex = z.zIndex - 1
+                    if (overlaps) z.zIndex = pZ.zIndex + 1
                 }
             }
         } else {
@@ -73,6 +74,7 @@ class ChangeVisionSystem : IteratingSystem {
 
     fun setPlayer(focus: Entity?) {
         this.focus = focus
+        focus?.let { playerTransform = ComponentRetriever.get(it, TransformComponent::class.java) }
     }
 
     fun setViewportHeight(value: Float) {

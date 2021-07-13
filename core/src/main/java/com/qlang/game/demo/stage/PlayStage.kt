@@ -10,6 +10,7 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport
 import com.badlogic.gdx.utils.viewport.ScalingViewport
 import com.badlogic.gdx.utils.viewport.Viewport
 import com.qlang.game.demo.GameManager
+import com.qlang.game.demo.component.EntityComponent
 import com.qlang.game.demo.component.PlayerComponent
 import com.qlang.game.demo.component.ScaleEntityComponent
 import com.qlang.game.demo.component.WorldComponent
@@ -60,6 +61,7 @@ class PlayStage : Stage {
             playViewport = ExtendViewport(AppConfig.worldWidth, AppConfig.worldHeight, playCamera)
             sceneLoader?.loadScene("PlayScene", playViewport)
             sceneLoader?.addComponentByTagName("scaleEntity", ScaleEntityComponent::class.java)
+            sceneLoader?.addComponentByTagName("entity", EntityComponent::class.java)
 
             wrapper = ItemWrapper(sceneLoader?.root)
 
