@@ -1,0 +1,782 @@
+
+dragonfly_fire_build.png
+size: 2048, 2048
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+dragonfly_head-1
+  rotate: false
+  xy: 1384, 1026
+  size: 600, 628
+  orig: 600, 628
+  offset: 0, 0
+  index: -1
+dragonfly_head-26
+  rotate: false
+  xy: 1256, 264
+  size: 788, 760
+  orig: 788, 760
+  offset: 0, 0
+  index: -1
+dragonfly_leg-1
+  rotate: false
+  xy: 1986, 1538
+  size: 52, 116
+  orig: 52, 116
+  offset: 0, 0
+  index: -1
+dragonfly_wing-0
+  rotate: false
+  xy: 1866, 74
+  size: 160, 188
+  orig: 160, 188
+  offset: 0, 0
+  index: -1
+dragonfly_wing_fly-0
+  rotate: false
+  xy: 1256, 2
+  size: 204, 260
+  orig: 204, 260
+  offset: 0, 0
+  index: -1
+dragonfly_wing_fly-1
+  rotate: false
+  xy: 1664, 22
+  size: 200, 240
+  orig: 200, 240
+  offset: 0, 0
+  index: -1
+dragonfly_wing_fly-2
+  rotate: false
+  xy: 1462, 6
+  size: 200, 256
+  orig: 200, 256
+  offset: 0, 0
+  index: -1
+fire_engulf-0
+  rotate: false
+  xy: 1384, 1656
+  size: 624, 164
+  orig: 624, 164
+  offset: 0, 0
+  index: -1
+fire_engulf-1
+  rotate: false
+  xy: 1384, 1822
+  size: 656, 224
+  orig: 656, 224
+  offset: 0, 0
+  index: -1
+fire_engulf-12
+  rotate: false
+  xy: 2, 20
+  size: 1252, 1004
+  orig: 1252, 1004
+  offset: 0, 0
+  index: -1
+fire_engulf-16
+  rotate: false
+  xy: 2, 1534
+  size: 1380, 512
+  orig: 1380, 512
+  offset: 0, 0
+  index: -1
+fire_engulf-3
+  rotate: false
+  xy: 674, 1036
+  size: 700, 496
+  orig: 700, 496
+  offset: 0, 0
+  index: -1
+small_puff_fx-16
+  rotate: false
+  xy: 2, 1028
+  size: 260, 504
+  orig: 260, 504
+  offset: 0, 0
+  index: -1
+small_puff_fx-17
+  rotate: false
+  xy: 1866, 20
+  size: 40, 52
+  orig: 40, 52
+  offset: 0, 0
+  index: -1
+small_puff_fx-18
+  rotate: false
+  xy: 2010, 1796
+  size: 28, 24
+  orig: 28, 24
+  offset: 0, 0
+  index: -1
+small_puff_fx-3
+  rotate: false
+  xy: 264, 1032
+  size: 408, 500
+  orig: 408, 500
+  offset: 0, 0
+  index: -1
+
+dragonfly_fire_build-2.png
+size: 2048, 2048
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+dragonfly_arm-2
+  rotate: false
+  xy: 1916, 516
+  size: 108, 236
+  orig: 108, 236
+  offset: 0, 0
+  index: -1
+dragonfly_head-0
+  rotate: false
+  xy: 1110, 6
+  size: 804, 608
+  orig: 804, 608
+  offset: 0, 0
+  index: -1
+dragonfly_head-10
+  rotate: false
+  xy: 1364, 1384
+  size: 668, 660
+  orig: 668, 660
+  offset: 0, 0
+  index: -1
+dragonfly_head-17
+  rotate: false
+  xy: 1364, 754
+  size: 600, 628
+  orig: 600, 628
+  offset: 0, 0
+  index: -1
+dragonfly_head-4
+  rotate: false
+  xy: 228, 6
+  size: 880, 608
+  orig: 880, 608
+  offset: 0, 0
+  index: -1
+dragonfly_leg-0
+  rotate: false
+  xy: 1966, 1150
+  size: 80, 232
+  orig: 80, 232
+  offset: 0, 0
+  index: -1
+dragonfly_leg-2
+  rotate: false
+  xy: 1360, 624
+  size: 192, 128
+  orig: 192, 128
+  offset: 0, 0
+  index: -1
+dragonfly_leg-4
+  rotate: false
+  xy: 1554, 632
+  size: 188, 120
+  orig: 188, 120
+  offset: 0, 0
+  index: -1
+dragonfly_tail-4
+  rotate: false
+  xy: 2, 2
+  size: 224, 612
+  orig: 224, 612
+  offset: 0, 0
+  index: -1
+fire_engulf-15
+  rotate: false
+  xy: 2, 616
+  size: 1356, 604
+  orig: 1356, 604
+  offset: 0, 0
+  index: -1
+fire_engulf-17
+  rotate: false
+  xy: 2, 1604
+  size: 1360, 440
+  orig: 1360, 440
+  offset: 0, 0
+  index: -1
+fire_engulf-18
+  rotate: false
+  xy: 2, 1222
+  size: 1360, 380
+  orig: 1360, 380
+  offset: 0, 0
+  index: -1
+
+dragonfly_fire_build-3.png
+size: 2048, 2048
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+dragonfly_arm-10
+  rotate: false
+  xy: 510, 20
+  size: 276, 300
+  orig: 276, 300
+  offset: 0, 0
+  index: -1
+dragonfly_arm-5
+  rotate: false
+  xy: 232, 20
+  size: 276, 300
+  orig: 276, 300
+  offset: 0, 0
+  index: -1
+dragonfly_head-18
+  rotate: false
+  xy: 1304, 1368
+  size: 700, 676
+  orig: 700, 676
+  offset: 0, 0
+  index: -1
+dragonfly_head-21
+  rotate: false
+  xy: 1304, 774
+  size: 716, 592
+  orig: 716, 592
+  offset: 0, 0
+  index: -1
+dragonfly_leg-3
+  rotate: false
+  xy: 2, 2
+  size: 200, 96
+  orig: 200, 96
+  offset: 0, 0
+  index: -1
+dragonfly_leg-6
+  rotate: false
+  xy: 1136, 1054
+  size: 132, 168
+  orig: 132, 168
+  offset: 0, 0
+  index: -1
+fire_engulf-10
+  rotate: false
+  xy: 2, 322
+  size: 1132, 900
+  orig: 1132, 900
+  offset: 0, 0
+  index: -1
+fire_engulf-14
+  rotate: false
+  xy: 2, 1224
+  size: 1300, 820
+  orig: 1300, 820
+  offset: 0, 0
+  index: -1
+fire_engulf-5
+  rotate: false
+  xy: 1136, 100
+  size: 900, 672
+  orig: 900, 672
+  offset: 0, 0
+  index: -1
+small_puff_fx-0
+  rotate: false
+  xy: 2, 100
+  size: 228, 220
+  orig: 228, 220
+  offset: 0, 0
+  index: -1
+small_puff_fx-1
+  rotate: false
+  xy: 788, 16
+  size: 268, 304
+  orig: 268, 304
+  offset: 0, 0
+  index: -1
+
+dragonfly_fire_build-4.png
+size: 2048, 2048
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+dragonfly_head-13
+  rotate: false
+  xy: 1040, 608
+  size: 864, 652
+  orig: 864, 652
+  offset: 0, 0
+  index: -1
+dragonfly_head-23
+  rotate: false
+  xy: 2, 2
+  size: 772, 452
+  orig: 772, 452
+  offset: 0, 0
+  index: -1
+dragonfly_head-25
+  rotate: false
+  xy: 2, 456
+  size: 828, 668
+  orig: 828, 668
+  offset: 0, 0
+  index: -1
+dragonfly_head-9
+  rotate: false
+  xy: 1034, 14
+  size: 888, 592
+  orig: 888, 592
+  offset: 0, 0
+  index: -1
+dragonfly_leg-5
+  rotate: false
+  xy: 832, 538
+  size: 200, 204
+  orig: 200, 204
+  offset: 0, 0
+  index: -1
+dragonfly_tail-3
+  rotate: false
+  xy: 776, 6
+  size: 244, 448
+  orig: 244, 448
+  offset: 0, 0
+  index: -1
+dragonfly_tail-5
+  rotate: false
+  xy: 832, 744
+  size: 184, 380
+  orig: 184, 380
+  offset: 0, 0
+  index: -1
+fire_engulf-6
+  rotate: false
+  xy: 1040, 1262
+  size: 972, 764
+  orig: 972, 764
+  offset: 0, 0
+  index: -1
+fire_engulf-8
+  rotate: false
+  xy: 2, 1126
+  size: 1036, 900
+  orig: 1036, 900
+  offset: 0, 0
+  index: -1
+
+dragonfly_fire_build-5.png
+size: 2048, 2048
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+dragonfly_arm-8
+  rotate: false
+  xy: 1182, 22
+  size: 336, 324
+  orig: 336, 324
+  offset: 0, 0
+  index: -1
+dragonfly_arm-9
+  rotate: false
+  xy: 1520, 22
+  size: 328, 324
+  orig: 328, 324
+  offset: 0, 0
+  index: -1
+dragonfly_head-12
+  rotate: false
+  xy: 1182, 348
+  size: 848, 508
+  orig: 848, 508
+  offset: 0, 0
+  index: -1
+dragonfly_head-14
+  rotate: false
+  xy: 2, 1158
+  size: 916, 548
+  orig: 916, 548
+  offset: 0, 0
+  index: -1
+dragonfly_head-16
+  rotate: false
+  xy: 1144, 1452
+  size: 888, 588
+  orig: 888, 588
+  offset: 0, 0
+  index: -1
+dragonfly_head-19
+  rotate: false
+  xy: 920, 858
+  size: 884, 592
+  orig: 884, 592
+  offset: 0, 0
+  index: -1
+dragonfly_head-28
+  rotate: false
+  xy: 424, 30
+  size: 756, 556
+  orig: 756, 556
+  offset: 0, 0
+  index: -1
+fire_engulf-19
+  rotate: false
+  xy: 2, 1708
+  size: 1140, 332
+  orig: 1140, 332
+  offset: 0, 0
+  index: -1
+fire_engulf-4
+  rotate: false
+  xy: 2, 588
+  size: 876, 568
+  orig: 876, 568
+  offset: 0, 0
+  index: -1
+small_puff_fx-14
+  rotate: false
+  xy: 2, 2
+  size: 420, 584
+  orig: 420, 584
+  offset: 0, 0
+  index: -1
+
+dragonfly_fire_build-6.png
+size: 2048, 2048
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+dragonfly_arm-6
+  rotate: false
+  xy: 1582, 2
+  size: 396, 364
+  orig: 396, 364
+  offset: 0, 0
+  index: -1
+dragonfly_body-0
+  rotate: false
+  xy: 1586, 846
+  size: 452, 548
+  orig: 452, 548
+  offset: 0, 0
+  index: -1
+dragonfly_head-11
+  rotate: false
+  xy: 2, 786
+  size: 788, 608
+  orig: 788, 608
+  offset: 0, 0
+  index: -1
+dragonfly_head-15
+  rotate: false
+  xy: 2, 1396
+  size: 804, 608
+  orig: 804, 608
+  offset: 0, 0
+  index: -1
+dragonfly_head-2
+  rotate: false
+  xy: 2, 192
+  size: 792, 592
+  orig: 792, 592
+  offset: 0, 0
+  index: -1
+dragonfly_head-20
+  rotate: false
+  xy: 792, 802
+  size: 792, 592
+  orig: 792, 592
+  offset: 0, 0
+  index: -1
+dragonfly_head-3
+  rotate: false
+  xy: 808, 1396
+  size: 792, 608
+  orig: 792, 608
+  offset: 0, 0
+  index: -1
+dragonfly_head-8
+  rotate: false
+  xy: 796, 208
+  size: 784, 592
+  orig: 784, 592
+  offset: 0, 0
+  index: -1
+dragonfly_torso-2
+  rotate: false
+  xy: 1586, 368
+  size: 424, 476
+  orig: 424, 476
+  offset: 0, 0
+  index: -1
+small_puff_fx-13
+  rotate: false
+  xy: 1602, 1396
+  size: 428, 608
+  orig: 428, 608
+  offset: 0, 0
+  index: -1
+
+dragonfly_fire_build-7.png
+size: 2048, 2048
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+dragonfly_head-22
+  rotate: false
+  xy: 760, 890
+  size: 756, 512
+  orig: 756, 512
+  offset: 0, 0
+  index: -1
+dragonfly_head-24
+  rotate: false
+  xy: 2, 1500
+  size: 820, 532
+  orig: 820, 532
+  offset: 0, 0
+  index: -1
+dragonfly_head-27
+  rotate: false
+  xy: 2, 970
+  size: 756, 528
+  orig: 756, 528
+  offset: 0, 0
+  index: -1
+dragonfly_head-5
+  rotate: false
+  xy: 1398, 1404
+  size: 516, 628
+  orig: 516, 628
+  offset: 0, 0
+  index: -1
+dragonfly_head-6
+  rotate: false
+  xy: 824, 1404
+  size: 572, 628
+  orig: 572, 628
+  offset: 0, 0
+  index: -1
+dragonfly_head-7
+  rotate: false
+  xy: 2, 376
+  size: 744, 592
+  orig: 744, 592
+  offset: 0, 0
+  index: -1
+dragonfly_tail-1
+  rotate: false
+  xy: 2, 2
+  size: 348, 372
+  orig: 348, 372
+  offset: 0, 0
+  index: -1
+dragonfly_tail-2
+  rotate: false
+  xy: 1166, 114
+  size: 308, 360
+  orig: 308, 360
+  offset: 0, 0
+  index: -1
+dragonfly_tail-6
+  rotate: false
+  xy: 352, 6
+  size: 276, 368
+  orig: 276, 368
+  offset: 0, 0
+  index: -1
+dragonfly_torso-0
+  rotate: false
+  xy: 748, 14
+  size: 416, 460
+  orig: 416, 460
+  offset: 0, 0
+  index: -1
+fire_engulf-2
+  rotate: false
+  xy: 748, 476
+  size: 728, 412
+  orig: 728, 412
+  offset: 0, 0
+  index: -1
+small_puff_fx-10
+  rotate: false
+  xy: 1518, 754
+  size: 524, 648
+  orig: 524, 648
+  offset: 0, 0
+  index: -1
+small_puff_fx-7
+  rotate: false
+  xy: 1478, 128
+  size: 556, 624
+  orig: 556, 624
+  offset: 0, 0
+  index: -1
+
+dragonfly_fire_build-8.png
+size: 2048, 2048
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+dragonfly_arm-0
+  rotate: false
+  xy: 2, 1636
+  size: 308, 324
+  orig: 308, 324
+  offset: 0, 0
+  index: -1
+dragonfly_arm-1
+  rotate: false
+  xy: 312, 1636
+  size: 324, 324
+  orig: 324, 324
+  offset: 0, 0
+  index: -1
+dragonfly_arm-3
+  rotate: false
+  xy: 638, 1636
+  size: 308, 324
+  orig: 308, 324
+  offset: 0, 0
+  index: -1
+dragonfly_arm-4
+  rotate: false
+  xy: 948, 1636
+  size: 324, 324
+  orig: 324, 324
+  offset: 0, 0
+  index: -1
+dragonfly_arm-7
+  rotate: false
+  xy: 1274, 1604
+  size: 356, 356
+  orig: 356, 356
+  offset: 0, 0
+  index: -1
+dragonfly_body-1
+  rotate: false
+  xy: 1522, 612
+  size: 492, 512
+  orig: 492, 512
+  offset: 0, 0
+  index: -1
+dragonfly_body-2
+  rotate: false
+  xy: 1048, 668
+  size: 472, 492
+  orig: 472, 492
+  offset: 0, 0
+  index: -1
+dragonfly_body-3
+  rotate: false
+  xy: 352, 1210
+  size: 348, 424
+  orig: 348, 424
+  offset: 0, 0
+  index: -1
+dragonfly_body-4
+  rotate: false
+  xy: 702, 1206
+  size: 504, 428
+  orig: 504, 428
+  offset: 0, 0
+  index: -1
+dragonfly_body-5
+  rotate: false
+  xy: 2, 1218
+  size: 348, 416
+  orig: 348, 416
+  offset: 0, 0
+  index: -1
+dragonfly_tail-0
+  rotate: false
+  xy: 1208, 1162
+  size: 404, 440
+  orig: 404, 440
+  offset: 0, 0
+  index: -1
+dragonfly_torso-1
+  rotate: false
+  xy: 1614, 1126
+  size: 424, 436
+  orig: 424, 436
+  offset: 0, 0
+  index: -1
+dragonfly_torso-3
+  rotate: false
+  xy: 2, 768
+  size: 368, 440
+  orig: 368, 440
+  offset: 0, 0
+  index: -1
+dragonfly_torso-4
+  rotate: false
+  xy: 372, 764
+  size: 408, 440
+  orig: 408, 440
+  offset: 0, 0
+  index: -1
+small_puff_fx-12
+  rotate: false
+  xy: 998, 38
+  size: 500, 628
+  orig: 500, 628
+  offset: 0, 0
+  index: -1
+small_puff_fx-15
+  rotate: false
+  xy: 782, 688
+  size: 264, 516
+  orig: 264, 516
+  offset: 0, 0
+  index: -1
+small_puff_fx-2
+  rotate: false
+  xy: 1632, 1564
+  size: 340, 396
+  orig: 340, 396
+  offset: 0, 0
+  index: -1
+small_puff_fx-4
+  rotate: false
+  xy: 2, 250
+  size: 468, 512
+  orig: 468, 512
+  offset: 0, 0
+  index: -1
+small_puff_fx-5
+  rotate: false
+  xy: 472, 90
+  size: 524, 596
+  orig: 524, 596
+  offset: 0, 0
+  index: -1
+small_puff_fx-6
+  rotate: false
+  xy: 1500, 2
+  size: 544, 608
+  orig: 544, 608
+  offset: 0, 0
+  index: -1
+
+dragonfly_fire_build-9.png
+size: 2048, 1024
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+small_puff_fx-11
+  rotate: false
+  xy: 1086, 2
+  size: 512, 652
+  orig: 512, 652
+  offset: 0, 0
+  index: -1
+small_puff_fx-8
+  rotate: false
+  xy: 540, 22
+  size: 544, 632
+  orig: 544, 632
+  offset: 0, 0
+  index: -1
+small_puff_fx-9
+  rotate: false
+  xy: 2, 6
+  size: 536, 648
+  orig: 536, 648
+  offset: 0, 0
+  index: -1

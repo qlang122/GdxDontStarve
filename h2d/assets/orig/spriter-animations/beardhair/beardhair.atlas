@@ -1,0 +1,13 @@
+
+beardhair.png
+size: 256, 256
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+beardhair01-0
+  rotate: false
+  xy: 1, 1
+  size: 224, 140
+  orig: 224, 140
+  offset: 0, 0
+  index: -1
