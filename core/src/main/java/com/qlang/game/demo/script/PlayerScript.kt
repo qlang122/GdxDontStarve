@@ -6,6 +6,7 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Input
 import com.qlang.game.demo.component.PlayerComponent
 import com.qlang.game.demo.res.Direction
+import com.qlang.game.demo.res.Player
 import com.qlang.game.demo.res.Status
 import com.qlang.h2d.extention.spriter.SpriterObjectComponent
 import games.rednblack.editor.renderer.components.TransformComponent
@@ -64,6 +65,49 @@ class PlayerScript : BasicScript {
             Gdx.input.isKeyPressed(Input.Keys.S) -> movePlayer(DOWN)
             Gdx.input.isKeyPressed(Input.Keys.SPACE) -> playerComponent?.status = Status.ACTION
             else -> playerComponent?.status = Status.IDLE
+        }
+
+        update()
+    }
+
+    private fun update() {
+        spriterComponent?.setAnimation(entity, getAnimName(playerComponent))
+        when (playerComponent?.direction) {
+            Direction.LEFT -> transformComponent?.flipX = true
+            else -> transformComponent?.flipX = false
+        }
+        spriterComponent?.play()
+    }
+
+    private fun getAnimName(component: PlayerComponent?): String {
+        return when (component?.direction) {
+            Direction.LEFT -> {
+                when (component.status) {
+                    Status.RUN -> Player.Anim.Run.loop_side
+                    else -> Player.Anim.Idle.loop_side
+                }
+            }
+            Direction.RIGHT -> {
+                when (component.status) {
+                    Status.RUN -> Player.Anim.Run.loop_side
+                    else -> Player.Anim.Idle.loop_side
+                }
+            }
+            Direction.UP -> {
+                when (component.status) {
+                    Status.RUN -> Player.Anim.Run.loop_up
+                    else -> Player.Anim.Idle.loop_up
+                }
+            }
+            Direction.DOWN -> {
+                when (component.status) {
+                    Status.RUN -> Player.Anim.Run.loop_down
+                    else -> Player.Anim.Idle.loop_down
+                }
+            }
+            else -> {
+                Player.Anim.Idle.loop_down
+            }
         }
     }
 

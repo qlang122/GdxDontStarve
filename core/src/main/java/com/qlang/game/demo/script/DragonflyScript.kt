@@ -6,13 +6,10 @@ import com.qlang.h2d.extention.spriter.SpriterObjectComponent
 import games.rednblack.editor.renderer.scripts.BasicScript
 import games.rednblack.editor.renderer.utils.ComponentRetriever
 
-class DragonflyScript : BasicScript {
-    private var engine: PooledEngine? = null
-
+class DragonflyScript : EntityScript {
     private var spriterComponent: SpriterObjectComponent? = null
 
-    constructor(engine: PooledEngine) {
-        this.engine = engine
+    constructor(engine: PooledEngine) : super(engine) {
 
     }
 
@@ -25,6 +22,11 @@ class DragonflyScript : BasicScript {
     }
 
     override fun act(delta: Float) {
+        update()
+    }
+
+    private fun update() {
+
     }
 
     override fun dispose() {

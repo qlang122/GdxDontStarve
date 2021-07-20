@@ -1,5 +1,5 @@
 
-dragonfly_fire_build_000.png
+dragonfly_fire_build.png
 size: 2048, 2048
 format: RGBA8888
 filter: Nearest, Nearest
@@ -117,7 +117,7 @@ small_puff_fx-3
   offset: 0, 0
   index: -1
 
-dragonfly_fire_build_000-2.png
+dragonfly_fire_build-2.png
 size: 2048, 2048
 format: RGBA8888
 filter: Nearest, Nearest
@@ -207,7 +207,7 @@ fire_engulf-18
   offset: 0, 0
   index: -1
 
-dragonfly_fire_build_000-3.png
+dragonfly_fire_build-3.png
 size: 2048, 2048
 format: RGBA8888
 filter: Nearest, Nearest
@@ -290,7 +290,7 @@ small_puff_fx-1
   offset: 0, 0
   index: -1
 
-dragonfly_fire_build_000-4.png
+dragonfly_fire_build-4.png
 size: 2048, 2048
 format: RGBA8888
 filter: Nearest, Nearest
@@ -359,7 +359,7 @@ fire_engulf-8
   offset: 0, 0
   index: -1
 
-dragonfly_fire_build_000-5.png
+dragonfly_fire_build-5.png
 size: 2048, 2048
 format: RGBA8888
 filter: Nearest, Nearest
@@ -435,7 +435,7 @@ small_puff_fx-14
   offset: 0, 0
   index: -1
 
-dragonfly_fire_build_000-6.png
+dragonfly_fire_build-6.png
 size: 2048, 2048
 format: RGBA8888
 filter: Nearest, Nearest
@@ -511,7 +511,7 @@ small_puff_fx-13
   offset: 0, 0
   index: -1
 
-dragonfly_fire_build_000-7.png
+dragonfly_fire_build-7.png
 size: 2048, 2048
 format: RGBA8888
 filter: Nearest, Nearest
@@ -608,7 +608,7 @@ small_puff_fx-7
   offset: 0, 0
   index: -1
 
-dragonfly_fire_build_000-8.png
+dragonfly_fire_build-8.png
 size: 2048, 2048
 format: RGBA8888
 filter: Nearest, Nearest
@@ -754,7 +754,7 @@ small_puff_fx-6
   offset: 0, 0
   index: -1
 
-dragonfly_fire_build_000-9.png
+dragonfly_fire_build-9.png
 size: 2048, 1024
 format: RGBA8888
 filter: Nearest, Nearest

@@ -20,8 +20,8 @@ import com.qlang.game.demo.script.PlayerBodyScript
 import com.qlang.game.demo.script.PlayerScript
 import com.qlang.game.demo.script.WorldScript
 import com.qlang.game.demo.system.CameraSystem
-import com.qlang.game.demo.system.PlayerSystem
 import com.qlang.game.demo.system.ChangeVisionSystem
+import com.qlang.game.demo.system.EntitySystem
 import com.qlang.h2d.extention.spriter.SpriterItemType
 import games.rednblack.editor.renderer.SceneLoader
 import games.rednblack.editor.renderer.resources.AsyncResourceManager
@@ -48,13 +48,14 @@ class PlayStage : Stage {
             val cameraSystem = CameraSystem(-10000f, 10000f, -10000f, 10000f)
 
             sceneLoader?.engine?.let { engine ->
-                engine.addSystem(PlayerSystem())
+                engine.addSystem(EntitySystem())
                 engine.addSystem(changeVisionSystem)
                 engine.addSystem(cameraSystem)
             }
             ComponentRetriever.addMapper(WorldComponent::class.java)
             ComponentRetriever.addMapper(PlayerComponent::class.java)
             ComponentRetriever.addMapper(ScaleEntityComponent::class.java)
+            ComponentRetriever.addMapper(EntityComponent::class.java)
             changeVisionSystem.setViewportHeight(AppConfig.worldHeight)
 
             playCamera = OrthographicCamera(AppConfig.worldWidth, AppConfig.worldHeight)
