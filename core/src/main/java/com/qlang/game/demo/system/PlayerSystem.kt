@@ -37,7 +37,8 @@ class PlayerSystem : IteratingSystem(Family.all(PlayerComponent::class.java).get
 
         return when (component?.direction) {
             Direction.LEFT, Direction.RIGHT, (Direction.LEFT + Direction.UP),
-            (Direction.LEFT + Direction.DOWN) -> {
+            (Direction.LEFT + Direction.DOWN), (Direction.RIGHT + Direction.UP),
+            (Direction.RIGHT + Direction.DOWN) -> {
                 val handItemType = component.handItemType
                 when (component.status) {
                     Status.RUN -> Player.Anim.Run.loop_side

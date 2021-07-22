@@ -7,7 +7,7 @@ import os
 import re
 import argparse
 
-exeFile = 'F:\gdx\ktools-4.4.4\krane.exe'
+exeFile = 'krane.exe'
 
 
 def makedir_p(path):
@@ -18,14 +18,15 @@ def makedir_p(path):
             raise
 
 
-def do_exec(in_path, out_path):
+def do_exec(in_path, out_path, folder):
     in_dir = '%s' % (in_path)
     out_dir = '%s' % (out_path)
-    p = subprocess.Popen(args=[exeFile, in_dir, out_dir], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+    p = subprocess.Popen(args=[exeFile, "--rename-build", folder, in_dir, out_dir],
+                         stdin=subprocess.PIPE, stdout=subprocess.PIPE)
     stdout, stderr = p.communicate()
     if stderr:
         print(stderr)
-    print(str(stdout, encoding='utf8'))
+    print(str(stdout).encode('utf-8'))
 
 
 def main(in_path, out_path):
@@ -40,20 +41,22 @@ def main(in_path, out_path):
         return
 
     for path in os.listdir(in_path):
-        in_folder = os.path.join(in_path, re.sub(r'^[\\/]', '', path.replace(in_path, '')))
-        out_folder = os.path.join(out_path, re.sub(r'^[\\/]', '', path.replace(in_path, '')))
+        folder = path.replace(in_path, '')
+        in_folder = os.path.join(in_path, re.sub(r'^[\\/]', '', folder))
+        out_folder = os.path.join(out_path, re.sub(r'^[\\/]', '', folder))
         if os.path.isdir(in_folder):
             print('[INFO] %s => %s' % (in_folder, out_folder))
             if not os.path.exists(out_folder):
                 makedir_p(out_folder)
 
-            do_exec(in_folder, out_folder)
+            do_exec(in_folder, out_folder, folder)
 
     print('[INFO] End convert!')
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='A simple converter that use for spriter file convert to spine file.')
+    parser = argparse.ArgumentParser(
+        description='A simple converter that use for spriter file convert to spine file.')
     parser.add_argument('-i', type=str, dest='in_path',
                         help='Directory or File to be converted. By default, point to the current directory.')
     parser.add_argument('-o', type=str, dest='out_path',
