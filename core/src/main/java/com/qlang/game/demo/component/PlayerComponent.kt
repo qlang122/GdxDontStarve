@@ -1,5 +1,6 @@
 package com.qlang.game.demo.component
 
+import com.qlang.game.demo.entity.GoodsInfo
 import com.qlang.game.demo.entity.PlayerInfo
 import com.qlang.game.demo.res.Direction
 import com.qlang.game.demo.res.Status
@@ -11,6 +12,9 @@ class PlayerComponent : BaseComponent {
     var direction: Int = Direction.DOWN
     var status: Int = Status.IDLE
     var subStatus = Status.NONE
+    var isAutoRun = false
+    var handItemType: Int = GoodsInfo.Type.UNKNOW.ordinal
+    var goalType: Int = GoodsInfo.Type.UNKNOW.ordinal
 
     constructor()
 
@@ -18,5 +22,6 @@ class PlayerComponent : BaseComponent {
         direction = Direction.DOWN
         status = Status.IDLE
         subStatus = Status.NONE
+        isAutoRun = false
     }
 }

@@ -22,6 +22,7 @@ import com.qlang.game.demo.script.WorldScript
 import com.qlang.game.demo.system.CameraSystem
 import com.qlang.game.demo.system.ChangeVisionSystem
 import com.qlang.game.demo.system.EntitySystem
+import com.qlang.game.demo.system.PlayerSystem
 import com.qlang.h2d.extention.spriter.SpriterItemType
 import games.rednblack.editor.renderer.SceneLoader
 import games.rednblack.editor.renderer.resources.AsyncResourceManager
@@ -46,9 +47,11 @@ class PlayStage : Stage {
             sceneLoader?.injectExternalItemType(SpriterItemType())
 
             val cameraSystem = CameraSystem(-10000f, 10000f, -10000f, 10000f)
+            val entitySystem = EntitySystem()
 
             sceneLoader?.engine?.let { engine ->
-                engine.addSystem(EntitySystem())
+                engine.addSystem(PlayerSystem())
+                engine.addSystem(entitySystem)
                 engine.addSystem(changeVisionSystem)
                 engine.addSystem(cameraSystem)
             }
@@ -76,6 +79,7 @@ class PlayStage : Stage {
                 player?.addScript(PlayerBodyScript().apply { setRootEntity(wrapper?.entity) }, engine)
                 cameraSystem.setFocus(player?.entity)
                 changeVisionSystem.setPlayer(player?.entity)
+                entitySystem.setPlayer(player?.entity)
 
                 wrapper?.getChild("dragonfly")?.apply {
                     addScript(DragonflyScript(engine), engine)

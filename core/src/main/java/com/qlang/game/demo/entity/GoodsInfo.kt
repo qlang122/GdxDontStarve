@@ -10,15 +10,14 @@ class GoodsInfo : BaseInfo() {
     var health: Float = 1.0f
     var enmity: Int = Enmity.MIDDLE.ordinal
 
-    companion object {
-        enum class Type(value: Byte) {
-            UNKNOW(0x0), FOOD(0x01), TOOL(0x02), WEAPON(0x04),
-            MATERIAL(0x08), ANIMAL(0x10), PLANT(0x20), BUILDING(0x40)
-        }
+    enum class Type(value: Int) {
+        UNKNOW(0xff), FOOD(0x01), TOOL(0x02), WEAPON(0x04),
+        MATERIAL(0x08), ANIMAL(0x10), PLANT(0x20), BUILDING(0x40),
+        MINERAL(0x80)
+    }
 
-        enum class Enmity() {
-            MIDDLE, YES, NO
-        }
+    enum class Enmity {
+        MIDDLE, YES, NO
     }
 
     fun reset() {

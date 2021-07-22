@@ -6,7 +6,6 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Input
 import com.qlang.game.demo.component.PlayerComponent
 import com.qlang.game.demo.res.Direction
-import com.qlang.game.demo.res.Player
 import com.qlang.game.demo.res.Status
 import com.qlang.h2d.extention.spriter.SpriterObjectComponent
 import games.rednblack.editor.renderer.components.TransformComponent
@@ -51,64 +50,43 @@ class PlayerScript : BasicScript {
                 RIGHT -> x += 5f
                 UP -> y += 5f
                 DOWN -> y -= 5f
+                LEFT + UP -> {
+                    x -= 1.581f;y -= 1.581f//1.581=Math.sqrt(2.5);5=2(x*x)
+                }
+                LEFT + DOWN -> {
+                    x -= 1.581f;y += 1.581f
+                }
+                RIGHT + UP -> {
+                    x += 1.581f;y -= 1.581f
+                }
+                RIGHT + DOWN -> {
+                    x += 1.581f;y += 1.581f
+                }
             }
         }
 
-        playerComponent?.apply { this.status = Status.RUN;this.direction = direction }
+        playerComponent?.apply {
+            this.status = Status.RUN
+            this.direction = direction
+            this.isAutoRun = false
+        }
     }
 
     override fun act(delta: Float) {
         when {
-            Gdx.input.isKeyPressed(Input.Keys.A) -> movePlayer(LEFT)
-            Gdx.input.isKeyPressed(Input.Keys.D) -> movePlayer(RIGHT)
-            Gdx.input.isKeyPressed(Input.Keys.W) -> movePlayer(UP)
-            Gdx.input.isKeyPressed(Input.Keys.S) -> movePlayer(DOWN)
-            Gdx.input.isKeyPressed(Input.Keys.SPACE) -> playerComponent?.status = Status.ACTION
+            Gdx.input.isKeyPressed(Input.Keys.A) && !Gdx.input.isKeyPressed(Input.Keys.W) && !Gdx.input.isKeyPressed(Input.Keys.S) -> movePlayer(LEFT)
+            Gdx.input.isKeyPressed(Input.Keys.D) && !Gdx.input.isKeyPressed(Input.Keys.W) && !Gdx.input.isKeyPressed(Input.Keys.S) -> movePlayer(RIGHT)
+            Gdx.input.isKeyPressed(Input.Keys.W) && !Gdx.input.isKeyPressed(Input.Keys.A) && !Gdx.input.isKeyPressed(Input.Keys.D) -> movePlayer(UP)
+            Gdx.input.isKeyPressed(Input.Keys.S) && !Gdx.input.isKeyPressed(Input.Keys.A) && !Gdx.input.isKeyPressed(Input.Keys.D) -> movePlayer(DOWN)
+            Gdx.input.isKeyPressed(Input.Keys.A) && Gdx.input.isKeyPressed(Input.Keys.W) -> movePlayer(LEFT + UP)
+            Gdx.input.isKeyPressed(Input.Keys.A) && !Gdx.input.isKeyPressed(Input.Keys.S) -> movePlayer(LEFT + DOWN)
+            Gdx.input.isKeyPressed(Input.Keys.D) && Gdx.input.isKeyPressed(Input.Keys.W) -> movePlayer(RIGHT + UP)
+            Gdx.input.isKeyPressed(Input.Keys.D) && Gdx.input.isKeyPressed(Input.Keys.S) -> movePlayer(RIGHT + DOWN)
             else -> playerComponent?.status = Status.IDLE
         }
 
-        update()
-    }
+        playerComponent?.subStatus = if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) Status.ACTION else Status.NONE
 
-    private fun update() {
-        spriterComponent?.setAnimation(entity, getAnimName(playerComponent))
-        when (playerComponent?.direction) {
-            Direction.LEFT -> transformComponent?.flipX = true
-            else -> transformComponent?.flipX = false
-        }
-        spriterComponent?.play()
-    }
-
-    private fun getAnimName(component: PlayerComponent?): String {
-        return when (component?.direction) {
-            Direction.LEFT -> {
-                when (component.status) {
-                    Status.RUN -> Player.Anim.Run.loop_side
-                    else -> Player.Anim.Idle.loop_side
-                }
-            }
-            Direction.RIGHT -> {
-                when (component.status) {
-                    Status.RUN -> Player.Anim.Run.loop_side
-                    else -> Player.Anim.Idle.loop_side
-                }
-            }
-            Direction.UP -> {
-                when (component.status) {
-                    Status.RUN -> Player.Anim.Run.loop_up
-                    else -> Player.Anim.Idle.loop_up
-                }
-            }
-            Direction.DOWN -> {
-                when (component.status) {
-                    Status.RUN -> Player.Anim.Run.loop_down
-                    else -> Player.Anim.Idle.loop_down
-                }
-            }
-            else -> {
-                Player.Anim.Idle.loop_down
-            }
-        }
     }
 
     override fun dispose() {
