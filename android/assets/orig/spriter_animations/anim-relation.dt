@@ -1,1 +1,24 @@
-{"animations":{"player_idles":{"animations":["player_actions_pickaxe","player_mime","player_actions_fishing","player_actions_bugnet","player_actions_boomerang","player_actions_eat","player_actions_whip","player_actions_unsaddle","player_attack_prop","player_attacks","player_basic","player_jump","player_actions_axe","player_actions_shovel","player_actions_blowdart","player_actions_item"]}}}
+{
+  "animations": {
+    "wilson": {
+      "animations": [
+        "player_actions_pickaxe",
+        "player_mime",
+        "player_actions_fishing",
+        "player_actions_bugnet",
+        "player_actions_boomerang",
+        "player_actions_eat",
+        "player_actions_whip",
+        "player_actions_unsaddle",
+        "player_attack_prop",
+        "player_attacks",
+        "player_basic",
+        "player_jump",
+        "player_actions_axe",
+        "player_actions_shovel",
+        "player_actions_blowdart",
+        "player_actions_item"
+      ]
+    }
+  }
+}

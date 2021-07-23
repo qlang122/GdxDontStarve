@@ -1,5 +1,6 @@
 package com.qlang.game.demo.component
 
+import com.badlogic.ashley.core.Entity
 import com.qlang.game.demo.entity.GoodsInfo
 import com.qlang.game.demo.entity.PlayerInfo
 import com.qlang.game.demo.res.Direction
@@ -14,6 +15,8 @@ class PlayerComponent : BaseComponent {
     var subStatus = Status.NONE
     var isAutoRun = false
     var handItemType: Int = GoodsInfo.Type.UNKNOW.ordinal
+
+    var goalEntity: Entity? = null
     var goalType: Int = GoodsInfo.Type.UNKNOW.ordinal
 
     constructor()
