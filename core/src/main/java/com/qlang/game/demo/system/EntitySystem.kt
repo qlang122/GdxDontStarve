@@ -7,10 +7,11 @@ import com.badlogic.ashley.systems.IteratingSystem
 import com.qlang.game.demo.component.EntityComponent
 import com.qlang.game.demo.component.PlayerComponent
 import com.qlang.game.demo.entity.GoodsInfo
+import com.qlang.game.demo.utils.Log
 import games.rednblack.editor.renderer.components.DimensionsComponent
 import games.rednblack.editor.renderer.components.MainItemComponent
 import games.rednblack.editor.renderer.components.TransformComponent
-import games.rednblack.editor.renderer.utils.ComponentRetriever
+import games.rednblack.editor.renderer.utils.ItemWrapper
 import kotlin.math.abs
 import kotlin.math.pow
 import kotlin.math.sqrt
@@ -22,49 +23,48 @@ open class EntitySystem : IteratingSystem(Family.all(EntityComponent::class.java
     private val dimensionsMapper: ComponentMapper<DimensionsComponent> = ComponentMapper.getFor(DimensionsComponent::class.java)
 
     private var playerComponent: PlayerComponent? = null
-    private var playerTransformComponent: TransformComponent? = null
 
     private var player: Entity? = null
 
     private var goalEntity: Entity? = null
-    private var minAbs: Double = Double.NEGATIVE_INFINITY
+    private var minAbs: Double = Double.MAX_VALUE
 
     override fun processEntity(entity: Entity?, deltaTime: Float) {
-        if (player == null || playerComponent == null) return
+        if (player == null) return
 
         val m = mainItemMapper.get(entity)
-        if (!m.culled) {
-            val t = transformMapper.get(entity)
-            val d = dimensionsMapper.get(entity)
-            val ec = entityMapper.get(entity)
-            if (ec.info.type == GoodsInfo.Type.UNKNOW.ordinal) return
+        if (m.culled) return
 
-            val pT = transformMapper.get(player)
-            val pD = dimensionsMapper.get(player)
+        val t = transformMapper.get(entity)
+        val d = dimensionsMapper.get(entity)
+        val ec = entityMapper.get(entity)
+        if ((ec.info.type and GoodsInfo.Type.UNKNOW.value) == GoodsInfo.Type.UNKNOW.value) return
 
-            val abs = abs(sqrt(pT.x.minus(t.x + 0.0).pow(2.0) + pT.y.minus(t.y + 0.0).pow(2.0)))
-            ec.playerDistance = abs.toFloat()
-            if (abs < 150) {
-                val overlap = d.isOverlap(pD.polygon)
-                ec.isOverlapPlayer = overlap
+        val pT = transformMapper.get(player)
+        val pD = dimensionsMapper.get(player)
 
-                if (abs < minAbs) {
-                    minAbs = abs;goalEntity = entity
-                }
+        val abs = abs(sqrt(pT.x.minus(t.x + 0.0).pow(2.0) + pT.y.minus(t.y + 0.0).pow(2.0)))
+        ec.playerDistance = abs.toFloat()
 
-                playerComponent?.let {
-                    if (it.goalEntity != goalEntity) it.goalEntity = goalEntity
-                }
+        if (abs < 250) {
+            val overlap = d.isOverlap(pD.polygon)
+            ec.isOverlapPlayer = overlap
+
+            if (abs < minAbs) {
+                minAbs = abs;goalEntity = entity
             }
 
+            playerComponent?.let {
+                if (it.goalEntity != goalEntity) it.goalEntity = goalEntity
+            }
         }
+
     }
 
     fun setPlayer(player: Entity?) {
         this.player = player
         player?.let {
-            playerComponent = ComponentRetriever.get(it, PlayerComponent::class.java)
-            playerTransformComponent = ComponentRetriever.get(it, TransformComponent::class.java)
+            playerComponent = ItemWrapper(it).getChild("role")?.entity?.getComponent(PlayerComponent::class.java)
         }
     }
 

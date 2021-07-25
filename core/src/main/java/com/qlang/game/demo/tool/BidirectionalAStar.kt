@@ -1,7 +1,5 @@
 package com.qlang.game.demo.tool
 
-import com.badlogic.gdx.math.Vector2
-import com.badlogic.gdx.math.Vector3
 import java.util.*
 import kotlin.collections.HashMap
 import kotlin.collections.HashSet
@@ -9,25 +7,25 @@ import kotlin.collections.HashSet
 class BidirectionalAStar {
     private var type: HeuristicType = HeuristicType.euclidean
 
-    private val start: Vector2 = Vector2(0f, 0f)
-    private val goal: Vector2 = Vector2(0f, 0f)
+    private val start: Point = Point(0, 0)
+    private val goal: Point = Point(0, 0)
 
-    private val obstacles: HashSet<Vector2> = HashSet<Vector2>(0)
+    private val obstacles: HashSet<Point> = HashSet<Point>(0)
 
-    private val openFore: LinkedList<Vector3> = LinkedList()
-    private val openBack: LinkedList<Vector3> = LinkedList()
-    private val closeFore: LinkedList<Vector2> = LinkedList()
-    private val closeBack: LinkedList<Vector2> = LinkedList()
+    private val openFore: LinkedList<Point> = LinkedList()
+    private val openBack: LinkedList<Point> = LinkedList()
+    private val closeFore: LinkedList<Point> = LinkedList()
+    private val closeBack: LinkedList<Point> = LinkedList()
 
-    private val parentFore: HashMap<Vector2, Vector2> = HashMap()
-    private val parentBack: HashMap<Vector2, Vector2> = HashMap()
+    private val parentFore: HashMap<Point, Point> = HashMap()
+    private val parentBack: HashMap<Point, Point> = HashMap()
 
-    private val gFore: HashMap<Vector2, Float> = HashMap()
-    private val gBack: HashMap<Vector2, Float> = HashMap()
+    private val gFore: HashMap<Point, Float> = HashMap()
+    private val gBack: HashMap<Point, Float> = HashMap()
 
-    private val motions: Array<Vector2> = arrayOf(Vector2(-1f, 0f), Vector2(-1f, 1f),
-            Vector2(0f, 1f), Vector2(1f, 1f), Vector2(1f, 0f),
-            Vector2(1f, -1f), Vector2(0f, -1f), Vector2(-1f, -1f))
+    private val motions: Array<Point> = arrayOf(Point(-1, 0), Point(-1, 1),
+            Point(0, 1), Point(1, 1), Point(1, 0),
+            Point(1, -1), Point(0, -1), Point(-1, -1))
 
     companion object {
         enum class HeuristicType {
@@ -36,6 +34,18 @@ class BidirectionalAStar {
     }
 
     private fun init() {
+        gFore.clear()
+        gBack.clear()
+        parentFore.clear()
+        parentBack.clear()
+
+        openFore.clear()
+        openBack.clear()
+        closeFore.clear()
+        closeBack.clear()
+
+        obstacles.clear()
+
         gFore[start] = 0.0f
         gFore[goal] = Float.POSITIVE_INFINITY
         gBack[goal] = 0.0f
@@ -44,13 +54,13 @@ class BidirectionalAStar {
         parentFore[start] = start
         parentBack[goal] = goal
 
-        openFore.add(Vector3(start.x, start.y, valueFore(start)))
-        openBack.add(Vector3(goal.x, goal.y, valueBack(goal)))
+        openFore.add(Point(start.x, start.y, valueFore(start)))
+        openBack.add(Point(goal.x, goal.y, valueBack(goal)))
 
     }
 
-    fun searching(start: Vector2, goal: Vector2, obstacles: HashSet<Vector2>, type: HeuristicType = HeuristicType.euclidean):
-            Triple<LinkedList<Vector2>, LinkedList<Vector2>, LinkedList<Vector2>> {
+    fun searching(start: Point, goal: Point, obstacles: HashSet<Point>, type: HeuristicType = HeuristicType.euclidean):
+            Triple<LinkedList<Point>, LinkedList<Point>, LinkedList<Point>> {
         this.start.set(start)
         this.goal.set(goal)
         this.type = type
@@ -58,19 +68,19 @@ class BidirectionalAStar {
         this.obstacles.addAll(obstacles)
         init()
 
-        var meet: Vector2 = this.start
+        var meet: Point = this.start
 
         while (openFore.isNotEmpty() && openBack.isNotEmpty()) {
             val fore = openFore.pop()
             if (parentBack have fore) {
-                meet = Vector2(fore.x, fore.y)
+                meet = Point(fore.x, fore.y)
                 break
             }
 
-            closeFore.add(Vector2(fore.x, fore.y))
+            closeFore.add(Point(fore.x, fore.y))
 
             for (s_n in getNeighbor(fore)) {
-                val v = Vector2(fore.x, fore.y)
+                val v = Point(fore.x, fore.y)
                 val newCost = gFore[v]?.plus(cost(v, s_n)) ?: 0f
 
                 if (!gFore.any { (k, _) -> s_n.x == k.x && s_n.y == k.y })
@@ -78,21 +88,21 @@ class BidirectionalAStar {
 
                 if (newCost < (gFore[s_n] ?: 0f)) {
                     gFore[s_n] = newCost
-                    parentFore[s_n] = Vector2(fore.x, fore.y)
-                    openFore.add(Vector3(s_n.x, s_n.y, valueFore(s_n)))
+                    parentFore[s_n] = Point(fore.x, fore.y)
+                    openFore.add(Point(s_n.x, s_n.y, valueFore(s_n)))
                 }
             }
 
             val back = openBack.poll()
             if (parentFore have back) {
-                meet = Vector2(back.x, back.y)
+                meet = Point(back.x, back.y)
                 break
             }
 
-            closeBack.add(Vector2(back.x, back.y))
+            closeBack.add(Point(back.x, back.y))
 
             for (s_n in getNeighbor(back)) {
-                val v = Vector2(back.x, back.y)
+                val v = Point(back.x, back.y)
                 val newCost = gBack[v]?.plus(cost(v, s_n)) ?: 0f
 
                 if (!gBack.any { (k, _) -> s_n.x == k.x && s_n.y == k.y })
@@ -100,8 +110,8 @@ class BidirectionalAStar {
 
                 if (newCost < (gBack[s_n] ?: 0f)) {
                     gBack[s_n] = newCost
-                    parentBack[s_n] = Vector2(back.x, back.y)
-                    openBack.add(Vector3(s_n.x, s_n.y, valueFore(s_n)))
+                    parentBack[s_n] = Point(back.x, back.y)
+                    openBack.add(Point(s_n.x, s_n.y, valueFore(s_n)))
                 }
             }
         }
@@ -109,15 +119,15 @@ class BidirectionalAStar {
         return Triple(extractPath(meet), closeFore, closeBack)
     }
 
-    private fun getNeighbor(s: Vector3): LinkedList<Vector2> {
-        return motions.mapTo(LinkedList(), { Vector2(it.x + s.x, it.y + s.y) })
+    private fun getNeighbor(s: Point): LinkedList<Point> {
+        return motions.mapTo(LinkedList(), { Point(it.x + s.x, it.y + s.y) })
     }
 
-    private fun extractPath(meet: Vector2): LinkedList<Vector2> {
-        val pathFore = LinkedList<Vector2>()
+    private fun extractPath(meet: Point): LinkedList<Point> {
+        val pathFore = LinkedList<Point>()
 
         pathFore.add(meet)
-        var temp: Vector2? = meet
+        var temp: Point? = meet
 
         while (true) {
             temp = parentFore[temp]
@@ -125,7 +135,7 @@ class BidirectionalAStar {
             if (temp?.x == start.x && temp.y == start.y) break
         }
 
-        val pathBack = LinkedList<Vector2>()
+        val pathBack = LinkedList<Point>()
         temp = meet
 
         while (true) {
@@ -137,38 +147,38 @@ class BidirectionalAStar {
         return LinkedList(pathFore.reversed()).apply { addAll(pathBack) }
     }
 
-    private fun valueFore(value: Vector2): Float {
+    private fun valueFore(value: Point): Float {
         return gFore[value]?.plus(h(value, goal)) ?: 0f
     }
 
-    private fun valueBack(value: Vector2): Float {
+    private fun valueBack(value: Point): Float {
         return gBack[value]?.plus(h(value, start)) ?: 0f
     }
 
-    private fun h(s: Vector2, goal: Vector2): Float {
+    private fun h(s: Point, goal: Point): Float {
         return when (type) {
-            HeuristicType.manhattan -> Math.abs(goal.x - s.x) + Math.abs(goal.y - s.y)
+            HeuristicType.manhattan -> Math.abs(goal.x - s.x) + Math.abs(goal.y - s.y).toFloat()
             else -> Math.hypot((goal.x - s.x).plus(0.0), (goal.y - s.y).plus(0.0)).toFloat()
         }
     }
 
-    private fun cost(start: Vector2, goal: Vector2): Float {
+    private fun cost(start: Point, goal: Point): Float {
         if (isCollision(start, goal)) return Float.POSITIVE_INFINITY
         return Math.hypot((goal.x - start.x).plus(0.0), (goal.y - start.y).plus(0.0)).toFloat()
     }
 
-    private fun isCollision(start: Vector2, end: Vector2): Boolean {
+    private fun isCollision(start: Point, end: Point): Boolean {
         if (obstacles have start || obstacles have end) return true
 
         if (start.x != end.x && start.y != end.y) {
-            val s1: Vector2
-            val s2: Vector2
+            val s1: Point
+            val s2: Point
             if (end.x - start.x == start.y - end.y) {
-                s1 = Vector2(Math.min(start.x, end.x), Math.min(start.y, end.y))
-                s2 = Vector2(Math.max(start.x, end.x), Math.max(start.y, end.y))
+                s1 = Point(Math.min(start.x, end.x), Math.min(start.y, end.y))
+                s2 = Point(Math.max(start.x, end.x), Math.max(start.y, end.y))
             } else {
-                s1 = Vector2(Math.min(start.x, end.x), Math.max(start.y, end.y))
-                s2 = Vector2(Math.max(start.x, end.x), Math.min(start.y, end.y))
+                s1 = Point(Math.min(start.x, end.x), Math.max(start.y, end.y))
+                s2 = Point(Math.max(start.x, end.x), Math.min(start.y, end.y))
             }
             if (obstacles have s1 || obstacles have s2)
                 return true
@@ -176,11 +186,11 @@ class BidirectionalAStar {
         return false
     }
 
-    infix fun HashSet<Vector2>.have(value: Vector2): Boolean {
+    infix fun HashSet<Point>.have(value: Point): Boolean {
         return this.any { it.x == value.x && it.y == value.y }
     }
 
-    infix fun HashMap<Vector2, Vector2>.have(value: Vector3): Boolean {
+    infix fun HashMap<Point, Point>.have(value: Point): Boolean {
         return this.any { (_, it) -> it.x == value.x && it.y == value.y }
     }
 }

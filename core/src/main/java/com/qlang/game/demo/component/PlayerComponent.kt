@@ -14,10 +14,10 @@ class PlayerComponent : BaseComponent {
     var status: Int = Status.IDLE
     var subStatus = Status.NONE
     var isAutoRun = false
-    var handItemType: Int = GoodsInfo.Type.UNKNOW.ordinal
+    var handItemType: Int = GoodsInfo.Type.UNKNOW.value
 
     var goalEntity: Entity? = null
-    var goalType: Int = GoodsInfo.Type.UNKNOW.ordinal
+    var goalType: Int = GoodsInfo.Type.UNKNOW.value
 
     constructor()
 

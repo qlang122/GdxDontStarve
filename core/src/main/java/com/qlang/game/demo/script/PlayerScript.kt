@@ -9,10 +9,12 @@ import com.badlogic.gdx.math.Vector2
 import com.qlang.game.demo.component.EntityComponent
 import com.qlang.game.demo.component.PlayerComponent
 import com.qlang.game.demo.entity.GoodsInfo
+import com.qlang.game.demo.ktx.execAsync
 import com.qlang.game.demo.ktx.trycatch
 import com.qlang.game.demo.res.Direction
 import com.qlang.game.demo.res.Status
 import com.qlang.game.demo.tool.BidirectionalAStar
+import com.qlang.game.demo.tool.Point
 import com.qlang.game.demo.utils.Log
 import com.qlang.h2d.extention.spriter.SpriterObjectComponent
 import games.rednblack.editor.renderer.components.DimensionsComponent
@@ -23,6 +25,7 @@ import games.rednblack.editor.renderer.utils.ItemWrapper
 import kotlinx.coroutines.*
 import java.util.*
 import kotlin.collections.HashSet
+import kotlin.math.abs
 
 class PlayerScript : BasicScript {
     private val entityMapper: ComponentMapper<EntityComponent> = ComponentMapper.getFor(EntityComponent::class.java)
@@ -105,7 +108,7 @@ class PlayerScript : BasicScript {
         playerComponent?.let { p ->
             val ec = p.goalEntity?.let { entityMapper.get(it) }
             ec?.isBeAttack = true
-            p.goalType = ec?.info?.type ?: GoodsInfo.Type.UNKNOW.ordinal
+            p.goalType = ec?.info?.type ?: GoodsInfo.Type.UNKNOW.value
             p.status = Status.ATTACK
         }
     }
@@ -120,7 +123,7 @@ class PlayerScript : BasicScript {
             Gdx.input.isKeyPressed(Input.Keys.D) -> movePlayer(RIGHT)
             Gdx.input.isKeyPressed(Input.Keys.W) -> movePlayer(UP)
             Gdx.input.isKeyPressed(Input.Keys.S) -> movePlayer(DOWN)
-            else -> playerComponent?.status = Status.IDLE
+            else -> if (playerComponent?.isAutoRun != true) playerComponent?.status = Status.IDLE
         }
 
         playerComponent?.subStatus = if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) Status.ACTION else Status.NONE
@@ -130,11 +133,13 @@ class PlayerScript : BasicScript {
                 goalPosition.set(it.x, it.y)
             }
             transformComponent?.let { t ->
-                if (player.subStatus == Status.ACTION && !player.isAutoRun && goalPosition.x != Float.NEGATIVE_INFINITY) {
+//                Log.e("QL", "--->", player.subStatus, !player.isAutoRun, goalPosition.x)
+                if (player.subStatus == Status.ACTION && !player.isAutoRun
+                        && goalPosition.x != Float.NEGATIVE_INFINITY&& abs(goalPosition.x-t.x)) {
                     playerPosition.set(t.x, t.y)
                     findWayTask.find(playerPosition, Vector2(goalPosition))
                 }
-                if (player.status == Status.RUN) findWayTask.interrupt()
+                if (player.status == Status.RUN && !player.isAutoRun) findWayTask.interrupt()
             }
         }
     }
@@ -143,54 +148,67 @@ class PlayerScript : BasicScript {
     }
 
     private inner class FindWayTask {
-        private val obstacles: HashSet<Vector2> = HashSet<Vector2>(0)
+        private val obstacles: HashSet<Point> = HashSet(0)
 
         private val aStar = BidirectionalAStar()
 
         private var isFinding = false
         private var isRunning = false
 
-        private val runJob = Job()
+        private var runJob: Job? = null
 
         fun find(start: Vector2, goal: Vector2) {
-            Log.e("QL", "-------find way------>", isFinding, isRunning)
+            val s = Point(0, 0)//以player为原点
+            val g = Point((goal.x - start.x).div(5f).toInt(), (goal.y - start.y).div(5f).toInt())
             if (isFinding || isRunning) return
+            Log.e("QL", "-------find way------>", start, goal, s, g)
             isFinding = true
-            val rtn = aStar.searching(start, goal, obstacles)
-            run(rtn.first)
-            isFinding = false
+            runJob = GlobalScope.launch(Dispatchers.Default) {
+                val st = System.currentTimeMillis()
+                val rtn = aStar.searching(s, g, obstacles)
+                Log.e("QL", "----find way---->${System.currentTimeMillis() - st} ${rtn.first.size}")
+                isFinding = false
+                run(rtn.first)
+            }
         }
 
         fun interrupt() {
+            trycatch { runJob?.cancel() }
             isRunning = false
-            trycatch { runJob.cancel() }
+            isFinding = false
         }
 
-        fun updateObstacles(value: HashSet<Vector2>) {
+        fun updateObstacles(value: HashSet<Point>) {
             obstacles.addAll(value)
         }
 
-        private fun run(paths: LinkedList<Vector2>) {
-            var oldP: Vector2 = Vector2(Float.NEGATIVE_INFINITY, Float.NEGATIVE_INFINITY)
-            CoroutineScope(runJob).async(Dispatchers.IO) {
-                isRunning = true
-                for (path in paths) {
-                    delay(33)
-                    if (!isRunning) break
-                    when {
-                        path.y == oldP.y && path.x > oldP.x -> movePlayer(Direction.RIGHT, true)
-                        path.y == oldP.y && path.x < oldP.x -> movePlayer(Direction.LEFT, true)
-                        path.x == oldP.x && path.y > oldP.y -> movePlayer(Direction.DOWN, true)
-                        path.x == oldP.x && path.y < oldP.y -> movePlayer(Direction.UP, true)
-                        path.y > oldP.y && path.x > oldP.x -> movePlayer(Direction.RIGHT + Direction.DOWN, true)
-                        path.y > oldP.y && path.x < oldP.x -> movePlayer(Direction.LEFT + Direction.DOWN, true)
-                        path.y < oldP.y && path.x > oldP.x -> movePlayer(Direction.RIGHT + Direction.UP, true)
-                        path.y < oldP.y && path.x < oldP.x -> movePlayer(Direction.LEFT + Direction.UP, true)
-                    }
-                    oldP = path
+        private suspend fun run(paths: LinkedList<Point>) {
+            val oldP = Point(Int.MAX_VALUE, Int.MAX_VALUE)
+            isRunning = true
+            for (path in paths) {
+                delay(33)
+                if (!isRunning) break
+                val y = path.y
+                val x = path.x
+                when {
+                    y == oldP.y && x > oldP.x -> move(Direction.LEFT)
+                    y == oldP.y && x < oldP.x -> move(Direction.RIGHT)
+                    x == oldP.x && y > oldP.y -> move(Direction.UP)
+                    x == oldP.x && y < oldP.y -> move(Direction.DOWN)
+                    y > oldP.y && x > oldP.x -> move(Direction.LEFT + Direction.UP)
+                    y > oldP.y && x < oldP.x -> move(Direction.RIGHT + Direction.UP)
+                    y < oldP.y && x > oldP.x -> move(Direction.LEFT + Direction.DOWN)
+                    y < oldP.y && x < oldP.x -> move(Direction.RIGHT + Direction.DOWN)
                 }
-                isRunning = false
+                oldP.set(x, y)
             }
+            playerComponent?.status = Status.IDLE
+            playerComponent?.isAutoRun = false
+            isRunning = false
+        }
+
+        private fun move(direction: Int) {
+            movePlayer(direction, true)
         }
     }
 

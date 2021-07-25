@@ -1,7 +1,5 @@
 package com.qlang.game.demo.ktx
 
-import com.badlogic.gdx.Application
-import com.badlogic.gdx.Gdx
 import kotlinx.coroutines.*
 
 /**
@@ -13,13 +11,11 @@ import kotlinx.coroutines.*
  * @param disp 调度者
  * @param job 任务
  */
-fun <T, R> T.execAsync(block: suspend T.() -> R?, rtn: ((R?) -> Unit)? = null, job: Job? = null,
-                       disp: CoroutineDispatcher = when (Gdx.app.type) {
-                           Application.ApplicationType.Android -> Dispatchers.Main
-                           else -> Dispatchers.Default
-                       }): T {
+fun <T, R> T.execAsync(block: suspend T.() -> R?, rtn: ((R?) -> Unit)? = null,
+                       job: Job? = null,
+                       disp: CoroutineDispatcher = Dispatchers.Default): T {
     val _job by lazy { job ?: Job() }
-    val result = CoroutineScope(_job).async(Dispatchers.IO) { block() }
-    rtn?.let { CoroutineScope(_job).launch(disp) { it.invoke(result.await()) } }
+    val result = CoroutineScope(Dispatchers.IO + _job).async { block() }
+    rtn?.let { CoroutineScope(disp + _job).launch { it.invoke(result.await()) } }
     return this
 }

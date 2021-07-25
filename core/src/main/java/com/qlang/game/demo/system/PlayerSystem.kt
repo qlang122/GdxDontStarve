@@ -32,8 +32,8 @@ class PlayerSystem : IteratingSystem(Family.all(PlayerComponent::class.java).get
     }
 
     private fun getAnimName(component: PlayerComponent?): String {
-        val tool = GoodsInfo.Type.TOOL.ordinal
-        val weapon = GoodsInfo.Type.WEAPON.ordinal
+        val tool = GoodsInfo.Type.TOOL.value
+        val weapon = GoodsInfo.Type.WEAPON.value
 
         return when (component?.direction) {
             Direction.LEFT, Direction.RIGHT, (Direction.LEFT + Direction.UP),
@@ -44,22 +44,22 @@ class PlayerSystem : IteratingSystem(Family.all(PlayerComponent::class.java).get
                     Status.RUN -> Player.Anim.Run.loop_side
                     Status.ATTACK -> {
                         when (component.goalType) {
-                            GoodsInfo.Type.ANIMAL.ordinal -> {
+                            GoodsInfo.Type.ANIMAL.value -> {
                                 if ((handItemType and tool) == tool || (handItemType and weapon) == weapon) {
                                     Player.Anim.Attack.atk_side
                                 } else Player.Anim.Idle.loop_side
                             }
-                            GoodsInfo.Type.PLANT.ordinal -> {
+                            GoodsInfo.Type.PLANT.value -> {
                                 if (handItemType and tool == tool) {
                                     Player.Anim.Action_axe.chop_loop_side
                                 } else Player.Anim.Idle.loop_side
                             }
-                            GoodsInfo.Type.BUILDING.ordinal -> {
+                            GoodsInfo.Type.BUILDING.value -> {
                                 if ((handItemType and tool) == tool) {
                                     Player.Anim.Attack.atk_side
                                 } else Player.Anim.Idle.loop_side
                             }
-                            GoodsInfo.Type.MINERAL.ordinal -> {
+                            GoodsInfo.Type.MINERAL.value -> {
                                 if ((handItemType and tool) == tool) {
                                     Player.Anim.Action_pickaxe.pickaxe_loop_side
                                 } else Player.Anim.Idle.loop_side
@@ -76,22 +76,22 @@ class PlayerSystem : IteratingSystem(Family.all(PlayerComponent::class.java).get
                     Status.RUN -> Player.Anim.Run.loop_up
                     Status.ATTACK -> {
                         when (component.goalType) {
-                            GoodsInfo.Type.ANIMAL.ordinal -> {
+                            GoodsInfo.Type.ANIMAL.value -> {
                                 if ((handItemType and tool) == tool || (handItemType and weapon) == weapon) {
                                     Player.Anim.Attack.atk_up
                                 } else Player.Anim.Idle.loop_up
                             }
-                            GoodsInfo.Type.PLANT.ordinal -> {
+                            GoodsInfo.Type.PLANT.value -> {
                                 if (handItemType and tool == tool) {
                                     Player.Anim.Action_axe.chop_loop_up
                                 } else Player.Anim.Idle.loop_up
                             }
-                            GoodsInfo.Type.BUILDING.ordinal -> {
+                            GoodsInfo.Type.BUILDING.value -> {
                                 if ((handItemType and tool) == tool) {
                                     Player.Anim.Attack.atk_up
                                 } else Player.Anim.Idle.loop_up
                             }
-                            GoodsInfo.Type.MINERAL.ordinal -> {
+                            GoodsInfo.Type.MINERAL.value -> {
                                 if ((handItemType and tool) == tool) {
                                     Player.Anim.Action_pickaxe.pickaxe_loop_up
                                 } else Player.Anim.Idle.loop_up
@@ -108,22 +108,22 @@ class PlayerSystem : IteratingSystem(Family.all(PlayerComponent::class.java).get
                     Status.RUN -> Player.Anim.Run.loop_down
                     Status.ATTACK -> {
                         when (component.goalType) {
-                            GoodsInfo.Type.ANIMAL.ordinal -> {
+                            GoodsInfo.Type.ANIMAL.value -> {
                                 if ((handItemType and tool) == tool || (handItemType and weapon) == weapon) {
                                     Player.Anim.Attack.atk_down
                                 } else Player.Anim.Idle.loop_down
                             }
-                            GoodsInfo.Type.PLANT.ordinal -> {
+                            GoodsInfo.Type.PLANT.value -> {
                                 if (handItemType and tool == tool) {
                                     Player.Anim.Action_axe.chop_loop_down
                                 } else Player.Anim.Idle.loop_down
                             }
-                            GoodsInfo.Type.BUILDING.ordinal -> {
+                            GoodsInfo.Type.BUILDING.value -> {
                                 if ((handItemType and tool) == tool) {
                                     Player.Anim.Attack.atk_down
                                 } else Player.Anim.Idle.loop_down
                             }
-                            GoodsInfo.Type.MINERAL.ordinal -> {
+                            GoodsInfo.Type.MINERAL.value -> {
                                 if ((handItemType and tool) == tool) {
                                     Player.Anim.Action_pickaxe.pickaxe_loop_down
                                 } else Player.Anim.Idle.loop_down
