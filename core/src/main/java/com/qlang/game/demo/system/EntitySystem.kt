@@ -1,15 +1,18 @@
 package com.qlang.game.demo.system
 
 import com.badlogic.ashley.core.ComponentMapper
+import com.badlogic.ashley.core.Engine
 import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.core.Family
 import com.badlogic.ashley.systems.IteratingSystem
+import com.badlogic.gdx.math.Polygon
 import com.qlang.game.demo.component.EntityComponent
 import com.qlang.game.demo.component.PlayerComponent
 import com.qlang.game.demo.entity.GoodsInfo
-import com.qlang.game.demo.utils.Log
+import com.qlang.game.demo.utils.Utils
 import games.rednblack.editor.renderer.components.DimensionsComponent
 import games.rednblack.editor.renderer.components.MainItemComponent
+import games.rednblack.editor.renderer.components.PolygonComponent
 import games.rednblack.editor.renderer.components.TransformComponent
 import games.rednblack.editor.renderer.utils.ItemWrapper
 import kotlin.math.abs
@@ -25,9 +28,19 @@ open class EntitySystem : IteratingSystem(Family.all(EntityComponent::class.java
     private var playerComponent: PlayerComponent? = null
 
     private var player: Entity? = null
+    private var playerPolygon: Polygon? = null
 
     private var goalEntity: Entity? = null
     private var minAbs: Double = Double.MAX_VALUE
+
+    override fun addedToEngine(engine: Engine?) {
+        super.addedToEngine(engine)
+        entities?.forEach { e ->
+            e.getComponent(PolygonComponent::class.java)?.let {
+                e.getComponent(EntityComponent::class.java)?.setPolygon(it)
+            }
+        }
+    }
 
     override fun processEntity(entity: Entity?, deltaTime: Float) {
         if (player == null) return
@@ -36,18 +49,16 @@ open class EntitySystem : IteratingSystem(Family.all(EntityComponent::class.java
         if (m.culled) return
 
         val t = transformMapper.get(entity)
-        val d = dimensionsMapper.get(entity)
         val ec = entityMapper.get(entity)
         if ((ec.info.type and GoodsInfo.Type.UNKNOW.value) == GoodsInfo.Type.UNKNOW.value) return
 
         val pT = transformMapper.get(player)
-        val pD = dimensionsMapper.get(player)
 
         val abs = abs(sqrt(pT.x.minus(t.x + 0.0).pow(2.0) + pT.y.minus(t.y + 0.0).pow(2.0)))
         ec.playerDistance = abs.toFloat()
 
         if (abs < 250) {
-            val overlap = d.isOverlap(pD.polygon)
+            val overlap = Utils.isOverlap(ec.polygon, playerPolygon)
             ec.isOverlapPlayer = overlap
 
             if (abs < minAbs) {
@@ -64,6 +75,7 @@ open class EntitySystem : IteratingSystem(Family.all(EntityComponent::class.java
     fun setPlayer(player: Entity?) {
         this.player = player
         player?.let {
+            playerPolygon = it.getComponent(PolygonComponent::class.java)?.let { Utils.makePolygon(it) }
             playerComponent = ItemWrapper(it).getChild("role")?.entity?.getComponent(PlayerComponent::class.java)
         }
     }

@@ -25,6 +25,7 @@ import com.qlang.game.demo.system.EntitySystem
 import com.qlang.game.demo.system.PlayerSystem
 import com.qlang.h2d.extention.spriter.SpriterItemType
 import games.rednblack.editor.renderer.SceneLoader
+import games.rednblack.editor.renderer.components.MainItemComponent
 import games.rednblack.editor.renderer.resources.AsyncResourceManager
 import games.rednblack.editor.renderer.utils.ComponentRetriever
 import games.rednblack.editor.renderer.utils.ItemWrapper
@@ -82,8 +83,8 @@ class PlayStage : Stage {
                 entitySystem.setPlayer(player?.entity)
 
                 wrapper?.getChild("dragonfly")?.apply {
-                    addScript(DragonflyScript(engine), engine)
-//                    entity?.getComponent(MainItemComponent::class.java)?.visible = false
+                    getChild("role")?.entity?.let { ItemWrapper(it).addScript(DragonflyScript(engine), engine) }
+                    entity?.getComponent(MainItemComponent::class.java)?.visible = false
                 }
             }
         }

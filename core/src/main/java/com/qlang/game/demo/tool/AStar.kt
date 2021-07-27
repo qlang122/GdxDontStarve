@@ -4,7 +4,7 @@ import java.util.*
 import kotlin.collections.HashMap
 import kotlin.collections.HashSet
 
-class BidirectionalAStar {
+class AStar {
     private var type: HeuristicType = HeuristicType.euclidean
 
     private val start: Point = Point(0, 0)
@@ -13,15 +13,10 @@ class BidirectionalAStar {
     private val obstacles: HashSet<Point> = HashSet<Point>(0)
 
     private val openFore: LinkedList<Point> = LinkedList()
-    private val openBack: LinkedList<Point> = LinkedList()
     private val closeFore: LinkedList<Point> = LinkedList()
-    private val closeBack: LinkedList<Point> = LinkedList()
-
     private val parentFore: HashMap<Point, Point> = HashMap()
-    private val parentBack: HashMap<Point, Point> = HashMap()
 
     private val gFore: HashMap<Point, Float> = HashMap()
-    private val gBack: HashMap<Point, Float> = HashMap()
 
     private val motions: Array<Point> = arrayOf(Point(-1, 0), Point(-1, 1),
             Point(0, 1), Point(1, 1), Point(1, 0),
@@ -29,32 +24,23 @@ class BidirectionalAStar {
 
     private fun init() {
         gFore.clear()
-        gBack.clear()
         parentFore.clear()
-        parentBack.clear()
 
         openFore.clear()
-        openBack.clear()
         closeFore.clear()
-        closeBack.clear()
 
         obstacles.clear()
 
         gFore[start] = 0.0f
         gFore[goal] = Float.POSITIVE_INFINITY
-        gBack[goal] = 0.0f
-        gBack[start] = Float.POSITIVE_INFINITY
 
         parentFore[start] = start
-        parentBack[goal] = goal
 
-        openFore.add(Point(start.x, start.y, valueFore(start)))
-        openBack.add(Point(goal.x, goal.y, valueBack(goal)))
-
+        openFore.add(Point(start.x, start.y, fValue(start)))
     }
 
     fun searching(start: Point, goal: Point, obstacles: HashSet<Point>, type: HeuristicType = HeuristicType.euclidean):
-            Triple<LinkedList<Point>, LinkedList<Point>, LinkedList<Point>> {
+            Pair<LinkedList<Point>, LinkedList<Point>> {
         this.start.set(start)
         this.goal.set(goal)
         this.type = type
@@ -62,16 +48,11 @@ class BidirectionalAStar {
         this.obstacles.addAll(obstacles)
         init()
 
-        var meet: Point = this.start
-
-        while (openFore.isNotEmpty() && openBack.isNotEmpty()) {
+        while (openFore.isNotEmpty()) {
             val fore = openFore.pop()
-            if (parentBack have fore) {
-                meet = Point(fore.x, fore.y)
-                break
-            }
-
             closeFore.add(Point(fore.x, fore.y))
+
+            if (fore.x == this.goal.x && fore.y == this.goal.y) break
 
             for (s_n in getNeighbor(fore)) {
                 val newCost = fore.z.plus(cost(fore, s_n))
@@ -82,69 +63,82 @@ class BidirectionalAStar {
                 if (newCost < (gFore[s_n] ?: 0f)) {
                     gFore[s_n] = newCost
                     parentFore[s_n] = Point(fore.x, fore.y)
-                    openFore.add(Point(s_n.x, s_n.y, valueFore(s_n)))
-                }
-            }
-
-            val back = openBack.poll()
-            if (parentFore have back) {
-                meet = Point(back.x, back.y)
-                break
-            }
-
-            closeBack.add(Point(back.x, back.y))
-
-            for (s_n in getNeighbor(back)) {
-                val newCost = back.z.plus(cost(back, s_n))
-
-                if (!gBack.any { (k, _) -> s_n.x == k.x && s_n.y == k.y })
-                    gBack[s_n] = Float.POSITIVE_INFINITY
-
-                if (newCost < (gBack[s_n] ?: 0f)) {
-                    gBack[s_n] = newCost
-                    parentBack[s_n] = Point(back.x, back.y)
-                    openBack.add(Point(s_n.x, s_n.y, valueBack(s_n)))
+                    openFore.add(Point(s_n.x, s_n.y, fValue(s_n)))
                 }
             }
         }
+        return Pair(extractPath(parentFore), closeFore)
+    }
 
-        return Triple(extractPath(meet), closeFore, closeBack)
+    fun searchingRepeated(e: Float): Pair<LinkedList<Point>, LinkedList<Point>> {
+        val path = LinkedList<Point>()
+        val visited = LinkedList<Point>()
+        var e = e
+        while (e >= 1) {
+            val v = repeatedSearching(start, goal, e)
+            path.addAll(v.first)
+            visited.addAll(v.second)
+            e -= 0.5f
+        }
+        return Pair(path, visited)
+    }
+
+    private fun repeatedSearching(start: Point, goal: Point, e: Float): Pair<LinkedList<Point>, LinkedList<Point>> {
+        val g = HashMap<Point, Float>()
+        g[start] = 0f
+        g[goal] = Float.POSITIVE_INFINITY
+
+        val parent = HashMap<Point, Point>()
+        parent[start] = start
+
+        val open = LinkedList<Point>()
+        val close = LinkedList<Point>()
+
+        open.push(Point(start.x, start.y, g[start]?.plus(h(start, goal)) ?: 0f))
+
+        while (open.isNotEmpty()) {
+            val s = open.pop()
+            close.push(Point(s.x, s.y))
+
+            if (s.x == goal.x && s.y == goal.y) break
+
+            for (s_n in getNeighbor(s)) {
+                val newCost = g[s]?.plus(cost(s, s_n)) ?: 0f
+
+                if (!g.any { (k, _) -> s_n.x == k.x && s_n.y == k.y })
+                    g[s_n] = Float.POSITIVE_INFINITY
+
+                if (newCost < (g[s_n] ?: 0f)) {
+                    g[s_n] = newCost
+                    parent[s_n] = Point(s.x, s.y)
+                    open.add(Point(s_n.x, s_n.y, g[s_n]?.plus(e * h(s_n, this.goal)) ?: 0f))
+                }
+            }
+        }
+        return Pair(extractPath(parent), close)
     }
 
     private fun getNeighbor(s: Point): LinkedList<Point> {
         return motions.mapTo(LinkedList(), { Point(it.x + s.x, it.y + s.y) })
     }
 
-    private fun extractPath(meet: Point): LinkedList<Point> {
-        val pathFore = LinkedList<Point>()
+    private fun extractPath(parent: HashMap<Point, Point>): LinkedList<Point> {
+        val path = LinkedList<Point>()
 
-        pathFore.add(meet)
-        var temp: Point? = meet
-
-        while (true) {
-            temp = parentFore[temp]
-            temp?.let { pathFore.add(it) }
-            if (temp?.x == start.x && temp.y == start.y) break
-        }
-
-        val pathBack = LinkedList<Point>()
-        temp = meet
+        path.add(goal)
+        var temp: Point? = goal
 
         while (true) {
-            temp = parentBack[temp]
-            temp?.let { pathBack.add(it) }
-            if (temp?.x == goal.x && temp.y == goal.y) break
+            temp = parent[temp]
+            temp?.let { path.add(it) }
+            if (temp == start) break
         }
 
-        return LinkedList(pathFore.reversed()).apply { addAll(pathBack) }
+        return path
     }
 
-    private fun valueFore(value: Point): Float {
+    private fun fValue(value: Point): Float {
         return gFore[value]?.plus(h(value, goal)) ?: 0f
-    }
-
-    private fun valueBack(value: Point): Float {
-        return gBack[value]?.plus(h(value, start)) ?: 0f
     }
 
     private fun h(s: Point, goal: Point): Float {
@@ -180,9 +174,5 @@ class BidirectionalAStar {
 
     infix fun HashSet<Point>.have(value: Point): Boolean {
         return this.any { it.x == value.x && it.y == value.y }
-    }
-
-    infix fun HashMap<Point, Point>.have(value: Point): Boolean {
-        return this.any { (_, it) -> it.x == value.x && it.y == value.y }
     }
 }

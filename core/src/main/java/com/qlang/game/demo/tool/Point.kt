@@ -1,6 +1,8 @@
 package com.qlang.game.demo.tool
 
 data class Point(var x: Int, var y: Int, var z: Float = 0f) {
+    constructor(point: Point) : this(point.x, point.y, point.z) {
+    }
 
     fun set(other: Point) {
         x = other.x;y = other.y;z = other.z
@@ -25,5 +27,9 @@ data class Point(var x: Int, var y: Int, var z: Float = 0f) {
         if (other is Point) return x == other.x && y == other.y && z == other.z
 
         return false
+    }
+
+    override fun toString(): String {
+        return "Point(x=$x, y=$y, z=$z)"
     }
 }
