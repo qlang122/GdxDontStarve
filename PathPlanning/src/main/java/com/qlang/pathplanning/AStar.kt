@@ -1,4 +1,4 @@
-package com.qlang.game.demo.tool
+package com.qlang.pathplanning
 
 import java.util.*
 import kotlin.collections.HashMap
@@ -12,9 +12,10 @@ class AStar {
 
     private val obstacles: HashSet<Point> = HashSet<Point>(0)
 
-    private val openFore: LinkedList<Point> = LinkedList()
-    private val closeFore: LinkedList<Point> = LinkedList()
-    private val parentFore: HashMap<Point, Point> = HashMap()
+    private val OPEN: PriorityQueue<Point> = PriorityQueue()
+
+    private val CLOSE: LinkedList<Point> = LinkedList()
+    private val parent: HashMap<Point, Point> = HashMap()
 
     private val gFore: HashMap<Point, Float> = HashMap()
 
@@ -24,19 +25,19 @@ class AStar {
 
     private fun init() {
         gFore.clear()
-        parentFore.clear()
+        parent.clear()
 
-        openFore.clear()
-        closeFore.clear()
+        OPEN.clear()
+        CLOSE.clear()
 
         obstacles.clear()
 
         gFore[start] = 0.0f
         gFore[goal] = Float.POSITIVE_INFINITY
 
-        parentFore[start] = start
+        parent[start] = start
 
-        openFore.add(Point(start.x, start.y, fValue(start)))
+        OPEN.add(Point(start.x, start.y, fValue(start)))
     }
 
     fun searching(start: Point, goal: Point, obstacles: HashSet<Point>, type: HeuristicType = HeuristicType.euclidean):
@@ -44,30 +45,30 @@ class AStar {
         this.start.set(start)
         this.goal.set(goal)
         this.type = type
-        this.obstacles.clear()
-        this.obstacles.addAll(obstacles)
         init()
+        this.obstacles.addAll(obstacles)
 
-        while (openFore.isNotEmpty()) {
-            val fore = openFore.pop()
-            closeFore.add(Point(fore.x, fore.y))
+        while (OPEN.isNotEmpty()) {
+            val fore = OPEN.poll() ?: continue
+            CLOSE.add(Point(fore.x, fore.y))
 
             if (fore.x == this.goal.x && fore.y == this.goal.y) break
 
             for (s_n in getNeighbor(fore)) {
-                val newCost = fore.z.plus(cost(fore, s_n))
+                val v = Point(fore.x, fore.y)
+                val newCost = gFore[v]?.plus(cost(v, s_n)) ?: 0f
 
-                if (!gFore.any { (k, _) -> s_n.x == k.x && s_n.y == k.y })
+                if (!gFore.containsKey(s_n))
                     gFore[s_n] = Float.POSITIVE_INFINITY
 
                 if (newCost < (gFore[s_n] ?: 0f)) {
                     gFore[s_n] = newCost
-                    parentFore[s_n] = Point(fore.x, fore.y)
-                    openFore.add(Point(s_n.x, s_n.y, fValue(s_n)))
+                    parent[s_n] = Point(fore.x, fore.y)
+                    OPEN.add(Point(s_n.x, s_n.y, fValue(s_n)))
                 }
             }
         }
-        return Pair(extractPath(parentFore), closeFore)
+        return Pair(extractPath(parent), CLOSE)
     }
 
     fun searchingRepeated(e: Float): Pair<LinkedList<Point>, LinkedList<Point>> {
@@ -91,21 +92,22 @@ class AStar {
         val parent = HashMap<Point, Point>()
         parent[start] = start
 
-        val open = LinkedList<Point>()
+        val open = PriorityQueue<Point>()
         val close = LinkedList<Point>()
 
-        open.push(Point(start.x, start.y, g[start]?.plus(h(start, goal)) ?: 0f))
+        open.add(Point(start.x, start.y, g[start]?.plus(h(start, goal)) ?: 0f))
 
         while (open.isNotEmpty()) {
-            val s = open.pop()
+            val s = open.poll() ?: continue
             close.push(Point(s.x, s.y))
 
             if (s.x == goal.x && s.y == goal.y) break
 
             for (s_n in getNeighbor(s)) {
-                val newCost = g[s]?.plus(cost(s, s_n)) ?: 0f
+                val v = Point(s.x, s.y)
+                val newCost = g[v]?.plus(cost(v, s_n)) ?: 0f
 
-                if (!g.any { (k, _) -> s_n.x == k.x && s_n.y == k.y })
+                if (!g.containsKey(s_n))
                     g[s_n] = Float.POSITIVE_INFINITY
 
                 if (newCost < (g[s_n] ?: 0f)) {

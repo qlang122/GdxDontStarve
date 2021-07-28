@@ -13,8 +13,8 @@ import com.qlang.game.demo.entity.GoodsInfo
 import com.qlang.game.demo.ktx.trycatch
 import com.qlang.game.demo.res.Direction
 import com.qlang.game.demo.res.Status
-import com.qlang.game.demo.tool.BidirectionalAStar
-import com.qlang.game.demo.tool.Point
+import com.qlang.pathplanning.AStar
+import com.qlang.pathplanning.Point
 import com.qlang.game.demo.utils.Log
 import com.qlang.game.demo.utils.Utils
 import com.qlang.h2d.extention.spriter.SpriterObjectComponent
@@ -107,6 +107,7 @@ class PlayerScript : BasicScript {
             playerComponent?.goalEntity?.let { goal ->
                 val ee = entityMapper.get(goal)
                 val overlap = Utils.isOverlap(ee?.polygon, playerPolygon)
+                Log.e("QL", "----->>$overlap ${ee?.polygon} $playerPolygon")
                 if (overlap) doAction()
             }
         }
@@ -173,7 +174,7 @@ class PlayerScript : BasicScript {
     private inner class FindWayTask : Runnable {
         private val obstacles: HashSet<Point> = HashSet(0)
 
-        private val aStar = BidirectionalAStar()
+        private val aStar = AStar()
 
         private var isFinding = false
         private var isRunning = false
@@ -210,7 +211,7 @@ class PlayerScript : BasicScript {
             isFinding = true
             val st = System.currentTimeMillis()
             val rtn = aStar.searching(this.start, this.goal, obstacles)
-            Log.e("QL", "----find way---->${System.currentTimeMillis() - st}")
+            Log.e("QL", "----find way---->${System.currentTimeMillis() - st} \n ${rtn.first}")
             isFinding = false
             run(rtn.first)
         }
@@ -221,19 +222,18 @@ class PlayerScript : BasicScript {
             val oldP = Point(Int.MAX_VALUE, Int.MAX_VALUE)
             isRunning = true
             for (path in paths) {
-                Log.e("QL", "----->>", oldP, path)
                 if (!isRunning || Thread.interrupted()) break
                 val y = path.y
                 val x = path.x
                 when {
-                    y == oldP.y && x > oldP.x -> move(Direction.RIGHT)
-                    y == oldP.y && x < oldP.x -> move(Direction.LEFT)
-                    x == oldP.x && y > oldP.y -> move(Direction.UP)
-                    x == oldP.x && y < oldP.y -> move(Direction.DOWN)
-                    y > oldP.y && x > oldP.x -> move(Direction.RIGHT + Direction.UP)
-                    y > oldP.y && x < oldP.x -> move(Direction.LEFT + Direction.UP)
-                    y < oldP.y && x > oldP.x -> move(Direction.RIGHT + Direction.DOWN)
-                    y < oldP.y && x < oldP.x -> move(Direction.LEFT + Direction.DOWN)
+                    y == oldP.y && x > oldP.x -> move(Direction.LEFT)//方位全部取反，因为点从目标到起点，反方向的
+                    y == oldP.y && x < oldP.x -> move(Direction.RIGHT)
+                    x == oldP.x && y > oldP.y -> move(Direction.DOWN)
+                    x == oldP.x && y < oldP.y -> move(Direction.UP)
+                    y > oldP.y && x > oldP.x -> move(Direction.LEFT + Direction.DOWN)
+                    y > oldP.y && x < oldP.x -> move(Direction.RIGHT + Direction.DOWN)
+                    y < oldP.y && x > oldP.x -> move(Direction.LEFT + Direction.UP)
+                    y < oldP.y && x < oldP.x -> move(Direction.RIGHT + Direction.UP)
                 }
                 oldP.set(x, y)
                 trycatch { Thread.sleep(17) }

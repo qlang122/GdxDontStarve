@@ -1,4 +1,4 @@
-package com.qlang.game.demo.tool
+package com.qlang.pathplanning
 
 import java.util.*
 import kotlin.collections.HashMap
@@ -12,8 +12,9 @@ class BidirectionalAStar {
 
     private val obstacles: HashSet<Point> = HashSet<Point>(0)
 
-    private val openFore: LinkedList<Point> = LinkedList()
-    private val openBack: LinkedList<Point> = LinkedList()
+    private val openFore: PriorityQueue<Point> = PriorityQueue()
+    private val openBack: PriorityQueue<Point> = PriorityQueue()
+
     private val closeFore: LinkedList<Point> = LinkedList()
     private val closeBack: LinkedList<Point> = LinkedList()
 
@@ -58,14 +59,13 @@ class BidirectionalAStar {
         this.start.set(start)
         this.goal.set(goal)
         this.type = type
-        this.obstacles.clear()
-        this.obstacles.addAll(obstacles)
         init()
+        this.obstacles.addAll(obstacles)
 
         var meet: Point = this.start
 
         while (openFore.isNotEmpty() && openBack.isNotEmpty()) {
-            val fore = openFore.pop()
+            val fore = openFore.poll() ?: continue
             if (parentBack have fore) {
                 meet = Point(fore.x, fore.y)
                 break
@@ -74,9 +74,10 @@ class BidirectionalAStar {
             closeFore.add(Point(fore.x, fore.y))
 
             for (s_n in getNeighbor(fore)) {
-                val newCost = fore.z.plus(cost(fore, s_n))
+                val v = Point(fore.x, fore.y)
+                val newCost = gFore[v]?.plus(cost(v, s_n)) ?: 0f
 
-                if (!gFore.any { (k, _) -> s_n.x == k.x && s_n.y == k.y })
+                if (!gFore.containsKey(s_n))
                     gFore[s_n] = Float.POSITIVE_INFINITY
 
                 if (newCost < (gFore[s_n] ?: 0f)) {
@@ -86,7 +87,7 @@ class BidirectionalAStar {
                 }
             }
 
-            val back = openBack.poll()
+            val back = openBack.poll() ?: continue
             if (parentFore have back) {
                 meet = Point(back.x, back.y)
                 break
@@ -95,9 +96,10 @@ class BidirectionalAStar {
             closeBack.add(Point(back.x, back.y))
 
             for (s_n in getNeighbor(back)) {
-                val newCost = back.z.plus(cost(back, s_n))
+                val v = Point(back.x, back.y)
+                val newCost = gBack[v]?.plus(cost(v, s_n)) ?: 0f
 
-                if (!gBack.any { (k, _) -> s_n.x == k.x && s_n.y == k.y })
+                if (!gBack.containsKey(s_n))
                     gBack[s_n] = Float.POSITIVE_INFINITY
 
                 if (newCost < (gBack[s_n] ?: 0f)) {

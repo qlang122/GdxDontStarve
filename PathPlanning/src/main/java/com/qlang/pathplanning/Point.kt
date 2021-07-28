@@ -1,6 +1,6 @@
-package com.qlang.game.demo.tool
+package com.qlang.pathplanning
 
-data class Point(var x: Int, var y: Int, var z: Float = 0f) {
+data class Point(var x: Int, var y: Int, var z: Float = 0f) : Comparable<Point> {
     constructor(point: Point) : this(point.x, point.y, point.z) {
     }
 
@@ -30,6 +30,10 @@ data class Point(var x: Int, var y: Int, var z: Float = 0f) {
     }
 
     override fun toString(): String {
-        return "Point(x=$x, y=$y, z=$z)"
+        return "($x, $y, $z)"
+    }
+
+    override fun compareTo(other: Point): Int {
+        return z.compareTo(other.z)
     }
 }

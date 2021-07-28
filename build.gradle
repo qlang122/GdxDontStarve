@@ -134,5 +134,7 @@ project(":core") {
         implementation project(":libgdx-spriter-runtime")
         implementation project(":h2d-libgdx-spriter-extension")
         implementation project(":hyperlap2d-runtime-libgdx")
+
+        implementation project(":PathPlanning")
     }
 }
