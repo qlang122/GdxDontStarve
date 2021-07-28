@@ -9,17 +9,21 @@ import com.badlogic.gdx.math.Polygon
 import com.qlang.game.demo.component.EntityComponent
 import com.qlang.game.demo.component.PlayerComponent
 import com.qlang.game.demo.entity.GoodsInfo
+import com.qlang.game.demo.utils.Log
 import com.qlang.game.demo.utils.Utils
 import games.rednblack.editor.renderer.components.DimensionsComponent
 import games.rednblack.editor.renderer.components.MainItemComponent
 import games.rednblack.editor.renderer.components.PolygonComponent
 import games.rednblack.editor.renderer.components.TransformComponent
 import games.rednblack.editor.renderer.utils.ItemWrapper
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kotlin.math.abs
 import kotlin.math.pow
 import kotlin.math.sqrt
 
-open class EntitySystem : IteratingSystem(Family.all(EntityComponent::class.java).get()) {
+open class EntitysSystem : IteratingSystem(Family.all(EntityComponent::class.java).get()) {
     private val mainItemMapper: ComponentMapper<MainItemComponent> = ComponentMapper.getFor(MainItemComponent::class.java)
     private val entityMapper: ComponentMapper<EntityComponent> = ComponentMapper.getFor(EntityComponent::class.java)
     private val transformMapper: ComponentMapper<TransformComponent> = ComponentMapper.getFor(TransformComponent::class.java)
@@ -36,10 +40,12 @@ open class EntitySystem : IteratingSystem(Family.all(EntityComponent::class.java
     override fun addedToEngine(engine: Engine?) {
         super.addedToEngine(engine)
         entities?.forEach { e ->
-            e.getComponent(PolygonComponent::class.java)?.let {
+            val p = e.getComponent(PolygonComponent::class.java)?.let {
                 e.getComponent(EntityComponent::class.java)?.setPolygon(it)
+                it
             }
         }
+        Log.e("QL", "--->>", entities)
     }
 
     override fun processEntity(entity: Entity?, deltaTime: Float) {
@@ -57,7 +63,7 @@ open class EntitySystem : IteratingSystem(Family.all(EntityComponent::class.java
         val abs = abs(sqrt(pT.x.minus(t.x + 0.0).pow(2.0) + pT.y.minus(t.y + 0.0).pow(2.0)))
         ec.playerDistance = abs.toFloat()
 
-        if (abs < 250) {
+        if (abs < 300) {
             val overlap = Utils.isOverlap(ec.polygon, playerPolygon)
             ec.isOverlapPlayer = overlap
 

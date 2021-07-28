@@ -108,14 +108,15 @@ class PlayerScript : BasicScript {
                 val ee = entityMapper.get(goal)
                 val overlap = Utils.isOverlap(ee?.polygon, playerPolygon)
                 Log.e("QL", "----->>$overlap ${ee?.polygon} $playerPolygon")
-                if (overlap) doAction()
+                if (overlap) {
+                    findWayTask.interrupt()
+                    doAction()
+                }
             }
         }
     }
 
     private fun doAction() {
-        findWayTask.interrupt()
-
         playerComponent?.let { p ->
             val ec = p.goalEntity?.let { entityMapper.get(it) }
             ec?.isBeAttack = true
@@ -156,7 +157,7 @@ class PlayerScript : BasicScript {
 //                Log.e("QL", "--->", player.subStatus, !player.isAutoRun, goalPosition.x)
                 val d = abs(sqrt(goalPosition.x.minus(playerPosition.x).pow(2) + goalPosition.y.minus(playerPosition.y).pow(2)))
 //                Log.e("QL", "------------>>", d)
-                if (player.subStatus == Status.ACTION && !player.isAutoRun && d < 250) {
+                if (player.subStatus == Status.ACTION && !player.isAutoRun && d < 300) {
                     findWayTask.find(playerPosition, Vector2(goalPosition))
                 }
             }

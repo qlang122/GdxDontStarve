@@ -21,7 +21,7 @@ import com.qlang.game.demo.script.PlayerScript
 import com.qlang.game.demo.script.WorldScript
 import com.qlang.game.demo.system.CameraSystem
 import com.qlang.game.demo.system.ChangeVisionSystem
-import com.qlang.game.demo.system.EntitySystem
+import com.qlang.game.demo.system.EntitysSystem
 import com.qlang.game.demo.system.PlayerSystem
 import com.qlang.h2d.extention.spriter.SpriterItemType
 import games.rednblack.editor.renderer.SceneLoader
@@ -48,7 +48,7 @@ class PlayStage : Stage {
             sceneLoader?.injectExternalItemType(SpriterItemType())
 
             val cameraSystem = CameraSystem(-10000f, 10000f, -10000f, 10000f)
-            val entitySystem = EntitySystem()
+            val entitySystem = EntitysSystem()
 
             sceneLoader?.engine?.let { engine ->
                 engine.addSystem(PlayerSystem())
