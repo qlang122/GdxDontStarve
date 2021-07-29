@@ -1,7 +1,6 @@
 package com.qlang.game.demo.system
 
 import com.badlogic.ashley.core.ComponentMapper
-import com.badlogic.ashley.core.Engine
 import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.core.Family
 import com.badlogic.ashley.systems.IteratingSystem
@@ -19,7 +18,7 @@ import kotlin.math.abs
 import kotlin.math.pow
 import kotlin.math.sqrt
 
-open class EntitySystem : IteratingSystem(Family.all(EntityComponent::class.java).get()) {
+open class EntitysSystem : IteratingSystem(Family.all(EntityComponent::class.java).get()) {
     private val mainItemMapper: ComponentMapper<MainItemComponent> = ComponentMapper.getFor(MainItemComponent::class.java)
     private val entityMapper: ComponentMapper<EntityComponent> = ComponentMapper.getFor(EntityComponent::class.java)
     private val transformMapper: ComponentMapper<TransformComponent> = ComponentMapper.getFor(TransformComponent::class.java)
@@ -32,15 +31,6 @@ open class EntitySystem : IteratingSystem(Family.all(EntityComponent::class.java
 
     private var goalEntity: Entity? = null
     private var minAbs: Double = Double.MAX_VALUE
-
-    override fun addedToEngine(engine: Engine?) {
-        super.addedToEngine(engine)
-        entities?.forEach { e ->
-            e.getComponent(PolygonComponent::class.java)?.let {
-                e.getComponent(EntityComponent::class.java)?.setPolygon(it)
-            }
-        }
-    }
 
     override fun processEntity(entity: Entity?, deltaTime: Float) {
         if (player == null) return

@@ -4,6 +4,7 @@
     "sComposites": [
       {
         "uniqueId": 4,
+        "id": "berry",
         "tags": [
           "entity",
           "scaleEntity"

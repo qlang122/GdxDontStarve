@@ -6,7 +6,7 @@ import com.qlang.h2d.extention.spriter.SpriterObjectComponent
 import games.rednblack.editor.renderer.utils.ComponentRetriever
 import games.rednblack.editor.renderer.utils.ItemWrapper
 
-class DragonflyScript : EntityScript {
+class BerryScript : EntityScript {
     private var spriterComponent: SpriterObjectComponent? = null
 
     constructor(engine: PooledEngine) : super(engine) {
@@ -24,13 +24,9 @@ class DragonflyScript : EntityScript {
     }
 
     override fun act(delta: Float) {
-        update()
-    }
-
-    private fun update() {
-
     }
 
     override fun dispose() {
     }
+
 }

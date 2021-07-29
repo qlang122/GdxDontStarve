@@ -5,6 +5,7 @@ import com.qlang.game.demo.entity.GoodsInfo
 import com.qlang.game.demo.res.Status
 import games.rednblack.editor.renderer.components.BaseComponent
 import games.rednblack.editor.renderer.components.PolygonComponent
+import games.rednblack.editor.renderer.components.TransformComponent
 import games.rednblack.editor.renderer.utils.PolygonUtils
 
 class EntityComponent : BaseComponent {
@@ -23,7 +24,8 @@ class EntityComponent : BaseComponent {
         info.reset()
     }
 
-    fun setPolygon(polygonComponent: PolygonComponent) {
+    fun makePolygon(polygonComponent: PolygonComponent?, transformComponent: TransformComponent?) {
+        polygonComponent ?: return
         val verticesArray = PolygonUtils.mergeTouchingPolygonsToOne(polygonComponent.vertices)
         val vertices = FloatArray(verticesArray.size * 2)
         for (i in verticesArray.indices) {
@@ -31,6 +33,7 @@ class EntityComponent : BaseComponent {
             vertices[i * 2 + 1] = verticesArray[i].y
         }
         polygon = Polygon(vertices)
+        polygon?.setPosition(transformComponent?.x ?: 0f, transformComponent?.y ?: 0f)
     }
 
 }

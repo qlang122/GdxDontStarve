@@ -24,7 +24,7 @@ class PlayScreen : ScreenAdapter() {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
 
         playStage?.apply { act();draw() }
-        hudStage?.apply { act();draw() }
+//        hudStage?.apply { act();draw() }
     }
 
     override fun show() {

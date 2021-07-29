@@ -15,13 +15,10 @@ import com.qlang.game.demo.component.PlayerComponent
 import com.qlang.game.demo.component.ScaleEntityComponent
 import com.qlang.game.demo.component.WorldComponent
 import com.qlang.game.demo.config.AppConfig
-import com.qlang.game.demo.script.DragonflyScript
-import com.qlang.game.demo.script.PlayerBodyScript
-import com.qlang.game.demo.script.PlayerScript
-import com.qlang.game.demo.script.WorldScript
+import com.qlang.game.demo.script.*
 import com.qlang.game.demo.system.CameraSystem
 import com.qlang.game.demo.system.ChangeVisionSystem
-import com.qlang.game.demo.system.EntitySystem
+import com.qlang.game.demo.system.EntitysSystem
 import com.qlang.game.demo.system.PlayerSystem
 import com.qlang.h2d.extention.spriter.SpriterItemType
 import games.rednblack.editor.renderer.SceneLoader
@@ -48,7 +45,7 @@ class PlayStage : Stage {
             sceneLoader?.injectExternalItemType(SpriterItemType())
 
             val cameraSystem = CameraSystem(-10000f, 10000f, -10000f, 10000f)
-            val entitySystem = EntitySystem()
+            val entitySystem = EntitysSystem()
 
             sceneLoader?.engine?.let { engine ->
                 engine.addSystem(PlayerSystem())
@@ -83,8 +80,11 @@ class PlayStage : Stage {
                 entitySystem.setPlayer(player?.entity)
 
                 wrapper?.getChild("dragonfly")?.apply {
-                    getChild("role")?.entity?.let { ItemWrapper(it).addScript(DragonflyScript(engine), engine) }
+                    addScript(DragonflyScript(engine), engine)
                     entity?.getComponent(MainItemComponent::class.java)?.visible = false
+                }
+                wrapper?.getChild("berry")?.apply {
+                    addScript(BerryScript(engine), engine)
                 }
             }
         }

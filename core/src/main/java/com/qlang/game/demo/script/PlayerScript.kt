@@ -76,12 +76,31 @@ class PlayerScript : BasicScript {
     }
 
     private fun movePlayer(direction: Int, autoRun: Boolean = false) {
+        var overlap = false
+        playerComponent?.let { p ->
+            val ee = p.goalEntity?.let { g -> entityMapper.get(g) }
+            overlap = ee?.polygon?.boundingRectangle?.overlaps(playerPolygon?.boundingRectangle)
+                    ?: false
+//            Log.e("QL", "----->>$overlap", ee?.polygon?.boundingRectangle, playerPolygon?.boundingRectangle)
+            if (overlap) {
+                if (p.isAutoRun) doAction()
+            }
+        }
+
         transformComponent?.apply {
             when (direction) {
-                LEFT -> x -= 5f
-                RIGHT -> x += 5f
-                UP -> y += 5f
-                DOWN -> y -= 5f
+                LEFT -> {
+                    x -= 5f
+                }
+                RIGHT -> {
+                    x += 5f
+                }
+                UP -> {
+                    y += 5f
+                }
+                DOWN -> {
+                    y -= 5f
+                }
                 LEFT + UP -> {
                     x -= 3.535f;y += 3.535f//3.535=Math.sqrt(12.5);5`2=2(x`2)
                 }
@@ -95,21 +114,14 @@ class PlayerScript : BasicScript {
                     x += 3.535f;y -= 3.535f
                 }
             }
+
+            playerPolygon?.setPosition(x, y)
         }
 
         playerComponent?.apply {
             this.isAutoRun = autoRun
             this.direction = direction
             this.status = Status.RUN
-        }
-
-        dimensionsComponent?.let { d ->
-            playerComponent?.goalEntity?.let { goal ->
-                val ee = entityMapper.get(goal)
-                val overlap = Utils.isOverlap(ee?.polygon, playerPolygon)
-                Log.e("QL", "----->>$overlap ${ee?.polygon} $playerPolygon")
-                if (overlap) doAction()
-            }
         }
     }
 
@@ -187,9 +199,9 @@ class PlayerScript : BasicScript {
         fun find(start: Vector2, goal: Vector2) {
             if (isFinding || isRunning) return
 
-            val s = Point(0, 0)//以player为原点
+//            val s = Point(0, 0)//以player为原点
             val g = Point((goal.x - start.x).div(5f).toInt(), (goal.y - start.y).div(5f).toInt())
-            Log.e("QL", "-------find way------>", start, goal, s, g)
+            Log.e("QL", "-----find way---->", start, goal, g)
             this.start.set(0, 0)
             this.goal.set(g.x, g.y)
 
@@ -211,7 +223,7 @@ class PlayerScript : BasicScript {
             isFinding = true
             val st = System.currentTimeMillis()
             val rtn = aStar.searching(this.start, this.goal, obstacles)
-            Log.e("QL", "----find way---->${System.currentTimeMillis() - st} \n ${rtn.first}")
+            Log.e("QL", "----find way---->${System.currentTimeMillis() - st} ${rtn.first.size}")
             isFinding = false
             run(rtn.first)
         }
