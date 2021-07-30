@@ -1,0 +1,33 @@
+
+hat_spider.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+swap_hat-0
+  rotate: false
+  xy: 1, 1
+  size: 244, 320
+  orig: 244, 320
+  offset: 0, 0
+  index: -1
+swap_hat-2
+  rotate: false
+  xy: 247, 17
+  size: 244, 304
+  orig: 244, 304
+  offset: 0, 0
+  index: -1
+swap_hat-1
+  rotate: false
+  xy: 493, 29
+  size: 244, 292
+  orig: 244, 292
+  offset: 0, 0
+  index: -1
+swap_hat-3
+  rotate: false
+  xy: 739, 73
+  size: 276, 248
+  orig: 276, 248
+  offset: 0, 0
+  index: -1

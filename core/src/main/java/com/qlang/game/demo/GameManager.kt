@@ -69,8 +69,8 @@ class GameManager private constructor() : ApplicationAdapter() {
         R.image.tile.atlas().forEach { load(it, TextureAtlas::class.java) }
     }
 
-    val playAssetsLoadProgress: Float get() = mainManager.progress
-    val isPlayAssetsLoaded: Boolean get() = mainManager.isFinished
+    val playAssetsLoadProgress: Float get() = playManager.progress
+    val isPlayAssetsLoaded: Boolean get() = playManager.isFinished
 
     fun <T : Game> init(game: T) {
         this.game = game

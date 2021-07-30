@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r7">
+    <folder id="0" name="swap_hat">
+        <file id="0" name="swap_hat/swap_hat-0.png" width="244" height="320" pivot_x="0.532785" pivot_y="0.0625016"/>
+        <file id="1" name="swap_hat/swap_hat-1.png" width="244" height="292" pivot_x="0.734527" pivot_y="0.0363031"/>
+        <file id="2" name="swap_hat/swap_hat-2.png" width="244" height="304" pivot_x="0.521719" pivot_y="0.0176842"/>
+        <file id="3" name="swap_hat/swap_hat-3.png" width="276" height="248" pivot_x="0.532516" pivot_y="0.302119"/>
+    </folder>
+    <entity id="0" name="spiderhat">
+        <animation id="0" name="anim_90s" length="34" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="34">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="swap_hat">
+                <key id="0" spin="0">
+                    <object folder="0" file="3" x="2" y="2.299" angle="0" scale_x="0.789246" scale_y="0.78923"/>
+                </key>
+                <key id="1" time="34" spin="0">
+                    <object folder="0" file="3" x="2" y="2.299" angle="0" scale_x="0.789246" scale_y="0.78923"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

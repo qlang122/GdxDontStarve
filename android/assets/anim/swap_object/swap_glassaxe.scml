@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b5">
+	<folder id="0" name="swap_object">
+		<file id="0" name="swap_glassaxe/swap_glassaxe-0.png" width="132" height="200" pivot_x="0.170455" pivot_y="0.190375" />
+		<file id="1" name="swap_glassaxe/swap_glassaxe-2.png" width="76" height="208" pivot_x="0.440789" pivot_y="0.149038" />
+		<file id="2" name="swap_glassaxe/swap_glassaxe-3.png" width="420" height="260" pivot_x="0.502381" pivot_y="0.429327" />
+		<file id="3" name="swap_glassaxe/swap_glassaxe-5.png" width="104" height="232" pivot_x="0.225962" pivot_y="0.155172" />
+		<file id="4" name="swap_glassaxe/swap_glassaxe-6.png" width="140" height="204" pivot_x="0.229464" pivot_y="0.17598" />
+		<file id="5" name="swap_glassaxe/swap_glassaxe-7.png" width="136" height="192" pivot_x="0.225184" pivot_y="0.184115" />
+	</folder>
+</spriter_data>

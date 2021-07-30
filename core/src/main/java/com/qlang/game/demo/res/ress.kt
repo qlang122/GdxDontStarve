@@ -9,6 +9,12 @@ object R {
 
             const val wilson_atlas = "anim/player/wilson.atlas"
 
+            const val swap_glassaxe_atlas = "anim/swap_object/swap_glassaxe.atlas"
+            const val swap_glassaxe = "anim/swap_object/swap_glassaxe.scml"
+
+            const val hat_spider_atlas = "orig/spriter_animations/hat_spider/hat_spider.atlas"
+            const val hat_spider = "orig/spriter_animations/hat_spider/hat_spider.scml"
+
             fun atlas(): ArrayList<String> {
                 val list = ArrayList<String>()
                 for (it in this.javaClass.fields) {

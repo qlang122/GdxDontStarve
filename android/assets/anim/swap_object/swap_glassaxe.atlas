@@ -1,0 +1,47 @@
+
+swap_glassaxe.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+swap_glassaxe-3
+  rotate: false
+  xy: 1, 211
+  size: 420, 260
+  orig: 420, 260
+  offset: 0, 0
+  index: -1
+swap_glassaxe-6
+  rotate: false
+  xy: 1, 5
+  size: 140, 204
+  orig: 140, 204
+  offset: 0, 0
+  index: -1
+swap_glassaxe-5
+  rotate: false
+  xy: 423, 239
+  size: 104, 232
+  orig: 104, 232
+  offset: 0, 0
+  index: -1
+swap_glassaxe-0
+  rotate: false
+  xy: 143, 9
+  size: 132, 200
+  orig: 132, 200
+  offset: 0, 0
+  index: -1
+swap_glassaxe-7
+  rotate: false
+  xy: 529, 279
+  size: 136, 192
+  orig: 136, 192
+  offset: 0, 0
+  index: -1
+swap_glassaxe-2
+  rotate: false
+  xy: 277, 1
+  size: 76, 208
+  orig: 76, 208
+  offset: 0, 0
+  index: -1

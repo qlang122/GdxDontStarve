@@ -12,6 +12,7 @@ import com.qlang.game.demo.component.PlayerComponent
 import com.qlang.game.demo.entity.GoodsInfo
 import com.qlang.game.demo.ktx.trycatch
 import com.qlang.game.demo.res.Direction
+import com.qlang.game.demo.res.R
 import com.qlang.game.demo.res.Status
 import com.qlang.pathplanning.AStar
 import com.qlang.pathplanning.Point
@@ -54,6 +55,8 @@ class PlayerScript : BasicScript {
     private val playerPosition: Vector2 = Vector2(Float.NEGATIVE_INFINITY, Float.NEGATIVE_INFINITY)
     private val goalPosition: Vector2 = Vector2(Float.NEGATIVE_INFINITY, Float.NEGATIVE_INFINITY)
 
+    private var playerManager: PlayerManager? = null
+
     constructor(engine: PooledEngine) {
         this.engine = engine
     }
@@ -62,6 +65,9 @@ class PlayerScript : BasicScript {
         super.init(item)
 
         item?.let {
+            playerManager = PlayerManager(it)
+            playerManager?.loadAssets()
+
             playerPolygon = it.getComponent(PolygonComponent::class.java)?.let { Utils.makePolygon(it) }
 
             ItemWrapper(it).getChild("role")?.entity?.let { role ->
@@ -75,16 +81,22 @@ class PlayerScript : BasicScript {
         }
     }
 
-    private fun movePlayer(direction: Int, autoRun: Boolean = false) {
-        var overlap = false
+    private fun isOverlap(): Boolean {
         playerComponent?.let { p ->
             val ee = p.goalEntity?.let { g -> entityMapper.get(g) }
-            overlap = ee?.polygon?.boundingRectangle?.overlaps(playerPolygon?.boundingRectangle)
-                    ?: false
 //            Log.e("QL", "----->>$overlap", ee?.polygon?.boundingRectangle, playerPolygon?.boundingRectangle)
-            if (overlap) {
-                if (p.isAutoRun) doAction()
-            }
+            return ee?.polygon?.boundingRectangle?.overlaps(playerPolygon?.boundingRectangle)
+                    ?: false
+        }
+        return false
+    }
+
+    private fun movePlayer(direction: Int, autoRun: Boolean = false) {
+        transformComponent?.let { playerPolygon?.setPosition(it.x, it.y) }
+
+        var overlap = isOverlap()
+        if (overlap && playerComponent?.isAutoRun == true) {
+            doAction()
         }
 
         transformComponent?.apply {
@@ -114,8 +126,6 @@ class PlayerScript : BasicScript {
                     x += 3.535f;y -= 3.535f
                 }
             }
-
-            playerPolygon?.setPosition(x, y)
         }
 
         playerComponent?.apply {
@@ -210,9 +220,9 @@ class PlayerScript : BasicScript {
         }
 
         fun interrupt() {
-            isRunning = false
+            if (isRunning) trycatch { thread?.interrupt() }
             isFinding = false
-            trycatch { thread?.interrupt() }
+            isRunning = false
         }
 
         fun updateObstacles(value: HashSet<Point>) {
