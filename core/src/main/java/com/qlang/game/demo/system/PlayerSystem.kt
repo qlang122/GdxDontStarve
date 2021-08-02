@@ -17,25 +17,36 @@ class PlayerSystem : IteratingSystem(Family.all(PlayerComponent::class.java).get
     private val playerMapper: ComponentMapper<PlayerComponent> = ComponentMapper.getFor(PlayerComponent::class.java)
     private val spriterMapper: ComponentMapper<SpriterObjectComponent> = ComponentMapper.getFor(SpriterObjectComponent::class.java)
 
+    private var oldAnim: String? = null
+    private var oldStatus: Int? = null
+    private var oldDirection: Int? = null
+
     override fun processEntity(entity: Entity?, deltaTime: Float) {
         val playerComponent = playerMapper.get(entity)
         val spriterComponent = spriterMapper.get(entity)
         val transformComponent = transformMapper.get(entity)
 
-        spriterComponent?.setAnimation(entity, getAnimName(playerComponent))
+        getAnimName(playerComponent)?.let {
+            spriterComponent?.setAnimation(entity, it)
+            spriterComponent?.play()
+        }
         when (playerComponent?.direction) {
             Direction.LEFT, (Direction.LEFT + Direction.UP),
             (Direction.LEFT + Direction.DOWN) -> transformComponent?.flipX = true
             else -> transformComponent?.flipX = false
         }
-        spriterComponent?.play()
     }
 
-    private fun getAnimName(component: PlayerComponent?): String {
+    private fun getAnimName(component: PlayerComponent?): String? {
+        if (oldDirection == component?.direction && oldStatus == component?.status) return null
+
+        oldDirection = component?.direction
+        oldStatus = component?.status
+
         val tool = GoodsInfo.Type.TOOL.value
         val weapon = GoodsInfo.Type.WEAPON.value
 
-        return when (component?.direction) {
+        val anim = when (component?.direction) {
             Direction.LEFT, Direction.RIGHT, (Direction.LEFT + Direction.UP),
             (Direction.LEFT + Direction.DOWN), (Direction.RIGHT + Direction.UP),
             (Direction.RIGHT + Direction.DOWN) -> {
@@ -138,5 +149,11 @@ class PlayerSystem : IteratingSystem(Family.all(PlayerComponent::class.java).get
                 Player.Anim.Idle.loop_down
             }
         }
+        if (oldAnim != anim) {
+            component?.onAnimationChangeListeners?.forEach { it(anim) }
+        }
+        oldAnim = anim
+
+        return anim
     }
 }

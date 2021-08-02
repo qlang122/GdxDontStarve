@@ -12,25 +12,25 @@ import com.qlang.game.demo.component.PlayerComponent
 import com.qlang.game.demo.entity.GoodsInfo
 import com.qlang.game.demo.ktx.trycatch
 import com.qlang.game.demo.res.Direction
-import com.qlang.game.demo.res.R
 import com.qlang.game.demo.res.Status
-import com.qlang.pathplanning.AStar
-import com.qlang.pathplanning.Point
 import com.qlang.game.demo.utils.Log
 import com.qlang.game.demo.utils.Utils
 import com.qlang.h2d.extention.spriter.SpriterObjectComponent
+import com.qlang.pathplanning.AStar
+import com.qlang.pathplanning.Point
 import games.rednblack.editor.renderer.components.DimensionsComponent
 import games.rednblack.editor.renderer.components.PolygonComponent
 import games.rednblack.editor.renderer.components.TransformComponent
+import games.rednblack.editor.renderer.components.physics.PhysicsBodyComponent
 import games.rednblack.editor.renderer.scripts.BasicScript
 import games.rednblack.editor.renderer.utils.ComponentRetriever
 import games.rednblack.editor.renderer.utils.ItemWrapper
-import java.lang.Runnable
 import java.util.*
 import kotlin.collections.HashSet
 import kotlin.math.abs
 import kotlin.math.pow
 import kotlin.math.sqrt
+
 
 class PlayerScript : BasicScript {
     private val entityMapper: ComponentMapper<EntityComponent> = ComponentMapper.getFor(EntityComponent::class.java)
@@ -48,6 +48,7 @@ class PlayerScript : BasicScript {
     private var playerComponent: PlayerComponent? = null
     private var transformComponent: TransformComponent? = null
     private var dimensionsComponent: DimensionsComponent? = null
+    private var physicsBodyComponent: PhysicsBodyComponent? = null
 
     private var playerPolygon: Polygon? = null
 
@@ -56,6 +57,9 @@ class PlayerScript : BasicScript {
     private val goalPosition: Vector2 = Vector2(Float.NEGATIVE_INFINITY, Float.NEGATIVE_INFINITY)
 
     private var playerManager: PlayerManager? = null
+
+    private val impulse = Vector2(0f, 0f)
+    private val speed = Vector2(0f, 0f)
 
     constructor(engine: PooledEngine) {
         this.engine = engine
@@ -76,8 +80,13 @@ class PlayerScript : BasicScript {
             }
             transformComponent = ComponentRetriever.get(it, TransformComponent::class.java)
             dimensionsComponent = ComponentRetriever.get(it, DimensionsComponent::class.java)
+            physicsBodyComponent = ComponentRetriever.get(it, PhysicsBodyComponent::class.java)
 
             spriterComponent?.animation?.startPlay()
+        }
+
+        playerComponent?.addAnimChangeListener {
+
         }
     }
 
@@ -99,33 +108,19 @@ class PlayerScript : BasicScript {
             doAction()
         }
 
-        transformComponent?.apply {
+        physicsBodyComponent?.body?.let { body ->
+            speed.set(body.linearVelocity)
             when (direction) {
-                LEFT -> {
-                    x -= 5f
-                }
-                RIGHT -> {
-                    x += 5f
-                }
-                UP -> {
-                    y += 5f
-                }
-                DOWN -> {
-                    y -= 5f
-                }
-                LEFT + UP -> {
-                    x -= 3.535f;y += 3.535f//3.535=Math.sqrt(12.5);5`2=2(x`2)
-                }
-                LEFT + DOWN -> {
-                    x -= 3.535f;y -= 3.535f
-                }
-                RIGHT + UP -> {
-                    x += 3.535f;y += 3.535f
-                }
-                RIGHT + DOWN -> {
-                    x += 3.535f;y -= 3.535f
-                }
+                LEFT -> impulse.set(-100000f, speed.y)
+                RIGHT -> impulse.set(100000f, speed.y)
+                UP -> impulse.set(speed.x, 100000f)
+                DOWN -> impulse.set(speed.x, -100000f)
+                LEFT + UP -> impulse.set(-100000f, -100000f)
+                LEFT + DOWN -> impulse.set(100000f, 100000f)
+                RIGHT + UP -> impulse.set(100000f, -100000f)
+                RIGHT + DOWN -> impulse.set(100000f, 100000f)
             }
+            body.applyLinearImpulse(impulse.sub(speed), body.worldCenter, true)
         }
 
         playerComponent?.apply {

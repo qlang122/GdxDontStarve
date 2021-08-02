@@ -7,6 +7,8 @@ import com.qlang.game.demo.res.Direction
 import com.qlang.game.demo.res.Status
 import games.rednblack.editor.renderer.components.BaseComponent
 
+typealias OnAnimChangeListener = (anim: String?) -> Unit
+
 class PlayerComponent : BaseComponent {
     var body: PlayerInfo.Body = PlayerInfo.Body()
 
@@ -19,12 +21,23 @@ class PlayerComponent : BaseComponent {
     var goalEntity: Entity? = null
     var goalType: Int = GoodsInfo.Type.UNKNOW.value
 
+    val onAnimationChangeListeners: ArrayList<OnAnimChangeListener> = ArrayList()
+
     constructor()
+
+    fun addAnimChangeListener(lis: (anim: String?) -> Unit) {
+        onAnimationChangeListeners.add(lis)
+    }
+
+    fun removeAnimChangeListener(lis: (anim: String?) -> Unit) {
+        onAnimationChangeListeners.remove(lis)
+    }
 
     override fun reset() {
         direction = Direction.DOWN
         status = Status.IDLE
         subStatus = Status.NONE
         isAutoRun = false
+        onAnimationChangeListeners.clear()
     }
 }
