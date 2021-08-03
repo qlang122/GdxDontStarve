@@ -24,8 +24,12 @@ class PlayerManager {
     private var spriterComponent: SpriterObjectComponent? = null
     private var playerComponent: PlayerComponent? = null
 
-    private var currSwapObject: String? = null
-    private var currSwapHat: String? = null
+    var currSwapObject: String? = null
+        private set
+    var currSwapHat: String? = null
+        private set
+    var currSwapBody: String? = null
+        private set
 
     constructor(entity: Entity) {
         ItemWrapper(entity).getChild("role")?.entity?.let { role ->
@@ -48,9 +52,11 @@ class PlayerManager {
         }
     }
 
-    fun swapObject(name: String?) {
-        if (currSwapObject == name) return
+    fun swapObject(name: String?, force: Boolean = false) {
+        if (name != null && currSwapObject == name && !force) return
         currSwapObject = name
+
+        val have = !name.isNullOrEmpty()
 
         val obj = if (null != name && scmlMap.containsKey(name)) scmlMap[name] else null
         spriterComponent?.let {
@@ -60,17 +66,37 @@ class PlayerManager {
                     part.drawable = obj?.getAsset(part.folderName, part.file)
                 }
             }
+            it.animation?.makeTimelineVisible(HashMap<String, Boolean>().apply {
+                put("hand_2", have);put("arm_upper_2", have);put("arm_lower_2", have);put("arm_upper_skin_2", have);put("arm_lower_cuff_2", have)
+                put("hand_1", !have);put("arm_upper_1", !have);put("arm_lower_1", !have);put("arm_upper_skin_1", !have);put("arm_lower_cuff_1", !have)
+            })
         }
     }
 
-    fun swapHat(name: String?) {
-        if (currSwapHat == name) return
+    fun swapHat(name: String?, force: Boolean = false) {
+        if (name != null && currSwapHat == name && !force) return
         currSwapHat = name
 
         val obj = if (null != name && scmlMap.containsKey(name)) scmlMap[name] else null
 
         spriterComponent?.let {
             it.animation?.getTimeline("swap_hat")?.keys?.forEach {
+                val part = it.`object`
+                if (part is Sprite) {
+                    part.drawable = obj?.getAsset(part.folderName, part.file)
+                }
+            }
+        }
+    }
+
+    fun swapBody(name: String?, force: Boolean = false) {
+        if (name != null && currSwapBody == name && !force) return
+        currSwapBody = name
+
+        val obj = if (null != name && scmlMap.containsKey(name)) scmlMap[name] else null
+
+        spriterComponent?.let {
+            it.animation?.getTimeline("SWAP_BODY_1")?.keys?.forEach {
                 val part = it.`object`
                 if (part is Sprite) {
                     part.drawable = obj?.getAsset(part.folderName, part.file)

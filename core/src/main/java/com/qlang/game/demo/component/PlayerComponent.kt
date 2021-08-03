@@ -16,10 +16,10 @@ class PlayerComponent : BaseComponent {
     var status: Int = Status.IDLE
     var subStatus = Status.NONE
     var isAutoRun = false
-    var handItemType: Int = GoodsInfo.Type.UNKNOW.value
+    var handItemType: Int = GoodsInfo.Type.TOOL.value
 
     var goalEntity: Entity? = null
-    var goalType: Int = GoodsInfo.Type.UNKNOW.value
+    var goalType: Int = GoodsInfo.Type.ANIMAL.value
 
     val onAnimationChangeListeners: ArrayList<OnAnimChangeListener> = ArrayList()
 

@@ -12,6 +12,7 @@ import com.qlang.game.demo.component.PlayerComponent
 import com.qlang.game.demo.entity.GoodsInfo
 import com.qlang.game.demo.ktx.trycatch
 import com.qlang.game.demo.res.Direction
+import com.qlang.game.demo.res.R
 import com.qlang.game.demo.res.Status
 import com.qlang.game.demo.utils.Log
 import com.qlang.game.demo.utils.Utils
@@ -86,7 +87,13 @@ class PlayerScript : BasicScript {
         }
 
         playerComponent?.addAnimChangeListener {
-
+            it?.let {
+                playerManager?.run {
+                    swapObject(currSwapObject, true)
+                    swapHat(currSwapHat, true)
+                    swapBody(currSwapBody, true)
+                }
+            }
         }
     }
 
@@ -103,11 +110,6 @@ class PlayerScript : BasicScript {
     private fun movePlayer(direction: Int, autoRun: Boolean = false) {
         transformComponent?.let { playerPolygon?.setPosition(it.x, it.y) }
 
-        var overlap = isOverlap()
-        if (overlap && playerComponent?.isAutoRun == true) {
-            doAction()
-        }
-
         physicsBodyComponent?.body?.let { body ->
             speed.set(body.linearVelocity)
             when (direction) {
@@ -115,24 +117,30 @@ class PlayerScript : BasicScript {
                 RIGHT -> impulse.set(100000f, speed.y)
                 UP -> impulse.set(speed.x, 100000f)
                 DOWN -> impulse.set(speed.x, -100000f)
-                LEFT + UP -> impulse.set(-100000f, -100000f)
-                LEFT + DOWN -> impulse.set(100000f, 100000f)
-                RIGHT + UP -> impulse.set(100000f, -100000f)
-                RIGHT + DOWN -> impulse.set(100000f, 100000f)
+                LEFT + UP -> impulse.set(-100000f, 100000f)
+                LEFT + DOWN -> impulse.set(-100000f, -100000f)
+                RIGHT + UP -> impulse.set(100000f, 100000f)
+                RIGHT + DOWN -> impulse.set(100000f, -100000f)
             }
             body.applyLinearImpulse(impulse.sub(speed), body.worldCenter, true)
         }
 
-        playerComponent?.apply {
-            this.isAutoRun = autoRun
-            this.direction = direction
-            this.status = Status.RUN
+        val overlap = isOverlap()
+        if (overlap && playerComponent?.isAutoRun == true) {
+            findWayTask.interrupt()
+            doAction()
+        } else if (overlap && playerComponent?.subStatus == Status.ACTION) {
+            doAction()
+        } else {
+            playerComponent?.apply {
+                this.isAutoRun = autoRun
+                this.direction = direction
+                this.status = Status.RUN
+            }
         }
     }
 
     private fun doAction() {
-        findWayTask.interrupt()
-
         playerComponent?.let { p ->
             val ec = p.goalEntity?.let { entityMapper.get(it) }
             ec?.isBeAttack = true
@@ -155,6 +163,7 @@ class PlayerScript : BasicScript {
             Gdx.input.isKeyPressed(Input.Keys.D) -> activeMove(RIGHT)
             Gdx.input.isKeyPressed(Input.Keys.W) -> activeMove(UP)
             Gdx.input.isKeyPressed(Input.Keys.S) -> activeMove(DOWN)
+            Gdx.input.isKeyPressed(Input.Keys.R) -> playerManager?.swapObject(R.anim.player.swap_glassaxe)
             else -> if (playerComponent?.isAutoRun != true) playerComponent?.status = Status.IDLE
         }
 
@@ -174,7 +183,8 @@ class PlayerScript : BasicScript {
                 val d = abs(sqrt(goalPosition.x.minus(playerPosition.x).pow(2) + goalPosition.y.minus(playerPosition.y).pow(2)))
 //                Log.e("QL", "------------>>", d)
                 if (player.subStatus == Status.ACTION && !player.isAutoRun && d < 250) {
-                    findWayTask.find(playerPosition, Vector2(goalPosition))
+                    if (isOverlap() || d < 15) doAction()
+                    else findWayTask.find(playerPosition, Vector2(goalPosition))
                 }
             }
         }
