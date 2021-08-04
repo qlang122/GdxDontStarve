@@ -181,7 +181,7 @@ class PlayerScript : BasicScript {
                         t.y + (dimensionsComponent?.height ?: 0f) / 2)
 //                Log.e("QL", "--->", player.subStatus, !player.isAutoRun, goalPosition.x)
                 val d = abs(sqrt(goalPosition.x.minus(playerPosition.x).pow(2) + goalPosition.y.minus(playerPosition.y).pow(2)))
-//                Log.e("QL", "------------>>", d)
+//                Log.e("QL", "------------>>", goalPosition, playerPosition, d)
                 if (player.subStatus == Status.ACTION && !player.isAutoRun && d < 250) {
                     if (isOverlap() || d < 15) doAction()
                     else findWayTask.find(playerPosition, Vector2(goalPosition))

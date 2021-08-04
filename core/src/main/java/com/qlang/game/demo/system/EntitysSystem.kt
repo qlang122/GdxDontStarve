@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Polygon
 import com.qlang.game.demo.component.EntityComponent
 import com.qlang.game.demo.component.PlayerComponent
 import com.qlang.game.demo.entity.GoodsInfo
+import com.qlang.game.demo.utils.Log
 import com.qlang.game.demo.utils.Utils
 import games.rednblack.editor.renderer.components.DimensionsComponent
 import games.rednblack.editor.renderer.components.MainItemComponent
@@ -40,7 +41,7 @@ open class EntitysSystem : IteratingSystem(Family.all(EntityComponent::class.jav
 
         val t = transformMapper.get(entity)
         val ec = entityMapper.get(entity)
-        if ((ec.info.type and GoodsInfo.Type.UNKNOW.value) == GoodsInfo.Type.UNKNOW.value) return
+        if (ec.info.type == GoodsInfo.Type.UNKNOW.value) return
 
         val pT = transformMapper.get(player)
 
@@ -48,7 +49,8 @@ open class EntitysSystem : IteratingSystem(Family.all(EntityComponent::class.jav
         ec.playerDistance = abs.toFloat()
 
         if (abs < 250) {
-            val overlap = Utils.isOverlap(ec.polygon, playerPolygon)
+            val overlap = ec.polygon?.boundingRectangle?.overlaps(playerPolygon?.boundingRectangle)
+                    ?: false
             ec.isOverlapPlayer = overlap
 
             if (abs < minAbs) {

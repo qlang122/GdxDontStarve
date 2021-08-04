@@ -1,8 +1,8 @@
 package com.qlang.game.demo.entity
 
 class GoodsInfo : BaseInfo() {
-    var type: Int = Type.ANIMAL.value
-    var subType: Int = Type.UNKNOW.value
+    var type: Int = 0 + Type.ANIMAL.value
+    var subType: Int = 0 + Type.UNKNOW.value
     var name: String = ""
     var desc: String = ""
     var num: Int = 0
@@ -21,8 +21,8 @@ class GoodsInfo : BaseInfo() {
     }
 
     fun reset() {
-        type = 0 and Type.UNKNOW.value
-        subType = 0 and Type.UNKNOW.value
+        type = 0 + Type.UNKNOW.value
+        subType = 0 + Type.UNKNOW.value
         name = ""
         desc = ""
         num = 0
